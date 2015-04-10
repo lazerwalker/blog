@@ -10,3 +10,6 @@ github_username:  lazerwalker
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+
