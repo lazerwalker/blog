@@ -61,13 +61,13 @@ An `MCSession` represents a single game session. At initialization, you give it 
 
 Setting up a connection requires an active session, which in turn needs a peer to represent the current system. This isn't hard:
 
-```obj-c
-    UIDevice *device = [UIDevice currentDevice];
+{% highlight objc %}
+UIDevice *device = [UIDevice currentDevice];
 
-    MCPeerID *peer = [[MCPeerID alloc] initWithDisplayName:device.name];
-    MCSession *session = [[MCSession alloc] initWithPeer:peer];
-    session.delegate = self;
-```
+MCPeerID *peer = [[MCPeerID alloc] initWithDisplayName:device.name];
+MCSession *session = [[MCSession alloc] initWithPeer:peer];
+session.delegate = self;
+{% endhighlight %}
 
 For all this code, the object that manages these connections is also the session's delegate.
 
@@ -75,12 +75,12 @@ Once a session exists, we want to actually add multiple devices to that session.
 
 The former is done through an MCAdvertiserAssistant object.
 
-```obj-c
+{% highlight objc %}
     self.assistant = [[MCAdvertiserAssistant alloc] initWithServiceType:@"mlw-prisoner"
                                                           discoveryInfo:nil
                                                                 session:session];
     [self.assistant start];
-```
+{% endhighlight %}
 
 The `serviceType` parameter in the constructor is simply a string that uniquely identifies the networking protocol of your app. It's the same format as a Bonjour service type. Beyond some limitations on length and allowed characters, it doesn't particularly matter what it is, as long as it's shared among all clients and unique from other services.
 
@@ -97,12 +97,12 @@ When another device tries to connect to a device that is advertising, an invitat
 ### Browsing local peers
 Now that each device is broadcasting itself, we need a way to browse available peers and attempt to connect to them. While it wouldn't be hard to write this ourselves, Apple provides a prefabricated view controller that can handle this for us. Instantiating an `MCBrowserViewController` is easy:
 
-```obj-c
+{% highlight objc %}
     MCBrowserViewController *browser = [[MCBrowserViewController alloc] initWithServiceType:@"mlw-prisoner"
                                                                                         session:session];
     browser.delegate = self;
     [self presentViewController:browser animated:YES completion:nil];
-```
+{% endhighlight %}
 
 The `serviceType` here needs to refer to the same serviceType our advertiser is broadcasting. Just like our advertising assistant, the passed in `MCSession` object is the session that will receive peer connections when they are successfully made.
 
@@ -110,13 +110,13 @@ The `serviceType` here needs to refer to the same serviceType our advertiser is 
 
 In our case, the object containing all this code is a `UIViewController`, and the MCBrowserViewController is presented modally. After the user has connected to one other device, we want to dismiss the modal view automatically. This is done by making our view controller the delegate of the `MCSession`, and listening for when the session adds a new peer:
 
-```obj-c
+{% highlight objc %}
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state {
     if (state == MCSessionStateConnected) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-```
+{% endhighlight %}
 
 This logic would need to be a bit fancier if we were dealing with a game that had more than two peers, but for now we can safely make the assumption that a single successful connection means we're off to the races.
 
@@ -125,11 +125,11 @@ This logic would need to be a bit fancier if we were dealing with a game that ha
 Additionally, we'll want to dismiss the modal view controller when the user taps the 'cancel' button. We can do that by making our view controller the browser's delegate.
 
 
-```obj-c
+{% highlight objc %}
 - (void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-```
+{% endhighlight %}
 
 ## Sending and Receiving Data
 At this point, running the game will let two clients connect to each other, but not much else.
@@ -150,7 +150,7 @@ Again, a game that's even marginally more complex will likely warrant a more com
 ## Sending data
 To send data to peers, `MCSession` has a few methods based on whether you want to send a raw chunk of data, a stream of data, or a resource via URL. In a real-time game you'd probably want to stream data to minimize overhead and lag. In this case, just sending bits of data as needed is simpler and perfectly sufficient:
 
-```obj-c
+{% highlight objc %}
     typedef NS_ENUM(NSInteger, Choice) {
         ChoiceNotMade = 0,
         ChoiceCooperate,
@@ -171,13 +171,13 @@ To send data to peers, `MCSession` has a few methods based on whether you want t
                    toPeers:session.connectedPeers
                   withMode:MCSessionSendDataReliable
                      error:&error];
-```
+{% endhighlight %}
 
 A positive round number represents a "cooperate" choice, whereas a negative number means "defect". We serialize that integer into `NSData`, and tell the active `MCSession` object to send it to all connected peers, using the `MCSessionSendDataReliable` mode to ensure delivery of every bit of data.
 
 The receiving end looks pretty similar, taking place in a delegate method on the `MCSessionDelegate` protocol.
 
-```
+{% highlight objc %}
     - (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID {
         NSInteger round;
         [data getBytes:&round length:sizeof(round)];
@@ -188,7 +188,7 @@ The receiving end looks pretty similar, taking place in a delegate method on the
 
         // ...
     }
-```
+{% endhighlight %}
 
 And that's all there is to it! There's a small bit of other game logic — accepting user input and sending data to the peer as a result, calculating the score when a roud is over, etc — but that's really all it takes to get the networked aspect of the game up and running. Again, the full source code, ready to run on your own iOS devices, is available on [GitHub](https://github.com/lazerwalker/prisoners-dilemma).
 

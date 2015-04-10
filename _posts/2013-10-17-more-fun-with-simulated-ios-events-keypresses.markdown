@@ -15,26 +15,26 @@ A curious thing happened, though. `GSEvent.h` defines a GSKeyInfo object, and th
 
 After diving into the [UIKeyboard private headers](https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/UIKit.framework/UIKeyboard.h), I found something interesting.
 
-``` objective-c
+{% highlight objc %}
 - (id)_typeCharacter:(id)arg1 withError:(struct CGPoint { float x1; float x2; })arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
-```
+{% endhighlight %}
 
 Bingo! If you want to create a synthetic keypress when there is already a keyboard visible on-screen, all you need to do is call a few private methods on it. I opened up a category interface to expose the necessary methods.
 
-```
+{% highlight objc %}
 @interface UIKeyboard : UIView
 
 + (UIKeyboard *)activeKeyboard;
 - (id)_typeCharacter:(id)arg1 withError:(CGPoint)arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
 
 @end
-```
+{% endhighlight %}
 
 Using those two guys, it's easy to get a pointer to the currently-visible keyboard and tell it to do its thing.
 
 Worth noting: you would expect `_typeCharacter:(...)` to take in a single character. However, you'll notice it accepts an NSString rather than a char or a UniChar. It does in fact expect the string you give it to match up to a single keyboard key. There's probably a good reason for this, but for now we'll just have to write it off as an oddity of the private API.
 
-```
+{% highlight objc %}
 NSString *someString;
 
 UIKeyboard *keyboard = [UIKeyboard activeKeyboard];
@@ -45,7 +45,7 @@ if (keyboard) {
         [keyboard _typeCharacter:singleChar withError:CGPointZero shouldTypeVariants:NO baseKeyForVariants:NO];
     }
 }
-```
+{% endhighlight %}
 
 And there you have it, programmatically-created keypress events!
 

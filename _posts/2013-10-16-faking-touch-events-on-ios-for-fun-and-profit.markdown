@@ -56,7 +56,7 @@ If you look at `GSEvent.h`, you can see all of the properties that make up the G
 
 For me, finding the proper values to set was a process of trial and error. The GSEvent.h header is useful, as is manually inspecting real GSEvent objects (with the help of a custom UIWindow subclass with an overwritten `sendEvent:` method). It's possible some of the properties I'm setting below aren't necessary, or might need to be changed for your purposes.
 
-``` objective-c
+{% highlight objc %}
 // Get these two values from elsewhere
 CGPoint point;
 UITouchPhase phase;
@@ -83,7 +83,7 @@ event->handInfo.pathInfos[0].pathIdentity  = 2;
 event->handInfo.pathInfos[0].pathProximity = (phase == UITouchPhaseBegan) ? 0x03 : 0x00;
 event->handInfo.pathInfos[0].pathLocation  = point;
 
-```
+{% endhighlight %}
 
 
 One thing to note: the CGPoint you pass into the event's `location` field and the pathInfo's `pathLocation` field are coordinates relative to the entire window, not the UIView that will ultimately receive the event. If you have coordinates relative to a view and a reference to the view itself, you can convert the coordinates using `[view convertPoint:point toView:view.window]`.
@@ -92,7 +92,7 @@ One thing to note: the CGPoint you pass into the event's `location` field and th
 
 This function was cribbed pretty much wholesale from [Stack Overflow](http://stackoverflow.com/questions/16156831/how-to-find-the-purple-port-for-the-front-most-application-in-ios-5-and-above/16157532), although I ripped out a bunch of unrelated code related handling the lock screen.
 
-```
+{% highlight objc %}
 
 #import <dlfcn.h>
 #define SBSERVPATH  "/System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices"
@@ -112,18 +112,18 @@ static mach_port_t getFrontmostAppPort() {
 
 	return GSCopyPurpleNamedPort(appId);
 }
-```
+{% endhighlight %}
 
 ### Sending the event
 
 We have a GSEvent object, `event`, and a function that will return the frontmost app port. Let's put 'em together.
 
-```
+{% highlight objc %}
 mach_port_t port = getFrontmostAppPort();
 GSEventRecord* record = (GSEventRecord*)event;
 record->timestamp = GSCurrentEventTimestamp();
 GSSendEvent(record, port);
-```
+{% endhighlight %}
 
 And there you have it!
 

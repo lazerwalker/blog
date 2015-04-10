@@ -12,24 +12,24 @@ In practical terms, it's rare for an iOS or OS X developer to need to dive down 
 
 The meat-and-potatoes of the Objective-C runtime is `objc_msgSend`, the C function responsible for sending a message to an object. When you write the following line of Objective-C code:
 
-``` objective-c
+{% highlight objc %}
 [tableView cellForRowAtIndexPath:indexPath];
-```
+{% endhighlight %}
 
 The compiler actually translates it down into the following C function call:
 
-```
+{% highlight objc %}
 objc_msgSend(tableView, @selector(cellForRowAtIndexPath:), indexPath);
-```
+{% endhighlight %}
 
 There are a million interesting things to say about `objc_msgSend` and how it works, but today I want to focus on an interesting edge case. The return type of `objc_msgSend` is `id`: what happens if you need to evaluate a method that returns a primitive or C struct rather than something expressible as an object pointer?
 
 Executing the following contrived example returns a compiler error because of the type mismatch:
 
-```
+{% highlight objc %}
 UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
 CGRect rect = objc_msgSend(view, @selector(frame));
-```
+{% endhighlight %}
 
 If you wrote that second line as `[view frame]`, the compiler wouldn't actually turn that into an `objc_msgSend` call, but rather invoke a lesser-known member of the `objc_msgSend` family.
 
@@ -47,9 +47,9 @@ Trying to manually call `objc_msgSend_stret` isn't as simple as its more-common 
 
 If you look at its declaration in `objc/message.h`, it becomes clear that the true signature is the former. But this line of code will also trigger a compiler error.
 
-```
+{% highlight objc %}
 CGRect frame = objc_msgSend_stret(view, @selector(frame));
-```
+{% endhighlight %}
 
 `objc_msgSend_stret` has a return type of void, which is obviously not a CGRect. And you can't just cast the return value to a CGRect and call it a day.
 
@@ -57,13 +57,13 @@ The problem is that `objc_msgSend_stret` exists to do a task that isn't expressi
 
 The solution? You need to cast the `objc_msgSend_stret` function itself into a function whose return type is the struct you're expecting. Here is a complete, functioning version of our example:
 
-```
+{% highlight objc %}
 UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
 
 CGRect (*sendRectFn)(id receiver, SEL operation);
 sendRectFn = (CGRect(*)(id, SEL))objc_msgSend_stret;
 CGRect frame = sendRectFn(view, @selector(frame));
-```
+{% endhighlight %}
 
 
 Pretty crazy, right?

@@ -16,17 +16,17 @@ The solution I landed on involves grabbing the animation duration and curve out 
 
 
 **UIView+KeyboardAnimation.h**
-```obj-c
+{% highlight obj-c %}
 @interface UIView (KeyboardAnimation)
 
 + (void)animateWithKeyboardNotification:(NSNotification *)notification
                              animations:(void(^)(CGRect keyboardFrame))animations;
 
 @end
-```
+{% endhighlight %}
 
 **UIView+KeyboardAnimation.m**
-```obj-c
+{% highlight obj-c %}
 + (void)animateWithKeyboardNotification:(NSNotification *)notification
                              animations:(void(^)(CGRect keyboardFrame))animations {
     NSDictionary *userInfo = notification.userInfo;
@@ -47,6 +47,6 @@ The solution I landed on involves grabbing the animation duration and curve out 
 
     [UIView commitAnimations];
 }
-```
+{% endhighlight %}
 
 **Update**: This has now been published as its own [CocoaPod](https://github.com/lazerwalker/MWKeyboardAnimation). If you're interested in using something like this in your own projects, check it out!

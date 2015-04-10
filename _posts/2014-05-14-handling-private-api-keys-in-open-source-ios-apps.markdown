@@ -12,7 +12,7 @@ I looked around, but couldn't really find a decent solution recommended by anyon
 
 The solution I ended up with was having a separate configuration plist that the app read from as necessary. A `configuration.plist.example` file is versioned in git, whereas the actual `configuration.plist` file read by the app is included in the project's `.gitignore`. Here's what the example plist currently looks like, for reference:
 
-```xml
+{% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -26,17 +26,17 @@ The solution I ended up with was having a separate configuration plist that the 
 	</dict>
 </dict>
 </plist>
-```
+{% endhighlight %}
 
 And here's what the code to fetch the client ID and secret out of the plist looks like:
 
-```objective-c
+{% highlight objc %}
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Configuration" ofType:@"plist"];
     NSDictionary *configuration = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 
     NSString *clientId = configuration[@"FoursquareAPI"][@"ClientID"];
     NSString *clientSecret = configuration[@"FoursquareAPI"][@"ClientSecret"];
-```
+{% endhighlight %}
 
 *(A more production-ready solution will naturally have sanity checks to make sure both the file and those dictionary keys exist, plus sensible fallbacks if appropriate and/or human-readable errors or exceptions. In this specific case, I eventually plan to abstract this out into a separate configuration object.)*
 

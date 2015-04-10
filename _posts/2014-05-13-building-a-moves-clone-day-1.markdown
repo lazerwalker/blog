@@ -29,7 +29,7 @@ Before receiving data from CoreLocation and CoreMotion, having a way to save dat
 
 I created a very simple model class to contain both location and activity data, poorly naming it `LocationList`. I choose to use [Mantle](https://github.com/Mantle/Mantle) for now, purely to avoid needing to write NSCoding boilerplate.
 
-```objective-c
+{% highlight objc %}
 	@interface LocationList : MTLModel
 
 	@property (strong, nonatomic) NSArray *locations;
@@ -41,25 +41,25 @@ I created a very simple model class to contain both location and activity data, 
 	- (void)addActivities:(NSArray *)activities;
 
 	@end
-```
+{% endhighlight %}
 
 This initial implementation is incredibly dumb. Calling `addLocations:` or `addActivites:` causes the appropriate internal array to be appended with new data, and then the object itself persisted to disk.
 
-```objective-c
+{% highlight objc %}
 	- (void)addLocations:(NSArray *)locations {
 	    if (!self.locations) self.locations = [NSArray new];
 	    self.locations = [self.locations arrayByAddingObjectsFromArray:locations];
 	    [NSKeyedArchiver archiveRootObject:self toFile:self.class.filepath];
 	}
-```
+{% endhighlight %}
 
 `fetchFromDisk` merely retrieves that object again, or a new object if there isn't one on-disk.
 
-```objective-c
+{% highlight objc %}
 	+ (instancetype)loadFromDisk {
 	    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.filepath] ?: [self new];
 	}
-```
+{% endhighlight %}
 
 (The class method `filepath` simply returns a handle to a filename based on the object's class.)
 
@@ -70,22 +70,22 @@ My goal wasn't to write high-quality code that would last. My goal was to write 
 ## Processing GPS Data
 Fetching location data, even in the background, is easy. After setting up a test app with  the background location key set in the plist, I created a new class to help manage a CLLocationManager. It didn't do a lot.
 
-```objective-c
+{% highlight objc %}
 	self.manager = [[CLLocationManager alloc] init];
     self.manager.delegate = self;
     [self.manager startUpdatingLocation];
-```
+{% endhighlight %}
 
 From there, the `CLLocationManager` will simply call its delegate method over and over again, even when the app isn't running, with updated data. Given our persistence layer, all we need to do is keep pushing those new updates onto our list.
 
-```objective-c
+{% highlight objc %}
 	- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 	    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 	        LocationList *list = [LocationList loadFromDisk];
 	        [list addLocations:locations];
 	    });
 	}
-```
+{% endhighlight %}
 
 To be clear, this is just as inefficient and dumb as our persistence layer. Specifically, this will eat up battery like there's no tomorrow, and probably return a lot more data than is needed. While there's a lot of low-hanging fruit to make this more efficient, I didn't care. I can optimize for battery life once things are working; I wanted to see the full range of accuracy the GPS is capable of, and make that happen as quickly as possible.
 

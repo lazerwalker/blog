@@ -1,4 +1,3 @@
-# Site settings
 title: Mike Lazer-Walker
 email: mike@lazerwalker.com
 description: >
@@ -8,8 +7,8 @@ url: http://lazerwalker.com
 twitter_username: lazerwalker
 github_username:  lazerwalker
 
-# Build settings
 markdown: kramdown
+highlighter: pygments
 kramdown:
   input: GFM
 
