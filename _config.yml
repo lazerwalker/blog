@@ -3,8 +3,8 @@ title: Mike Lazer-Walker
 email: mike@lazerwalker.com
 description: >
   Mike is a New York-based game designer, conceptual artist, and software engineer.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: http://blog.lazerwalker.com
+baseurl: "/blog" # the subpath of your site, e.g. /blog/
+url: http://lazerwalker.com
 twitter_username: lazerwalker
 github_username:  lazerwalker
 
