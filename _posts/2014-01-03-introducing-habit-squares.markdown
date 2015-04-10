@@ -1,4 +1,4 @@
-a---
+---
 layout: post
 title: "Introducing Habit Squares"
 date: 2014-01-03 00:06
