@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Rejected"
+date: 2014-02-09 20:46
+comments: true
+categories:
+---
+
+A couple of days ago, a pending update for my [Bike NYC](http://bit.ly/15q7ZXz) app was rejected by Apple, apparently because I used a private framework. Specifically, application code accessed the advertising identifier made available in `AdSupport.framework`, which isn't acceptable if your application does not show any advertisements.
+
+The culprit? Google Analytics. While I had upgraded the Google Analytics SDK one minor point release (3.0.2 to 3.0.3), it doesn't appear that there was any difference in the way the library used AdSupport; the exact same code that Apple's automated systems rejected me for here have been in the app for the 3+ versions that have successfully gotten through Apple's review gauntlet.
+
+Realistically, Google Analytics *shouldn't* be using the advertising identifier. Google is most likely using it for tracking purposes that don't directly benefit developers or Analytics customers. But this sort of uncertainty in the review process is frustrating. I'm fortunate that this is just a hobby app; what if my business depended on it? What if the extra week or two spent waiting in the review queue after resubmitting affected my bottom line?

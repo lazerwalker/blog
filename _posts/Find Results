@@ -1,0 +1,73 @@
+Searching 58 files for "\{\% img (\S*) \%\}" (regex)
+
+0 matches across 0 files
+
+
+Searching 58 files for "\{\% image (\S*) \%\}" (regex)
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2013-10-12-the-objective-c-runtime-and-objc-msgsend-stret.markdown:
+   44  **Inline Documentation Viewer**
+   45
+   46: {% image http://cl.ly/image/0f3q1Y1y0D3W/Screen%20Shot%202013-10-12%20at%2024.42.18%20.png %}
+   47
+   48  If you look at its declaration in `objc/message.h`, it becomes clear that the true signature is the former. But this line of code will also trigger a compiler error.
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2014-01-03-introducing-habit-squares.markdown:
+   28  Here's what it looks like:
+   29
+   30: [{% image /images/habit-squares.png %}](/images/habit-squares.png)
+   31  (Click through for the full version. It looks much better.)
+   32
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2014-03-02-doobers-and-doors-microinteractions-as-game-reward-systems.markdown:
+   11  As a result, the 2010 game FrontierVille innovated on the "click to get lots of things" formula in a key way: every one of those little bonuses you earned was represented as a small icon that burst forth in a suitably friendly animation from the click target. In order to get your bonus, the game suggested, you needed to click on each of those little collectible items (that was not, in fact, the case — they would be auto-collected after a few seconds — but that was conveniently not explained to the user).
+   12
+   13: {% image /images/frontierville.jpg %}
+   14
+   15  Now, doobers aren't a particularly good idea. Forcing users to do extra work for the sake of it is silly. In fact, later Zynga games replaced doobers with "hoovers", doobers that are collected by hovering over them rather than clicking them, so they require less drudgery. Even with that tweak, I'd be hard-pressed to say that blatant dopamine-release trigger ("HERE ARE A BUNCH OF SHINY THINGS EXPLODING EVERYWHERE BECAUSE YOU CLICKED") is a Good Game Design Thing. Especially in context of Zynga's games, where their entire goal was to get you to enjoy clicking on things as much as possible so you would eventually pay them more money to click on even more things.
+   ..
+   21  A lot of the puzzles in the game end up unlocking some sort of container (a drawer, a chest, etc) upon completion. When you put a key in a keyhole and turn it, for example, a veritable cornocupia of exciting things happen: you get to hear both a satisfying 'click' sound and some other audio to indicate you've done something cool, and the drawer/lid/etc in question springs open with a satisfying bounce.
+   22
+   23: {% image /images/room2.jpg %}
+   24
+   25  Here's the important bit, though: it doesn't open all the way. Just a crack. Enough to let you know that hey, this is a thing you can open. This is a really suble distinction, but it's vital. It's the difference between the game feeling like you're just following along a rote, linear path towards the end (which, admittedly, you are), and feeling like you have autonomy.
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2014-05-13-building-a-moves-clone-day-1.markdown:
+  110  Here's the result:
+  111
+  112: {% image /images/day1.png %}
+  113
+  114  The data was fairly accurate. Basic data sanitization aside (smoothing out the lines, removing duplicate stops that are clearly the same location), there were two chief inaccuracies:
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2014-09-03-making-multiplayer-ios-games-with-apple-multipeer-connectivity.markdown:
+   33  Here's what our version of the game will look like:
+   34
+   35: [{% image /images/mpc-game-half.png %}](/images/mpc-game.png)
+   36
+   37  Two players will each be given to options: to cooperate or to defect. You can see the payout matrix in the screenshot: if A cooperates and B defects, for example, A will lose 1 point and B will gain 3 points. Because we are making an **iterated** prisoner's dilemma game, each player's score accumulates over a number of rounds.
+   ..
+   93  When another device tries to connect to a device that is advertising, an invitation `UIAlertView` will automatically be shown with the option to accept/reject it. If you want to build an alternate UI for that behavior, Apple provides a similar class, `MCNearbyServiceAdvertiser`, that provides all of this functionality except for the user-facing UI.
+   94
+   95: [{% image /images/mpc-advertiser-half.png %}](/images/mpc-advertiser.png)
+   96
+   97  ### Browsing local peers
+   ..
+  107  The `serviceType` here needs to refer to the same serviceType our advertiser is broadcasting. Just like our advertising assistant, the passed in `MCSession` object is the session that will receive peer connections when they are successfully made.
+  108
+  109: [{% image /images/mpc-browser-half.png %}](/images/mpc-browser.png)
+  110
+  111  In our case, the object containing all this code is a `UIViewController`, and the MCBrowserViewController is presented modally. After the user has connected to one other device, we want to dismiss the modal view automatically. This is done by making our view controller the delegate of the `MCSession`, and listening for when the session adds a new peer:
+
+8 matches across 5 files
+
+
+Searching 58 files for "\{\% image (\S*) (\S*) \%\}" (regex)
+
+/Users/michaelwalker/Dropbox/Code/blog/_posts/2014-11-03-when-design-is-a-core-value-proposition.markdown:
+   20  I recently built an app called [Met Challenge](https://appsto.re/us/9WMS2.i). The idea behind it is simple: it helps you keep track of which parts of the Metropolitan Musem of Art you've seen. The app contains little more than a list of every section in the Met, organized by floor. Tap the name of a wing and you're shown on a map where it is within the musem. Swipe across the name of a wing or tap the checkbox next to it and you'll mark it as seen. A percentage counter at the top lets you know how much of the Met you've seen to date.
+   21
+   22: {% image /images/met1.png 250 %} {% image /images/met2.png 250 %} {% image /images/met3.png 250 %}
+   23
+   24  To be clear: this is an app whose functionality you could roughly replicate with a pencil and one of the paper maps they give out for free when you enter the museum. And yet, this app has helped get me in the habit of going to the Met on a weekly basis, far more effectively than other methods I'd tried.
+
+3 matches in 1 file
