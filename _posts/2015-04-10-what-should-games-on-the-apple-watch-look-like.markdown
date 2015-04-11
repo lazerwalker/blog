@@ -19,9 +19,7 @@ It seems like a clear pattern is developing:
 
 >If the iPhone was a boon for casual gaming — short pick-up-and-play experiences that could be spaced out over a day rather than experienced in one sit-down session — then gaming on Apple Watch might be called hyper-casual. One developer told me his company was targeting 10 to 30 seconds of playtime, max. Another said that was too much and was instead gunning for five to 15 seconds.
 
-I hope this turns out to be early-adopter froth rather than a legitimate trend. Our attention is already drawn in a million directions by quick-dopamine-fix distractions; one of the big appeals of the Watch is its attempt to free us from our addiction to a never-ending stream of notifications.
-
-For the sake of argument, let's assume I'm not a fuddy-duddy yelling about decreasing attention spans and the endless decline of culture. I still say this is lazy.
+I hope this turns out to be early-adopter froth rather than a legitimate trend. Our attention is already drawn in a million directions by quick-dopamine-fix distractions; one of the big appeals of the Watch is its attempt to free us from our addiction to a never-ending stream of notifications. But for the sake of argument, let's assume I'm not a fuddy-duddy yelling about decreasing attention spans and the endless decline of culture. I still say this is lazy.
 
 If you're out in the world doing real-world things, there's value in giving you quick access to info on your wrist instead of needing to pull out your phone. But if we're talking about this sort of casual game, you're making the conscious decision to check out from the outside world and immerse yourself in some sort of diversion, if only for a few seconds or minutes. Pulling your phone out of your pocket isn't a particularly onerous barrier to entry, especially given how much richer an experience your phone can provide. Maybe someone will prove me wrong, but it doesn't seem to me like this sort of game conceptually gains anything with the transition to your wrist.
 
