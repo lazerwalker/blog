@@ -25,4 +25,4 @@ I've been using Cortado for months now, and it's fantastic. Not ony does it get 
 
 In the grand scheme of things, caffeine tracking isn't the most interesting problem; reducing that friction isn't going to make the world a meaningfully better place. But the core idea of using location to derive intent is really interesting. In context of self-tracking, it makes it far easier for average people to track their data in an enabling and empowering way. In a more general sense, this sort of interaction model feels like a way to help reduce the cognitive load modern technology places on our day-to-day lives.
 
-Cortado is available for purchase on the [App Store](https://itunes.apple.com/us/app/cortado/id969899327).
+Cortado is available for purchase on the [App Store](https://itunes.apple.com/us/app/cortado/id969899327). It's also fully open source; the source code is available on [GitHub](https://github.com/lazerwalker/cortado)!
