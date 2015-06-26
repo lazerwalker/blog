@@ -19,7 +19,7 @@ So I built an app called [Cortado](https://itunes.apple.com/us/app/cortado/id969
 
 It knows you're at a coffee shop. It knows what your caffeinated beverage of choice is. Why not make life easy for you? Using the interactive notifications introduced in iOS 8, all you have to do is tap "Latte" and the caffeine data will be added straight to both Cortado's internal database and Apple's HealthKit. 
 
-If you're not drinking any of the beverages it suggests, tapping 'Other' opens the app straight to the drink picker, with all other fields pre-filled. If you're busy when it pings you, you can deal with the notification later, and it'll remember when you *actually* had the coffee, rather than when you tapped the add button.
+If you're not drinking any of the beverages it suggests, tapping 'Other' opens the app straight to the drink picker, with all other fields pre-filled. It works for *any* coffee shop, automatically, not just predetermined ones you tell it ahead of time. If you're busy when it pings you, you can deal with the notification later, and it'll remember when you *actually* had the coffee, rather than when you tapped the add button.
 
 I've been using Cortado for months now, and it's fantastic. Not ony does it get me to actively track my data, and put it in a format that's easily accessible and exportable, but it makes the tracking proccess actively delightful. Every time my wrist buzzes to ask me what I'm drinking, I feel like I'm living in the future.
 
