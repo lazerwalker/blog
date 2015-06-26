@@ -46,7 +46,7 @@ It's more important to me that we seriously think about our privacy, and what tr
 
 So no, you still shouldn't trust me. But I've given you the right tools that you don't have to.
 
-[^1]: No, I'm not currently storing that data securely on your device.
+[^1]: The local cache is currently not encrypted or stored securely. That would be a sensible improvement.
 
 [^2]: Technically, whenever you've been in a given location for a long enough period of time, I fire off a Foursquare API request to see if you're at a coffee shop. This API call is "anonymous", but I could imagine that in some circumstances it might be possible for Foursquare to associate that network request with your Foursquare account if you already use Foursquare or Swarm on the same phone and have background location enabled. In that case, Foursquare would already have the location data I'm sending them.
 
