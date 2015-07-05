@@ -10,13 +10,15 @@ More and more mobile app developers are embracing the idea of [open source by de
 
 As programmers, we tend to wrap up a lot of ego in our code. Taking something you've written and putting it out in the world for others to do with what they like is a terrifying proposition; figuring out what rights you do and do not want to give others can be a very sensitive subject.
 
-Let's look at some of the considerations you might want to take into account while figuring out what open source license to release your iOS app under.
+I recently open-sourced [Cortado](http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html), my caffeine-tracking app, and in the past I've released an open-source personal tracking app called [Theseus](https://github.com/lazerwalker/theseus). 
+
+Even as someone who was already moderately familiar with open-source licenses, I found myself having to do a fair bit of research; I figured I'd share what I learned about the various factors at play when considering how to license a full consumer-facing iOS app as open-source.
 
 **Keep in mind**: I'm not a lawyer, and this does not constitute legal advice. If you're debating licensing terms for your app and have the means to do so, consider consulting an actual lawyer.
 
 # Different kinds of "freedom"
 
-If you're already familiar with open source licenses, feel free to skip this section.
+If you're already familiar with the basics of open source licenses, feel free to skip this section.
 
 When talking about OSS, there are different definitions of "freedom", and different values that matter to different people. In broad strokes, the majority of popular OSS licenses tend to fall into one of two buckets: they're either BSD-style or GPL-style licenses.
 
