@@ -30,7 +30,7 @@ Of course, this is a bit of a contrived dichotomy. There are nuances to both sty
 
 # Apps versus libraries/frameworks
 
-The rest of this article, I'm going to be talking explicitly about open-sourcing user-facing iOS applications. Choosing a license for iOS libraries/frameworks is far more cut and dry: since GPL'd code can't be used in non-GPL'd apps, and most commercial iOS apps are not GPL (nor is that likely to change), releasing your iOS library under a copyleft license all but ensures that almost nobody will use it. Perhaps worth doing as a political statement, sure, but not productive if your goal is to put something out there for others to use.
+The rest of this article, I'm going to be talking explicitly about open-sourcing user-facing iOS applications. Choosing a license for iOS libraries/frameworks is far more cut and dry: since GPL'd code can't be used in non-GPL'd apps, and most commercial iOS apps are not GPL (nor is that likely to change), releasing your iOS library under a copyleft license all but ensures that almost nobody will use it[^2]. Perhaps worth doing as a political statement, sure, but not productive if your goal is to put something out there for others to use.
 
 
 # So what license should you use?
@@ -94,3 +94,5 @@ Your reasons for open-sourcing, and the various factors surrounding it, will lik
 Now go forth and open-source your apps!
 
 [^1]: Many BSD-style licenses have other terms as well – the differences between them typically surround issues such as copyright and patent grants – but I'm painting with a broad brush.
+
+[^2]: Theoretically, I'd bet one could release an iOS library under the [LGPL](https://www.gnu.org/licenses/lgpl.html), provided it's integrated into third-party apps as a compiled framework. I haven't actually seen this done in practice.
