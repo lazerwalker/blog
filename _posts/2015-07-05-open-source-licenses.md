@@ -55,9 +55,13 @@ As an example, let's walk through what went through my head when I recently open
 
 # Can't I just license it for non-commercial use? Or tell people they can use any individual part of the codebase, but not the complete whole? Or forbid binary distribution?
 
-You *can*, but your app won't technically be "open source". The Open Source Initiative (OSI) has [clear guidelines](http://opensource.org/osd) about what is and is not "Open Source", and any of those sorts of discrimination (restricting who your license applies to, the sorts of distribution you allow, etc) don't fit that definition. Choosing a license that isn't a valid OSS license is a bad thing for a whole bunch of reasons, some philosophical and some practical.
+Given the set of goals I just laid out, questions like these feel like a natural progression. It makes sense that you'd want to place restrictions on your license such that people can use your code in the ways you want, and are forbidden from using it in ways you don't want.
 
-Additionally, this would require you to write your own license, which you *really* don't want to do. Unless you're a lawyer, or have lots of money to pay one, it's going to get very complex very quickly, and probably won't end well for you. There's a reason people use vetted, pre-existing OSI-approved licenses.
+This is technically possible. It's probably not actually what you want, though.
+
+For one, this means your app won't technically be "open source". The Open Source Initiative (OSI) has [clear guidelines](http://opensource.org/osd) about what is and is not "Open Source", and any of those sorts of discrimination (restricting who your license applies to, the sorts of distribution you allow, etc) don't fit that definition. Choosing a license that isn't a valid OSS license is a bad thing for a whole bunch of reasons, some philosophical and some practical.
+
+Secondly, this would require you to write your own license, which you *really* don't want to do. Unless you're a lawyer, or have lots of money to pay one, it's going to get very complex very quickly, and probably won't end well for you. There's a reason people use vetted, pre-existing OSI-approved licenses.
 
 
 # Choosing a BSD-style license
