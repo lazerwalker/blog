@@ -52,9 +52,9 @@ As an example, let's walk through what went through my head when I recently open
 
 # Can't I just license it for non-commercial use? Or tell people they can use any individual part of the codebase, but not the complete whole? Or forbid binary distribution?
 
-This seems like it would be the obvious solution. You *really* don't want to write your own license, though. Unless you're a lawyer, or have lots of money to pay one, it's gong to get very complex very quickly, and probably won't end well for you. There's a reason people use vetted, pre-existing licenses.
+You *can*, but your app won't technically be "open source". The Open Source Initiative (OSI) has [clear guidelines](http://opensource.org/osd) about what is and is not "Open Source", and any of those sorts of discrimination (restricting who your license applies to, the sorts of distribution you allow, etc) don't fit that definition. Choosing a license that isn't a valid OSS license is a bad thing for a whole bunch of reasons, some philosophical and some practical.
 
-Perhaps more importantly, your app won't technically be "open source". The Open Source Initiative (OSI) has [clear guidelines](http://opensource.org/osd) about what is and is not "Open Source", and any of those sorts of discrimination (restricting who your license applies to, the sorts of distribution you allow, etc) don't fit that definition.
+Additionally, this would require you to write your own license, which you *really* don't want to do. Unless you're a lawyer, or have lots of money to pay one, it's going to get very complex very quickly, and probably won't end well for you. There's a reason people use vetted, pre-existing OSI-approved licenses.
 
 
 # Choosing a BSD-style license
