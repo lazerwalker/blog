@@ -3,7 +3,7 @@ layout: post
 title: "Location as Intent: Introducing Cortado"
 date: 2015-06-25 11:00
 comments: true
-categories:
+categories: cortado
 ---
 
 I've written before about how terrible I am at building new habits. While tools like my [Habit Squares](http://blog.lazerwalker.com/2014/01/03/introducing-habit-squares.html) can make it easier to enact large-scale habit change, that doesn't really solve the problem of the sort of self-tracking that relies on meticulous logging of your own personal activity. I've been playing around with solutions to this problem for a while now, and I've got something pretty cool to show you.
