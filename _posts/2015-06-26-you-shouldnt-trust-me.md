@@ -3,7 +3,7 @@ layout: post
 title: "You Shouldn't Trust Me"
 date: 2015-06-26 9:20
 comments: true
-categories: cortado
+categories:
 ---
 
 _This is part of a series of blog posts about my caffeine-tracking app [Cortado](https://itunes.apple.com/us/app/cortado/id969899327). For more information, check out the [first post in the series](http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html).)_
