@@ -12,6 +12,7 @@ As programmers, we tend to wrap up a lot of ego in our code. Taking something yo
 
 Let's look at some of the considerations you might want to take into account while figuring out what open source license to release your iOS app under.
 
+**Keep in mind**: I'm not a lawyer, and this does not constitute legal advice. If you're debating licensing terms for your app and have the means to do so, consider consulting an actual lawyer.
 
 # Different kinds of "freedom"
 
