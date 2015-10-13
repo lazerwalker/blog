@@ -119,3 +119,11 @@ The data was fairly accurate. Basic data sanitization aside (smoothing out the l
 The largest problem is clearly going to be figuring out how to determine bicycle data, since the M7 doesn't return that directly, but I'm fairly confident I'll be able to find some sensible heuristics to improve that without needing to drop down to the level of processing raw accelerometer data. Even Moves doesn't process bicycle data perfectly; I often found myself having to correct "walking" or "transit" paths into biking ones.
 
 All in all, I think that's pretty impressive for a first day of work. Above all, I proved my hypothesis: while the data isn't perfect, it's clear that the combination of GPS and M7 data should be more than sufficient to roughly approximate the work Moves was doing.
+
+--
+
+# Update From The Future
+
+Hello! If you're reading this, you may be wondering what happened to this project.
+
+Check out [https://github.com/lazerwalker/Theseus](https://github.com/lazerwalker/Theseus). It (sort of) works, but is neither in great shape code-wise nor actively maintained. There's some more info in the README.
