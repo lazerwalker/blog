@@ -38,11 +38,11 @@ Specifically, it's a Western Electric 551-A, a model originally produced in 1927
 
 This particular switchboard was used at the Mead Paper Mill in Chillicothe, Ohio at least as recently as 1966. That's like using a computer from 1977 computer today. Pretty absurd.
 
-I'm working on [a game](http://lazerwalker.com/hellooperator) where you play as a telephone switchboard operator. Although the piece started out using custom-fabricated custom hardware, it quickly became a project about wiring up this beauty to a modern computer.
+I'm working on [a game](http://lazerwalker.com/hellooperator) where you play as a telephone switchboard operator. Although the piece started out using hand-fabricated custom hardware, it quickly became a project about wiring up this beauty to a modern computer.
 
-I'll talk more later about exactly what I'm trying to accomplish and why I'm so in love with this piece, but for now part of what I'm focusing on is how it can connect us with antiquated technology in a visceral and tangible way. Physically playing a game on the hardware is the biggest part of that, sure, but as I've come to appreciate the sheer craftsmanship of this machine, it's become clear that sharing that with a wider audience is just as important.
+I'll talk more later about exactly what I'm trying to accomplish and why I'm so in love with this piece, but for now, suffice it to say that I'm interested in how we can connect with antiquated technology in a visceral and tangible way. Physically playing a game on the hardware is the biggest part of that, sure, but as I've come to appreciate the sheer craftsmanship of this machine, it's become clear that sharing that with a wider audience is just as important.
 
-This is the first in a series of exhaustive blog posts about how this switchboard works, and what I've done to connect it to a modern computer. I apologize if this is a bit brain-dump-y; this is being written for my future self as much as it's being written for you.
+This is the first in a series of exhaustive blog posts about how this switchboard works, and what I've done to connect it to a modern computer. I apologize if this is a bit brain-dump-y; this is being written for my future self as much as it is for you.
 
 For this first post, I'm going to dive into the first problem we faced: figuring out how the heck this thing was wired up to begin with.
 
@@ -112,7 +112,7 @@ It turns out that these are in fact connected to the ports. Of the four columns,
 
 For the sake of simplifying referencing things, I came up with my own numbering scheme. 
 
-<center><a href="/images/switchboard/ports-numbered"><img src="/images/switchboard/small/ports-numbered.jpg" class='side-by-side'/></a><a href="/images/switchboard/pinblock-labeled.jpg"><img src="/images/switchboard/small/pinblock-labeled.jpg" class="side-by-side"/></a></center>
+<center><a href="/images/switchboard/ports-numbered.jpg"><img src="/images/switchboard/small/ports-numbered.jpg" class='side-by-side'/></a><a href="/images/switchboard/pinblock-labeled.jpg"><img src="/images/switchboard/small/pinblock-labeled.jpg" class="side-by-side"/></a></center>
 
 You'll notice that even though there are 50 ports, the pin block only has room for 40 pins. This is the left pin block; the right pin block has the last 10 ports. Remember that the bottom row are the "trunk" lines for external calls; this technical distinction is likely what causes that split.
 
@@ -172,7 +172,7 @@ However, it <em>wasn't</em> the case for the "talk" mechanism on the rear row of
 
 ## Next steps
 
-Whew, what a journey! I've left a bunch of cool things out, such as the hand-crank you'd use manually generate power if your power source wasn't producing enough current, but that's more than enough for today.
+Whew, what a journey! I've left a bunch of cool things out (the rotary dial! The buzzer! The hand-crank you'd turn to manually generate power!), but that's more than enough for today.
 
 Next up, I'll talk about what an unexpected difficulty it was to merely get access to the interior of the front panel at all. Stay tuned!
 
