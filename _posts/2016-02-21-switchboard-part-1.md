@@ -30,7 +30,7 @@ img.side-by-side.small {
 </style>
 
 
-<center><a href="/images/switchboard.jpg"><img src="/images/switchboard.jpg" class="side-by-side"/></a><a href="/images/switchboard2.jpg"><img src="/images/switchboard2.jpg" class="side-by-side"/></a></center>
+<center><a href="/images/switchboard/switchboard.jpg"><img src="/images/switchboard/small/switchboard.jpg" class="side-by-side"/></a><a href="/images/switchboard/switchboard2.jpg"><img src="/images/switchboard/small/switchboard2.jpg" class="side-by-side"/></a></center>
 
 This is a manual telephone switchboard. 
 
@@ -50,7 +50,7 @@ For this first post, I'm going to dive into the first problem we faced: figuring
 
 First, some background on how a manual telephone switchboard works.
 
-<center><a href="/images/beerman.jpg"><img src="/images/beerman.jpg"></a></center>
+<center><a href="/images/switchboard/beerman.jpg"><img src="/images/switchboard/small/beerman.jpg"></a></center>
 
 The 551-A has 50 "lines", which for right now you can just take to mean "50 pairs of cable plugs and lights". The top four rows are extension lines – that means each one would have been connected to a specific telephone within the building. You can still see the original labels on our switchboard – I'd like to talk to the beer man, please!
 
@@ -58,7 +58,7 @@ The bottom row of lines are "trunk" lines, meaning they connected to external te
 
 To connect a call, you'd plug a pair of matching cables in. For a cable pair, you'd use the front cable to connect to a trunk line and the rear to connect to an extension. I assume this is for technical reasons (likely only the rear cables connected to the outside), but I'm not actually sure.
 
-<center><a href="/images/tabletop.jpg"><img src="/images/tabletop.jpg"></a></center>
+<center><a href="/images/switchboard/tabletop.jpg"><img src="/images/switchboard/small/tabletop.jpg"></a></center>
 
 Now, see these switches and lights below the cable pairs? 
 
@@ -74,13 +74,13 @@ You'd then connect the second cable to the desired recipient's plug, and flip th
 
 Okay, so now you've got a rough idea of how this thing works. How the heck is it wired up?
 
-<a href="/images/back-weights.jpg"><img src="/images/back-weights.jpg" class="side-by-side"/></a><a href="/images/back-noweights.jpg"><img src="/images/back-noweights.jpg" style="display: inline-block; max-width: 50%; margin: 0;"/></a>
+<a href="/images/switchboard/back-weights.jpg"><img src="/images/switchboard/small/back-weights.jpg" class="side-by-side"/></a><a href="/images/switchboard/back-noweights.jpg"><img src="/images/switchboard/small/back-noweights.jpg" style="display: inline-block; max-width: 50%; margin: 0;"/></a>
 
 Those are cable weights at the bottom; each cable is invidually weighted so that if you drop it, it falls right back into place. So satisfying!
 
 Our switchboard arrived gutted. Where a real switchboard would have had a decent amount of wiring and circuitry, we've instead got an impressive cut line of cable.
 
-<center><a href="/images/broken.jpg"><img src="/images/broken.jpg"></a></center>
+<center><a href="/images/switchboard/broken.jpg"><img src="/images/switchboard/small/broken.jpg"></a></center>
 
 I've found relay diagrams of what this would have looked like, but I'm not exactly familiar with pre-silicon electrical engineering. Fortunately, that's fine, since I don't care about being able to use this as a functioning switchboard. I just care about the basic wiring: when I plug a cable into a port, how can I detect that they're connected?
 
@@ -88,31 +88,31 @@ I've found relay diagrams of what this would have looked like, but I'm not exact
 
 The cables are standard 1/4" stereo tip, with two rubber rings and thus 3 contact points (presumably ground and two data connections). This was simple enough to find; you can see that each weighted cable is made up of three smaller cables, each of which gets routed to a large metal contact.
 
-<center><a href="/images/cable.jpg"><img src="/images/cable.jpg"></a><a href="/images/cablepins.jpg"><img src="/images/cablepins.jpg"></a><a href="/images/cablewires.jpg"><img src="/images/cablewires.jpg"></a></center>
+<center><a href="/images/switchboard/cable.jpg"><img src="/images/switchboard/small/cable.jpg"></a><a href="/images/switchboard/cablepins.jpg"><img src="/images/switchboard/small/cablepins.jpg"></a><a href="/images/switchboard/cablewires.jpg"><img src="/images/switchboard/small/cablewires.jpg"></a></center>
 
 ### The ports
 
 Each cable has three connections. You'd expect that to hold true for the ports they plug into as well. Curiously, though, each of the fifty cable plugs has *five* pins coming out of it. 
 
-<center><a href="/images/mepoking.jpg"><img src="/images/mepoking.jpg"></a><a href="/images/alligator2.jpg"><img src="/images/alligator2.jpg"></a></center>
+<center><a href="/images/switchboard/mepoking.jpg"><img src="/images/switchboard/small/mepoking.jpg"></a><a href="/images/switchboard/alligator2.jpg"><img src="/images/switchboard/small/alligator2.jpg"></a></center>
 
 Whatever the reason for that is, figuring out which three I cared about was straight forward. I just plugged a single cable into a single port and poked around with a multimeter until I saw which connections were made. Complicating this was that the first cable I tried to use was a bit worn-down and couldn't get a good connection, but switching cables made it a breeze. Of the five pins, three of them clearly connected to the three cable contacts.
 
 It was obvious which of the three was ground, as it was connected across all 50 ports and 20 cables.
 
-<center><a href="/images/cable-labeled.jpg"><img src="/images/cable-labeled.jpg"></a><a href="/images/cablepins-labeled.jpg"><img src="/images/cablepins-labeled.jpg"></a><a href="/images/plugs-labeled.jpg"><img src="/images/plugs-labeled.jpg"></a></center>
+<center><a href="/images/switchboard/cable-labeled.jpg"><img src="/images/switchboard/small/cable-labeled.jpg"></a><a href="/images/switchboard/cablepins-labeled.jpg"><img src="/images/switchboard/small/cablepins-labeled.jpg"></a><a href="/images/switchboard/plugs-labeled.jpg"><img src="/images/switchboard/small/plugs-labeled.jpg"></a></center>
 
 Alas, there's a lot of wiring there. Soldering 50 connections to those pins tangled up in existing wiring didn't seem like an ideal task. At the same time, ripping out that beautiful vintage wiring seemed like a shame. For sheer historic curiosity, sure, but also because the person who wired this up did a decent job of cable management; if I could find a way to use the existing cabling, I could easily save tens of hours in wiring.
 
 Lo and behond, there are two big wiring blocks in front of/above the ports. 
 
-<center><a href="/images/portsandblocks.jpg"><img src="/images/portsandblocks.jpg" class="side-by-side"/></a><a href="/images/pinblock.jpg"><img src="/images/pinblock.jpg" class="side-by-side"/></a></center>
+<center><a href="/images/switchboard/portsandblocks.jpg"><img src="/images/switchboard/small/portsandblocks.jpg" class="side-by-side"/></a><a href="/images/switchboard/pinblock.jpg"><img src="/images/switchboard/small/pinblock.jpg" class="side-by-side"/></a></center>
 
 It turns out that these are in fact connected to the ports. Of the four columns, the first and third columns appear be some sort of ground: every single pin in the column is connected to the bottom-left pin of any given cable plug. The second and fourth columns are connected to the right-most pin in the plug in a predictable pattern.
 
 For the sake of simplifying referencing things, I came up with my own numbering scheme. 
 
-<center><a href="/images/ports-numbered"><img src="/images/ports-numbered.jpg" class='side-by-side'/></a><a href="/images/pinblock-labeled.jpg"><img src="/images/pinblock-labeled.jpg" class="side-by-side"/></a></center>
+<center><a href="/images/switchboard/ports-numbered"><img src="/images/switchboard/small/ports-numbered.jpg" class='side-by-side'/></a><a href="/images/switchboard/pinblock-labeled.jpg"><img src="/images/switchboard/small/pinblock-labeled.jpg" class="side-by-side"/></a></center>
 
 You'll notice that even though there are 50 ports, the pin block only has room for 40 pins. This is the left pin block; the right pin block has the last 10 ports. Remember that the bottom row are the "trunk" lines for external calls; this technical distinction is likely what causes that split.
 
@@ -124,7 +124,7 @@ Given this switchboard model originally came out in 1927, it's not surprising th
 
 These were far easier to figure out than the ports. Each bulb has two pins coming out of it, one of which was clearly connected to a shared ground. Perhaps most surprisingly, most of them still worked! Most of the bulbs happily illuminated when connected to a 9v power source. Stunning. The bottom row was all burnt out, as were four other bulbs, but that's not too shabby. While it wouldn't be too difficult to wire up these bulbs to a modern microcontroller, we instead opted to replace them with modern LEDs. More on that later.
 
-<center><a href="/images/illuminated.jpg"><img src="/images/illuminated.jpg"></a></center>
+<center><a href="/images/switchboard/illuminated.jpg"><img src="/images/switchboard/small/illuminated.jpg"></a></center>
 
 (Those little pieces of paper were me marking off which bulbs didn't work.)
 
@@ -137,13 +137,13 @@ Unless I'm okay with a bulb being on every time a cable is connected (I'm not), 
 
 With the main panel taken care of, let's jump down to the tabletop.
 
-<center><a href="/images/tabletop.jpg"><img src="/images/tabletop.jpg" class='side-by-side small'></a><a href="/images/tabletop-open.jpg"><img src="/images/tabletop-open.jpg" class='side-by-side small'></a></center>
+<center><a href="/images/switchboard/tabletop.jpg"><img src="/images/switchboard/small/tabletop.jpg" class='side-by-side small'></a><a href="/images/switchboard/tabletop-open.jpg"><img src="/images/switchboard/small/tabletop-open.jpg" class='side-by-side small'></a></center>
 
 The cables aren't an issue, since we've already figured them out. 
 
 The light bulbs are the same as the ones on the back, with an obvious shared ground and individual anode pin per bulb.
 
-<center><a href="/images/frontlights.jpg"><img src="/images/frontlights.jpg"></a></center>
+<center><a href="/images/switchboard/frontlights.jpg"><img src="/images/switchboard/small/frontlights.jpg"></a></center>
 
 That leaves us with the switches, which are far more interesting. 
 
@@ -156,7 +156,7 @@ Even though each is a single physical switch, the mechanical logic to determine 
 
 The way this is wired up, it's difficult to get a good photo of exactly what's going on, but here you can see me poking around with a multimeter.
 
-<center><a href="/images/switches.jpg"><img src="/images/switches.jpg"></a></center>
+<center><a href="/images/switchboard/switches.jpg"><img src="/images/switchboard/small/switches.jpg"></a></center>
 
 There's a bit of a mystery here. Conceptually, you'd assume this is very simple: it's a switch with a neutral state and two other possible states. You could easily represent this with only 3 pins. And yet there are two separate physical mechanisms, one for each direction. 
 
