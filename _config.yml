@@ -8,7 +8,7 @@ twitter_username: lazerwalker
 github_username:  lazerwalker
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 kramdown:
   input: GFM
 
