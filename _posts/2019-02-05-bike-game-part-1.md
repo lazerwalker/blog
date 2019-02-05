@@ -32,7 +32,7 @@ After some time at the coffee shop with my favorite notebook and pen, I came up 
 
 #### Make something that works well at in an event setting
 
-While I could theoretically release a commercial game for anyone who owns a Bluetooth-compatible smart trainer, the audience of people who own expensive specialist cycling hardware AND want to play a weird experimental indie game is pretty darn small. Anything I make here is going to be an installation game first and foremost, which means designing for what works well in that setting. Specifically:
+While I could theoretically release a commercial game for anyone who owns a Bluetooth-compatible smart trainer, the audience of people who own expensive specialist cycling hardware AND want to play a weird experimental indie game is niche enough that I'd want to do a fair amount of market research before designing anything specifically for that audience. If these experiments prove successful, I'd very much love to do that, but at this exact moment my main goal is artistic expression moreso than money. That means starting out by designing for an installation setting. Specifically:
 
 1. **Relatively short playtimes**. In event settings, you want to be able to cycle (hah!) people through pretty regularly. This will also help prevent the game from being too physically demanding, which is a good thing for a casual party game in a space where players are likely to be drinking.
 2. **Spectator enjoyment**. There will be more spectators than players; making something that's fun to watch is important. If I can come up with a way for the audience to participate, so much the better.
