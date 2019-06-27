@@ -58,9 +58,9 @@ Getting an actual visa appointment is, to be blunt, a pain in the ass. You want 
 
 There’s a website. You’ll go there, and there won’t be appointments available. Maybe you’ll find one five months out. If there’s nothing there, check back later. A day later, a few hours later. Appointments come and go very quickly.
 
-If you can only get a visa appointment that’s more than 3 months out, don’t worry. If you have a visa appointment, you’re allowed to stay in Germany until that appointment, even if the visa you are here on would otherwise have expired. The caveat to that is you’re not officially allowed to leave Germany when in this liminal state. This might be a problem if you travel a lot (e.g. for work), so plan accordingly.
+If you can only get a visa appointment that’s more than 3 months out, don’t worry. If you're an American in Germany on the automatic 90-day Schengen Area visa waiver mentioned above, leaving the Schengen Area pauses the timer, so you can take a trip outside the EU to buy yourself some time.
 
-If you're an American, you can also play games with the 90-day tourist visa. Leaving the Schengen Economic Area pauses the timer, so you can take a trip outside the EU to buy yourself some time.
+It's also the case that if you have a visa appointment, you’re allowed to stay in Germany until that appointment, even if the visa you are here on would otherwise have expired. I've heard mixed reports about whether this is true for the automatic 90-day travel visa, though, so you may want to get professional advise if that appears to be your best bet. The other caveat is, if you're in this liminal state, you’re not officially allowed to leave Germany. This might be a problem if you travel a lot (e.g. for work), so plan accordingly.
 
 ### Valid Passport
 
