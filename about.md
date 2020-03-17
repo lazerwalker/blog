@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Mike makes interactive art, experimental games, and software tools.
+Em makes interactive art, experimental games, and software tools.
 
-For more information on Mike and his work, check out [http://lazerwalker.com](http://lazerwalker.com).
+For more information on Em and her work, check out [http://lazerwalker.com](http://lazerwalker.com).
