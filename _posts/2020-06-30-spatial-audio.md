@@ -3,7 +3,6 @@ layout: post
 title: "What is Spatial Audio, Why Does it Matter, and What's Apple's Plan?"
 date: 2020-06-30 12:00
 comments: true
-categories: ar, xr, apple, game dev, spatial
 ---
 
 At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that's probably the least interesting application of spatial audio.
