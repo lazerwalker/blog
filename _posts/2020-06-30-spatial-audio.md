@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What is Spatial Audio, Why Does it Matter, and What's Apple's Plan?"
-date: 2020-06-29 12:00
+date: 2020-06-30 12:00
 comments: true
 categories: ar, xr, apple, game dev, spatial
 ---
@@ -72,7 +72,9 @@ As of the writing of this piece, Apple's APIs aren't ready for public consumptio
 
 The latter suggests to me that Apple may release a higher-level system that, say, automatically adds head-tracked spatial audio to any apps already playing audio through ARKit. I suspect they will heavily encourage developers to use ARKit when appropriate, as augmenting headphone motion data with camera-based world tracking will likely provide better tracking results.
 
-That said, once new AirPods Pro firmware has been released that support sending motion data, the headphone motion manager will be enough for interested developers to dive in and start building spatial audio experiences. Four years ago, I built some [quick experiments](https://github.com/lazerwalker/ios-3d-audio-test) using the iPhone's built-in accelerometer and gyroscope to control a spatial audio scene generated using Apple's existing AVFoundation spatial audio APIs. The code to wire up the two was straight-forward back then, and a similar approach should work just as well when it's using motion data coming from the headphones instead of from the phone itself.
+That said, once new AirPods Pro firmware has been released that support sending motion data, the headphone motion manager will be enough for interested developers to dive in and start building spatial audio experiences.
+
+Four years ago, I built some [quick experiments](https://github.com/lazerwalker/ios-3d-audio-test) using the iPhone's built-in accelerometer and gyroscope to control a spatial audio scene generated using Apple's existing AVFoundation spatial audio APIs. The code to wire up the two was straight-forward back then, and a similar approach should work just as well when it's using motion data coming from the headphones instead of from the phone itself.
 
 # Why does this matter?
 
@@ -86,7 +88,7 @@ Based on my experience working with spatial audio, there are at least a few broa
 
 One of the first usecases people tend to think of for spatial audio are helping people navigate the world. Microsoft has already released an app called [Soundscape](https://www.microsoft.com/en-us/research/product/soundscape/) that uses binaural audio to help people who are blind or have low vision to navigate the world.
 
-It's easy to imagine turn-by-turn navigation apps adding in support for spatial audio cues, or interaction patterns such as "follow this sound that keeps moving in the direction you should walk", becoming commonplace.
+It's easy to imagine turn-by-turn navigation apps adding in support for spatial audio cues, and interaction patterns such as "follow this sound that keeps moving in the direction you should walk" becoming commonplace.
 
 As Apple improves their indoor location technology, this could also easily become a big part of making indoor wayfinding viable before they ship AR glasses, since the ARKit model of "hold your phone out in front of you while you walk through a space" is both socially and physically awkward.
 
@@ -98,9 +100,13 @@ It wouldn't surprise me to see applications like group voice chat apps or even p
 
 ## Real-world gaming and playful experiences
 
-One of the projects that resulted from my MIT research into spatial audio was a [site-specific generative poetry walk](https://www.youtube.com/watch?v=swQ338aOGm0) built for a park in San Francisco. Being built for consumer iPhones in 2016 meant it doesn't use head tracking for its positional audio, but key to the piece are the binaural audio soundscapes that subtly fade in depending on where in the park you are. If you're in the main grassy field in the park, you may hear kids laughing and playing off in the distance, and you won't really be sure whether they exist in the real world or just in the audio; the cacophany of birds chirping as you enter the fenced-off community garden create a sense of magic and connection to nature in a visually stunning space.
+One of the projects that resulted from my MIT research into spatial audio was a [site-specific generative poetry walk](https://www.youtube.com/watch?v=swQ338aOGm0) built for a park in San Francisco. Being built for consumer iPhones in 2016 meant it doesn't use head tracking for its positional audio, but key to the piece are the binaural audio soundscapes that subtly fade in depending on where in the park you are.
 
-The [Janet Cardiff audio walk](https://soundcloud.com/incredibleworksofart/sets/janet-cardiff) I mentioned earlier does similar magic tricks with (also non-head-tracked) positional audio. You'll hear a couple arguing behind you, or police sirens going off on the street outside the park, and not be sure whether it's reality or fiction. Cardiff applies a ton of incredibly subtle psychological tricks to prevent you from turning your head and breaking the illusion of the static baked-in binaural audio. This means her work is generally in a league of its own, as this sort of work is so difficult to replicate without her sheer experience and talent.
+If you're in the main grassy field in the park, you may hear kids laughing and playing off in the distance, and you won't really be sure whether they exist in the real world or just in the audio; the cacophany of birds chirping as you enter the fenced-off community garden create a sense of magic and connection to nature in a visually stunning space.
+
+The [Janet Cardiff audio walk](https://soundcloud.com/incredibleworksofart/sets/janet-cardiff) I mentioned earlier does similar magic tricks with (also non-head-tracked) positional audio. You'll hear a couple arguing behind you, or police sirens going off on the street outside the park, and not be sure whether it's reality or fiction.
+
+Cardiff applies a ton of incredibly subtle psychological tricks to prevent you from turning your head and breaking the illusion of the static baked-in binaural audio. This means her work is generally in a league of its own, as this sort of work is so difficult to replicate without her sheer experience and talent.
 
 Having readily-available consumer head-tracked audio means making these sorts of experiences will be so much more accessible to creators of all types, not just ones with extensive experience in traditional binaural audio production.
 
