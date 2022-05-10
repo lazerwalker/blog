@@ -24,19 +24,18 @@ ctx.fill();
 ctx.textBaseline = "top";
 
 // Write title
-ctx.font = '90px Helvetica' //'90px SF-Pro-Display-Medium';
-// ctx.font = '90px sans-serif';
+ctx.font = '90px Helvetica'
 ctx.fillStyle = '#384869';
 wrapText(ctx, opts.title, 80, 80, 1100, 100);
 
 // Write date
 ctx.textBaseline = "bottom";
 
-ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
+ctx.font = '40px Helvetica'
 ctx.fillStyle = '#667fb3';
-ctx.fillText("Emilia Lazer-Walker", 80, 500);
+ctx.fillText("Emilia Lazer-Walker", 80, 500); // TODO: Thread this through via an author property
 
-ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
+ctx.font = '40px Helvetica'; 
 ctx.fillStyle = '#EBAFA2';
 ctx.fillText(opts.date, 80, 555);
 
