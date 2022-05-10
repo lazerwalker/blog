@@ -3,7 +3,7 @@ email: blog@lazerwalker.com
 description: >
   Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: http://blog.lazerwalker.com
+url: https://blog.lazerwalker.com
 twitter_username: lazerwalker
 github_username: lazerwalker
 
