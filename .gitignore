@@ -1,4 +1,5 @@
 _site
 _drafts
-_previews
+node_modules
+opengraph
 .sass-cache
