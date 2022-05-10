@@ -7,17 +7,20 @@ module Jekyll
     end
 
     def render(context)
-    
+      puts context["page"]["name"]
+      unless context["page"]["id"] then 
+        return "" 
+      end
+
       # This creates an image id hash from the page id in Jekyll
       id = Digest::SHA256.hexdigest context["page"]["id"]
   
       # Check if the file already exists in the 'opengraph' foldler, return early if it does
       if(File.exist?("#{Dir.pwd}/opengraph/#{id}.png")) 
           puts "File exists #{Dir.pwd}/opengraph/#{id}.png}"       
-      else
-          
+      else   
           # the script to be called with the formatted title, and resolving filename
-          script = "node #{Dir.pwd}/opengraph.js -t '#{context["page"]["title"]}' -d '#{context["page"]["date"].strftime("%e %B %Y")}' -f '#{Dir.pwd}/opengraph/#{id}.png'"
+          script = "node #{Dir.pwd}/opengraph.js -t \"#{context["page"]["title"].dump[1..-2]}\" -d '#{context["page"]["date"].strftime("%e %B %Y")}' -f '#{Dir.pwd}/opengraph/#{id}.png'"
   
           system(script)
   
@@ -30,9 +33,9 @@ module Jekyll
       # Add the file to the list of static_files needed to be copied to the _site
       site.static_files << Jekyll::StaticFile.new(site, site.source, "/opengraph/", "#{id}.png")
   
+      puts "Finished #{context["page"]["title"]}, URL is /opengraph/#{id}.png"
       "/opengraph/#{id}.png"
-  
-  end
+    end
   end
 end
 Liquid::Template.register_tag('og_filter', Jekyll::OGFilter)
