@@ -11,29 +11,33 @@ program
     .parse();   
 
 const opts = program.opts()
-console.log(opts)
+
 // Draw cat with lime helmet
 // loadImage('./assets/artboard2.png').then((image) => {
-    // ctx.drawImage(image, 0, 0, 1200, 630);
+// ctx.drawImage(image, 0, 0, 1200, 630);
 
-    ctx.textBaseline = "top";
+ctx.beginPath();
+ctx.rect(0, 0, 1200, 630);
+ctx.fillStyle = '#b8ffff';
+ctx.fill();
 
-    // Write title
-    ctx.font = '90px Helvetica' //'90px SF-Pro-Display-Medium';
-    // ctx.font = '90px sans-serif';
-    ctx.fillStyle = '#ffffff';
-    wrapText(ctx, opts.title, 80, 80, 1100, 100);
-    // ctx.fillText(program.title, 80, 80);
+ctx.textBaseline = "top";
 
-    // Write date
-    ctx.textBaseline = "bottom";
-    ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
-    ctx.fillStyle = '#EBAFA2';
-    ctx.fillText(opts.date, 80, 555);
+// Write title
+ctx.font = '90px Helvetica' //'90px SF-Pro-Display-Medium';
+// ctx.font = '90px sans-serif';
+ctx.fillStyle = '#ffffff';
+wrapText(ctx, opts.title, 80, 80, 1100, 100);
+// ctx.fillText(program.title, 80, 80);
 
-    const buffer = canvas.toBuffer('image/png')
-    writeFileSync(opts.filename, buffer)
-   console.log("Wrote")
+// Write date
+ctx.textBaseline = "bottom";
+ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
+ctx.fillStyle = '#EBAFA2';
+ctx.fillText(opts.date, 80, 555);
+
+const buffer = canvas.toBuffer('image/png')
+writeFileSync(opts.filename, buffer)
 
 // })
 
