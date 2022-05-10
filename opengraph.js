@@ -28,13 +28,18 @@ ctx.font = '90px Helvetica' //'90px SF-Pro-Display-Medium';
 // ctx.font = '90px sans-serif';
 ctx.fillStyle = '#384869';
 wrapText(ctx, opts.title, 80, 80, 1100, 100);
-// ctx.fillText(program.title, 80, 80);
 
 // Write date
 ctx.textBaseline = "bottom";
+
+ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
+ctx.fillStyle = '#667fb3';
+ctx.fillText("Emilia Lazer-Walker", 80, 500);
+
 ctx.font = '40px Helvetica'; // registerFont('./fonts/SF-Pro-Display-Medium.otf', { family: 'SF-Pro-Display-Medium' })
 ctx.fillStyle = '#EBAFA2';
 ctx.fillText(opts.date, 80, 555);
+
 
 const buffer = canvas.toBuffer('image/png')
 writeFileSync(opts.filename, buffer)
