@@ -26,7 +26,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - run: bundle exec jekyll build
+      - run: |
+        gem install bundler
+        bundle install
+        npm install
+        bundle exec jekyll build
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
