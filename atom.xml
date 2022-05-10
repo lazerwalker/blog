@@ -4,10 +4,10 @@
     <title>Emilia Lazer-Walker</title>
     <description>Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
 </description>
-    <link>http://blog.lazerwalker.com/</link>
-    <atom:link href="http://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 10 May 2022 16:43:43 +0000</pubDate>
-    <lastBuildDate>Tue, 10 May 2022 16:43:43 +0000</lastBuildDate>
+    <link>https://blog.lazerwalker.com/</link>
+    <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 10 May 2022 16:50:23 +0000</pubDate>
+    <lastBuildDate>Tue, 10 May 2022 16:50:23 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
@@ -221,8 +221,8 @@
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 10 May 2022 11:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2022/05/10/virtual-events.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2022/05/10/virtual-events.html</guid>
+        <link>https://blog.lazerwalker.com/2022/05/10/virtual-events.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2022/05/10/virtual-events.html</guid>
         
         
       </item>
@@ -332,8 +332,8 @@
 
 </description>
         <pubDate>Fri, 12 Mar 2021 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2021/03/12/video-chat.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2021/03/12/video-chat.html</guid>
+        <link>https://blog.lazerwalker.com/2021/03/12/video-chat.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2021/03/12/video-chat.html</guid>
         
         
       </item>
@@ -434,8 +434,8 @@
 &lt;p&gt;If you’re working on something cool, I’d love to hear about it! Feel free to &lt;a href=&quot;https://twitter.com/lazerwalker&quot;&gt;say hello&lt;/a&gt;, I’m always excited to check out exciting new experiments in this space.&lt;/p&gt;
 </description>
         <pubDate>Mon, 04 Jan 2021 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2021/01/04/social-design-questions.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2021/01/04/social-design-questions.html</guid>
+        <link>https://blog.lazerwalker.com/2021/01/04/social-design-questions.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2021/01/04/social-design-questions.html</guid>
         
         
       </item>
@@ -517,8 +517,8 @@
 &lt;p&gt;&lt;em&gt;If you’re interested in learning more about the Roguelike Celebration space, you may want to check out the aforementioned &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;design blog post&lt;/a&gt; or the &lt;a href=&quot;https://github.com/lazerwalker/azure-mud&quot;&gt;code on GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 20 Nov 2020 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html</guid>
+        <link>https://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html</guid>
         
         
       </item>
@@ -704,8 +704,8 @@
 &lt;p&gt;What we actually need to take from game design is the understanding of how to use play and playful design to create environments whose architecture encourages and rewards positive social interactions through psychologically satisfying systems. This isn’t by any means easy, but I hope the work I’ve done can show that it’s doable!&lt;/p&gt;
 </description>
         <pubDate>Thu, 22 Oct 2020 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html</guid>
+        <link>https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html</guid>
         
         
       </item>
@@ -813,8 +813,8 @@
 &lt;p&gt;Hopefully this might be useful to you if you’re planning an online event and need to figure out how to handle the technical streaming aspect of your talks!&lt;/p&gt;
 </description>
         <pubDate>Tue, 13 Oct 2020 12:10:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html</guid>
+        <link>https://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html</guid>
         
         
       </item>
@@ -906,8 +906,8 @@
 &lt;p&gt;Hopefully this (longer than I intended!) article has both helped convince you that live human captions are valuable, and helped demystify the process of hiring and working with a live captioner!&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jul 2020 16:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/07/20/captions.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/07/20/captions.html</guid>
+        <link>https://blog.lazerwalker.com/2020/07/20/captions.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/07/20/captions.html</guid>
         
         
       </item>
@@ -967,8 +967,8 @@
 &lt;p&gt;But to frame this one last way: if you asked me if I would rather attend a group video chat with some dear friends, or have us all join a &lt;a href=&quot;https://onezero.medium.com/party-in-a-shared-google-doc-d576c565706e&quot;&gt;shared spreadsheet&lt;/a&gt; with no way to communicate but typing into cells, I’d pick the spreadsheet every time.&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Jul 2020 10:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</guid>
+        <link>https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</guid>
         
         
       </item>
@@ -1092,8 +1092,8 @@
 &lt;p&gt;I’m so excited to see what people make if this, and can’t wait to dive in more as Apple updates the AirPods Pro firmware and makes beta API access available. Let me know if you’re working on something cool or have cool ideas for ways to use spatial audio tech!&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 Jun 2020 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/06/30/spatial-audio.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/06/30/spatial-audio.html</guid>
+        <link>https://blog.lazerwalker.com/2020/06/30/spatial-audio.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/06/30/spatial-audio.html</guid>
         
         
       </item>
@@ -1157,8 +1157,8 @@ We specifically want to use the &lt;code class=&quot;language-plaintext highligh
 &lt;p&gt;In any case, you should now be able to debug your web VR projects on-device without needing a desktop HMD or deploying your code to a server! I hope that wasn’t too painful to set up, and I hope this little trick can help improve your daily development workflow as much as it did for me.&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 May 2020 12:00:00 +0000</pubDate>
-        <link>http://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html</link>
-        <guid isPermaLink="true">http://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html</guid>
+        <link>https://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html</guid>
         
         
       </item>
