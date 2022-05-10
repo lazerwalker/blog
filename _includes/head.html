@@ -56,8 +56,12 @@
 {% endif %}
 {% if page.image %}
   <meta content="/img/srcset/{{ page.image }}" property="og:image">
+  <meta name="twitter:image" content="/img/srcset/{{ page.image }}" />
 {% else %}
   <meta content="{{site.url}}{%og_filter%}" property="og:image">
+  <meta name="twitter:image" content="{{site.url}}{%og_filter%}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
 {% endif %}
 {% if page.categories %}
   {% for category in page.categories limit:1 %}
@@ -68,5 +72,32 @@
   {% for tag in page.tags %}
   <meta content="{{ tag }}" property="article:tag">
   {% endfor %}
+{% endif %}
+
+<meta
+  name="twitter:site"
+  content="@{{site.twitter_username }}"
+/>
+<meta
+  name="twitter:creator"
+  content="@{{ page.author }}"
+/>
+<meta name="twitter:title" content="{{ page.title }} " />
+<meta
+  name="twitter:description"
+  content=" {{ page.description }} "
+/>
+
+ {% if page.summary %}
+
+<meta
+  name="twitter:description"
+  content="{{ page.summary }}"
+/>
+ {% else %}
+<meta
+  name="twitter:description"
+  content="{{ site.description }}"
+/>
 {% endif %}
 </head>
