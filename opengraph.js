@@ -18,7 +18,7 @@ const opts = program.opts()
 
 ctx.beginPath();
 ctx.rect(0, 0, 1200, 630);
-ctx.fillStyle = '#b8ffff';
+ctx.fillStyle = '#f0ebeb';
 ctx.fill();
 
 ctx.textBaseline = "top";
@@ -26,7 +26,7 @@ ctx.textBaseline = "top";
 // Write title
 ctx.font = '90px Helvetica' //'90px SF-Pro-Display-Medium';
 // ctx.font = '90px sans-serif';
-ctx.fillStyle = '#ffffff';
+ctx.fillStyle = '#384869';
 wrapText(ctx, opts.title, 80, 80, 1100, 100);
 // ctx.fillText(program.title, 80, 80);
 
