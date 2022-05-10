@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Refurbishing A 1927 Switchboard, Part 1: Wiring
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/switchboard/2016/02/21/switchboard-part-1.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/f6344ec255e4c8049cbc9de0cb03b09bcc202d6fd5745f0d060e8a2933d78562.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Refurbishing A 1927 Switchboard, Part 1: Wiring</h1>
+    <p class="post-meta">Feb 21, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <style>
+img {
+  display: inline-block;
+  max-height: 400px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+img.side-by-side {
+	display: inline-block; 
+	max-width:50%; 
+	margin: 0; 
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
+img.side-by-side.small {
+	max-width: 45%;
+}
+
+</style>
+
+<center><a href="/images/switchboard/switchboard.jpg"><img src="/images/switchboard/small/switchboard.jpg" class="side-by-side" /></a><a href="/images/switchboard/switchboard2.jpg"><img src="/images/switchboard/small/switchboard2.jpg" class="side-by-side" /></a></center>
+
+<p>This is a manual telephone switchboard.</p>
+
+<p>Specifically, it’s a Western Electric 551-A, a model originally produced in 1927. This sort of switchboard would typically be used in a hotel or small business, with an operator helping customers to connect calls within the building or to the outside world.</p>
+
+<p>This particular switchboard was used at the Mead Paper Mill in Chillicothe, Ohio at least as recently as 1966. That’s like using a computer from 1977 computer today. Pretty absurd.</p>
+
+<p>I’m working on <a href="http://lazerwalker.com/hellooperator">a game</a> where you play as a telephone switchboard operator. Although the piece started out using hand-fabricated custom hardware, it quickly became a project about wiring up this beauty to a modern computer.</p>
+
+<p>I’ll talk more later about exactly what I’m trying to accomplish and why I’m so in love with this piece, but for now, suffice it to say that I’m interested in how we can connect with antiquated technology in a visceral and tangible way. Physically playing a game on the hardware is the biggest part of that, sure, but as I’ve come to appreciate the sheer craftsmanship of this machine, it’s become clear that sharing that with a wider audience is just as important.</p>
+
+<p>This is the first in a series of exhaustive blog posts about how this switchboard works, and what I’ve done to connect it to a modern computer. I apologize if this is a bit brain-dump-y; this is being written for my future self as much as it is for you.</p>
+
+<p>For this first post, I’m going to dive into the first problem we faced: figuring out how the heck this thing was wired up to begin with.</p>
+
+<h2 id="what-makes-a-phone-call">What makes a phone call?</h2>
+
+<p>First, some background on how a manual telephone switchboard works.</p>
+
+<center><a href="/images/switchboard/beerman.jpg"><img src="/images/switchboard/small/beerman.jpg" /></a></center>
+
+<p>The 551-A has 50 “lines”, which for right now you can just take to mean “50 pairs of cable plugs and lights”. The top four rows are extension lines – that means each one would have been connected to a specific telephone within the building. You can still see the original labels on our switchboard – I’d like to talk to the beer man, please!</p>
+
+<p>The bottom row of lines are “trunk” lines, meaning they connected to external telephone systems.</p>
+
+<p>To connect a call, you’d plug a pair of matching cables in. For a cable pair, you’d use the front cable to connect to a trunk line and the rear to connect to an extension. I assume this is for technical reasons (likely only the rear cables connected to the outside), but I’m not actually sure.</p>
+
+<center><a href="/images/switchboard/tabletop.jpg"><img src="/images/switchboard/small/tabletop.jpg" /></a></center>
+
+<p>Now, see these switches and lights below the cable pairs?</p>
+
+<p>Each cable has a matching light and switch. The switches are tri-state: they start neutral, and can be flipped either up or down. For reasons that will soon become clear, the two states act differently: if you toggle the switch up, it will stay in position until you move it back to the neutral position, whereas toggling the switch down is momentary.</p>
+
+<p>When someone picked up their receiver to make a phone call, the light next to their plug and name label would illuminate. As the operator, you’d start by flipping one of the many switches into the up position, and then plug the corresponding cable into the correct port. Putting a switch in the “up” position connects things so that you can talk to them; after they tell you who they want to talk to, you’d flip that back down to stop listening. You could theoretically leave it up to listen in on someone’s conversation, but that was naturally considered incredibly unprofessional and unethical.</p>
+
+<p>As soon as you connected to the caller, the light corresponding with the cable you used would turn on. This logic is simple: if a cable is actively connected to a caller, its light is on.</p>
+
+<p>You’d then connect the second cable to the desired recipient’s plug, and flip the second cable’s switch to the down position. The down position triggers the ringer; after the recipient picks up (read: the cable’s light turns on), you’d stop ringing and let them have their conversation. When they were done, the cable lights would turn off and you could disconnect the cables at your leisure.</p>
+
+<h2 id="making-connections">Making Connections</h2>
+
+<p>Okay, so now you’ve got a rough idea of how this thing works. How the heck is it wired up?</p>
+
+<p><a href="/images/switchboard/back-weights.jpg"><img src="/images/switchboard/small/back-weights.jpg" class="side-by-side" /></a><a href="/images/switchboard/back-noweights.jpg"><img src="/images/switchboard/small/back-noweights.jpg" style="display: inline-block; max-width: 50%; margin: 0;" /></a></p>
+
+<p>Those are cable weights at the bottom; each cable is invidually weighted so that if you drop it, it falls right back into place. So satisfying!</p>
+
+<p>Our switchboard arrived gutted. Where a real switchboard would have had a decent amount of wiring and circuitry, we’ve instead got an impressive cut line of cable.</p>
+
+<center><a href="/images/switchboard/broken.jpg"><img src="/images/switchboard/small/broken.jpg" /></a></center>
+
+<p>I’ve found relay diagrams of what this would have looked like, but I’m not exactly familiar with pre-silicon electrical engineering. Fortunately, that’s fine, since I don’t care about being able to use this as a functioning switchboard. I just care about the basic wiring: when I plug a cable into a port, how can I detect that they’re connected?</p>
+
+<h3 id="the-cables">The cables</h3>
+
+<p>The cables are standard 1/4” stereo tip, with two rubber rings and thus 3 contact points (presumably ground and two data connections). This was simple enough to find; you can see that each weighted cable is made up of three smaller cables, each of which gets routed to a large metal contact.</p>
+
+<center><a href="/images/switchboard/cable.jpg"><img src="/images/switchboard/small/cable.jpg" /></a><a href="/images/switchboard/cablepins.jpg"><img src="/images/switchboard/small/cablepins.jpg" /></a><a href="/images/switchboard/cablewires.jpg"><img src="/images/switchboard/small/cablewires.jpg" /></a></center>
+
+<h3 id="the-ports">The ports</h3>
+
+<p>Each cable has three connections. You’d expect that to hold true for the ports they plug into as well. Curiously, though, each of the fifty cable plugs has <em>five</em> pins coming out of it.</p>
+
+<center><a href="/images/switchboard/mepoking.jpg"><img src="/images/switchboard/small/mepoking.jpg" /></a><a href="/images/switchboard/alligator2.jpg"><img src="/images/switchboard/small/alligator2.jpg" /></a></center>
+
+<p>Whatever the reason for that is, figuring out which three I cared about was straight forward. I just plugged a single cable into a single port and poked around with a multimeter until I saw which connections were made. Complicating this was that the first cable I tried to use was a bit worn-down and couldn’t get a good connection, but switching cables made it a breeze. Of the five pins, three of them clearly connected to the three cable contacts.</p>
+
+<p>It was obvious which of the three was ground, as it was connected across all 50 ports and 20 cables.</p>
+
+<center><a href="/images/switchboard/cable-labeled.jpg"><img src="/images/switchboard/small/cable-labeled.jpg" /></a><a href="/images/switchboard/cablepins-labeled.jpg"><img src="/images/switchboard/small/cablepins-labeled.jpg" /></a><a href="/images/switchboard/plugs-labeled.jpg"><img src="/images/switchboard/small/plugs-labeled.jpg" /></a></center>
+
+<p>Alas, there’s a lot of wiring there. Soldering 50 connections to those pins tangled up in existing wiring didn’t seem like an ideal task. At the same time, ripping out that beautiful vintage wiring seemed like a shame. For sheer historic curiosity, sure, but also because the person who wired this up did a decent job of cable management; if I could find a way to use the existing cabling, I could easily save tens of hours in wiring.</p>
+
+<p>Lo and behond, there are two big wiring blocks in front of/above the ports.</p>
+
+<center><a href="/images/switchboard/portsandblocks.jpg"><img src="/images/switchboard/small/portsandblocks.jpg" class="side-by-side" /></a><a href="/images/switchboard/pinblock.jpg"><img src="/images/switchboard/small/pinblock.jpg" class="side-by-side" /></a></center>
+
+<p>It turns out that these are in fact connected to the ports. Of the four columns, the first and third columns appear be some sort of ground: every single pin in the column is connected to the bottom-left pin of any given cable plug. The second and fourth columns are connected to the right-most pin in the plug in a predictable pattern.</p>
+
+<p>For the sake of simplifying referencing things, I came up with my own numbering scheme.</p>
+
+<center><a href="/images/switchboard/ports-numbered.jpg"><img src="/images/switchboard/small/ports-numbered.jpg" class="side-by-side" /></a><a href="/images/switchboard/pinblock-labeled.jpg"><img src="/images/switchboard/small/pinblock-labeled.jpg" class="side-by-side" /></a></center>
+
+<p>You’ll notice that even though there are 50 ports, the pin block only has room for 40 pins. This is the left pin block; the right pin block has the last 10 ports. Remember that the bottom row are the “trunk” lines for external calls; this technical distinction is likely what causes that split.</p>
+
+<p>After manually confirming that all 50 were properly wired up to to the blocks, I moved onto the bulbs.</p>
+
+<h2 id="lights">Lights</h2>
+
+<p>Given this switchboard model originally came out in 1927, it’s not surprising that it uses tiny incandescent bulbs rather than LEDs. Removing one of the light caps confirmed this. They’re so cute!</p>
+
+<p>These were far easier to figure out than the ports. Each bulb has two pins coming out of it, one of which was clearly connected to a shared ground. Perhaps most surprisingly, most of them still worked! Most of the bulbs happily illuminated when connected to a 9v power source. Stunning. The bottom row was all burnt out, as were four other bulbs, but that’s not too shabby. While it wouldn’t be too difficult to wire up these bulbs to a modern microcontroller, we instead opted to replace them with modern LEDs. More on that later.</p>
+
+<center><a href="/images/switchboard/illuminated.jpg"><img src="/images/switchboard/small/illuminated.jpg" /></a></center>
+
+<p>(Those little pieces of paper were me marking off which bulbs didn’t work.)</p>
+
+<p>This is the point at which I recognized something frustrating: the bulb pins were also connected to the big pin blocks. At first blush, it appeared that they were on the opposite side of the block: ports on one side, bulbs on the other, in a similar arrangement. But I realized rather quickly that wasn’t the case; each bulb’s anode pin was wired directly to the plug pin I was hoping to use!</p>
+
+<p>Unless I’m okay with a bulb being on every time a cable is connected (I’m not), that means I can’t use the pin blocks for wiring up the cable ports, instead soldering to the second data pin that isn’t connected to the bulbs. Needing to solder directly to the plugs is a major bummer, but being able to use the cable management scaffolding of the current wiring meant it wasn’t a total disaster (again, more on that later).</p>
+
+<h2 id="switches">Switches</h2>
+
+<p>With the main panel taken care of, let’s jump down to the tabletop.</p>
+
+<center><a href="/images/switchboard/tabletop.jpg"><img src="/images/switchboard/small/tabletop.jpg" class="side-by-side small" /></a><a href="/images/switchboard/tabletop-open.jpg"><img src="/images/switchboard/small/tabletop-open.jpg" class="side-by-side small" /></a></center>
+
+<p>The cables aren’t an issue, since we’ve already figured them out.</p>
+
+<p>The light bulbs are the same as the ones on the back, with an obvious shared ground and individual anode pin per bulb.</p>
+
+<center><a href="/images/switchboard/frontlights.jpg"><img src="/images/switchboard/small/frontlights.jpg" /></a></center>
+
+<p>That leaves us with the switches, which are far more interesting.</p>
+
+<p>Even though each is a single physical switch, the mechanical logic to determine whether the ringer is active and whether talk mode is active are two separate mechanisms, each of which exists in two places. The mechanism itself is rather beautiful.</p>
+
+<p>(Look particularly at the moving plates on the left)</p>
+
+<center><iframe src="https://player.vimeo.com/video/155261254" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<p><a href="https://vimeo.com/155261254">551-A Switchboard switch mechanism</a> from <a href="https://vimeo.com/user27575875">Em Lazer-Walker</a> on <a href="https://vimeo.com">Vimeo</a>.</p></center>
+
+<p>The way this is wired up, it’s difficult to get a good photo of exactly what’s going on, but here you can see me poking around with a multimeter.</p>
+
+<center><a href="/images/switchboard/switches.jpg"><img src="/images/switchboard/small/switches.jpg" /></a></center>
+
+<p>There’s a bit of a mystery here. Conceptually, you’d assume this is very simple: it’s a switch with a neutral state and two other possible states. You could easily represent this with only 3 pins. And yet there are two separate physical mechanisms, one for each direction.</p>
+
+<p>Part of this may mechanically be to accomodate the different behavior of each direction. As described above, if you flip a switch to the talk/up position, it stays there until you physically move it back; the ringer/down position will snap back to neutral as soon as you let it go.</p>
+
+<p>However, that doesn’t leave the biggest mystery. Like with the cable ports, each of these two mechanisms has way more pins than you would expect. The “ring” mechanism, which is the rear one of the two, has four pins; the “talk” mechanism in the front has five. Even weirder, each physical switch has four mechanisms in total; each switch has two talk mechanisms and two ring mechanisms, with each pair having mirrored pin layouts.</p>
+
+<p>I discovered a couple of really interesting things. Unlike the cable ports, I was able to figure out what some of these mystery pins do. For the “talk” mechanism, a number of the pins are momentary switches. They’re not connected when the switch is in the neutral position, nor are they connected when the switch is in the “talk” position, but as you’re in the process of flipping from one to the other they make contact for a fraction of a second. Absolutely stunning, and makes me wonder how this fit in to the actual relay logic.</p>
+
+<p>I was eventually able to figure out for both the “talk” and “ring” mechanisms which two pins I could use to reliably determine whether the switch was in the appropriate position or not, but even then I ran into yet another snag. For both rows of switches, the “ring” position had a shared ground line: of the two pins I cared about, one of them was connected to all 10 switches. This makes life easy for wiring this up, since I can just wire up my microcontroller’s ground pin to one of them, and they’ll all share it. This was also the case with the “talk” mechanism for the front row of switches.</p>
+
+<p>However, it <em>wasn’t</em> the case for the “talk” mechanism on the rear row of switches. There was a common ground across all 10 switches, but it wasn’t one that was connected to the circuit I needed; it triggered with the momentary toggles, not the normal “it’s connected!” pin. I ended up eventually manually wiring up a shared ground, which wasn’t too hard, but this just makes me wonder even more about the original circuitry for this thing.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Whew, what a journey! I’ve left a bunch of cool things out (the rotary dial! The buzzer! The hand-crank you’d turn to manually generate power!), but that’s more than enough for today.</p>
+
+<p>Next up, I’ll talk about what an unexpected difficulty it was to merely get access to the interior of the front panel at all. Stay tuned!</p>
+
+<p><em>If you’re interested in playing “Hello, Operator!” in person, it will be shown at the Game Developer’s Conference in San Francisco, CA from March 16-18, 2016 as part of <a href="http://www.gdconf.com/news/heres_the_game_lineup_for_gdc_.html">alt.ctrl.GDC</a>.</em></p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

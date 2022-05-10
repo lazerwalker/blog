@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Making A Cycling Game! Part Two: Bluetooth
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/2019/02/15/bike-game-part-2.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/665ba5d21fa223dbb2faa5ccb69aef328ca333dc818cc8144b35c88755d5fc18.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Making A Cycling Game! Part Two: Bluetooth</h1>
+    <p class="post-meta">Feb 15, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="making-a-cycling-game-part-two-bluetooth">Making A Cycling Game! Part Two: Bluetooth</h1>
+
+<p>This is the second post in a series about designing and building a game that you play by riding a stationary bicycle! In the <a href="http://blog.lazerwalker.com/2019/02/05/bike-game-part-1.html">first post</a>, I did some brainstorming to explore the design possibility space of cycling games.</p>
+
+<p>Now that we’ve got a vague idea of what we’re making, let’s dive into code! This post will explore the technical side of building an iPad app that’s capable of connecting to my Bluetooth smart trainer hardware.</p>
+
+<h2 id="act-i-ble">Act I: BLE</h2>
+
+<p>Most smart trainers offer two ways to connect: PC and Mac users will generally buy a dongle for a wireless format called ANT+, whereas iOS and Android devices connect via Bluetooth Low Energy. We’ll talk about ANT+ in a little bit, but for now we’re going to focus on BLE.</p>
+
+<p>Specifically, the part about BLE that’s interesting for us today is GATT, or the General ATTribute protocol. GATT describes a large formal taxonomy of devices and data formats, making it easy for developers to write one set of code that can communicate with hardware from a wide variety of vendors.</p>
+
+<p>At its core, GATT’s taxonomy has three main concepts:</p>
+
+<ul>
+  <li>A <strong>peripheral</strong> is a physical Bluetooth device! Imagine a wireless Bluetooth heart rate monitor.</li>
+  <li>A <strong>service</strong> is essentially a role that a peripheral can play. A given peripheral likely supports a handful of services. Our example heart rate monitor almost certainly provides the “HRM” service (Heart Rate Monitor), but it also likely provides the Battery Status service (how much battery is left) and the Device Information service.</li>
+  <li>A <strong>characteristic</strong> is a specific piece of data that can be written to or read from a given peripheral. A service specifies a number of characteristics it provides.</li>
+</ul>
+
+<p>This is fantastic, because it means the code we write can (theoretically) work across a range of smart trainers!</p>
+
+<p>Without GATT, you could very easily imagine a frustrating world where we’d need to go to TacX (the manufacturer of my smart trainer) and look up a datasheet or download a proprietary SDK. If we wanted to support more trainers than the one I own, we’d then need to do that every single time.</p>
+
+<p>But that’s not necessary! Instead, we can just write generic BLE code that connects to any Bluetooth LE peripheral that supports the CSC (Cycling Cadence and Speed) service, and we’re off to the races.</p>
+
+<p>I’m not going to bother walking through a “Hello World” example in Swift, because Apple’s delegate-based CoreBluetooth API makes it a bit verbose for demo purposes. If you’re interested, there’s a great tutorial <a href="https://www.raywenderlich.com/231-core-bluetooth-tutorial-for-ios-heart-rate-monitor">here</a>. Conceptually, the process is fairly straight forward:</p>
+
+<ul>
+  <li>After configuring a Bluetooth central manager, we ask it to scan for nearby devices advertising the CSC service</li>
+  <li>When we find one, we immediately connect to it (a production-ready app would present a dialog to users prompting them to select from available devices)</li>
+  <li>Once we’re connected to our peripheral, we probe it for available services</li>
+  <li>When we’ve found the CSC service we care about, we probe it for available characteristics</li>
+  <li>Finally, for each of the charcteristics we care about, we ask to get updated whenever their values change.</li>
+</ul>
+
+<p>After all of that, there’s real data coming in that we can read! But what does that data look like?</p>
+
+<p>Let’s look at what the BLE spec says about CSC data:</p>
+
+<center style="margin: 2em; font-size: 0.7em">
+    <a href="/images/csc.png"><img src="/images/csc.png" alt="GATT CSC Measurement" style="" /></a>
+    via <a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.csc_measurement.xml">https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.csc_measurement.xml</a>
+</center>
+
+<p>This looks pretty confusing, but the data itself is pretty simple.</p>
+
+<p>Each packet is a byte array. First is a uint8 consisting of some flags — namely, whether this packet contains wheel revolution data (the lowest bit), crank data (the next-lowest bit), or both.</p>
+
+<p>From there, if wheel data exists, there’ll be a uint32 containing how many whole wheel revolutions have taken place, followed by a uint16 describing the time period since the last wheel data packet (described in 1/1024ths of a second).</p>
+
+<p>If there is crank data, it’ll look similar: two uint16s describing number of crank rotations and another time window in 1/1024th-seconds.</p>
+
+<p>Let’s walk through how this might look in Swift. In my actual code, this is wrapped up more nicely in a class, but this is going to be more of a high-level walkthrough than actually trying to show you executable code.</p>
+
+<p>We’ll start by defining some storage variables, and checking whether we have crank and/or wheel data:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">totalWheelRevolutions</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="nv">wheelDiameter</span> <span class="o">=</span> <span class="mi">750</span> <span class="c1">// in mm</span>
+<span class="k">var</span> <span class="nv">totalCrankRevolutions</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kd">func</span> <span class="nf">decodeCSC</span><span class="p">(</span><span class="n">withData</span> <span class="nv">data</span> <span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">](</span><span class="n">data</span><span class="p">)</span>
+  <span class="k">var</span> <span class="nv">offset</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">let</span> <span class="nv">flag</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">let</span> <span class="nv">hasWheelData</span> <span class="o">=</span> <span class="p">(</span><span class="n">flag</span> <span class="o">&amp;</span> <span class="mh">0x01</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="k">let</span> <span class="nv">hasCrankData</span> <span class="o">=</span> <span class="p">(</span><span class="n">flag</span> <span class="o">&amp;</span> <span class="mh">0x02</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>For my device, the number of wheel revolutions transmitted is a cumulative number, containing all revolutions since the device made a connection to the tablet.</p>
+
+<p>This means that if we have a previous value stored, we need to do some basic subtraction to figure out how many new revolutions happened since the last data frame.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="n">hasWheelData</span> <span class="p">{</span>
+      <span class="k">let</span> <span class="nv">newTotalWheelRevolutions</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">UInt16</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">offset</span><span class="p">]))</span>
+      <span class="n">offset</span> <span class="o">+=</span> <span class="mi">4</span>
+
+      <span class="k">let</span> <span class="nv">wheelTime</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">UInt16</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">offset</span><span class="p">]))</span>
+      <span class="n">offset</span> <span class="o">+=</span> <span class="mi">2</span>
+
+      <span class="k">var</span> <span class="nv">newWheelRevolutions</span> <span class="o">=</span> <span class="n">newTotalWheelRevolutions</span> <span class="o">-</span> <span class="n">totalWheelRevolutions</span>
+      <span class="n">totalWheelRevolutions</span> <span class="o">=</span> <span class="n">newTotalWheelRevolutions</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Crank data looks basically the same. Using a byte offset value, and handling wheel data first, means that the same function will work perfectly well regardless of whether there is wheel data, crank data, both, or neither.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="n">hasCrankData</span> <span class="p">{</span>
+      <span class="k">let</span> <span class="nv">newTotalCrankRevolutions</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">UInt16</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">offset</span><span class="p">]))</span>
+      <span class="n">offset</span> <span class="o">+=</span> <span class="mi">2</span>
+
+      <span class="k">let</span> <span class="nv">crankTime</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">UInt16</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">offset</span><span class="p">]))</span>
+
+      <span class="k">let</span> <span class="nv">newCrankRevolutions</span> <span class="o">=</span> <span class="n">newTotalCrankRevolutions</span> <span class="o">-</span> <span class="n">totalCrankRevolutions</span>
+      <span class="n">totalCrankRevolutions</span> <span class="o">=</span> <span class="n">newTotalCrankRevolutions</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>From there, translating that data from rotations into distance/speed isn’t too difficult.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Circumference = 2 * pi * radius, or just pi * diameter</span>
+  <span class="c1">// However, our wheel diameter is in mm, whereas we want distance in m</span>
+  <span class="k">let</span> <span class="nv">distance</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">newWheelRevolutions</span><span class="p">)</span> <span class="o">*</span> <span class="n">wheelDiameter</span> <span class="o">*</span> <span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">1000.0</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">wheelTime</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">let</span> <span class="nv">wheelTimeInSeconds</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Double</span><span class="p">)</span><span class="n">wheelTime</span> <span class="o">/</span> <span class="mf">1024.0</span>
+
+      <span class="c1">// 3.6 = convert from m/s to km/h</span>
+      <span class="k">let</span> <span class="nv">speed</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">wheelTimeInSeconds</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.6</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">crankTime</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">let</span> <span class="nv">crankTimeInSeconds</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">crankTime</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1024.0</span>
+      <span class="k">let</span> <span class="nv">rpm</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">newCrankRevolutions</span><span class="p">)</span> <span class="o">/</span> <span class="n">crankTimeInSeconds</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="act-ii-data-playback">Act II: Data Playback</h2>
+
+<p>This was all well and good, but I quickly ran into a problem: the numbers I was getting were nonsense. My relatively basic math was resulting in a comfortably slow pedal clocking in at over 100 km/h. That’s not right!</p>
+
+<p>Most importantly, though, testing that was really frustrating. After tweaking my basic math, I’d need to:</p>
+
+<ul>
+  <li>Compile my code</li>
+  <li>Deploy it to a physical iOS device</li>
+  <li>Walk over to my bicycle</li>
+  <li>Pedal for a bit</li>
+  <li>Come back to my computer and look at historical log data</li>
+</ul>
+
+<p>That’s not great! That made it impossible for me to work on the project while at my coworking space, but more importantly, even when at home, that sort of long feedback loop makes it very difficult and frustrating to get into a good state of flow.</p>
+
+<p>Having worked on a lot of software projects that integrate with custom hardware, I’ve learned the hard way that it’s well worth investing time in building abstractions that let you quickly iterate on the software without requiring the physical hardware.</p>
+
+<p>In this case, the answer was fairly simple. The first naïve version of my Bluetooth-reading code was a single Swift class that connected to a BLE device and then processed the raw data. Instead, I split that out into two separate objects: a data source responsible for fetching data blobs over a BLE connection, and a data manager responsible for turning a BLE CSC characteristic packet into speed, distance, and RPM data (essentially, the function we walked through above).</p>
+
+<p>In addition to that distinction, I modified the Bluetooth communication code to send data to two different places: when receiving a CSC data packet, it would notify the manager to calculate the data we needed, but it also send the same data to another object that was responsible for recording all BLE data packets received and storing them (along with timestamps) on disk.</p>
+
+<p>From there, it was easy to modify the data manager to allow us to pass in an arbitrary data source via dependency injection. Just creating the object as normal would initialize a Bluetooth stack, but I could also just as easily pass in another data source that was configured to read the recorded data packets off of the hard disk and replay them in real-time.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">CSCDataSource</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">CSCDataDelegate</span><span class="p">?</span> <span class="p">{</span><span class="k">get</span> <span class="k">set</span><span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">start</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">CSCDataDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">decodeCSC</span><span class="p">(</span><span class="n">withData</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">BikeDataManager</span> <span class="p">:</span> <span class="kt">CSCDataDelegate</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt">CSCDataSource</span>
+
+    <span class="k">var</span> <span class="nv">wheelDiameter</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">663</span> <span class="c1">// Diameter of a 700c x 24 wheel</span>
+
+    <span class="kd">convenience</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">dataSource</span><span class="p">:</span> <span class="kt">BikeBluetoothDataSource</span><span class="p">())</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">dataSource</span><span class="p">:</span> <span class="kt">CSCDataSource</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">dataSource</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">dataSource</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">decodeCSC</span><span class="p">(</span><span class="n">withData</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This was pretty simple to set up, and the general concept here won’t be surprising to anyone used to writing <a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a> object-oriented code or designing their code to be unit-testable.</p>
+
+<p>But in this case, an easy solution like this was super-effective at letting me stop worrying about hardware communication and focus on my business logic. A single run-through where I pedalled a bunch to generate some good data was all I needed to head off to the coworking space and quickly figure out where my code logic was incorrect.</p>
+
+<h2 id="act-iii-a-custom-protocol">Act III: A custom protocol?!</h2>
+
+<p>After all that, my playback data led me to realize my math was sound; the data I was receiving from the device itself was nonsense. Uh oh!</p>
+
+<p>As mentioned above, most smart trainers support a wireless technology called <a href="https://www.thisisant.com/directory/fec-power-bike-computer">ANT+ FE-C</a> in addition to BLE. Back in the day, smart trainers and power sensors all had their own proprietary protocols. Making a piece of software like my game meant writing individual integrations for every popular piece of hardware. The ANT consortium formed, and they created a custom low-power wireless transport mechanism (ANT+) with a specific protocol for controlling fitness equipment (FE-C, or Fitness Equipment Control). If you wanted to use the smart trainer I have on a desktop computer, you’d probably do that by buying a USB ANT+ dongle.</p>
+
+<p>Now, things are slowly moving towards BLE. But while the GATT services we touched on above (like CSC) have existed for a while, there historically weren’t GATT services or characteristics for e.g. controlling the resistance on a smart trainer like mine.</p>
+
+<p>There is now a general BT standard for controlling fitness hardware (“FTMS”, or “FiTness Machine Service”), but it’s fairly new and not yet widespread. I couldn’t find any data that suggests it’s supported by TacX, the company that makes my smart trainer, but I did manage to find a <a href="https://github.com/jedla22/BleTrainerControl">GitHub repo</a> and some <a href="https://github.com/jedla22/BleTrainerControl/raw/master/How-to%20FE-C%20over%20BLE%20v1_0_0.pdf">documentation</a> outlining the interrim solution they came up with before FTMS was introduced: the hardware supports a proprietary Bluetooth service that sends data in the FE-C format, only using Bluetooth as a transport mechanism rather than ANT+.</p>
+
+<p>There was some working example code on GitHub, which I was able to use to test out and adapt. I’m not going to walk through that process, but sure enough, as soon as I started reading that data in, I was getting speed data that matched other fitness apps on my iPad. The FE-C profile returns raw speed in km/h, so I didn’t even need to fiddle around with any calculations on my side. We’re in business!</p>
+
+<h2 id="so-what-now">So what now?</h2>
+
+<p>That was quite a roundabout journey! I could have jumped straight to explaining the FE-C-over-BLE protocol that TacX uses, but I figured the exploration of how BLE/GATT services work would be interesting, as well as talking about my hardware-free testing strategy.</p>
+
+<p><strong>Next time</strong>, I’ll dive into the process of designing and building out a map inteface that lets players cycle around a real-world city. Spoiler alert: I get sucked pretty far down a rabbithole of trying to convince the Google Maps SDK to do things it was absolutely not designed to do.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Why Video Chat is a Hard Technical Problem
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/2021/03/12/video-chat.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/687adf2668468de945469605c6db04a1c06af40fcdce5e0938066111493e476a.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Why Video Chat is a Hard Technical Problem</h1>
+    <p class="post-meta">Mar 12, 2021</p>
+  </header>
+
+  <article class="post-content">
+    <p>Back over the summer, I began a series of experiments to play around with new forms of synchronous online social interaction while we’re all stuck at home. These ranged from a <a href="https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html">virtual conference hosted in a custom text-based MMORPG</a> to using real-time mocap in the browser to make 2D animated avatars:</p>
+
+<center style="margin: 2em">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been (slowly) prototyping new tools to foster online social interaction, and while it&#39;s too early to say if there&#39;s anything here, I&#39;m pretty excited about my latest prototype. <a href="https://t.co/IZFAJatKmg">pic.twitter.com/IZFAJatKmg</a></p>&mdash; emilia ✨ (@lazerwalker) <a href="https://twitter.com/lazerwalker/status/1272894598214492160?ref_src=twsrc%5Etfw">June 16, 2020</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<p>For these early experiments, I used <a href="https://webrtc.org/">WebRTC</a>, a browser-based peer-to-peer videochat technology. Since I was churning out small experiments quickly, I cared about being able to build something as quickly as possible, and ideally without having to spin up complicated and/or expensive servers.</p>
+
+<p>WebRTC sounds like it’s perfect for this! Being peer-to-peer means you don’t need complicated or expensive server infrastructure, and being a well-supported piece of browser tech means there are a lot of educational resources out there.</p>
+
+<p>To jump straight to the punchline: after we built a WebRTC-based videochat service for <a href="https://roguelike.club">Roguelike Celebration</a>’s event platform, we ripped it out and replaced it with a series of Zoom links for the actual event. Our WebRTC setup simply wasn’t viable for production use.</p>
+
+<p>I’ve since talked to many other folks who built out WebRTC setups, ranging from simple to complex, and similarly ran into unacceptable performance pitfalls. This doesn’t mean that WebRTC as a technology isn’t viable for things like this — all of the solutions I recommend later in this article ultimately still use WebRTC under the hood — but reality is significantly more complicated than just reading the WebRTC API spec and building against it.</p>
+
+<p>The rest of this article will walk you through our learning process, and what we learned is necessary to make a WebRTC videochat setup work in a production environment. Our path to functioning videochat was long and winding; I want to outline what we learned to save other people from spending the same time and effort we did to come to that understanding.</p>
+
+<h2 id="problem-1-accessing-av-hardware">Problem 1: Accessing AV Hardware</h2>
+<p>Before we even get to sending audio and video streams over a network, we need audio and video streams. This means using the browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices">MediaDevices</a> API, not yet WebRTC. But this has a catch!</p>
+
+<p>The API is simple. You call <code class="language-plaintext highlighter-rouge">navigator.mediaDevices.getUserMedia()</code> and get access to audio and video streams. The catch: the user doesn’t get to specify which specific input devices they want to use, so someone with multiple microphones or webcams is going to have a hard time. You’d assume web browsers would provide their own UIs to let users select devices, but the reality is complicated.</p>
+
+<p>If someone is using Firefox, they will in fact get a nice friendly popup asking which audio and video input they want to use. If they’re using Chrome, that option is hidden deep in a settings menu, and it’s extraordinarily bad at remembering your preferences. That UI doesn’t exist at all anywhere in Safari.</p>
+
+<p><strong>Solution</strong>: building a production-ready app means you’ll need to <strong>build your own in-app device selector</strong> for available audio and video inputs.</p>
+
+<p>This is doable, but a pain. You also have to deal with inconsistencies in the ways different browsers surface the MediaDevices APIs for accessing that data. Ideally, you’re using some sort of persistent local storage (e.g. the localStorage API) so you can remember the user’s preference and not make them navigate a dropdown every single time they enter a chat.</p>
+
+<h2 id="problem-2-making-a-connection">Problem 2: Making a connection</h2>
+
+<p>Okay, so you’ve got proper audio and video streams, coming from the correct local input devices. Now we need a way to send that to other users!</p>
+
+<p>The most straight-forward way to do a group videochat in WebRTC is using what’s called a full-mesh network topology. This sounds complicated, but it just means “every client is connected to every other client”. If there are 3 of us in a chat, each of our web browsers has a direct connection to each of the other two people’s web browsers, and a new person joining would immediately initiate three new connections to each of us.</p>
+
+<p>To open a WebRTC connection between two clients, one client generates an offer. The other client accepts that offer and generates a response. The initiating client accepts that response, and you’re off to the races.</p>
+
+<p>To send these offers and responses back and forth between clients, you need some sort of data transport mechanism. And since you don’t yet have a WebRTC data connection you can use, this means you’ll need some sort of server infrastructure. Building and scaling a backend to exchange handshake strings between clients is a lot less work than building one to send video data, but it’s not nothing.</p>
+
+<p><strong>Solution:</strong> You’ll need to <strong>build your own server backend</strong> that can transport strings between clients until they successfully open a peer-to-peer connection.</p>
+
+<p>WebSockets are a great choice for this, but WebSockets are also a pain to scale compared to regular HTTP servers. I personally use a combination of <a href="https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=spatial-6379-emwalker">Azure Functions</a> and <a href="https://docs.microsoft.com/azure/azure-signalr/signalr-overview?WT.mc_id=spatial-6379-emwalker">Azure SignalR Service</a> to do this handshake (in an architecture similar to what I outline in <a href="https://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html">this article</a>), but this still requires maintaining server-side services!</p>
+
+<h2 id="problem-3-what-if-network-settings-mean-clients-cant-connect">Problem 3: What if network settings mean clients can’t connect?</h2>
+
+<p>Let’s say you’ve built out a simple WebRTC flow, where 4 different people are all connected to each other. This means there’ll be 6 different WebRTC connections across all participants. You’ll quickly find something pretty weird: chances are, at least one of those 6 connections will fail and two people won’t be able to videochat with each other.</p>
+
+<p>The short explanation for this is router settings. After the WebRTC signaling handshake is complete, a remote service called ICE tries to directly connect the two clients by getting publicly-accessible IP addresses for both.</p>
+
+<p>An ICE service will first try to use a STUN server, which is a server that basically exists to tell a client what its public IP address is. In the ideal case, this just works to give you working IP addresses for both clients, and you’re done.</p>
+
+<p>If one or both clients are behind a particularly protective NAT layer (e.g. due to a corporate firewall), that STUN public IP dance isn’t going to work. In that case, both clients need to connect to a relay, called a TURN server, that forwards all messages between the two since they can’t connect directly.</p>
+
+<p>If you’re interested in a more detailed technical explanation for this issue, <a href="https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#after-signaling-using-ice-to-cope-with-nats-and-firewalls">this article</a> is a great resource.</p>
+
+<p>Conventional wisdom says that about 80% of WebRTC connections will succeed with only STUN. This means that, unless you have a TURN server to fall back to, about 20% of all connections will fail!</p>
+
+<p><strong>Solution</strong>: Run your own <strong>TURN relay server</strong> for when clients’ NAT settings don’t allow them to connect directly.</p>
+
+<p>STUN services are cheap to run, and it’s pretty easy to find free ones that can scale with your prototype. Since TURN servers are more resource-intensive (given they’re active beyond just the handshake stage of a connection), you’ll probably need to host your own rather than find free community options.</p>
+
+<p>One option is to use <a href="https://www.twilio.com/stun-turn">Twilio’s hosted TURN service</a>. Another is to <a href="https://devblogs.microsoft.com/cse/2018/01/29/orchestrating-turn-servers-cloud-deployment/?WT.mc_id=spatial-6379-emwalker">host your own Docker image on a cloud provider such as Azure</a>.</p>
+
+<h2 id="problem-4-what-if-too-many-people-are-connected">Problem 4: What if too many people are connected?</h2>
+
+<p>At this point, you’ve got a working videochat app. You’ve built your own AV selector UI to let people pick their devices. You’ve built server infrastructure to let clients complete offer handshakes. You’re running a TURN server to make sure that everyone can connect regardless of their network setup. This all sounds great.</p>
+
+<p>And then, you try to have a videocall with more than 4 people and your computer comes to a grinding halt.</p>
+
+<p>This “full-mesh” setup - where each person in a 4-person videochat is sending and receiving video data from each of the other three participants - is incredibly wasteful.</p>
+
+<p>For each additional participant, your own bandwidth and CPU/GPU consumption increase linearly. Even on a pretty beefy computer with a solid fast network connection, performance usually anecdotally starts degrading somewhere above 4-ish video participants or 10-ish audio-only participants.</p>
+
+<p>And that assumes a solid network connection. If one participant has slow Internet speeds, ideally other clients would start sending them a lower-bitrate video stream, but that sort of selective real-time transcoding really isn’t feasible to do in the browser.</p>
+
+<p>It’s worth noting that this is not just a technical concern but an accessibility issue: by building a system that falls over unless you have a top-of-the-line computer and a blazing fast Internet connection, you’re building a system that only serves the most privileged.</p>
+
+<p>There’s no clear fix here other than not having to send out your same audio/video stream N times and having to simultaneously decode and present N remote A/V streams.</p>
+
+<p><strong>Solution</strong>: Move away from a full-mesh peer-to-peer system in favor of a centralized system, most likely a <strong>Selective Forwarding Unit</strong> (SFU).</p>
+
+<p>A SFU is a server that acts as a single WebRTC peer to send and receive video data. Instead of connecting to all of the other people using your chat app directly, your client just connects to the SFU and sends its A/V streams to that single source. The SFU selectively decides which other connected clients should receive a given audio or video stream, and can also intelligently do things such as dynamic video reencoding to serve lower-bitrate streams to clients with lower bandwidth caps.</p>
+
+<p>There are many different ways to run a SFU, but one common way is integrating the <a href="https://mediasoup.org/">mediasoup</a> library into your own Node.js server so you can configure and scale it exactly how you would like.</p>
+
+<h2 id="but-thats-a-lot-for-just-doing-basic-video-chat">…but that’s A LOT for just doing basic video chat!</h2>
+<p>I agree! My goal was initially to build some fun little prototypes of novel social interaction patterns, and instead I found myself deep in the technical weeds of networking protocols and peer-to-peer network topologies.</p>
+
+<p>I hope this mile-high overview of the tricky bits of implementing WebRTC can at least get you to understand why this is a hard problem, and give you the lay of the land for coming up with your own solution.</p>
+
+<p>In particular, I have two concrete recommendations:</p>
+
+<ol>
+  <li>
+    <p>If you’re just experimenting, start out by using a fully-hosted video solution such as <a href="https://docs.microsoft.com/azure/communication-services/overview?WT.mc_id=spatial-6379-emwalker">Azure Communication Service</a> or <a href="https://www.twilio.com/docs/video">Twilio Programmable Video</a>. You’ll get an easy-to-integrate API that doesn’t require running your own server backend, audio and video chat that automatically scales to any number of simultaneous users, and relatively minimal costs for prototype-scale use.</p>
+  </li>
+  <li>
+    <p>If you’re building a production piece of software where video or audio chat will be a core component, a hosted solution is still the most effort-free option, but you may want to build your own solution to save costs and have more control over your infrastructure. If that’s the case, jump straight to running your own SFU. Trying to just get by with a full-mesh topology and maybe a TURN server is ultimately not going to be good enough. Learn from the experiences of myself and countless others and save yourself the time and effort.</p>
+  </li>
+</ol>
+
+<p>Has this helped? Come up with your own solution to recommend? Let me know on <a href="https://twitter.com/lazerwalker">Twitter</a>, I’m always happy to hear from more folks tackling these hard problems :)</p>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

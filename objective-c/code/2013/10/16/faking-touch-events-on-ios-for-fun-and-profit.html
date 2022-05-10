@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Faking touch events on iOS for fun and profit
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/objective-c/code/2013/10/16/faking-touch-events-on-ios-for-fun-and-profit.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/989be909ddf451b2ce07b1f985688b2c1af4d8ba19023b1680e0c4e84a42d5f6.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Faking touch events on iOS for fun and profit</h1>
+    <p class="post-meta">Oct 16, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>When you tap on your iPhone’s screen, capacitive sensors recognize that a circuit has been completed at a certain point on the screen. That gets translated at a low level into, “hey, someone touched the screen at these (x,y) coordinates.” That’s easy enough to understand.</p>
+
+<p>But if you tap an on-screen button, how does iOS translate from recognizing that it’s received a touch event to actually pressing that button? And how can you trick the system into thinking it’s received a button tap that didn’t actually happen?</p>
+
+<h2 id="a-brief-primer-on-uievents-and-uitouches">A brief primer on UIEvents and UITouches</h2>
+<p>If you read Apple’s public API documentation, there are a handful of high-level event objects that are handled by your application layer. When a touch event is received, the active UIApplication receives a <code class="language-plaintext highlighter-rouge">sendEvent:</code> message with a UIEvent object (technically, a private subclass called UITouchesEvent) containing a set of UITouch object.</p>
+
+<p>From there, it delegates down to the <code class="language-plaintext highlighter-rouge">sendEvent:</code> method on the active UIWindow, which in turn figures out the appropriate UIResponder object to forward the event on to, which for a touch event is probably a UIView. That UIView will then receive a message like <code class="language-plaintext highlighter-rouge">touchesBegan:withEvent:</code>, <code class="language-plaintext highlighter-rouge">touchesMoved:withEvent:</code>, <code class="language-plaintext highlighter-rouge">touchesEnded:withEvent</code>, or <code class="language-plaintext highlighter-rouge">touchesCancelled:withEvent</code>, depending on the event. If you’ve been doing iOS development for a while, it’s likely you’ve had to subclass one of those methods.</p>
+
+<p>I’m working on a <a href="https://github.com/lazerwalker/capybara-touch">project</a> right now where I need to be able to programmatically create and dispatch touch events to a UIWebView. Since a UIWebView is a black box with a fairly limited public interface, there’s no fudging it; I need a proper UIEvent object that the UIWebView will accept and respond to.</p>
+
+<h2 id="uitouch-me">UITouch Me</h2>
+<p>It would be seemingly sensible to figure out how to instantiate your own UITouch and UIEvent objects. If you Google around for faking touch events, that’s the route a lot of people take.</p>
+
+<p>Conceptually, though, it’s not a great approach. Dealing with private frameworks is a necessary evil; minimizing the surface area of private code you’re reaching into is essential since Apple could introduce breaking changes at any time. Faking events at the UITouch and UIEvent level requires touching three different private APIs, which creates three distinct possible points of failure.</p>
+
+<p>A practical example of this: the most widely-read article on faking iOS touch events is a 2008 <a href="http://www.cocoawithlove.com/2008/10/synthesizing-touch-event-on-iphone.html">Cocoa with Love article</a>. Even if you fix the basic syntax errors in the included code (it’s not the author’s fault; Objective-C has changed a lot in five years), it flat-out doesn’t work any more.</p>
+
+<h2 id="graphicsservices">GraphicsServices</h2>
+
+<p>Enter GraphicsServices.framework, the private framework responsible for handling events at a system level. When you touch the screen, that gets translated at a low level into a GSEvent object, a C struct containing various information about the event. GSEvents represent all kinds of system events, from hardware button presses to low memory warnings. It turns out that UIEvent objects are little more than light wrappers around GSEvent objects; you can even access a UIEvent object’s underlying GSEvent by calling the private <code class="language-plaintext highlighter-rouge">_gsEvent</code> method on it.</p>
+
+<p>After a GSEvent has been created, it gets dispatched using a function called <code class="language-plaintext highlighter-rouge">GSSendEvent()</code> that takes in a reference to a GSEvent and the internal port of an application to receive the event (some events get handled by system processes like the Springboard rather than the frontmost application).</p>
+
+<p>If that target is the frontmost application, the GSEvent object somehow gets wrapped in a UIEvent and passed to the application via the <code class="language-plaintext highlighter-rouge">sendEvent:</code> method described above. (I don’t know whether that’s the same for events bound for system processes, but that’s not particularly relevant for our immediate purposes.)</p>
+
+<p>This suggests an easier route: if we can create a fake GSEvent and use <code class="language-plaintext highlighter-rouge">GSSendEvent()</code> to route it directly to our application, we can bypass needing to manually create UITouch and UIEvent objects by letting the system do it for us.</p>
+
+<p>It turns out that this is a fairly regular pattern for developers of jailbroken apps, who  often need to do things like simulate pressing the home button or tapping the status bar. Despite the regularity with which jailbroken app developers dive into this framework, though, there is very little documentation of how to actually do it.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+<p>First, you need to import both GraphicsServices.framework and its header files into your application.</p>
+
+<p>In my personal development environment (OS X 10.8.5, Xcode 5.0 build 5A1412), the framework was located at</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Developer/Xcode/iOS\ DeviceSupport/7.0\ \(11A4449d\)/Symbols/System/Library/PrivateFrameworks/GraphicsServices.framework`
+</code></pre></div></div>
+
+<p>I used a copy of the headers I downloaded from a GitHub repo containing an iOS SDK header dump. I used <a href="https://github.com/nst/iOS-Runtime-Headers">nst/iOS-Runtime-Headers</a>, but others exist. Throw the GraphicsServices folder into your project, and <code class="language-plaintext highlighter-rouge">#import "GraphicsServices.h"</code> where relevant.</p>
+
+<p>After that’s all set up, there are three things to do: construct a GSEvent object, get the port of your application, and tell the system to send your GSEvent to your application’s port.</p>
+
+<h3 id="constructing-a-gsevent">Constructing a GSEvent</h3>
+
+<p>If you look at <code class="language-plaintext highlighter-rouge">GSEvent.h</code>, you can see all of the properties that make up the GSEvent, GSEventRecord, and GSHandInfo structs.</p>
+
+<p>For me, finding the proper values to set was a process of trial and error. The GSEvent.h header is useful, as is manually inspecting real GSEvent objects (with the help of a custom UIWindow subclass with an overwritten <code class="language-plaintext highlighter-rouge">sendEvent:</code> method). It’s possible some of the properties I’m setting below aren’t necessary, or might need to be changed for your purposes.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="c1">// Get these two values from elsewhere</span>
+<span class="n">CGPoint</span> <span class="n">point</span><span class="p">;</span>
+<span class="n">UITouchPhase</span> <span class="n">phase</span><span class="p">;</span>
+
+<span class="kt">uint8_t</span> <span class="n">touchEvent</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">GSEventRecord</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GSHandInfo</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GSPathInfo</span><span class="p">)];</span>
+<span class="k">struct</span> <span class="n">GSTouchEvent</span> <span class="p">{</span>
+    <span class="n">GSEventRecord</span> <span class="n">record</span><span class="p">;</span>
+    <span class="n">GSHandInfo</span>    <span class="n">handInfo</span><span class="p">;</span>
+<span class="p">}</span> <span class="o">*</span> <span class="n">event</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">GSTouchEvent</span><span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">touchEvent</span><span class="p">;</span>
+<span class="n">bzero</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">kGSEventHand</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">.</span><span class="n">subtype</span> <span class="o">=</span> <span class="n">kGSEventSubTypeUnknown</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">point</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">GSCurrentEventTimestamp</span><span class="p">();</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">.</span><span class="n">infoSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GSHandInfo</span><span class="p">)</span> <span class="k">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GSPathInfo</span><span class="p">);</span>
+
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="p">(</span><span class="n">phase</span> <span class="o">==</span> <span class="n">UITouchPhaseBegan</span><span class="p">)</span> <span class="p">?</span> <span class="n">kGSHandInfoTypeTouchDown</span> <span class="p">:</span> <span class="n">kGSHandInfoTypeTouchUp</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfosCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">bzero</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GSPathInfo</span><span class="p">));</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pathIndex</span>     <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pathIdentity</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pathProximity</span> <span class="o">=</span> <span class="p">(</span><span class="n">phase</span> <span class="o">==</span> <span class="n">UITouchPhaseBegan</span><span class="p">)</span> <span class="p">?</span> <span class="mh">0x03</span> <span class="p">:</span> <span class="mh">0x00</span><span class="p">;</span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">handInfo</span><span class="p">.</span><span class="n">pathInfos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pathLocation</span>  <span class="o">=</span> <span class="n">point</span><span class="p">;</span></code></pre></figure>
+
+<p>One thing to note: the CGPoint you pass into the event’s <code class="language-plaintext highlighter-rouge">location</code> field and the pathInfo’s <code class="language-plaintext highlighter-rouge">pathLocation</code> field are coordinates relative to the entire window, not the UIView that will ultimately receive the event. If you have coordinates relative to a view and a reference to the view itself, you can convert the coordinates using <code class="language-plaintext highlighter-rouge">[view convertPoint:point toView:view.window]</code>.</p>
+
+<h3 id="getting-your-applications-port">Getting your application’s port</h3>
+
+<p>This function was cribbed pretty much wholesale from <a href="http://stackoverflow.com/questions/16156831/how-to-find-the-purple-port-for-the-front-most-application-in-ios-5-and-above/16157532">Stack Overflow</a>, although I ripped out a bunch of unrelated code related handling the lock screen.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#import &lt;dlfcn.h&gt;
+#define SBSERVPATH  "/System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices"
+</span>
+<span class="k">static</span> <span class="n">mach_port_t</span> <span class="nf">getFrontmostAppPort</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">mach_port_t</span> <span class="o">*</span><span class="n">port</span><span class="p">;</span>
+	<span class="kt">void</span> <span class="o">*</span><span class="n">lib</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="n">SBSERVPATH</span><span class="p">,</span> <span class="n">RTLD_LAZY</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">SBSSpringBoardServerPort</span><span class="p">)()</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s">"SBSSpringBoardServerPort"</span><span class="p">);</span>
+	<span class="n">port</span> <span class="o">=</span> <span class="p">(</span><span class="n">mach_port_t</span> <span class="o">*</span><span class="p">)</span><span class="n">SBSSpringBoardServerPort</span><span class="p">();</span>
+	<span class="n">dlclose</span><span class="p">(</span><span class="n">lib</span><span class="p">);</span>
+
+	<span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">SBFrontmostApplicationDisplayIdentifier</span><span class="p">)(</span><span class="n">mach_port_t</span> <span class="o">*</span><span class="n">port</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">result</span><span class="p">)</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s">"SBFrontmostApplicationDisplayIdentifier"</span><span class="p">);</span>
+
+	<span class="kt">char</span> <span class="n">appId</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+	<span class="n">memset</span><span class="p">(</span><span class="n">appId</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">appId</span><span class="p">));</span>
+	<span class="n">SBFrontmostApplicationDisplayIdentifier</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">appId</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="n">GSCopyPurpleNamedPort</span><span class="p">(</span><span class="n">appId</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="sending-the-event">Sending the event</h3>
+
+<p>We have a GSEvent object, <code class="language-plaintext highlighter-rouge">event</code>, and a function that will return the frontmost app port. Let’s put ‘em together.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">mach_port_t</span> <span class="n">port</span> <span class="o">=</span> <span class="n">getFrontmostAppPort</span><span class="p">();</span>
+<span class="n">GSEventRecord</span><span class="o">*</span> <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="n">GSEventRecord</span><span class="o">*</span><span class="p">)</span><span class="n">event</span><span class="p">;</span>
+<span class="n">record</span><span class="o">-&gt;</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">GSCurrentEventTimestamp</span><span class="p">();</span>
+<span class="n">GSSendEvent</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span></code></pre></figure>
+
+<p>And there you have it!</p>
+
+<p>If you want to simulate a full tap event, you want to construct two events, one where the phase is <code class="language-plaintext highlighter-rouge">UITouchPhaseBegan</code> and one where it’s <code class="language-plaintext highlighter-rouge">UITouchPhaseEnded</code>. Similarly, a gesture would have you sending <code class="language-plaintext highlighter-rouge">UITouchPhaseMoved</code> as often as necessary between those two.</p>
+
+<p>If you want to see the final result in production code, check out the <a href="https://github.com/lazerwalker/capybara-touch/blob/master/ios/capybara-touch/Extensions/UIFakeTouch.m">UIFakeTouch</a> class I ended up writing for use in my project.</p>
+
+<h2 id="a-word-of-warning">A word of warning</h2>
+<p>It goes without saying that this isn’t a technique that should be used in applications destined for release in the App Store. By all means use it for your Cydia apps or for applications not designed for production release, but if you submit an app to Apple that links against GraphicsServices.framework it will almost certainly be rejected.</p>
+
+<h2 id="a-second-word-of-warning-ios-7">A second word of warning: iOS 7</h2>
+<p>This approach doesn’t work with iOS 7. While it doesn’t appear that the header files of GraphicsServices.framework have been modified, Apple has changed the way that it works under the hood such that it silently fails.</p>
+
+<p>You can still use this technique using the iOS 7 SDK and Xcode 5, just make sure you’re targetting iOS 6.1 or earlier. When I have the time to dive into it, I hope to write a follow-up post on iOS 7 compatibility. Let me know if you have any success!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

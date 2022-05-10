@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Making A Cycling Game! Part One: Brainstorming
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/2019/02/05/bike-game-part-1.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/93dc7420255c0c53a35f9e5e253ab011629fc0e91a1ed979d5fc40424968bcf3.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Making A Cycling Game! Part One: Brainstorming</h1>
+    <p class="post-meta">Feb 5, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <p>To make sure I get plenty of exercise during cold and dreary Berlin winters, I recently picked up a <a href="https://tacx.com/product/vortex-smart/">smart bike trainer</a>, a device that turns my bicyle into a Bluetooth-enabled stationary bike. It connects to my iPad, at which point various apps can both access its cadence and speed sensors (how quickly I’m pedaling) and dynamically change the resistance (how hard it is to pedal). It’s like the nerdier version of a <a href="https://www.onepeloton.com">Peloton</a> exercise bike.</p>
+
+<center style="margin: 2em">
+    <a href="/images/smartbike.jpg"><img src="/images/smartbike.jpg" alt="Tacx Vortex Smart bike trainer" style="max-height: 400px" /></a>
+</center>
+
+<p>There’s a small but healthy ecosystem of apps and games built around hardware like this. A personal favorite is <a href="https://zwift.com">Zwift</a>, an MMO-like experience where you go for virtual rides with other real players. I like Zwift and its ilk, but they’re all much more “cycling nerd training tool” than “fun game”.</p>
+
+<p>As a game designer, I’m interested in fixing that!</p>
+
+<p>I help organize <a href="https://alt.ctrl.party">alt.ctrl.PARTY</a>, an annual party during the Game Developer’s Conference celebrating games with nontraditional physical controls. We haven’t started planning this year’s lineup yet, but I was thinking it would be awesome to be able to showcase a game there that uses a bicycle as a controller.</p>
+
+<p>In tandem (hah!) with designing and prototyping potential cycling games, I thought it’d be a productive exercise to document my process. The nature of game development means that a lot of game design ideas and prototypes don’t go anywhere. I’m writing these blog posts as I go along, and as there’s no guarantee any of the work I’m doing will result in a fun or interesting game, it’s totally possible this will turn into a public documentation of a failed project.</p>
+
+<p>If that happens, though, I think that’s just as interesting as process documentation for a successful project! A lot of the writeups you see of alt control games tend to be after-the-fact explanations of successful projects; I think there’s value in showing the messy in-the-moment process as well.</p>
+
+<h2 id="step-1-brainstorming">Step 1: Brainstorming</h2>
+
+<p>Before I dove head-first into the technical minutia of writing code to talk to my Bluetooth hardware, I wanted to brainstorm ideas and start thinking about what I could actually make.</p>
+
+<p>After some time at the coffee shop with my favorite notebook and pen, I came up with a few major design goals for the project.</p>
+
+<h4 id="make-something-that-works-well-at-in-an-event-setting">Make something that works well at in an event setting</h4>
+
+<p>While I could theoretically release a commercial game for anyone who owns a Bluetooth-compatible smart trainer, the audience of people who own expensive specialist cycling hardware AND want to play a weird experimental indie game is niche enough that I’d want to do a fair amount of market research before designing anything specifically for that audience. If these experiments prove successful, I’d very much love to do that, but at this exact moment my main goal is artistic expression moreso than money. That means starting out by designing for an installation setting. Specifically:</p>
+
+<ol>
+  <li><strong>Relatively short playtimes</strong>. In event settings, you want to be able to cycle (hah!) people through pretty regularly. This will also help prevent the game from being too physically demanding, which is a good thing for a casual party game in a space where players are likely to be drinking.</li>
+  <li><strong>Spectator enjoyment</strong>. There will be more spectators than players; making something that’s fun to watch is important. If I can come up with a way for the audience to participate, so much the better.</li>
+  <li><strong>A metastructure</strong> that encourages asynchronous interaction between players. This could be as simple as a high-score board, or as complex as longer-term goals that require collaboration. Having a game that exists in a physical space for a few hours or a few days opens up a lot of possibilities for interesting long-term emergent player interaction, and I’m inspired by games like <a href="http://www.seempoint.com/echeese">eCheeze Zone</a> that are designed around that.</li>
+</ol>
+
+<h4 id="respect-the-affordances-of-the-hardware">Respect the affordances of the hardware</h4>
+
+<p>When designing any sort of game with nontraditional controls, it’s important to understand why those controls are necessary. A game that uses a physical bicycle needs to justify why it’s making the player physically pedal instead of just using a normal controller or keyboard/mouse to control a bicycle avatar.</p>
+
+<p>Specifically, the smart trainer setup I have gives me a few different input/outpt mechanisms:</p>
+
+<ol>
+  <li><strong>Pedal cadence and speed</strong>, or how quickly the player is pedaling. One way to use this is to give players a target cadence and ask them to stay within a narrow range (both spin classes and traditional cycling interval training do this!). Another is to directly translate pedal speed into in-game movement; a natural application would be a dynamic where moving as quickly as possible is beneficial, but players have to manage their own physical stamina.</li>
+  <li><strong>Resistance</strong>. My trainer lets you dynamically adjust how difficult it is to pedal. Thematically, this could represent going up or down a hill, but it doesn’t have to.</li>
+  <li><strong>Handlebar steering</strong>. I’m assuming the game will be running on a phone or tablet attached to the handlebars that also serves as the player’s game screen. We should be able to use the motion sensors built into the tablet to detect when the player turns the handlebars.</li>
+  <li><strong>Ringing the bike’s bell</strong>. I need to run tests, but it’s likely we can just use the phone’s microphone instead of needing to wire up the bell to a microcontroller.</li>
+  <li><strong>Touch input</strong> on the attached phone/tablet. Not the core of the experience, but worth noting.</li>
+  <li>Other inputs? The phone/tablet will have a microphone we can use to detect speech and a camera pointed at the player’s face we can run through facial emotion detection algorithms. We could attach any other arbitrary input/output devices to the handlebars. The list goes on.</li>
+</ol>
+
+<p>Given all of that, I came up with three potential ideas:</p>
+
+<h3 id="a-roguelike-dungeon-crawler">A roguelike dungeon crawler</h3>
+
+<p>You’re an intrepid adventurer traversing the depths of a dungeon… on your trusted bicycle!</p>
+
+<p>Much like <a href="https://store.steampowered.com/app/247080/Crypt_of_the_NecroDancer/">Crypt of the Necrodancer</a>, starting with a base of a straight-forward dungeon-crawler offers a lot of room to experiment and make interesting design choices.</p>
+
+<center style="margin: 2em">
+<a href="/images/necrodancer.jpg"><img src="/images/necrodancer.jpg" alt="Crypt of the Necrodancer game screenshot" style="max-height: 400px" /></a>
+</center>
+
+<p>As an example, the dungeon could be very dark, and your in-game light is powered by your pedalling, so you need to always be moving forward if you want to be able to see. A roguelike with free movement where you’re always moving forward in real-time could be interesting.</p>
+
+<p>You can imagine all sorts of other hazards that play off of the available inputs:</p>
+
+<ul>
+  <li>Puzzles that require you to ring your bell, but ringing your bell attracts enemies</li>
+  <li>Traps that require you to hit certain RPM targets in order to escape them</li>
+  <li>Combat based on dealing more damage if you’re moving more quickly than your opponent</li>
+  <li>Narrow bridges that demand you don’t accidentally veer off to your death</li>
+</ul>
+
+<p>What’s nice about this idea is that it’s a relative blank slate. If I come up with a hardware interaction that seems interesting, it’d be easy to come up with a justification for how to fit it into the game.</p>
+
+<p>Playing into the roguelike tradition also makes sense for an event. Games are finite length and permadeath gives a natural stopping point for a player. Uncovering the game’s hidden areas, optimal strategies, and interesting interactinos between subsystems can provide for interesting conversation across people at an event trying to figure out the game’s secrets.</p>
+
+<p>Also, I could call it “Roguebike” and hate myself for it.</p>
+
+<h3 id="a-game-about-being-a-delivery-person">A game about being a delivery person</h3>
+
+<p><a href="/images/uberdrive.png" style="float: right; margin: 1em;"><img src="/images/uberdrive.png" alt="UberDRIVE game screenshot" style="max-height: 400px" /></a></p>
+
+<p>A few years ago, Uber launched a short-lived iOS game called <a href="https://www.uber.com/blog/uberdrive/">UberDRIVE</a> where you play as an Uber driver. It was a weird <em>The Last Starfighter</em>-esque stunt to entice people to become Uber drivers, but there was something oddly compelling about driving around a Google Maps view of San Francisco.</p>
+
+<p>Imagine a game where you play as a food delivery courier. Riding across the city to make as many deliveries as you can in a short bounded game session creates a race-the-clock mechanic that works perfectly for both a cycling game and for an event game.</p>
+
+<p>You can imagine building out the game’s level so that different routes have different difficulty levels (adjusting the resistance on the bike). Letting players turn to choose their route both offers players tough choices about which route to take and gives us a natural way to use handlebar steering as input.</p>
+
+<p>There are a lot of potential ways to customize the game for a specific event it’s being shown at. Using a maps framework like Google Maps to render the game, and procedurally generating missions based on venue data from a source like Foursquare, the game can be set in whatever city it’s being shown in (I’m inspired here by games like <a href="https://store.steampowered.com/app/503560/911_Operator/">911 Operator</a>).</p>
+
+<p>I could even theoretically let spectators log on to a website to place their own deliveries, giving the active player a bonus for completing audience-ordered deliveries.</p>
+
+<p>The theming is compelling as well. I’m always excited for a chance to use real-world data as a seed for procedural content generation, and a game about being an on-demand worker has a lot of potential for social and political commentary (see: the upcoming <a href="http://neocabgame.com/">Neo Cab</a>, which I’m very excited for!)</p>
+
+<p>If I want to make a more narrative-focused experience, the moment when you complete a delivery could involve short choice-based narrative storylets about your interactions with your customers, giving space for world-building.</p>
+
+<h3 id="a-synaesthetic-fitness-rhythm-game">A synaesthetic fitness-rhythm game</h3>
+
+<p>The first time I went to an in-person spin class, I felt like it was trying to evoke the synaesthetic experience of playing a game like <a href="https://www.youtube.com/watch?v=x_yrCkUNP8k">Rez</a> or <a href="https://www.youtube.com/watch?v=gZDHLOqD_pM">Thumper</a>. I imagined a hypnotic experience where the loud music, pulsating lights, and the rhythm of your own pedaling all fused together to create a deep flow state.</p>
+
+<center style="margin: 2em">
+<a href="/images/rez.jpg"><img src="/images/rez.jpg" alt="REZ Infinite game screenshot" style="max-height: 400px" /></a>
+</center>
+
+<p>The small, sweaty studio I visited didn’t quite live up to my expectations, but I would love to make something that matches the image in my head. A gameplay mechanic based around pedaling on the beat to a shifting music track feels like a natural combination of both existing rhythm games and spin classes.</p>
+
+<p>You could even do it in VR. The current generation of cheap standalone HMDs (the Oculus Go, Lenovo Mirage Solo, Vive Focus) don’t require any awkward wires, are powerful enough to run ports of both Rez and Thumper, and are Android-based so piping data from a BTLE device to a Unity game should be possible.</p>
+
+<h2 id="so-what-next">So, what next?</h2>
+
+<p>It’s hard to know which of these ideas will work best without getting our hands dirty. My instinct is that what’s most important is simply picking <em>an</em> idea, and the act of playing a working prototype on actual hardware will clarify what works and what doesn’t.</p>
+
+<p>I quickly ruled out the third idea. I’m excited by it, but it leans very heavily on nailing a very specific aesthetic experience. The prototyping process to prove that out wouldn’t lean into my strengths as a designer and engineer. It also fails to meet most of the design goals I established surrounding suitability as an installation piece.</p>
+
+<p>I think either of the other two ideas are totally viable.</p>
+
+<p>Focusing on the roguelike would require less upfront design work, letting me play with the hardware more quickly to see what’s interesting. The sort of “bottom-up” design process it suggests, letting me prototype fun individual interactions and mechanics and work up to a more coherent concept from those small atoms of fun, has worked very well for me with past alt control games.</p>
+
+<p>That said, I think the delivery game idea makes more sense. For one, it lets me use tools that I’m faster at prototyping with (web and native iOS non-game development tools, rather than Unity). More importantly, given the choice between something as conventionally “game-y” as a dungeon crawler and a more unique (and non-violent!) concept, I’ll choose the latter every time. I love making games that directly simulate and explore mundane every real-world activities, and this fits right into that model.</p>
+
+<p>So, I have an idea!</p>
+
+<p><strong>In the next blog post</strong>, we’ll shift away from design and talk about low-level tech! I’ll be writing Swift code to connect to my smart trainer via BTLE, and start reading in actual live data.</p>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

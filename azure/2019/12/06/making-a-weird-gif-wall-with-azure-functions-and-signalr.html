@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Making a weird GIF wall with Azure Functions and SignalR
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/azure/2019/12/06/making-a-weird-gif-wall-with-azure-functions-and-signalr.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/44ba27bcfa8d30e5faaa13a2c5888d138f249b954121d464b36562a70d369bd3.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Making a weird GIF wall with Azure Functions and SignalR</h1>
+    <p class="post-meta">Dec 6, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <p>At this year’s <a href="http://xoxofest.com">XOXO festival</a>, one of the top-secret closing party happenings was a special live listening of <a href="http://neilcic.com">Neil Cicerega</a>’s latest mashup album. If you’re not familiar with Neil’s work, his previous album <a href="http://www.neilcic.com/mouthmoods/">Mouth Moods</a> might give you an idea of what was played: a weird and surprising concept album that sort of amounts to cramming an excessive amount of Pure Internet™ into your ear through mashups, references, and very clever mixing.</p>
+
+<p>One of the XOXO organizers approached <a href="https://twitter.com/reedkavner">Reed Kavner</a> and I to make some sort of interactive installation to accompany the listening party: a sort of gif wall where listeners could post GIFs and other weird Internet ephemera as a way of annotating the piece.</p>
+
+<p>I had just started my new job on the Microsoft <a href="https://twitter.com/azureadvocates">Azure Advocates</a> team, so I took this as a chance to try out a whole bunch of Azure tech for the first time!</p>
+
+<h1 id="a-wall-of-pure-internet">A Wall of Pure Internet</h1>
+
+<p><a href="https://uploads.lazerwalker.com/IMG_2162.MOV"><img src="https://uploads.lazerwalker.com/xoxo-420p.gif" alt="Video of the wall in action" /></a></p>
+
+<p>The goal was to create a completely overwhelming wall of GIFs and text. We wanted people to be able to live-annotate the music by pulling up memes the music itself was referencing, while itself playing into a sort of Internet-y vaporwave visual aesthetic.</p>
+
+<p>We decided to rely on Slack rather than build out our own UI. XOXO has an active year-round Slack community, and most attendees were already logged into the festival Slack on their phones. This handled a whole bunch of hard problems for us: authentication, mapping posts to real names (important to handle Code of Conduct violations) and fully handling GIF search (including explicit content filters).</p>
+
+<p>The level of trust we put in our community (along with our real-name policy) meant we could also allow people to post plaintext messages instead of just GIFs. Along with that, it mattered to us that we supported all of the custom emoji that our Slack supports, since the community has built up a large collection of meaningful ones.</p>
+
+<p>One other conscious design decision was to not rate-limit how often anybody could post. When you post a GIF or some text, it shows up on screen and slowly grows over time, but any newer GIFs that come after yours will cover yours up. We simply set the starting size of a post based on how recently the author last posted. If somebody wanted to sit there and spam GIFs as quickly as they could, we wanted to let them do that, but making their content start smaller meant their fun wouldn’t come at the expense of annoying others.</p>
+
+<h1 id="serverless-with-a-long-running-client">Serverless? With a long-running client?!</h1>
+
+<p>While Reed built out the JS front-end (available on <a href="https://github.com/reedkavner/gif-viz">GitHub</a>), I was responsible for the server infrastructure to send messages to a web browser.</p>
+
+<p>I was interested in using <a href="https://azure.microsoft.com/en-us/services/functions/?WT.mc_id=personalblog-blog-emwalker">Azure Cloud Functions</a> to avoid needing to spin up my own server on something like EC2 or Heroku. With “serverless” tools like Azure Cloud Functions, you just upload a single free-floating function (JS in my case), and instead of you maintaining a server runtime, Azure is responsible for spinning up an instance and running your function any time somebody hits a specified HTTP endpoint. In our case, that endpoint is a webhook being triggered by a Slack API app.</p>
+
+<p>On the browser side, we assumed we’d use a WebSocket connection to send messages to the client. However, WebSockets require a long-living connection. With serverless functions, we only have an execution environment at the moment our function is being called, which makes it rather difficult for the browser app to have a persistent WS connection!</p>
+
+<h2 id="enter-signalr">Enter SignalR!</h2>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/azure-signalr/signalr-overview?WT.mc_id=personalblog-blog-emwalker">SignalR</a> is a technology designed to make it easy for servers to broadcast real-time messages to various clients. It’s different from WebSockets in that it’s unidirectional — it can only be used to send messages from servers to clients, not the other way around.</p>
+
+<p>It’s mostly meant for larger, more enterprise-focused uses: it gracefully handles things that WebSockets doesn’t like more complex authentication and connection handshakes. It operates at a higher level of abstraction than WebSockets: by default, it even uses WebSockets in the browser as its transport mechanism, but can fall back to alternate methods automatically (e.g. polling) without you needing to worry about it as a developer.</p>
+
+<p>We don’t care about the security or reliability promises of SignalR, but we do care that Azure offers a hosted SignalR service that can interoperate with Azure Cloud Functions. This lets us overcome the issue of needing a long-running connection to a short-lived server!</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/rpg03awjwn36ok6akxgf.png" alt="Architecture diagram" /></p>
+
+<p>The browser client connects to the Azure SignalR service, which maintains that connection for as long in the browser is open. In the meanwhile, any time an Azure Function instance spins up and executes, it can independently connect to the SignalR service and push messages to the queue. We get the flexibility of using serverless functions to build our node app, but can still maintain a long-running WebSocket connection to the client app. Neat!</p>
+
+<h2 id="using-signalr-with-cloud-functions-declaring-inputs-and-outputs">Using SignalR with Cloud Functions: Declaring Inputs and Outputs</h2>
+
+<p>I’m not going to explain in here how to get set up with Azure Functions — check out <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code?WT.mc_id=devto-blog-emwalker">this tutorial</a> for getting started using the official <a href="https://code.visualstudio.com?WT.mc_id=personalblog-blog-emwalker">VS Code</a> extension, which is by far the easiest way to manage the fiddly bits — but I do want to talk a bit about how I integrated SignalR with my cloud Function.</p>
+
+<p>Azure Functions have a really elegant way of handling external dependencies into your code. An Azure Function is just a single file with a single code function, but accompanying it is a <code class="language-plaintext highlighter-rouge">function.json</code> config file that specifies all inputs and outputs the function accepts. Add a bunch of dependencies to your <code class="language-plaintext highlighter-rouge">function.json</code> file, and they’ll automatically be injected into your function as arguments!</p>
+
+<p>Setting up SignalR requires two different functions. First, there’s a short setup handshake required: a browser that wants to connect to our SignalR instance needs to hit an HTTP endpoint that returns the magic connection string it needs to complete the connection</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bindings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"authLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anonymous"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"httpTrigger"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"res"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signalRConnectionInfo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connectionInfo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hubName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">connectionInfo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">connectionInfo</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>You can see here we’re setting up a function that has standard ExpressJS request/response inputs/outputs, as well as an extra <code class="language-plaintext highlighter-rouge">connectionInfo</code> argument that we specify in our <code class="language-plaintext highlighter-rouge">function.json</code> file should contain SignalR connection info to a message queue called “chat”.</p>
+
+<p>Our actual “post a message” Slack webhook function has a slightly different <code class="language-plaintext highlighter-rouge">function.json</code> file, as it uses the SignalR connection as an output (essentially a message queue it pushes messages onto) rather than an input:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">disabled</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">bindings</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="dl">"</span><span class="s2">authLevel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">httpTrigger</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">direction</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">in</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">req</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">methods</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="dl">"</span><span class="s2">post</span><span class="dl">"</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">direction</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">out</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">res</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">signalR</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">$return</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">hubName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">direction</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">out</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">"name": "$return"</code> property means that whatever our function returns ends up getting pushed onto the <code class="language-plaintext highlighter-rouge">"chat"</code> SignalR queue as a message, which in turn gets pushed to all connected SignalR clients.</p>
+
+<p>With these two functions in place, the actual client code to connect to the SignalR queue is fairly simple:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">`https://xoxo-closing-party.azurewebsites.net/api`</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nx">Information</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+
+<span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">newMessage</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">addPost</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span> <span class="c1">// m is a JSON blob containing whatever our function sends</span>
+<span class="p">});</span>
+
+<span class="nx">connection</span><span class="p">.</span><span class="nx">onclose</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">disconnected</span><span class="dl">"</span><span class="p">));</span>
+
+<span class="nx">connection</span>
+  <span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Connected!</span><span class="dl">"</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>You’ll notice the SignalR library itself is responsible for hitting the handshake endpoint and then subscribing to new messages.</p>
+
+<h2 id="emojis-are-hard">Emojis are Hard!</h2>
+
+<p>With this code so far, my backend was sending messages to Reed’s JS webapp containing message text and, if applicable, GIF data. But all emoji were coming through as Slack-style text shortnames. e.g. instead of the “🎉” emoji, the messages contained the string <code class="language-plaintext highlighter-rouge">:tada:</code>.</p>
+
+<p>Fixing this actually meant handling two totally separate things: proper Unicode emoji, and our Slack instance’s custom emoji set.</p>
+
+<p>For “official” emoji, I was able to find someone else who already wrote a quick script to fetch Slack’s mapping. This CLI one-liner I modified from the web gave me a JSON object mapping from short name to Unicode code point.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://raw.githubusercontent.com/iamcal/emoji-data/master/emoji.json | <span class="se">\</span>
+  npx ramda-cli <span class="se">\</span>
+    <span class="s1">'reject (.unified.includes("-"))'</span> <span class="se">\</span>
+    <span class="s1">'chain (emoji) -&gt; emoji.short_names.map -&gt; {...emoji, short_name: it}'</span> <span class="se">\</span>
+    <span class="s1">'sort-by (.short_name)'</span> <span class="se">\</span>
+    <span class="s1">'index-by (.short_name)'</span> <span class="s1">'map -&gt; "0x#{it.unified}"'</span> <span class="o">&gt;</span> emoji.json
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"abacus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F9EE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"abc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F524"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"abcd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F521"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accept"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F251"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"adult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F9D1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aerial_tramway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F6A1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"airplane_arriving"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F6EC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"airplane_departure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F6EB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alarm_clock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x23F0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alien"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F47D"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ambulance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F691"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amphora"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F3FA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"anchor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x2693"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"angel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F47C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"anger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F4A2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"angry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F620"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"anguished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F627"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F41C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"apple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1F34E"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aquarius"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x2652"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>From there, I was able to use built-in JS string replacement functions to replace all valid Unicode emoji with the proper Unicode code points:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">replaceEmoji</span> <span class="o">=</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">standardEmojiMap</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./emoji</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\:(</span><span class="sr">.*</span><span class="se">?)\:</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">original</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">standardEmojiMap</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCodePoint</span><span class="p">(</span><span class="nx">standardEmojiMap</span><span class="p">[</span><span class="nx">name</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// This isn't in our list of Unicode emoji — either it's a custom emoji or nonsense</span>
+      <span class="k">return</span> <span class="nx">original</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Custom emoji were a bit trickier. Slack offers an <a href="https://api.slack.com/methods/emoji.list">API endpoint</a> to grab the custom emoji for any given Slack instance.</p>
+
+<p>Crucially, although it returns a map whose keys are emoji names, the values can be one of two things: a URL to a CDN-hosted image for that emoji, or the name of another emoji name that it’s an alias for. So when doing my own find/replace, I needed to check if it was an alias, and if so make sure to resolve that. When I eventually landed on an actual URL, I replaced the <code class="language-plaintext highlighter-rouge">:emoji:</code> with an HTML <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tag pointed at the CDN URL.</p>
+
+<p>This made things slightly trickier for Reed: however he was rendering this text on-screen, he now needed to make sure that <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tags were rendered properly as HTML, but also do that in a way where <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags wouldn’t be executed as arbitrary JavaScript. It added some complexity, but we concluded that was easier than alternative methods of specifying “this image should be injected at this point within the text”.</p>
+
+<p>I cached this custom emoji data from Slack in an Azure CosmosDB database. While it’s not like our custom emoji updated all that frequently, I needed to build out that caching infrastructure to handle fetching names as well.</p>
+
+<p>Messages from Slack only contained unique user IDs, not human-readable names, so just like emoji I ended up needing to make some API calls to Slack’s <a href="https://api.slack.com/methods/users.list">user list</a> API endpoint so I could do my own lookup.</p>
+
+<p>I’m not going to go into that process of using CosmosDB right now — our name cache (but not our emoji cache!) ended up falling over in production, and it was suggested to me after-the-fact that <a href="https://azure.microsoft.com/en-ca/services/storage/tables/?WT.mc_id=devto-blog-emwalker">Azure Table Storage</a> would have been a better fit for our needs.</p>
+
+<h1 id="the-end-result">The End-Result</h1>
+
+<p>…and that’s (more or less) all there was to it! I glossed over a whole lot here, but you can check out the <a href="https://github.com/lazerwalker/xoxo-closing-party">GitHub repo</a> to see the code itself. I was impressed how well Azure Functions and SignalR worked — messages came through within a second or two of people sending them, it scaled effortlessly even when we were getting hundreds of messages per minute, and everybody loved the installation!</p>
+
+<p>I’d love to see someone else take our code (or just inspiration from us) and make something similar! Shout at me on <a href="https://twitter.com/lazerwalker">Twitter</a> if you do anything cool like this.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

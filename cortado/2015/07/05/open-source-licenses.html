@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Picking an OSS license for your iOS app
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/cortado/2015/07/05/open-source-licenses.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/91693b55fa8fea9372de26c7a73c6ff5c0f962445cd211202f756c2f8a06a0fa.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Picking an OSS license for your iOS app</h1>
+    <p class="post-meta">Jul 5, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>More and more mobile app developers are embracing the idea of <a href="http://code.dblock.org/2015/02/09/becoming-open-source-by-default.html">open source by default</a>. In many circumstances, the benefits of putting your entire mobile application on GitHub are clear.</p>
+
+<p>As programmers, we tend to wrap up a lot of ego in our code. Taking something you’ve written and putting it out in the world for others to do with what they like is a terrifying proposition; figuring out what rights you do and do not want to give others can be a very sensitive subject.</p>
+
+<p>I recently open-sourced <a href="http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html">Cortado</a>, my caffeine-tracking app, and in the past I’ve released an open-source personal tracking app called <a href="https://github.com/lazerwalker/theseus">Theseus</a>.</p>
+
+<p>Even as someone who was already moderately familiar with open-source licenses, I found myself having to do a fair bit of research; I figured I’d share what I learned about the various factors at play when considering how to license a full consumer-facing iOS app as open-source.</p>
+
+<p><strong>Keep in mind</strong>: I’m not a lawyer, and this does not constitute legal advice. If you’re debating licensing terms for your app and have the means to do so, consider consulting an actual lawyer.</p>
+
+<h1 id="different-kinds-of-freedom">Different kinds of “freedom”</h1>
+
+<p>If you’re already familiar with the basics of open source licenses, feel free to skip this section.</p>
+
+<p>When talking about OSS, there are different definitions of “freedom”, and different values that matter to different people. In broad strokes, the majority of popular OSS licenses tend to fall into one of two buckets: they’re either BSD-style or GPL-style licenses.</p>
+
+<p>A BSD-style license (BSD, MIT, Apache, etc) essentially says “do whatever you want with my code, as long as you give me credit and include a copy of this license”<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. You are given the freedom to use this code however you’d like, even in proprietary software.</p>
+
+<p>GPL-style “copyleft” licenses say that any software you build using that code must be licensed under the same terms. They are “viral” in that any code that uses open-source GPL code must itself be open-source, with very explicit rules about what that means.</p>
+
+<p>To someone used to BSD-style licenses, the GPL is hardly “free”, as it places very strict restrictions on the software you create. GPL-style licenses promote “freedom” in a very different, but equally valid, sense: they ensure that you as an end-user are always free to read and modify the source code of the software you use.</p>
+
+<p>Of course, this is a bit of a contrived dichotomy. There are nuances to both styles of license I haven’t covered here, and there are hundreds (if not thousands) of different licenses that grant diferent levels and types of freedom to users.</p>
+
+<h1 id="apps-versus-librariesframeworks">Apps versus libraries/frameworks</h1>
+
+<p>The rest of this article, I’m going to be talking explicitly about open-sourcing user-facing iOS applications. Choosing a license for iOS libraries/frameworks is far more cut and dry: since GPL’d code can’t be used in non-GPL’d apps, and most commercial iOS apps are not GPL (nor is that likely to change), releasing your iOS library under a copyleft license all but ensures that almost nobody will use it<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. Perhaps worth doing as a political statement, sure, but not productive if your goal is to put something out there for others to use.</p>
+
+<h1 id="so-what-license-should-you-use">So what license should you use?</h1>
+
+<p>At the end of the day, it comes down to a simple question: why are you open sourcing your app? Do you simply want transparency, allowing others to see your code? Do you want to provide a source of education, letting people learn from your code? Do you want to actively solicit contributions?</p>
+
+<p>There’s no clear-cut answer without knowing what your goals are. Anecdotally, about half of the open-source iOS applications on <a href="https://github.com/dkhamsing/open-source-ios-apps">this list</a> are using some form of GPL, and about half are using a BSD-style license (a roughly even split, it seems, between MIT and Simplified BSD, with a few Apaches thrown in for good measure).</p>
+
+<p>There’s no silver bullet, only thinking through what you want.</p>
+
+<h1 id="my-thought-process">My thought process</h1>
+<p>As an example, let’s walk through what went through my head when I recently open-sourced <a href="http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html">Cortado</a>, my caffeine-tracking app. As I sat down to think about what open-sourcing my app meant, I had a few goals (roughly in order of priority):</p>
+
+<ul>
+  <li>People should be free to look at my code and take inspiration from it. I’m proud of a lot of the work in this app; being able to point to a specific git commit on GitHub and say “here’s how I solved this problem, maybe that will help you” is incredibly valuable.</li>
+  <li>People should feel comfortable contributing back to the codebase.</li>
+  <li>People should <em>not</em> be able to take my app wholesale and release their own copy as-is on the App Store. I don’t want a competitor coming along, rebranding my app, and spending a lot of money on marketing to compete against me with my own product.</li>
+</ul>
+
+<h1 id="cant-i-just-license-it-for-non-commercial-use-or-tell-people-they-can-use-any-individual-part-of-the-codebase-but-not-the-complete-whole-or-forbid-binary-distribution">Can’t I just license it for non-commercial use? Or tell people they can use any individual part of the codebase, but not the complete whole? Or forbid binary distribution?</h1>
+
+<p>Given the set of goals I just laid out, questions like these feel like a natural progression. It makes sense that you’d want to place restrictions on your license such that people can use your code in the ways you want, and are forbidden from using it in ways you don’t want.</p>
+
+<p>This is technically possible. It’s probably not actually what you want, though.</p>
+
+<p>For one, this means your app won’t technically be “open source”. The Open Source Initiative (OSI) has <a href="http://opensource.org/osd">clear guidelines</a> about what is and is not “Open Source”, and any of those sorts of discrimination (restricting who your license applies to, the sorts of distribution you allow, etc) don’t fit that definition. Choosing a license that isn’t a valid OSS license is a bad thing for a whole bunch of reasons, some philosophical and some practical.</p>
+
+<p>Secondly, this would require you to write your own license, which you <em>really</em> don’t want to do. Unless you’re a lawyer, or have lots of money to pay one, it’s going to get very complex very quickly, and probably won’t end well for you. There’s a reason people use vetted, pre-existing OSI-approved licenses.</p>
+
+<h1 id="choosing-a-bsd-style-license">Choosing a BSD-style license</h1>
+
+<p>Let’s say you’re going to go with a BSD-style license. What does that mean?</p>
+
+<p>It means that anyone can use your code for whatever purpose you want. If they release an exact copy of your app as-is on the App Store, with the same name and icon and everything, you can ask Apple to take it down on the grounds of copyright infringement. But if they just use your code, not your art assets, there’s nothing you can do.</p>
+
+<p>Worth considering also is the licensing terms of any assets you might be using (icons, fonts, etc). The folks at <a href="https://github.com/artsy/eigen">Artsy</a> are a great example of distributing a MIT-licensed app that carefully splits out what is properly free from what is not by including all app fonts via a separate CocoaPod, with their internal version of the app and the public release using different font pods.</p>
+
+<p>This is a bold step to take, but the benefit is that people will feel 100% comfortable using your code, without worrying whether or not they’re technically in violation of the licensing terms.</p>
+
+<h1 id="choosing-a-gpl-style-license">Choosing a GPL-style license</h1>
+
+<p>Opting for the GPL has very different ramifications for iOS apps than desktop appliations.</p>
+
+<p>Specifically, Apple’s App Store distribution policies <a href="http://www.zdnet.com/article/no-gpl-apps-for-apples-app-store/">place restrictions that are in violation of the GPL</a>. As a result, GPL’d apps cannot, technically speaking, be released on the app store. Over the years, a handful of high-profile GPL’d apps, such as VLC and the game Battle for Wesnoth, have been pulled off the App Store for this very reason.</p>
+
+<p>There is a workaround: if you’re the copyright holder, you can grant Apple an exception. Normally, a core philosophical part of the GPL is making it so that all users have the same rights to a codebase, regardless of who wrote it. But in this case, there is a distinction between a piece of code’s copyright holder and anyone merely licensing it: the copyright holder has the right to dual-license the code, or grant Apple an exception to the GPL.</p>
+
+<p>What this means is that the copyright holder of a GPL’d codebase is allowed to distribute their app on the App Store, whereas nobody else can. In some ways, this is good: if someone just copied your codebase and submitted it to Apple as a clone, you have easy legal recourse to shut them down. In other ways, this is bad: if someone wants to use only a small part of your app’s codebase within their app (presumably their app would be GPL as well), they aren’t technically allowed to distribute that app <em>at all</em> on the App Store.</p>
+
+<p>That’s probably not desireable. You might be able to come to sort of agreement with an organization or individual that wants to license part of your code, but in practical terms that’s a pain in the ass that’s going to preclude most from even considering it. In other words, releasing your iOS app as GPL all but ensures that nobody else will be able to use even part of your app’s code. Maybe you’re okay with this.</p>
+
+<p>Also worth keeping in mind: this business with copyright means that if you accept third-party contributions to your app, you will need any contributors to grant you the appropriate rights to their work. Many GPL’d iOS apps have mandatory CLA (Contributor Licensing Agreements) in place; they are also fairly common for open-source repositories maintained by large tech companies. This isn’t a major problem, but it is a barrier to contribution that’s worth keeping in mind.</p>
+
+<h1 id="so-what-do-you-do">So what do you do?</h1>
+
+<p>Both of these options – a BSD-style license or a GPL-style license – have clear tradeoffs. Do you want to encourage contributors and encourage others to use your code in their apps, at the cost of opening yourself up to someone just cloning your app wholesale? Or do you want to give yourself some more protection, but at the cost of making your codebase much more hostile to others who want to use it? It ultimately comes down to what your reasons are for open-sourcing.</p>
+
+<p>With Cortado, I chose to release it under the MIT license, with a (legally unenforceable) plead in the README to not simply release the app as-is on the App Store. For something like Cortado, anyone who wanted to build their own clone from scratch could do so fairly easily; there isn’t anything about the technical implementation that’s particularly novel. To me, encouraging others to contribute back or use bits of the codebase in their own work was a priority, so a BSD-style license seemed like a sensible choice.</p>
+
+<p>Your reasons for open-sourcing, and the various factors surrounding it, will likely be different. Most important to any decision like this is knowing what your options are, and what the ramifications of any given choice are.</p>
+
+<p>Now go forth and open-source your apps!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Many BSD-style licenses have other terms as well – the differences between them typically surround issues such as copyright and patent grants – but I’m painting with a broad brush. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Theoretically, I’d bet one could release an iOS library under the <a href="https://www.gnu.org/licenses/lgpl.html">LGPL</a>, provided it’s integrated into third-party apps as a compiled framework. I haven’t actually seen this done in practice. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

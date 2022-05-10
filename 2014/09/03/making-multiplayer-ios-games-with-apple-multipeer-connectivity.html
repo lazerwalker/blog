@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Making Multiplayer iOS Games with Apple Multipeer Connectivity
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/2014/09/03/making-multiplayer-ios-games-with-apple-multipeer-connectivity.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/630e6bef28a3b7b0940bc1894d27157d8e73e9716bfeff4974934e1e8be5c3ab.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Making Multiplayer iOS Games with Apple Multipeer Connectivity</h1>
+    <p class="post-meta">Sep 3, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>After publishing my <a href="http://blog.lazerwalker.com/blog/2014/08/13/number-why-arent-there-more-games-like-spaceteam/">last blog post</a>, I had a number of people ask me for details about the nuts and bolts. I said that Apple makes implementing local multiplayer easy: what exactly did I mean?</p>
+
+<p>It seems relatively unknown, but Apple actually has an <a href="https://developer.apple.com/library/ios/documentation/MultipeerConnectivity/Reference/MultipeerConnectivityFramework/Introduction/Introduction.html">entire framework</a> dedicated to enabling multipeer connectivity between iOS devices. First introduced in iOS 6 as part of GameKit, it was spun off into its own framework in iOS 7. How does it work? Let’s build a game and find out!</p>
+
+<p>Since my goal here is to purely to show off how multipeer connectivity works, I’m just going to walk through the steps to adding networking to a game; this isn’t a tutorial in game development.</p>
+
+<p>The full codebase for the game is available at <a href="https://github.com/lazerwalker/prisoners-dilemma">https://github.com/lazerwalker/prisoners-dilemma</a>. More specifically, all of the logic has been encapsulated in a <a href="https://github.com/lazerwalker/prisoners-dilemma/blob/master/Prisoners%20Dilemma/ViewController.m">single file</a> for easier skimability. Were this production code you’d almost certainly want to encapsulate a lot of this behavior into more isolated and atomic units rather than shoving everything into a single monolithic view controller.</p>
+
+<p>The game also uses <a href="http://reactivecocoa.io">ReactiveCocoa</a>. Even if you aren’t familiar with ReactiveCocoa or FRP, I hope it’s a simple enough example that it’s still fairly self-explanatory.</p>
+
+<h2 id="prisoners-dilemma">Prisoner’s Dilemma</h2>
+
+<p>The game we’ll be using for our example is a two-player iterated <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma">prisoner’s dilemma</a> game.</p>
+
+<p>If you’re not familiar with the Prisoner’s Dilemma, the explanation of it is pretty straight forward. As per that Wikipedia link, the original formulation is presented as follows:</p>
+
+<blockquote>
+  <p>Two members of a criminal gang are arrested and imprisoned. Each prisoner is in solitary confinement with no means of speaking to or exchanging messages with the other. The police admit they don’t have enough evidence to convict the pair on the principal charge. They plan to sentence both to a year in prison on a lesser charge. Simultaneously, the police offer each prisoner a Faustian bargain. Each prisoner is given the opportunity either to betray the other, by testifying that the other committed the crime, or to cooperate with the other by remaining silent. Here’s how it goes:</p>
+
+  <ul>
+    <li>If A and B both betray the other, each of them serves 2 years in prison</li>
+    <li>If A betrays B but B remains silent, A will be set free and B will serve 3 years in prison (and vice versa)</li>
+    <li>If A and B both remain silent, both of them will only serve 1 year in prison (on the lesser charge)</li>
+  </ul>
+</blockquote>
+
+<p>Here’s what our version of the game will look like:</p>
+
+<p><a href="/images/mpc-game.png"><img src="/images/mpc-game-half.png" alt="image" /></a></p>
+
+<p>Two players will each be given to options: to cooperate or to defect. You can see the payout matrix in the screenshot: if A cooperates and B defects, for example, A will lose 1 point and B will gain 3 points. Because we are making an <strong>iterated</strong> prisoner’s dilemma game, each player’s score accumulates over a number of rounds.</p>
+
+<p>As an aside, if the idea of using game theory ideas like the prisoner’s dilemma within the framework of video game design is interesting to you, I highly recommend <a href="https://vimeo.com/88998276">this talk</a>, by Frank Lantz at the NYU Game Center, about the relationship between game theory and game design.</p>
+
+<h2 id="what-needs-to-be-done">What needs to be done</h2>
+
+<p>At a high level, the game is pretty straight forward: each player chooses to either collaborate or defect on their own iPhone. After each player has chosen, the result is revealed, the score is updated, and a new round begins where each player selects anew.</p>
+
+<p>We only need to do a few things:</p>
+
+<ul>
+  <li>Keep track of what round we’re on</li>
+  <li>Keep score for each player</li>
+  <li>When a player has made a choice, communicate that choice to the other player’s device</li>
+</ul>
+
+<h2 id="initial-network-connection">Initial network connection</h2>
+<p>The obvious required first step to any sort of networked gameplay is networking two devices together.</p>
+
+<p>The Multipeer Connectivity framework has a handful of objects that can help us with this.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">MCPeerID</code> represents a single device that’s part of a session. It has a display name that’s used to identify it. In our example, we’ll just use the device name of the iPhone running the game.</p>
+
+<p>An <code class="language-plaintext highlighter-rouge">MCSession</code> represents a single game session. At initialization, you give it an <code class="language-plaintext highlighter-rouge">MCPeerID</code> that represents your current system. As other devices connect, they will be added to the session object, which gives you a number of methods to send data to a given peer or set of peers. It optionally has support for encryption, and also has a delegate object for receiving incoming data from peers.</p>
+
+<p>Setting up a connection requires an active session, which in turn needs a peer to represent the current system. This isn’t hard:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">UIDevice</span> <span class="o">*</span><span class="n">device</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIDevice</span> <span class="nf">currentDevice</span><span class="p">];</span>
+
+<span class="n">MCPeerID</span> <span class="o">*</span><span class="n">peer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MCPeerID</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithDisplayName</span><span class="p">:</span><span class="n">device</span><span class="p">.</span><span class="n">name</span><span class="p">];</span>
+<span class="n">MCSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MCSession</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithPeer</span><span class="p">:</span><span class="n">peer</span><span class="p">];</span>
+<span class="n">session</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span></code></pre></figure>
+
+<p>For all this code, the object that manages these connections is also the session’s delegate.</p>
+
+<p>Once a session exists, we want to actually add multiple devices to that session. For the sake of this demo, let’s display a UI on all devices, and let any device connect to any other one. To make that happen, we need to do two things: each device needs to advertise that it’s available to connect to, and then display a UI to connect to other nearby advertising devices.</p>
+
+<p>The former is done through an MCAdvertiserAssistant object.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc">    <span class="n">self</span><span class="p">.</span><span class="n">assistant</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MCAdvertiserAssistant</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithServiceType</span><span class="p">:</span><span class="s">@"mlw-prisoner"</span>
+                                                          <span class="nl">discoveryInfo:</span><span class="nb">nil</span>
+                                                                <span class="nl">session:</span><span class="n">session</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">assistant</span> <span class="nf">start</span><span class="p">];</span></code></pre></figure>
+
+<p>The <code class="language-plaintext highlighter-rouge">serviceType</code> parameter in the constructor is simply a string that uniquely identifies the networking protocol of your app. It’s the same format as a Bonjour service type. Beyond some limitations on length and allowed characters, it doesn’t particularly matter what it is, as long as it’s shared among all clients and unique from other services.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">discoveryInfo</code> parameter is a dictionary that is passed along to other devices receiving the advertisement. There are various restrictions on what format the data can be in.</p>
+
+<p>Finally, the <code class="language-plaintext highlighter-rouge">session</code> represents a <code class="language-plaintext highlighter-rouge">MCSession</code> object that sucessful peer connections will be added to. In this case, we’re using the <code class="language-plaintext highlighter-rouge">MCSession</code>we created in the previous example.</p>
+
+<p>After calling <code class="language-plaintext highlighter-rouge">start</code>, the assistant will start broadcasting the device to all other devices within Bluetooth range or connected to the same WiFi network.</p>
+
+<p>When another device tries to connect to a device that is advertising, an invitation <code class="language-plaintext highlighter-rouge">UIAlertView</code> will automatically be shown with the option to accept/reject it. If you want to build an alternate UI for that behavior, Apple provides a similar class, <code class="language-plaintext highlighter-rouge">MCNearbyServiceAdvertiser</code>, that provides all of this functionality except for the user-facing UI.</p>
+
+<p><a href="/images/mpc-advertiser.png"><img src="/images/mpc-advertiser-half.png" alt="image" /></a></p>
+
+<h3 id="browsing-local-peers">Browsing local peers</h3>
+<p>Now that each device is broadcasting itself, we need a way to browse available peers and attempt to connect to them. While it wouldn’t be hard to write this ourselves, Apple provides a prefabricated view controller that can handle this for us. Instantiating an <code class="language-plaintext highlighter-rouge">MCBrowserViewController</code> is easy:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc">    <span class="n">MCBrowserViewController</span> <span class="o">*</span><span class="n">browser</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MCBrowserViewController</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithServiceType</span><span class="p">:</span><span class="s">@"mlw-prisoner"</span>
+                                                                                        <span class="nl">session:</span><span class="n">session</span><span class="p">];</span>
+    <span class="n">browser</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">presentViewController</span><span class="p">:</span><span class="n">browser</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span></code></pre></figure>
+
+<p>The <code class="language-plaintext highlighter-rouge">serviceType</code> here needs to refer to the same serviceType our advertiser is broadcasting. Just like our advertising assistant, the passed in <code class="language-plaintext highlighter-rouge">MCSession</code> object is the session that will receive peer connections when they are successfully made.</p>
+
+<p><a href="/images/mpc-browser.png"><img src="/images/mpc-browser-half.png" alt="image" /></a></p>
+
+<p>In our case, the object containing all this code is a <code class="language-plaintext highlighter-rouge">UIViewController</code>, and the MCBrowserViewController is presented modally. After the user has connected to one other device, we want to dismiss the modal view automatically. This is done by making our view controller the delegate of the <code class="language-plaintext highlighter-rouge">MCSession</code>, and listening for when the session adds a new peer:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">session</span><span class="p">:(</span><span class="n">MCSession</span> <span class="o">*</span><span class="p">)</span><span class="nv">session</span> <span class="nf">peer</span><span class="p">:(</span><span class="n">MCPeerID</span> <span class="o">*</span><span class="p">)</span><span class="nv">peerID</span> <span class="nf">didChangeState</span><span class="p">:(</span><span class="n">MCSessionState</span><span class="p">)</span><span class="nv">state</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">MCSessionStateConnected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span> <span class="nf">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This logic would need to be a bit fancier if we were dealing with a game that had more than two peers, but for now we can safely make the assumption that a single successful connection means we’re off to the races.</p>
+
+<p>(If you step through the full game code in a debugger, you’ll notice that when connecting to a peer this method is fired twice, first with an intermediate <code class="language-plaintext highlighter-rouge">MCSessionStateConnecting</code> state and then again with the <code class="language-plaintext highlighter-rouge">MCSessionStateConnected</code> state we’re looking for here.)</p>
+
+<p>Additionally, we’ll want to dismiss the modal view controller when the user taps the ‘cancel’ button. We can do that by making our view controller the browser’s delegate.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">browserViewControllerWasCancelled</span><span class="p">:(</span><span class="n">MCBrowserViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">browserViewController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span> <span class="nf">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="sending-and-receiving-data">Sending and Receiving Data</h2>
+<p>At this point, running the game will let two clients connect to each other, but not much else.</p>
+
+<p>When making multiplayer games, concerns with how to let clients talk to each other exist at multiple levels. The Multipeer Connectivity framework deals with the low-level problem of letting two devices connect to each other and send data back and forth, and can optionally offer some assurance of message deliverability, but it doesn’t offer solutions to problems at a higher level than the transport layer. Once the two devices are connected, we still have to decide for ourselves what data to communicate and what format to serialize it in.</p>
+
+<p>Let’s take a step back and think about what our data transmissions will actually look like. While we could find a way to serialize the entire game state and send it between the two devices, that’s not a solution that scales paricularly well to games more complex than this. Ultimately, at any given moment, our prisoner’s dilemma game only has a few pieces of state: how many rounds have been played, the current score, and which choice (if any) each player has made.</p>
+
+<p>Each client should theoretically always know what round it is, what the current score is, and whether that client’s player has made a move yet, but it needs a way to know when the other client has made a move. Perhaps, then, each client should communicate with the other client only when its player makes a move, sending whether they chose to cooperate or defect.</p>
+
+<p>In a more complex, production-ready game, we’d surely want more synchronization checks and failsafes to make sure that all of the clients’ game states stay exactly the same. In our case, we can add a little bit of safety by adding marginally more complexity: we’ll send the round number along whenever we send a player’s choice, so a client can ignore it if it isn’t for what it perceives to be the current round.</p>
+
+<p>Since a player’s choice is binary (they’ve either defected or cooperated), we can represent both the round number and their choice with a single integer. The absolute value of the integer is the round number; whether the number is positive or negative indicates whether it represents a choice to collaborate or defect. The round number will be one-indexed rather than zero-index, both because this makes sense from a presentation standpoint and to avoid the trickiness of thinking about negative zero.</p>
+
+<p>Again, a game that’s even marginally more complex will likely warrant a more complex data serialization scheme, but for the purposes of showing how the Multipeer Connectivity framework works it’s convenient to be able to condense each unit of data transfer down to a single integer.</p>
+
+<h2 id="sending-data">Sending data</h2>
+<p>To send data to peers, <code class="language-plaintext highlighter-rouge">MCSession</code> has a few methods based on whether you want to send a raw chunk of data, a stream of data, or a resource via URL. In a real-time game you’d probably want to stream data to minimize overhead and lag. In this case, just sending bits of data as needed is simpler and perfectly sufficient:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc">    <span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">Choice</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ChoiceNotMade</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">ChoiceCooperate</span><span class="p">,</span>
+        <span class="n">ChoiceDefect</span>
+    <span class="p">};</span>
+
+    <span class="n">NSInteger</span> <span class="n">round</span><span class="p">;</span> <span class="c1">// Represents the current round number</span>
+    <span class="n">Choice</span> <span class="n">yourChoice</span><span class="p">;</span> <span class="c1">// The player's choice</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">yourChoice</span> <span class="o">==</span> <span class="n">ChoiceDefect</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">round</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSData</span> <span class="nf">dataWithBytes</span><span class="p">:</span><span class="o">&amp;</span><span class="n">round</span> <span class="nf">length</span><span class="p">:</span><span class="k">sizeof</span><span class="p">(</span><span class="n">round</span><span class="p">)];</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">;</span>
+
+    <span class="p">[</span><span class="n">session</span> <span class="nf">sendData</span><span class="p">:</span><span class="n">data</span>
+                   <span class="nl">toPeers:</span><span class="n">session</span><span class="p">.</span><span class="n">connectedPeers</span>
+                  <span class="nl">withMode:</span><span class="n">MCSessionSendDataReliable</span>
+                     <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span></code></pre></figure>
+
+<p>A positive round number represents a “cooperate” choice, whereas a negative number means “defect”. We serialize that integer into <code class="language-plaintext highlighter-rouge">NSData</code>, and tell the active <code class="language-plaintext highlighter-rouge">MCSession</code> object to send it to all connected peers, using the <code class="language-plaintext highlighter-rouge">MCSessionSendDataReliable</code> mode to ensure delivery of every bit of data.</p>
+
+<p>The receiving end looks pretty similar, taking place in a delegate method on the <code class="language-plaintext highlighter-rouge">MCSessionDelegate</code> protocol.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc">    <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">session</span><span class="p">:(</span><span class="n">MCSession</span> <span class="o">*</span><span class="p">)</span><span class="nv">session</span> <span class="nf">didReceiveData</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">data</span> <span class="nf">fromPeer</span><span class="p">:(</span><span class="n">MCPeerID</span> <span class="o">*</span><span class="p">)</span><span class="nv">peerID</span> <span class="p">{</span>
+        <span class="n">NSInteger</span> <span class="n">round</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">data</span> <span class="nf">getBytes</span><span class="p">:</span><span class="o">&amp;</span><span class="n">round</span> <span class="nf">length</span><span class="p">:</span><span class="k">sizeof</span><span class="p">(</span><span class="n">round</span><span class="p">)];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">ABS</span><span class="p">(</span><span class="n">round</span><span class="p">)</span> <span class="o">!=</span> <span class="n">self</span><span class="p">.</span><span class="n">roundNumber</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="n">Choice</span> <span class="n">theirChoice</span> <span class="o">=</span> <span class="p">(</span><span class="n">round</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="n">ChoiceCooperate</span> <span class="p">:</span> <span class="n">ChoiceDefect</span><span class="p">);</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>And that’s all there is to it! There’s a small bit of other game logic — accepting user input and sending data to the peer as a result, calculating the score when a roud is over, etc — but that’s really all it takes to get the networked aspect of the game up and running. Again, the full source code, ready to run on your own iOS devices, is available on <a href="https://github.com/lazerwalker/prisoners-dilemma">GitHub</a>.</p>
+
+<p>It’s worth reiterating (yet again) that this is WAY simpler than almost any real-world game you’d build using something like this. It’s only two players, so it doesn’t require negotation between multiple peers. It’s turn-based, so there isn’t any need to come up with a strategy for resolving incompatible actions that different clients send simultaneously. The information being sent between clients is trivially small, eliminating the need to worry about how to manage shuttling large amounts of data in a performant manner.</p>
+
+<p>Again, these are all conceptual issues that any networked game will face. My main point here isn’t to tell you how to solve those. Rather, my hope is that I’ve shown how Apple’s frameworks can provide a nice tool to take care of the network transport layer for you, leaving you free to focus on coming up with a solution for those bigger-picture problems that works best for your specific game.</p>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

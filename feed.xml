@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://blog.lazerwalker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.lazerwalker.com/" rel="alternate" type="text/html" /><updated>2022-05-10T16:35:39+00:00</updated><id>http://blog.lazerwalker.com/feed.xml</id><title type="html">Emilia Lazer-Walker</title><subtitle>Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</subtitle><entry><title type="html">So you want to run a virtual event</title><link href="http://blog.lazerwalker.com/2022/05/10/virtual-events.html" rel="alternate" type="text/html" title="So you want to run a virtual event" /><published>2022-05-10T11:00:00+00:00</published><updated>2022-05-10T11:00:00+00:00</updated><id>http://blog.lazerwalker.com/2022/05/10/virtual-events</id><content type="html" xml:base="http://blog.lazerwalker.com/2022/05/10/virtual-events.html">&lt;p&gt;If you’re an event organizer right now, you’re in a tough spot. You’re desperate to get back to running an in-person event, but you know it isn’t quite safe yet.&lt;/p&gt;
+
+&lt;p&gt;Maybe you’ve seen in-person events in your community lead to large-scale COVID outbreaks or even deaths, and that terrifies you.&lt;/p&gt;
+
+&lt;p&gt;Maybe your planning team disagrees on what an acceptable level of COVID safety is, or you don’t have the resources to provide what you believe to be adequate safety.&lt;/p&gt;
+
+&lt;p&gt;Even if you could run an event in-person, you’re worried about losing the accessibility of a fully-remote event for attendees who are immunocompromised, or who live in far-off places and can’t reasonably travel.&lt;/p&gt;
+
+&lt;p&gt;Whatever reason, you need an online event. But you’re also justifiably worried, because online events tend to suck. And now that people in a lot of the world are seeing their friends  in-person and spending time in places that aren’t their homes, the prospect of spending a day or a weekend or a week plastered to a Twitch stream seems even more unpleasant than it did in 2020.&lt;/p&gt;
+
+&lt;p&gt;How the heck do you actually throw a virtual event worth attending?&lt;/p&gt;
+
+&lt;h2 id=&quot;i-dont-have-the-answers&quot;&gt;I don’t have the answers&lt;/h2&gt;
+&lt;p&gt;Unfortunately, this isn’t a “how-to” guide. If I could give you a concrete checklist for how to throw an online event that didn’t suck, I would!&lt;/p&gt;
+
+&lt;p&gt;It’s also hard to give concrete suggestions since it’s so dependent on your conference’s audience, and how “experimental” a space is appropriate for you. I’ve attended exciting, creative, community-driven in-person conferences hoested in found spaces that needed major modifications to work as event venues (I love to tell the story of the &lt;a href=&quot;https://amaze-berlin.de&quot;&gt;Berlin games festival&lt;/a&gt; where the two talk tracks where “in the karate dojo” and “on-stage at the combination nightclub and pool”). I’ve also attended plenty of corporate conferences in hotel ballrooms or city-owned convention centers.&lt;/p&gt;
+
+&lt;p&gt;The former has a lot of leeway to get experimental with online events, while the latter is going to have a harder time convincing attendees to try something different. Knowing your audience is key. A lot of the advice in this article is more focused on people who &lt;em&gt;do&lt;/em&gt; have room to explore, but even if you’re restricted to using a relatively-buttoned-up turnkey enterprise event platform, there are still usually ways you can nudge the social design of your space one way or another.&lt;/p&gt;
+
+&lt;p&gt;If it’s not obvious, this article is also focused more on events that look like conferences or festivals — the sort of event where an in-person event would typically be centered around one or more tracks of talks. Designing other types of events, like parties, face all of the same conceptual design challenges, but a lot of the specific tools at your disposal may be different.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The point of this piece is really to convey that designing a virtual event is, in fact, a design problem, and a deeply complex and largely unsolved one at that.&lt;/strong&gt; I’m hoping I can point you in the right direction for some of the questions you should be asking, and some of the design considerations that should be front-of-mind as you start to create an event for your community.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-first-question-do-you-actually-want-to-throw-a-live-event&quot;&gt;The first question: do you actually want to throw a live event?&lt;/h2&gt;
+
+&lt;p&gt;A question I ask to a lot of event organizers is “why are you producing a livestream instead of a YouTube playlist?”&lt;/p&gt;
+
+&lt;p&gt;GitHub’s most recent &lt;a href=&quot;https://githubuniverse.com/&quot;&gt;GitHub Universe conference&lt;/a&gt; completely bypassed the idea of live talks: it being a “two-day event” simply meant that each day featured a new YouTube playlist of new talks to watch asynchronously, plus a fifteen minute “keynote” previewing that day’s new talks.&lt;/p&gt;
+
+&lt;p&gt;There are benefits to running a live event. A lot of people won’t go out of their way to watch a half-hour talk on YouTube, even if it’s directly applicable to their interests or professional development. A live conference feeling like a “happening” or a “moment” can give people the push they need to make time in their busy schedule for something they would enjoy and benefit from.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, it’s a big ask to get people to attend a synchronous virtual conference, especially as more in-person activities become allowed. People feel guilty taking time off work to attend a weekday virtual conference, and don’t really disconnect from work when they do. For weekend events, they’re hesitant to spend their limited free time staring at a computer screen instead of doing, well, literally anything else. This is especially true if your event has little to no meaningful networking or social interaction driving a sense that people will miss out on something valuable if they just catch the talks on YouTube after the fact.&lt;/p&gt;
+
+&lt;p&gt;There’s no single correct answer here, but whether you throw a live virtual event or something more asynchronous, be sure to have a coherent reason why that’s the correct choice for your community and attendees.&lt;/p&gt;
+
+&lt;h2 id=&quot;your-event-needs-to-be-an-event&quot;&gt;Your event needs to be an event&lt;/h2&gt;
+
+&lt;p&gt;Why do people attend conferences or other events? They might say it’s the talks, or the socializing and networking opportunities in the “hallway track”, or for a certain class of professional events they might be honest and say “it’s a free work-sponsored vacation”.&lt;/p&gt;
+
+&lt;p&gt;Any reason is valid. But the real underlying reason people attend your event, instead of finding another way to achieve those goals, is precisely because it’s an “event”. It’s the act of traveling to an in-person conference that allows your brain to shift into a new headspace where you’re receptive to new ideas or meeting new people. It’s why companies run “off-sites” for big-picture brainstorming: that context shift is essential.&lt;/p&gt;
+
+&lt;p&gt;It’s hard to get this for an event that people attend from the comfort of their own home. It’s even more difficult when you’re asking people to use software — Discord, Slack, Zoom, Twitch — that they already use in their day jobs and social lives. There’s no sense of moving to a new space. It’s no wonder people find it hard to disconnect from their work when they’re sitting at their work desk and using their work software!&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-you-create-that-sense-of-place&quot;&gt;How do you create that sense of place?&lt;/h2&gt;
+
+&lt;p&gt;This is the million-dollar question.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&quot;https://roguelike.club&quot;&gt;Roguelike Celebration&lt;/a&gt;, a game design conference I run, our answer was a &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;custom-built social space&lt;/a&gt; blending design elements of chat apps like Discord and Slack with MUDs, the text-based precursors to MMORPGs. Consistent feedback we’ve gotten across two years of events is that, despite being a text-based chat space, attendees feel a sense of physical presence. They describe coming back year after year as having the same feeling as going back to an in-person venue, and they tend to use a lot of the same language that VR enthusiasts use around “presence” despite it being a text-only space. That’s really cool!&lt;/p&gt;
+
+&lt;p&gt;I wouldn’t necessarily start with trying to build your own custom event platform like we did, even if you have the resources. Instead, get creative: what existing tech platforms can you repurpose for your event that will help it feel special?&lt;/p&gt;
+
+&lt;p&gt;Online spatial chat platforms like &lt;a href=&quot;https://gather.town&quot;&gt;Gather Town&lt;/a&gt; or &lt;a href=&quot;https://skittish.com&quot;&gt;Skittish&lt;/a&gt; can be nice, but require a lot of customization (I’ll talk more about them later!). A lot of event organizers I’ve spoken with lately are interested in repurposing existing online spaces — like, say, finding a free MMO or online game that can serve as a social space — which I think is a really interesting path to explore, even if I haven’t seen concrete success there.&lt;/p&gt;
+
+&lt;p&gt;Finding the right “found space” can also be tricky. I’ve seen events flop in spaces like Second Life, as anything that’s 3D rather than 2D will have accessibility barriers to basic things like navigation unless somebody is already familiar with 3D games. I’ve seen events held in Roblox fall over from a technical standpoint, as its networking is generally extremely robust but has scaling issues if you want more than a dozen or so people in your space at once. I mention these not to say “X tool is bad!”, but more to emphasize how important it is to test a potential space to the extent you can before committing to it.&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have access to &lt;em&gt;some&lt;/em&gt; development resources, a nice middle-ground might be building on top of existing open-source projects. Roguelike Celebration’s social space is &lt;a href=&quot;https://github.com/roguelike-celebration/azure-mud&quot;&gt;on GitHub&lt;/a&gt;, as is &lt;a href=&quot;https://github.com/molleindustria/likelike-online&quot;&gt;LIKELIKE Online&lt;/a&gt;, a 2D pixel art gallery space. If you go down this route, it’s worth emphasizing how much custom-built event spaces are, in fact, built for their specific contexts, and how well they could work for your event depends on how much context overlap there is. I don’t know how well Roguelike Celebration’s setup would work for an audience that doesn’t get immediately excited at the idea of a text-only world. Similarly, LIKELIKE does a phenomenal job of replicating the vibes of an art gallery opening party, where attendees can vibe with the energy of the space and briefly say hi to people they know, but the way it “feels” like a loud noisy party means it’d be a poor fit for a networking-focused “hallway track” where you want people to be able to have in-depth conversations with each other.&lt;/p&gt;
+
+&lt;h3 id=&quot;case-study-deserted-island-devops&quot;&gt;Case Study: Deserted Island DevOps&lt;/h3&gt;
+
+&lt;p&gt;It’s worth noting that you can create this sense of place without necessarily providing interactivity. I want to talk about a really clever and resourceful example: &lt;a href=&quot;https://desertedislanddevops.com/&quot;&gt;Deserted Island DevOps&lt;/a&gt;. A conference that first took place in April 2020, at the start of the pandemic and the height of the popularity of Animal Crossing: New Horizons for the Nintendo Switch, it’s a conference that “took place in Animal Crossing”.&lt;/p&gt;
+
+&lt;p&gt;Now, if you’ve played Animal Crossing, you know that “a conference in Animal Crossing” would be unwieldy and impractical. Animal Crossing has great multiplayer features, but it allows a maximum of 8 people in the same island, and chat options are limited.&lt;/p&gt;
+
+&lt;p&gt;In practical terms, Deserted Island DevOps was a “boring” virtual conference: it was little more than a Twitch stream and an associated Discord. The “Animal Crossing” piece came from the Twitch stream itself: a video feed of an Animal Crossing instance, showing the speaker’s Animal Crossing avatar (they had full control over their avatar’s appearance and could trigger custom emote animations) and their slides composited into the scene.&lt;/p&gt;
+
+&lt;p&gt;The event was a huge success, with nearly 12,000 live views over the course of the weekend, and a lot of buzz on social media for how innovative their approach was. I think a huge take-away from Deserted Island DevOps is that creating a sense of &lt;em&gt;place&lt;/em&gt; doesn’t necessarily mean creating a novel interactive space people can navigate. Sometimes sufficiently evocative theming can be enough!&lt;/p&gt;
+
+&lt;h2 id=&quot;to-videochat-or-not-to-videochat&quot;&gt;To videochat or not to videochat?&lt;/h2&gt;
+
+&lt;p&gt;A thing I have learned is that people have drastically different opinions about videochat. Some people desperately crave the ability to get literal “face time” with other event attendees. Others can’t stand the idea of having to turn on their webcam to talk to strangers. Similarly, some people easily prefer audio-only chat to videochat, while others can’t stand the loss of social cues that comes from having audio but not video. I’d urge you to make sure the design of your virtual event caters equally to all of these groups.&lt;/p&gt;
+
+&lt;p&gt;Videochat is a high-trust activity. People in videochat are more vulnerable to harassment than text chat, and moderation is also trickier when you don’t have a perfect record of everything said. Different communities and sets of conference attendees have different levels of trust; while there are plenty of trust and safety tools you can use to mitigate issues once your event has started, I’d urge you to both think about how to cultivate as healthy a community as you can before your event begins, and also approach designing videochat at your event with an honest eye towards where your event’s community falls on the trust spectrum.&lt;/p&gt;
+
+&lt;p&gt;In the past, I assumed the ideal was an event where attendees could freely choose to consensually escalate from text chat to audio or video at any point during the conference. For Roguelike Celebration 2021, we built out our own custom videochat, and spent a great deal of time designing an exceptionally thoughtful videochat system that did just that, seamlessly integrating videochat and text chat in our social space. To be blunt, our attempt was broadly a failure, with the focused exception of using our videochat for post-talk speaker Q&amp;amp;A breakout rooms.&lt;/p&gt;
+
+&lt;p&gt;Humans instinctively prioritize paying attention to people with higher-fidelity modes of communication. I don’t know how you design videochat that doesn’t give preferential treatment to video users over audio or text users. This is definitely true if using an off-the-shelf event platform or videochat tool, but even with a custom-built solution it’s an unsolved problem. And that’s even before tackling issues of Zoom fatigue; even people who love videochat will get tired if they stay on video for too long.&lt;/p&gt;
+
+&lt;h3 id=&quot;videochat-as-a-focused-tool&quot;&gt;Videochat as a focused tool&lt;/h3&gt;
+&lt;p&gt;Instead, I’d encourage you to think of videochat as a focused tool you can apply at specific times during your event. A lot of people who might not want to spend 8 hours on a call would probably love to spend a focused hour or two with a higher-fidelity chance to connect with other attendees. If these sessions are time-limited and opt-in, it’s also easier to feel comfortable prioritizing videochat users over others in these sessions.&lt;/p&gt;
+
+&lt;p&gt;One specific hard problem to design for is allowing people to “preview” conversations. In real life, it’s easy for someone to hover at the outside of a conversation circle before choosing to engage or find a different conversation. Most online tools do a poor job of recreating that dynamic — joining a Zoom call and then leaving ten seconds later feels socially awkward, as does walking up to a chat circle in a tool like Gather Town and then leaving. There are ways to minimize that awkwardness can with either technical or social solutions, but it’s a hard problem you need to think about and actively solve for.&lt;/p&gt;
+
+&lt;p&gt;There are many ways to design focused video time. At Roguelike Celebration, we do “unconferencing” sessions, where people can self-select into Zoom rooms based on conversation topics proposed by attendees. I’ve also seen a lot of success with “speed dating”-style breakout rooms,  where people are placed in random conversation groups for a preset period of time before being automatically split up and reformed into new groups.&lt;/p&gt;
+
+&lt;p&gt;I don’t have a lot of concrete advice around unconferencing other than having decent tools to allow proposing and upvoting topics (and having an answer to the “how to poke your head into a room” problem), but it is a model that works really well for us.&lt;/p&gt;
+
+&lt;h3 id=&quot;videochat-breakout-rooms--speed-dating--coffee-chats&quot;&gt;Videochat breakout rooms / “speed dating” / “coffee chats”&lt;/h3&gt;
+
+&lt;p&gt;If you want to try a “speed dating” or “coffee chat” model, that’s typically easy to implement using the “breakout room” functionality of most commercial videochat software. The rigid, predictable structure makes it convenient to make new people, as it hand-waves over a lot of the awkwardness of how to start a conversation with someone in the first place.&lt;/p&gt;
+
+&lt;p&gt;The tricky thing is this pattern really requires you have a high-trust environment, even more than other videochat techniques. Because you can’t simply leave a conversation while it’s happening, it’s easy for underrepresented groups to get frustrated if they feel like they aren’t being listened to. You probably won’t receive formal code of conduct reports, people will just quietly stop participating. While there are social tools you can use to try to shape these conversations to be healthy,  the success of a session like this really hinges on your attendees being kind, respectful, and generous. If your community is on the lower end of the trust spectrum, this specific technique might not be right for your event.&lt;/p&gt;
+
+&lt;p&gt;If you do think that sort of “coffee chat” is appropriate for your community, I’d recommend groups of 3-4 people, 5 minute chats, and some sort of formal or informal structure for how to break the ice in each chat. 1-on-1 chats and longer durations can both work in higher-trust environments, but most of the time you want to aggressively optimize for mitigating just how miserable it is to be stuck in a bad conversation.&lt;/p&gt;
+
+&lt;p&gt;Ice-breakers depend a lot on the context. I’ve seen professional networking sessions use a convention where each person starts by giving a 30-second intro to themselves, and I’ve seen people doing this in context of a creative retreat naturally lead with “so, what are you working on?”.&lt;/p&gt;
+
+&lt;h3 id=&quot;facilitators-you-probably-need-them&quot;&gt;Facilitators: you probably need them&lt;/h3&gt;
+
+&lt;p&gt;Regardless of what your videochat structure looks like, if you plan to have more than 5 or so people in a single videochat, you probably want facilitators to help keep the conversation moving. In work contexts, someone usually runs the meeting and plays this role; in social Zoom chats with friends, someone probably informally picks up this mantle. At an event where you are hoping that strangers or pseudo-strangers will talk to each other, making sure that you have a volunteer or staff member to play this role (instead of hoping an attendee might) is a good way to stack the deck and make sure things go well.&lt;/p&gt;
+
+&lt;p&gt;This obviously depends a lot on your format. If you’re using a spatial chat tool, it might be awkward to have people whose explicit job is to go around and start conversations. But if you’re going to invest in making videochat work for your event, it’s worth thinking about how having a few human facilitators can help ensure the experience is a positive one.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-create-social-interaction&quot;&gt;How to create social interaction&lt;/h2&gt;
+
+&lt;p&gt;At in-person events, there’s a wide range of social interaction people might take part in, with varying levels of interactivity or room for freeform conversation. Sitting down to discuss Serious Topics with someone one-on-one is different from making small talk over the cheese table is different from playing a game of cards where the majority of the space in the conversation is taken up by the logistics of the game itself.&lt;/p&gt;
+
+&lt;p&gt;People are very good at subconsciously navigating these varied spaces and choosing the form of interaction for them that’s right for them. But this requires an event that provides that wide variety of interactions. If your event just provides a single way to “network”, it’ll feel flat, and a large number of your attendees won’t feel comfortable chatting.&lt;/p&gt;
+
+&lt;p&gt;Like so much else I’ve been talking about, I sadly can’t give you a checklist or playbook to just implement. Figuring out how to provide that range of activities is so highly dependent on both your audience and on your event platform. It’s also really hard to talk about! I don’t think Roguelike Celebration is perfect at this yet, but it may be instructive for me to outline some of the conversation opportunities we intentionally create or support. Going from most involved to least involved:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Each day, we host “unconferencing” sessions, where people can propose topics (generally design or technical subjects) to discuss in focused Zoom calls&lt;/li&gt;
+  &lt;li&gt;After each block of talks, speakers can optionally break out into a dedicated room for Q&amp;amp;A with attendees. Generally, the speaker is on a videocall while other attendees use text chat&lt;/li&gt;
+  &lt;li&gt;During the mainstage talks, we encourage a vibrant Twitch-style chat. With our audience, this generally leads to a good blend of insightful discussion/commentary and silly memes&lt;/li&gt;
+  &lt;li&gt;During the talks, people can also submit and upvote questions to be asked during any formal moderated Q&amp;amp;A time left at the end of a session (separate from the speaker breakout rooms). This gives people a chance to contribute to the discussion who are overwhelmed by the pace of the real-time chat&lt;/li&gt;
+  &lt;li&gt;During unstructured breaks, we’ve seen a pattern of people running their own playful or game-like activities in the space, ranging from running short tabletop RPG sessions to someone hosting a fortune-telling table&lt;/li&gt;
+  &lt;li&gt;In 2021, we introduced a short puzzle hunt / chain of riddles, which gave people an activity they could either do solo or team up with others and ask for help on&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Our space has consistently included a number of “fidget toys”: objects you can pick up and carry with you, magical potions that append an emoji to your name, ways to interact with the space and see a random text generator do something silly. These give you an easy way to strike up a conversation with someone else by, say, commenting on their emoji, or asking where they got their item, and also give you a way to passively do something in the space alongside someone else without talking.&lt;/p&gt;
+
+    &lt;p&gt;It’s worth calling out that our attendees spontaneously playing formal games and doing fortune tellings is not something to plan for. In most cases, that sort of attendee self-organizing doesn’t happen, or happens relatively infrequently. If you want to try to encourage people to play online multiplayer party games together (which is a great form of social interaction!) I’d put it upon yourself as an organizer to make it happen. It’s a lot easier to get attendees to jump into a game of Jackbox, say, if a facilitator actively schedules it, sets up the game, and tells people where to show up, rather than hoping an attendee will spontaneously choose to do all that work.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If this set of problems is something you’re interested in solving or diving deeper on, I’d also recommend you read my &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;earlier article about Roguelike Celebration&lt;/a&gt;, as I go into a few other topics not covered here. Kate Compton’s &lt;a href=&quot;https://www.youtube.com/watch?v=3HWwSbnkg4I&quot;&gt;talk about technology design for social creativity&lt;/a&gt; has also been formative in my thinking.&lt;/p&gt;
+
+&lt;h2 id=&quot;purpose-built-spatial-event-platforms&quot;&gt;Purpose-built spatial event platforms&lt;/h2&gt;
+
+&lt;p&gt;I’ve seen a lot of interest in online event platforms specifically built to be fun spaces that lean on playfulness to provide an alternative to traditional video calls. There are a ton of these “spatial” event platforms: &lt;a href=&quot;https://gather.town&quot;&gt;Gather Town&lt;/a&gt; is perhaps the best-known, but I have familiarity with &lt;a href=&quot;https://skittish.com&quot;&gt;Skittish&lt;/a&gt;, &lt;a href=&quot;https://www.wonder.me/&quot;&gt;Wonder&lt;/a&gt;, and &lt;a href=&quot;https://www.bramble.live/&quot;&gt;Bramble&lt;/a&gt;, and you could easily find a dozen more.&lt;/p&gt;
+
+&lt;p&gt;They broadly share similar featuresets: each attendee controls an individual avatar in a custom space (almost always 2D, or 2D movement within a 3D space, often with a retro pixel-art aesthetic), and when you walk close to another attendee, you can see their webcam feed and/or hear them speak via microphone. The core idea behind these sorts of platforms is that spatial audio/videochat recreates an aspect of in-person events, where you can walk up to somebody and have a conversation with them without it being a giant unwieldy video call.&lt;/p&gt;
+
+&lt;p&gt;Different platforms differentiate themselves through things like their default aesthetic, their editing tools, whether you can host a live presentation in the space, the specifics of their audio/videochat, and things like that. But the core value proposition is often broadly similar. I often see these either adopted as the core platform for an event, or just used as the venue for a specific scheduled 1-2 hour “social hour” or networking session.&lt;/p&gt;
+
+&lt;p&gt;If you’re considering one of these tools, the main thing I would urge you is to recognize them as just that: tools. Just because you may be using an event platform that allows people to walk up to each other and strike up a conversation, that doesn’t mean they will unless encouraged to do so through thoughtful social design. You absolutely can build a space that accomplishes the sort of goals I set out above using tools like these, but in most cases I’d recommend thinking of them as jumping-off points to build on rather than ready-made solutions that will solve the hard social problems for you. This holds true whether you’re looking to hold a “social hour” in tools like this or are hoping to use them as your primary event platform.&lt;/p&gt;
+
+&lt;p&gt;The linguistics conference LingComm has a great series of articles about running their 2021 online event, most notably one about &lt;a href=&quot;https://lingcomm.org/2021/06/28/hosting-online-conferences-for-building-community-the-case-of-lingcomm21/&quot;&gt;the design of their Gather space&lt;/a&gt; (also to read: LingComm organizer Gretchen McCulloch’s &lt;a href=&quot;https://www.wired.com/story/zoom-parties-proximity-chat/&quot;&gt;Wired article&lt;/a&gt; about these sorts of tools). If you’re looking to use one of these readymade spatial event platforms, I think LingComm is a great example of the sort of care and effort you need to put into designing your space (disclaimer: both of those articles liberally cite my work with Roguelike Celebration :P)&lt;/p&gt;
+
+&lt;p&gt;Counter-intuitively, you may also have more success using one of these tools that is less popular. As I’ve discussed, a big part of the value of using a “non-traditional” event platform is the novelty of a space affording a context shift. If other events in your community regularly use one of these event platforms, it may already feel “same-y” to attendees. In other professional technical contexts, I often advise people to not make technology choices based on what’s new and shiny, but that may be exactly what you want here.&lt;/p&gt;
+
+&lt;h3 id=&quot;sidenote-vr-spaces&quot;&gt;Sidenote: VR spaces&lt;/h3&gt;
+
+&lt;p&gt;One specific sub-flavor of this sort of chat tool you might encounter are VR spaces like &lt;a href=&quot;https://altvr.com/&quot;&gt;AltSpace&lt;/a&gt;, &lt;a href=&quot;https://hello.vrchat.com/&quot;&gt;VRChat&lt;/a&gt;, or &lt;a href=&quot;https://hubs.mozilla.com/&quot;&gt;Mozilla Hubs&lt;/a&gt; that are primarily focused on VR but also usually support flat displays or smartphones.&lt;/p&gt;
+
+&lt;p&gt;My advice here is simple: this is a great option if you’re working with an audience that is already intimately familiar with VR or 3D virtual worlds. Otherwise, the technical barriers of getting people onboarded in a first-person 3D space are too large. You’ll waste your time and your attendees will be frustrated.&lt;/p&gt;
+
+&lt;p&gt;If you do happen to be running an event for a VR audience, I urge you to explore your options for yourself, but my informal opinion is that AltSpace is best for large events where thousands of people will watch a single presenter and you need to shard audience instances, while Mozilla Hubs is the most flexible (and the most accessible across a wide range of non-VR devices) for smaller and more informal events.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-you-schedule-it&quot;&gt;How do you schedule it?&lt;/h2&gt;
+
+&lt;p&gt;One of the biggest strengths of virtual events is that you can welcome attendees from all over the world without requiring expensive travel. Supporting that through a schedule that’s equally inclusive is surprisingly difficult. It’s easy to schedule an in-person conference: your conference day aligns with the working day. That doesn’t necessarily make sense when all of your attendees are in different time zones.&lt;/p&gt;
+
+&lt;p&gt;I’ve seen two common approaches here, depending on your resources.&lt;/p&gt;
+
+&lt;h3 id=&quot;24-hour-conference&quot;&gt;24-hour conference&lt;/h3&gt;
+
+&lt;p&gt;One approach is to schedule a “24-hour conference”. No matter what time zone an attendee is in, there will be something happening during the day their time. This is great for the way it doesn’t center a specific region: it feels conceptually more inclusive, and concretely makes it easier for you to attract audiences outside of the geographic regions you usually operate in.&lt;/p&gt;
+
+&lt;p&gt;It’s also difficult to pull off, requiring having strong geographic diversity for both speakers and conference staff to make sure that all times feel equal. If you go down this route, I’d also consider how you can intentionally design your schedule during common overlap times to encourage groups to mingle, so it doesn’t just feel like your conference has different “shifts” where people only interact with people from the same region as them. Similarly, if you run a 24-hour event but don’t actually have a globally diverse pool of attendees, you’ll end up with “dead” periods of time, which also isn’t great. A global-first event schedule needs to be accompanied by a global-first marketing plan.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-core-time-zone&quot;&gt;A core time zone&lt;/h3&gt;
+&lt;p&gt;The alternative is to pick a “core” time zone and schedule around that. Roguelike Celebration, for example, is scheduled around Pacific time, since we were historically hosted in-person in San Francisco. This is much easier for us to staff, although requires careful consideration to still be as accessible as possible. We need to be as accommodating as possible to speaker schedule requests, so someone isn’t stuck speaking in the middle of the night their time.&lt;/p&gt;
+
+&lt;p&gt;We also consciously schedule our event so that people in non-Americas time zones can experience as diverse a sample of content as possible during their daylight-hours overlap. For example, we host “unconferencing” sessions each day, where attendees can post topics they’d like to discuss and then hop into a Zoom call with other attendees. We intentionally schedule these at different times each day — typically one in the morning and one in the afternoon — to try to maximize the chance that someone in Europe or the APAC region can at least attend one of them.&lt;/p&gt;
+
+&lt;p&gt;There’s no one “correct” answer here. Maximizing the global accessibility of your schedule is a tricky problem that cuts across almost all of your other planning concerns.&lt;/p&gt;
+
+&lt;h2 id=&quot;hybrid-events&quot;&gt;Hybrid Events&lt;/h2&gt;
+
+&lt;p&gt;Maybe you’re &lt;em&gt;really&lt;/em&gt; itching to run an in-person event, and you think it’s possible to do &lt;em&gt;something&lt;/em&gt; small, alongside a virtual event.&lt;/p&gt;
+
+&lt;p&gt;I have a hard truth for you. It’s absolutely possible to run a successful “hybrid event”, but it requires having a successful virtual event as a baseline. If you start from the standpoint of running a good in-person event, and attach a virtual component to it, virtual attendees will correctly recognize that they’re an after-thought.&lt;/p&gt;
+
+&lt;p&gt;You need to start by designing a top-tier virtual event experience, and then from there figure out how to augment that experience with in-person moments. If you’re not taking that approach, you’re not running a “hybrid event”, you’re running an in-person event with a secondary livestream.&lt;/p&gt;
+
+&lt;p&gt;It hasn’t happened yet, and I’m deeply critical of their almost total lack of COVID safeguards, but Apple’s upcoming &lt;a href=&quot;https://developer.apple.com/wwdc22/&quot;&gt;WWDC developer conference&lt;/a&gt; tentatively seems like a great example of how to do this right. WWDC is a weeklong virtual event; separately, there’s a one-day in-person event you can submit a request to attend, that primarily consists of a viewing party for the WWDC keynote and Platform State of the Union speech as well as some tours of additional on-site Apple spaces. Presumably the keynote and SOTU are still being produced as livestream-first events, but allowing some people to capture the magic of an in-person live keynote experience (which was previously a tentpole of in-person WWDC) seems like tentatively a good way to allow some in-person camaraderie while not creating too much FOMO for attendees of an otherwise virtual-first event.&lt;/p&gt;
+
+&lt;h2 id=&quot;odds-and-ends&quot;&gt;Odds and ends&lt;/h2&gt;
+&lt;p&gt;There are a lot of other important aspects to running a virtual event, but talking about them starts to become more logisical than conceptual. I could write a whole blog point about each of these (and have in many cases!) but a few quick things to keep in mind:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Your event should ideally have live captions, provided by a human captioner. I’ve &lt;a href=&quot;https://blog.lazerwalker.com/2020/07/20/captions&quot;&gt;written about the logistics of this&lt;/a&gt;. The short version is that it requires budgeting, but relatively little work, and is infinitely better than using AI-generated captions. If you can’t afford a human captioner, make sure you have automated captions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure your schedule is easy to understand regardless of whether someone is in the same time zone as the organizers. I recommend investing in a little bit of front-end JavaScript code so your website automatically shows times in each attendee’s local time zone.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Your virtual event is likely more accessible due to people being able to attend worldwide, but that doesn’t mean it’s financially accessible. What you consider a “cheap” ticket might not be that for people elsewhere in the world. I’ve seen a handful of conferences adopt pay-what-you-want pricing — Roguelike Celebration has suggested tiers including “pay for yourself”, “pay for yourself and someone else”, and “I can’t afford to pay”. Our revenue has been roughly the same as it was before  introducing that PWYW structure, and I’ve heard the same thing from other organizers using the same pricing plan.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How to technically host remote talks is an extremely deep subject (that &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html&quot;&gt;I’ve written about&lt;/a&gt;!), but big picture, have a dedicated AV person on duty instead of just your MC, and use a hosted all-in-one platform (like &lt;a href=&quot;https://streamyard.com&quot;&gt;Streamyard&lt;/a&gt;) rather than fiddling with your own OBS setup. Run AV tests beforehand with every speaker, allow them to pre-record if they’d prefer, and be respectful that speakers may have valid reasons to not show their face on-camera. Ideally have a budget to pay for cameras/mics for those who need them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If the thousands of words you’ve just read weren’t enough from me: aside from the various posts of mine I’ve linked throughout this piece, I also wrote about &lt;a href=&quot;https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html&quot;&gt;building a better hallway track&lt;/a&gt; (this was the earliest design thinking that eventually led to the Roguelike Celebration space) as well as &lt;a href=&quot;https://blog.lazerwalker.com/2021/01/04/social-design-questions.html&quot;&gt;a list of questions to ask yourself&lt;/a&gt; when designing a synchronous online social space.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope this massive brain-dump was helpful! If anything in here sparks inspiration for you to do something different in your own virtual event planning, I’d love to hear about it — my &lt;a href=&quot;https://twitter.com/lazerwalker&quot;&gt;Twitter DMs&lt;/a&gt; are open.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;A quick hot tip to share the sort of brainspace I’m currently in: I’m convinced, for the right experimental event, &lt;a href=&quot;http://www.byond.com/&quot;&gt;BYOND&lt;/a&gt; would be an incredible tool to build a custom space. It’s an early-2000s low-code/no-code tool for building online multiplayer games, most notably &lt;a href=&quot;https://spacestation13.com/&quot;&gt;Space Station 13&lt;/a&gt;. Getting the editor to run on a modern Windows 11 PC can be a challenge, but I’d &lt;em&gt;love&lt;/em&gt; to see an event run in a custom-built BYOND space. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">If you’re an event organizer right now, you’re in a tough spot. You’re desperate to get back to running an in-person event, but you know it isn’t quite safe yet.</summary></entry><entry><title type="html">Why Video Chat is a Hard Technical Problem</title><link href="http://blog.lazerwalker.com/2021/03/12/video-chat.html" rel="alternate" type="text/html" title="Why Video Chat is a Hard Technical Problem" /><published>2021-03-12T12:00:00+00:00</published><updated>2021-03-12T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2021/03/12/video-chat</id><content type="html" xml:base="http://blog.lazerwalker.com/2021/03/12/video-chat.html">&lt;p&gt;Back over the summer, I began a series of experiments to play around with new forms of synchronous online social interaction while we’re all stuck at home. These ranged from a &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;virtual conference hosted in a custom text-based MMORPG&lt;/a&gt; to using real-time mocap in the browser to make 2D animated avatars:&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I&amp;#39;ve been (slowly) prototyping new tools to foster online social interaction, and while it&amp;#39;s too early to say if there&amp;#39;s anything here, I&amp;#39;m pretty excited about my latest prototype. &lt;a href=&quot;https://t.co/IZFAJatKmg&quot;&gt;pic.twitter.com/IZFAJatKmg&lt;/a&gt;&lt;/p&gt;&amp;mdash; emilia ✨ (@lazerwalker) &lt;a href=&quot;https://twitter.com/lazerwalker/status/1272894598214492160?ref_src=twsrc%5Etfw&quot;&gt;June 16, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/center&gt;
+
+&lt;p&gt;For these early experiments, I used &lt;a href=&quot;https://webrtc.org/&quot;&gt;WebRTC&lt;/a&gt;, a browser-based peer-to-peer videochat technology. Since I was churning out small experiments quickly, I cared about being able to build something as quickly as possible, and ideally without having to spin up complicated and/or expensive servers.&lt;/p&gt;
+
+&lt;p&gt;WebRTC sounds like it’s perfect for this! Being peer-to-peer means you don’t need complicated or expensive server infrastructure, and being a well-supported piece of browser tech means there are a lot of educational resources out there.&lt;/p&gt;
+
+&lt;p&gt;To jump straight to the punchline: after we built a WebRTC-based videochat service for &lt;a href=&quot;https://roguelike.club&quot;&gt;Roguelike Celebration&lt;/a&gt;’s event platform, we ripped it out and replaced it with a series of Zoom links for the actual event. Our WebRTC setup simply wasn’t viable for production use.&lt;/p&gt;
+
+&lt;p&gt;I’ve since talked to many other folks who built out WebRTC setups, ranging from simple to complex, and similarly ran into unacceptable performance pitfalls. This doesn’t mean that WebRTC as a technology isn’t viable for things like this — all of the solutions I recommend later in this article ultimately still use WebRTC under the hood — but reality is significantly more complicated than just reading the WebRTC API spec and building against it.&lt;/p&gt;
+
+&lt;p&gt;The rest of this article will walk you through our learning process, and what we learned is necessary to make a WebRTC videochat setup work in a production environment. Our path to functioning videochat was long and winding; I want to outline what we learned to save other people from spending the same time and effort we did to come to that understanding.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-1-accessing-av-hardware&quot;&gt;Problem 1: Accessing AV Hardware&lt;/h2&gt;
+&lt;p&gt;Before we even get to sending audio and video streams over a network, we need audio and video streams. This means using the browser &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices&quot;&gt;MediaDevices&lt;/a&gt; API, not yet WebRTC. But this has a catch!&lt;/p&gt;
+
+&lt;p&gt;The API is simple. You call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;navigator.mediaDevices.getUserMedia()&lt;/code&gt; and get access to audio and video streams. The catch: the user doesn’t get to specify which specific input devices they want to use, so someone with multiple microphones or webcams is going to have a hard time. You’d assume web browsers would provide their own UIs to let users select devices, but the reality is complicated.&lt;/p&gt;
+
+&lt;p&gt;If someone is using Firefox, they will in fact get a nice friendly popup asking which audio and video input they want to use. If they’re using Chrome, that option is hidden deep in a settings menu, and it’s extraordinarily bad at remembering your preferences. That UI doesn’t exist at all anywhere in Safari.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;: building a production-ready app means you’ll need to &lt;strong&gt;build your own in-app device selector&lt;/strong&gt; for available audio and video inputs.&lt;/p&gt;
+
+&lt;p&gt;This is doable, but a pain. You also have to deal with inconsistencies in the ways different browsers surface the MediaDevices APIs for accessing that data. Ideally, you’re using some sort of persistent local storage (e.g. the localStorage API) so you can remember the user’s preference and not make them navigate a dropdown every single time they enter a chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-2-making-a-connection&quot;&gt;Problem 2: Making a connection&lt;/h2&gt;
+
+&lt;p&gt;Okay, so you’ve got proper audio and video streams, coming from the correct local input devices. Now we need a way to send that to other users!&lt;/p&gt;
+
+&lt;p&gt;The most straight-forward way to do a group videochat in WebRTC is using what’s called a full-mesh network topology. This sounds complicated, but it just means “every client is connected to every other client”. If there are 3 of us in a chat, each of our web browsers has a direct connection to each of the other two people’s web browsers, and a new person joining would immediately initiate three new connections to each of us.&lt;/p&gt;
+
+&lt;p&gt;To open a WebRTC connection between two clients, one client generates an offer. The other client accepts that offer and generates a response. The initiating client accepts that response, and you’re off to the races.&lt;/p&gt;
+
+&lt;p&gt;To send these offers and responses back and forth between clients, you need some sort of data transport mechanism. And since you don’t yet have a WebRTC data connection you can use, this means you’ll need some sort of server infrastructure. Building and scaling a backend to exchange handshake strings between clients is a lot less work than building one to send video data, but it’s not nothing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; You’ll need to &lt;strong&gt;build your own server backend&lt;/strong&gt; that can transport strings between clients until they successfully open a peer-to-peer connection.&lt;/p&gt;
+
+&lt;p&gt;WebSockets are a great choice for this, but WebSockets are also a pain to scale compared to regular HTTP servers. I personally use a combination of &lt;a href=&quot;https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=spatial-6379-emwalker&quot;&gt;Azure Functions&lt;/a&gt; and &lt;a href=&quot;https://docs.microsoft.com/azure/azure-signalr/signalr-overview?WT.mc_id=spatial-6379-emwalker&quot;&gt;Azure SignalR Service&lt;/a&gt; to do this handshake (in an architecture similar to what I outline in &lt;a href=&quot;https://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html&quot;&gt;this article&lt;/a&gt;), but this still requires maintaining server-side services!&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-3-what-if-network-settings-mean-clients-cant-connect&quot;&gt;Problem 3: What if network settings mean clients can’t connect?&lt;/h2&gt;
+
+&lt;p&gt;Let’s say you’ve built out a simple WebRTC flow, where 4 different people are all connected to each other. This means there’ll be 6 different WebRTC connections across all participants. You’ll quickly find something pretty weird: chances are, at least one of those 6 connections will fail and two people won’t be able to videochat with each other.&lt;/p&gt;
+
+&lt;p&gt;The short explanation for this is router settings. After the WebRTC signaling handshake is complete, a remote service called ICE tries to directly connect the two clients by getting publicly-accessible IP addresses for both.&lt;/p&gt;
+
+&lt;p&gt;An ICE service will first try to use a STUN server, which is a server that basically exists to tell a client what its public IP address is. In the ideal case, this just works to give you working IP addresses for both clients, and you’re done.&lt;/p&gt;
+
+&lt;p&gt;If one or both clients are behind a particularly protective NAT layer (e.g. due to a corporate firewall), that STUN public IP dance isn’t going to work. In that case, both clients need to connect to a relay, called a TURN server, that forwards all messages between the two since they can’t connect directly.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested in a more detailed technical explanation for this issue, &lt;a href=&quot;https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#after-signaling-using-ice-to-cope-with-nats-and-firewalls&quot;&gt;this article&lt;/a&gt; is a great resource.&lt;/p&gt;
+
+&lt;p&gt;Conventional wisdom says that about 80% of WebRTC connections will succeed with only STUN. This means that, unless you have a TURN server to fall back to, about 20% of all connections will fail!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;: Run your own &lt;strong&gt;TURN relay server&lt;/strong&gt; for when clients’ NAT settings don’t allow them to connect directly.&lt;/p&gt;
+
+&lt;p&gt;STUN services are cheap to run, and it’s pretty easy to find free ones that can scale with your prototype. Since TURN servers are more resource-intensive (given they’re active beyond just the handshake stage of a connection), you’ll probably need to host your own rather than find free community options.&lt;/p&gt;
+
+&lt;p&gt;One option is to use &lt;a href=&quot;https://www.twilio.com/stun-turn&quot;&gt;Twilio’s hosted TURN service&lt;/a&gt;. Another is to &lt;a href=&quot;https://devblogs.microsoft.com/cse/2018/01/29/orchestrating-turn-servers-cloud-deployment/?WT.mc_id=spatial-6379-emwalker&quot;&gt;host your own Docker image on a cloud provider such as Azure&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-4-what-if-too-many-people-are-connected&quot;&gt;Problem 4: What if too many people are connected?&lt;/h2&gt;
+
+&lt;p&gt;At this point, you’ve got a working videochat app. You’ve built your own AV selector UI to let people pick their devices. You’ve built server infrastructure to let clients complete offer handshakes. You’re running a TURN server to make sure that everyone can connect regardless of their network setup. This all sounds great.&lt;/p&gt;
+
+&lt;p&gt;And then, you try to have a videocall with more than 4 people and your computer comes to a grinding halt.&lt;/p&gt;
+
+&lt;p&gt;This “full-mesh” setup - where each person in a 4-person videochat is sending and receiving video data from each of the other three participants - is incredibly wasteful.&lt;/p&gt;
+
+&lt;p&gt;For each additional participant, your own bandwidth and CPU/GPU consumption increase linearly. Even on a pretty beefy computer with a solid fast network connection, performance usually anecdotally starts degrading somewhere above 4-ish video participants or 10-ish audio-only participants.&lt;/p&gt;
+
+&lt;p&gt;And that assumes a solid network connection. If one participant has slow Internet speeds, ideally other clients would start sending them a lower-bitrate video stream, but that sort of selective real-time transcoding really isn’t feasible to do in the browser.&lt;/p&gt;
+
+&lt;p&gt;It’s worth noting that this is not just a technical concern but an accessibility issue: by building a system that falls over unless you have a top-of-the-line computer and a blazing fast Internet connection, you’re building a system that only serves the most privileged.&lt;/p&gt;
+
+&lt;p&gt;There’s no clear fix here other than not having to send out your same audio/video stream N times and having to simultaneously decode and present N remote A/V streams.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;: Move away from a full-mesh peer-to-peer system in favor of a centralized system, most likely a &lt;strong&gt;Selective Forwarding Unit&lt;/strong&gt; (SFU).&lt;/p&gt;
+
+&lt;p&gt;A SFU is a server that acts as a single WebRTC peer to send and receive video data. Instead of connecting to all of the other people using your chat app directly, your client just connects to the SFU and sends its A/V streams to that single source. The SFU selectively decides which other connected clients should receive a given audio or video stream, and can also intelligently do things such as dynamic video reencoding to serve lower-bitrate streams to clients with lower bandwidth caps.&lt;/p&gt;
+
+&lt;p&gt;There are many different ways to run a SFU, but one common way is integrating the &lt;a href=&quot;https://mediasoup.org/&quot;&gt;mediasoup&lt;/a&gt; library into your own Node.js server so you can configure and scale it exactly how you would like.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-thats-a-lot-for-just-doing-basic-video-chat&quot;&gt;…but that’s A LOT for just doing basic video chat!&lt;/h2&gt;
+&lt;p&gt;I agree! My goal was initially to build some fun little prototypes of novel social interaction patterns, and instead I found myself deep in the technical weeds of networking protocols and peer-to-peer network topologies.&lt;/p&gt;
+
+&lt;p&gt;I hope this mile-high overview of the tricky bits of implementing WebRTC can at least get you to understand why this is a hard problem, and give you the lay of the land for coming up with your own solution.&lt;/p&gt;
+
+&lt;p&gt;In particular, I have two concrete recommendations:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you’re just experimenting, start out by using a fully-hosted video solution such as &lt;a href=&quot;https://docs.microsoft.com/azure/communication-services/overview?WT.mc_id=spatial-6379-emwalker&quot;&gt;Azure Communication Service&lt;/a&gt; or &lt;a href=&quot;https://www.twilio.com/docs/video&quot;&gt;Twilio Programmable Video&lt;/a&gt;. You’ll get an easy-to-integrate API that doesn’t require running your own server backend, audio and video chat that automatically scales to any number of simultaneous users, and relatively minimal costs for prototype-scale use.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you’re building a production piece of software where video or audio chat will be a core component, a hosted solution is still the most effort-free option, but you may want to build your own solution to save costs and have more control over your infrastructure. If that’s the case, jump straight to running your own SFU. Trying to just get by with a full-mesh topology and maybe a TURN server is ultimately not going to be good enough. Learn from the experiences of myself and countless others and save yourself the time and effort.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Has this helped? Come up with your own solution to recommend? Let me know on &lt;a href=&quot;https://twitter.com/lazerwalker&quot;&gt;Twitter&lt;/a&gt;, I’m always happy to hear from more folks tackling these hard problems :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Back over the summer, I began a series of experiments to play around with new forms of synchronous online social interaction while we’re all stuck at home. These ranged from a virtual conference hosted in a custom text-based MMORPG to using real-time mocap in the browser to make 2D animated avatars:</summary></entry><entry><title type="html">An (Incomplete) List of Questions To Ask When Designing a Synchronous Online Social Space</title><link href="http://blog.lazerwalker.com/2021/01/04/social-design-questions.html" rel="alternate" type="text/html" title="An (Incomplete) List of Questions To Ask When Designing a Synchronous Online Social Space" /><published>2021-01-04T12:00:00+00:00</published><updated>2021-01-04T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2021/01/04/social-design-questions</id><content type="html" xml:base="http://blog.lazerwalker.com/2021/01/04/social-design-questions.html">&lt;p&gt;We’re in an exciting period of change where we’re still figuring out what online events should be.&lt;/p&gt;
+
+&lt;p&gt;Most would agree that, whether you’re talking about a birthday party or a professional conference, a large grid of faces in a group video chat likely isn’t the ideal setup to foster meaningful online interaction. But we don’t really know yet what &lt;em&gt;is&lt;/em&gt; the ideal setup!&lt;/p&gt;
+
+&lt;p&gt;A lot of people are experimenting with new technical platforms to better support spontaneous interactions and small group conversations in online settings (&lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;myself included!&lt;/a&gt;), but it’s still the wild west.&lt;/p&gt;
+
+&lt;p&gt;Here’s a list of questions to ask yourself as you’re trying to design a more thoughtful space for online communication.  Many of these are unsubtle leading questions with a ‘correct’ answer, but others are more open-ended and more meant to encourage reflection.&lt;/p&gt;
+
+&lt;p&gt;This list emerged out of my work on the &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;text-based social space&lt;/a&gt; that powered the Roguelike Celebration conference as well as some future events. My goal is to make sure that you’re thinking about the right design elements and principles to create a well-considered environment for your event attendees.&lt;/p&gt;
+
+&lt;p&gt;To be clear, I’m talking about spaces meant for synchronous real-time communication, and generally (but not exclusively!) about temporary spaces for time-limited events rather than longer-persisting spaces. Think more meetups, parties, and conferences, than coworking spaces, persistent virtual worlds, or traditional social media.&lt;/p&gt;
+
+&lt;p&gt;Although a lot of the conversation is currently focused on cartoony 2D environments that include spatial video chat (&lt;a href=&quot;https://gather.town&quot;&gt;Gather Town&lt;/a&gt; is currently the highest-profile, but I could easily name a dozen competitors), I’m trying to ask questions that are applicable regardless of whether you’re a solo event host throwing a party on Zoom for your friends or are a VC-funded startup building a VR platform for 3D virtual worlds.&lt;/p&gt;
+
+&lt;h1 id=&quot;input-methods&quot;&gt;Input Methods&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How do you mitigate or minimize exhaustion from the performative nature of extended group video chat (aka “Zoom fatigue”)?&lt;/li&gt;
+  &lt;li&gt;How do you accommodate people who are more comfortable communicating over text or audio chat instead of video?&lt;/li&gt;
+  &lt;li&gt;If you allow multiple input modalities (text vs audio vs video, VR head and hand tracking vs mouse and keyboard or game controller, etc), how do you ensure that people with lower-fidelity communication methods don’t feel like “lesser” attendees than those with a wider range of expression?&lt;/li&gt;
+  &lt;li&gt;Are your software and communication methods fully accessible? Can people with vision impairment or low vision, people who are deaf or hard-of-hearing, and people with motor impairments all use your tool to communicate with each other?&lt;/li&gt;
+  &lt;li&gt;What languages does your tool support? Can non-English speakers understand or read your UI? Do your user-editable text inputs (usernames, text chat, etc) support non-Roman alphabets and right-to-left languages?&lt;/li&gt;
+  &lt;li&gt;If you provide a multitude of input methods, is it clear to attendees what their options are and what the tradeoffs are? This is especially true if you offer options that may be mutually exclusive in practice, such as turning on your webcam vs wearing a VR headset&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;demographics&quot;&gt;Demographics&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is the average session time for an attendee to your space? A few hours for a meetup or party, a few days for a conference, a persistent long-term coworking space, etc…&lt;/li&gt;
+  &lt;li&gt;What is the average number of attendees to an event in your space? 10 people, 100 people, and 1000 people have very different needs.&lt;/li&gt;
+  &lt;li&gt;Do attendees to events in your space typically already know each other, are they all strangers, or somewhere in between?&lt;/li&gt;
+  &lt;li&gt;If the answer to any of the previous questions is “it depends”, what tools are you providing event hosts to make sure their event space is well-tailored to the needs of their specific event?&lt;/li&gt;
+  &lt;li&gt;If there are specific types of events your space is better suited for, how do you communicate this to event hosts?&lt;/li&gt;
+  &lt;li&gt;Do the hardware requirements and level of technical involvement required to access your space match the capabilities of an average attendee to your events?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;fostering-social-interaction&quot;&gt;Fostering Social Interaction&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;In what ways does your space provide activities or interactions that can serve as conversational hooks to encourage discussion?&lt;/li&gt;
+  &lt;li&gt;What level of attention is required to do these activities? Do you offer activities with a range of involvement levels to allow attendees to self-select for how much room for freeform conversation they want versus focusing primarily on a structured activity?&lt;/li&gt;
+  &lt;li&gt;Separate from level of involvement needed, do your activities provide varying levels of structure and rules, to accommodate people with different levels of creativity and willingness to jump in and try something new? Some people are excited to improvise and play make-believe with little to no prompting; others need more encouragement and structure to make it feel socially acceptable to engage in playful activities.&lt;/li&gt;
+  &lt;li&gt;Do different types of activities or interactions appeal to different types of attendee personalities? The &lt;a href=&quot;https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types&quot;&gt;Bartle taxonomy of player types&lt;/a&gt; may be a helpful, if incomplete, lens&lt;/li&gt;
+  &lt;li&gt;How “mandatory” are all of these activities?&lt;/li&gt;
+  &lt;li&gt;To what extent are these activities or interactions explicit and broadcasted versus being secrets hidden throughout your space? How do you balance encouraging as much involvement as possible with creating a sense of exploration and mystery?&lt;/li&gt;
+  &lt;li&gt;To the extent that your space has secrets or elements that are less obvious, how does knowledge-sharing about that tie into your other social scaffolding and conversational hooks?&lt;/li&gt;
+  &lt;li&gt;If your event is centered around a singular activity (e.g. a talk or series of talks), how do you balance between pushing people to attend that activity versus allowing or encouraging people who would prefer to keep participating in the “hallway track” instead?&lt;/li&gt;
+  &lt;li&gt;If your space is meant to host larger gatherings, how do you foster and encourage smaller group conversations?&lt;/li&gt;
+  &lt;li&gt;Once attendees are having smaller conversations, how do they find new people to talk to or move to a different conversation?&lt;/li&gt;
+  &lt;li&gt;If I don’t know anyone at an event, how do I find people to talk to with similar interests as me or who want to talk about the same things as me? Is there a way for me to signal my interests, or a place I can go to indicate what I’m looking for?&lt;/li&gt;
+  &lt;li&gt;If there is technical or design friction involved in moving to a new conversation (rather than social friction), is this an intentional choice designed to create specific conversational dynamics, or is this something you should aim to optimize out?&lt;/li&gt;
+  &lt;li&gt;How do you balance actively encouraging fluidity of conversations versus letting people deeply engrossed in conversation stay there?&lt;/li&gt;
+  &lt;li&gt;By default, online spaces won’t have the equivalent of “I need to go to the bathroom” or “let me refill my cheese plate”. If somebody wants to get out of a focused conversation, do you provide socially-acceptable excuses to leave?&lt;/li&gt;
+  &lt;li&gt;How does your social scaffolding scale as users become familiar with your platform? To what extent is it focused on the novelty of the space itself (e.g. is most discussion focused on how cool and original the space is, how much it feels like you’re talking in-person, etc?) or does it still provide useful conversational hooks for expert users?&lt;/li&gt;
+  &lt;li&gt;How can a person or conversation group broadcast things such as “we’d love to talk to new people!” or “go away, we’re having a private conversation” to others? In physical spaces, these would typically be communicated via subconscious body language cues that can be difficult to directly recreate digitally.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;aesthetics-and-world-building&quot;&gt;Aesthetics and World-Building&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Does the aesthetic theming of your space match the tone of the event? A house party is not a professional conference is not a friendly coworking space&lt;/li&gt;
+  &lt;li&gt;If you are a platform or a space where the answer to the previous question is “it depends”, what creation tools do you offer event hosts (or attendees!) to customize the feeling of a space?&lt;/li&gt;
+  &lt;li&gt;If you provide creation tools, how do you educate event hosts not just how to use them but how to build good things with them? Are you providing event hosts who aren’t architects or videogame level designers the scaffolding they need to create spaces that succeed at an intentional design goal?&lt;/li&gt;
+  &lt;li&gt;If your space is graphical, what sort of art assets or visual design creation tools do you provide? Can event hosts bring their own assets if they want to? Are they required to bring their own assets?&lt;/li&gt;
+  &lt;li&gt;If event hosts or attendees are encouraged to provide their own art assets, what are the barriers to entry for creation? Creating 3D models is more work than 2D sprites is more work than writing prose text.&lt;/li&gt;
+  &lt;li&gt;To what extent can attendees modify or shape the space? Do they have access to the same creation tools as event hosts? If not, are there alternative ways for them to express themselves in the space in a persistent or semi-persistent way?&lt;/li&gt;
+  &lt;li&gt;How much control do attendees have over their own presentation? This could mean anything from usernames and user profiles to 2D or 3D avatars to something else entirely. How do these forms of self-expression themselves provide hooks for people to start conversations about?&lt;/li&gt;
+  &lt;li&gt;Do your various forms of attendee self-expression provide space for in-jokes and spontaneous culture to emerge over the course of the event? How do your creative tools actively encourage this?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;trust-and-safety&quot;&gt;Trust and Safety&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Do you provide event hosts the tools to effectively moderate their events and enforce a code of conduct? (e.g. the ability to ban attendees and remove individual messages, tools for users to report CoC violations and issues, perhaps some sort of secure auditable log to review in the case of CoC reports)&lt;/li&gt;
+  &lt;li&gt;Do individual attendees have the trust and safety tools they need to minimize the damage of abuse or harassment without escalating to the event hosts? (e.g. robust muting and blocking tools)&lt;/li&gt;
+  &lt;li&gt;Do you have sufficient live human moderators at your event to make attendees feel safe? Depending on your space, it may not be feasible (or even desirable!) to have an organizer present and listening in every possible space where people might congregate, but do attendees feel comfortable with the level of moderation when they need to e.g. report a CoC violation?&lt;/li&gt;
+  &lt;li&gt;Many event organizers in VR social spaces feel the need to explicitly explain to new attendees that, as in the real world, standing too close to someone else in VR is viewed as an invasion of personal space. Does your space have cultural norms where unintentional violations may cause discomfort or harm, and if so how do you communicate and educate about them?&lt;/li&gt;
+  &lt;li&gt;When designing various features and interactions between users, have you actively considered how those features might be vectors for abuse and harassment and designed defensively against that?&lt;/li&gt;
+  &lt;li&gt;How do you balance a desire to allow pseudonymity with a desire to keep bad actors accountable for their actions? How does your user registration policy and user profile design reflect this?&lt;/li&gt;
+  &lt;li&gt;If you as a larger platform place restrictions on allowed content, are your rules and enforcement policies explicit? Is it clear what will happen when the policies of a specific event conflict with the platform as a whole?&lt;/li&gt;
+  &lt;li&gt;How do you control user access to specific events? Where do you strike the balance between making it as simple as possible to join an event versus preventing bad actors and trolls from entering events they were not invited to?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;technical-limitations&quot;&gt;Technical limitations&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;What hardware is needed to access your space? Does it run on mobile devices? How about an underpowered 5-year-old computer?&lt;/li&gt;
+  &lt;li&gt;If someone attempts to use your space with underpowered or unsupported hardware, are they warned about potential issues before joining? Are they prevented from joining entirely?&lt;/li&gt;
+  &lt;li&gt;Does accessing your space require a downloadable executable, or can it run in a web browser?&lt;/li&gt;
+  &lt;li&gt;If your space is focused on a certain technology (e.g. videochat, or VR head + hand tracking), does it meaningfully work without appropriate hardware?&lt;/li&gt;
+  &lt;li&gt;Do event hosts feel like they need to spend a meaningful portion of their event providing instruction and technical assistance to attendees?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is naturally an incomplete list of concerns, but hopefully is helpful as you work on your own novel online social spaces and events!&lt;/p&gt;
+
+&lt;p&gt;If you’re working on something cool, I’d love to hear about it! Feel free to &lt;a href=&quot;https://twitter.com/lazerwalker&quot;&gt;say hello&lt;/a&gt;, I’m always excited to check out exciting new experiments in this space.&lt;/p&gt;</content><author><name></name></author><summary type="html">We’re in an exciting period of change where we’re still figuring out what online events should be.</summary></entry><entry><title type="html">Scaling an Online Virtual World with Serverless Tech</title><link href="http://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html" rel="alternate" type="text/html" title="Scaling an Online Virtual World with Serverless Tech" /><published>2020-11-20T12:00:00+00:00</published><updated>2020-11-20T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html">&lt;p&gt;I help run an annual game design conference called &lt;a href=&quot;https://roguelike.club&quot;&gt;Roguelike Celebration&lt;/a&gt;. Naturally, this year we were a virtual event instead of in-person for the first time. However, instead of just broadcasting a Twitch stream and setting up a Discord or Slack instance, we built our own custom browser-based text-based social space, inspired by online games and MMOs!&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/serverless-mud/1.jpeg&quot;&gt;&lt;img src=&quot;/images/serverless-mud/1.jpeg&quot; alt=&quot;The Roguelike Celebration social space&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;I’ve written about &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;the design underlying our social space&lt;/a&gt;, as well as our approach to &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html&quot;&gt;AV infrastructure&lt;/a&gt;, but in this article I wanted to talk about the technical architecture and how we used serverless technology to design for scale.&lt;/p&gt;
+
+&lt;p&gt;From an engineering standpoint, we built an &lt;a href=&quot;https://github.com/lazerwalker/azure-mud&quot;&gt;open-source&lt;/a&gt; real-time game and chat platform. We eventually ended up selling around 800 tickets, meaning we needed to support at least that many concurrent users in a single shared digital space.&lt;/p&gt;
+
+&lt;p&gt;Our timeline for the project was incredibly short — I built the platform in about three months of part-time work aided by a handful of incredibly talented volunteers — which meant we didn’t really have time to solve hard scaling problems. So what did we do?&lt;/p&gt;
+
+&lt;h2 id=&quot;overall-server-architecture&quot;&gt;Overall Server Architecture&lt;/h2&gt;
+
+&lt;p&gt;A “traditional” approach to building something like this would likely involve building a server that could communicate with game clients — likely a combination of HTTP and WebSockets, in the case of a browser-based experience — as well as read/write access to some sort of database.&lt;/p&gt;
+
+&lt;p&gt;If we ended up having more concurrent users than that one server could handle, I’d have two options: run the server process on a beefier computer (“vertical” scaling) or figure out how to span multiple servers and load-balance between them (“horizontal” scaling).&lt;/p&gt;
+
+&lt;p&gt;However, on such a tight time scale, I didn’t want to get into a situation where I would need to design and run load tests to figure out what my needs and options were. It’s possible none of these scaling issues would actually be relevant given the size of our conference, but it wasn’t possible to be confident about that without investing time we didn’t have into testing. Particularly, I knew from experience that scaling WebSockets is an especially frustrating challenge.&lt;/p&gt;
+
+&lt;p&gt;Instead, I reached for a “&lt;a href=&quot;https://azure.microsoft.com/en-us/overview/serverless-computing/?WT.mc_id=spatial-10257-emwalker&quot;&gt;serverless&lt;/a&gt;” solution. Instead of provisioning a specific server (or set of servers), I would use a set of services that themselves know how to auto-scale without any input on my end, charging directly for usage.&lt;/p&gt;
+
+&lt;p&gt;This sort of architecture often has a reputation for being more expensive than just renting raw servers (more on costs later!), but in our case it was well worth the peace of mind of not having to think about scaling at all.&lt;/p&gt;
+
+&lt;p&gt;Here’s a high-level look at the architecture we ended up building:&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/serverless-mud/2.png&quot;&gt;&lt;img src=&quot;/images/serverless-mud/2.png&quot; alt=&quot;An architecture diagram of our serverless architecture.&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;If I wanted to not have to think about scaling, we needed our server-side code to be running on a serverless platform such as &lt;a href=&quot;https://docs.microsoft.com/azure/azure-functions?WT.mc_id=spatial-10257-emwalker&quot;&gt;Azure Functions&lt;/a&gt;. Instead of deploying a proper Node.js server (our code was all written in TypeScript), I wanted to be able to upload individual TypeScript functions to be mapped to specific HTTP endpoints, with our cloud provider automatically calling those functions as needed and automatically scaling up capacity as needed.&lt;/p&gt;
+
+&lt;p&gt;However, as a real-time game, we also needed real-time communication. The typical way to do this in a web browser is to use WebSockets, which require long-standing persistent connections. That model isn’t compatible with the serverless function model, where by definition your computing resources are fleeting and each new HTTP request is processed by a different short-lived VM.&lt;/p&gt;
+
+&lt;h3 id=&quot;azure-signalr-service&quot;&gt;Azure SignalR Service&lt;/h3&gt;
+
+&lt;p&gt;Enter &lt;a href=&quot;https://docs.microsoft.com/azure/azure-signalr/signalr-overview?WT.mc_id=spatial-10257-emwalker&quot;&gt;Azure SignalR Service&lt;/a&gt;, a hosted SignalR implementation designed to solve this problem. If you’re familiar with WebSockets but not SignalR, you can think of SignalR as a protocol layer on top of WebSockets that adds features like more robust authentication. But for our purposes, what matters isn’t the use of SignalR instead of raw WebSockets, but the fact that Azure SignalR Service is a hosted service that can manage those long-standing connections and provide an API to communicate with them from short-lived Azure Functions code.&lt;/p&gt;
+
+&lt;p&gt;The only issue is that Azure SignalR Service only handles one-way communication: you can send messages to connected clients from the server (including our serverless functions), but clients can’t send messages back to the server. This is a limitation of Azure SignalR Service, not SignalR as a protocol.&lt;/p&gt;
+
+&lt;p&gt;For our purposes, this was fine: we built a system where clients sent messages to the server (such as chat messages, or commands to perform actions) via HTTP requests, and received messages from the server (such as those chat messages sent by other clients) over SignalR. This approach also let us lean heavily on SignalR’s group management tools, which simplified logic around things like sending chat messages to people in specific chat rooms.&lt;/p&gt;
+
+&lt;h3 id=&quot;http-requests-and-latency&quot;&gt;HTTP requests and latency&lt;/h3&gt;
+
+&lt;p&gt;Using HTTP requests for client-to-server messages did add extra latency to the system that wouldn’t exist if we could do everything over WebSockets instead. Even using WebSockets by itself can be a performance issue for particularly twitch-heavy games, as being a TCP-based protocol often makes speedy packet delivery trickier than the UDP-based socket solutions most fast-paced multiplayer games use.&lt;/p&gt;
+
+&lt;p&gt;These are problems that any browser-based game needs to solve, but fortunately for us, we weren’t dealing with 2D or 3D graphics and a networked physics model and other systems that typically complicate games netcode. As a text-based experience, the extra tens to hundreds of milliseconds of latency added by using HTTP requests for client-to-server messages were totally acceptable.&lt;/p&gt;
+
+&lt;h3 id=&quot;redis-as-a-persistence-layer&quot;&gt;Redis as a persistence layer&lt;/h3&gt;
+
+&lt;p&gt;From there, we also had a persistence layer to handle things such as remembering players’ user profiles and who was in what room (we didn’t store text messages, other than dumping them to a controlled audit log only accessed when addressing Code of Conduct violations).&lt;/p&gt;
+
+&lt;p&gt;We used &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview?WT.mc_id=spatial-10257-emwalker&quot;&gt;Redis&lt;/a&gt;, a key-value store primarily intended to be used as a caching layer. It worked great for our purposes: its ease of use made it easy to integrate, and its emphasis on speed helped make sure that database access didn’t add to latency, since we were already incurring extra latency from our reliance on HTTP requests. Redis sometimes isn’t as suitable for long-term persistence compared to a proper database, but given we were running an ephemeral installation for two days that didn’t matter.&lt;/p&gt;
+
+&lt;p&gt;That said, any sort of database or key-value store would likely have worked great for our admittedly simple needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;so-did-it-work&quot;&gt;So… did it work?&lt;/h3&gt;
+
+&lt;p&gt;We were easily able to support hundreds of concurrent users in the same space during our live event, and had absolutely zero issues with server performance or load. &lt;a href=&quot;https://docs.microsoft.com/azure/azure-functions?WT.mc_id=spatial-10257-emwalker&quot;&gt;Azure Functions&lt;/a&gt; can scale more or less infinitely, &lt;a href=&quot;https://docs.microsoft.com/azure/azure-signalr/signalr-overview?WT.mc_id=spatial-10257-emwalker&quot;&gt;Azure SignalR Service&lt;/a&gt; gave us a clear path to upgrade to support more concurrent users if we needed to (up to 100,000 concurrents), and our &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview?WT.mc_id=spatial-10257-emwalker&quot;&gt;Redis&lt;/a&gt; instance never went above a few hundred kilobytes of storage or above 1% of our available processing power, even using the cheapest instance Azure offers.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, I didn’t need to think about scale. The space cost about $2.50 per day to run (for up to 1,000 concurrent users), which might have been prohibitively expensive for a long-lasting space run as a non-profit community event, but was absolutely fine for a time-bounded two-day installation (and I’m already working on ways to bring that cost down).&lt;/p&gt;
+
+&lt;p&gt;I’ve used this general architecture before for a &lt;a href=&quot;https://blog.lazerwalker.com/azure/2019/12/06/making-a-weird-gif-wall-with-azure-functions-and-signalr.html&quot;&gt;previous art installation&lt;/a&gt;, but seeing it work so flawlessly with a much larger conference gave me confidence it would have scaled up to even 10x as many attendees without any trouble.&lt;/p&gt;
+
+&lt;h2 id=&quot;design-your-way-around-hard-problems-instead-of-solving-them&quot;&gt;Design your way around hard problems instead of solving them&lt;/h2&gt;
+
+&lt;p&gt;In general, I’m really optimistic about this sort of serverless workflow as a way of building real-time games quickly. When working on experimental experiences such as Roguelike Celebration’s space, I think it’s essential to be able to spend your time focusing on hard questions surrounding what the most interesting experience to build is, rather than having to spend your limited engineering resources focused on hard scaling problems.&lt;/p&gt;
+
+&lt;p&gt;Scaling traditional real-time netcode is an incredibly difficult problem, even if it’s a relatively solved one. Our approach let us functionally sidestep a whole bunch of those difficult problems and focus on building a truly unique and magical virtual event, which absolutely resulted in a better experience for attendees than if we’d invested our time manually scaling.&lt;/p&gt;
+
+&lt;p&gt;Whether you’re literally trying to figure out how to scale your magical online experience, or you’re working on some other interesting experiment, I’d recommend taking the same approach as us: sidestepping difficult problems with outside-the-box design can let you focus your attention on more mission-critical design questions.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you’re interested in learning more about the Roguelike Celebration space, you may want to check out the aforementioned &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html&quot;&gt;design blog post&lt;/a&gt; or the &lt;a href=&quot;https://github.com/lazerwalker/azure-mud&quot;&gt;code on GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I help run an annual game design conference called Roguelike Celebration. Naturally, this year we were a virtual event instead of in-person for the first time. However, instead of just broadcasting a Twitch stream and setting up a Discord or Slack instance, we built our own custom browser-based text-based social space, inspired by online games and MMOs!</summary></entry><entry><title type="html">Using Game Design to Make Virtual Events More Social</title><link href="http://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html" rel="alternate" type="text/html" title="Using Game Design to Make Virtual Events More Social" /><published>2020-10-22T12:00:00+00:00</published><updated>2020-10-22T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/10/22/virtual-events-and-game-design.html">&lt;p&gt;&lt;em&gt;This is part of a series of posts about Roguelike Celebration 2020! If you like this, you may also like my post about the &lt;a href=&quot;https://blog.lazerwalker.com/2020/11/20/serverless-virtual-worlds.html&quot;&gt;technical architecture of our social space&lt;/a&gt;, our &lt;a href=&quot;https://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html&quot;&gt;streaming AV setup&lt;/a&gt;, or the &lt;a href=&quot;https://github.com/lazerwalker/azure-mud&quot;&gt;open source codebase&lt;/a&gt; for the social space.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;A few months ago, I had a conundrum: I couldn’t stand virtual conferences.&lt;/p&gt;
+
+&lt;p&gt;I personally go to in-person conferences to talk to people: to catch up with friends, to make new friends, to have intellectually stimulating conversations. I’d personally rather watch talk videos at home on my own time than spend my limited time at a synchronous event watching them.&lt;/p&gt;
+
+&lt;p&gt;Current virtual events are almost entirely talks! We know how to record and broadcast talks over the Internet really well; we don’t know how to replicate the social side of things, or the quote-unquote “hallway track”.&lt;/p&gt;
+
+&lt;p&gt;At first, this wasn’t a huge problem for me. I mostly just avoided virtual events except for the occasional speaking engagement, and started doing some experimentation on the side about designing new types of online social spaces to foster the sort of small-group conversation I was missing.&lt;/p&gt;
+
+&lt;p&gt;But then it became time to organize this year’s &lt;a href=&quot;https://roguelike.club&quot;&gt;Roguelike Celebration&lt;/a&gt;, a game design conference I’ve helped run for the past four years, and the conundrum revealed itself. If I was going to spend my time and effort bringing an online event into existence, I wanted it to be one I actually wanted to attend!&lt;/p&gt;
+
+&lt;p&gt;I pitched the team on something radical: instead of using Zoom and Discord, what if we built our own event platform and social space, built from the ground up to foster the sorts of intimate social interaction that made the in-person event special?&lt;/p&gt;
+
+&lt;p&gt;Roguelike Celebration ended up becoming a test-bed for a text-based social space and online game that served as the digital venue for our 2020 event, adopting design techniques taken from online games and virtual worlds to encourage meaningful interaction and conversation between attendees.&lt;/p&gt;
+
+&lt;p&gt;This article is going to walk through the underlying design decisions that led to what we built, as well as talk a bit about the space itself.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-what-was-the-space&quot;&gt;So what was the space?&lt;/h2&gt;
+
+&lt;p&gt;To contextualize everything I’m about to say, let me explain the space itself.&lt;/p&gt;
+
+&lt;p&gt;As mentioned, Roguelike Celebration took place in a custom browser-based text-based social space. Most of the UI and UX design were based on modern chat apps like Discord and Slack, but structurally it much more resembled MUDs, the text-based precursors to modern online MMOs.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/1.png&quot;&gt;&lt;img src=&quot;/images/roguelike-design/1.png&quot; alt=&quot;The registration desk&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Each attendee starts by creating a profile that contained not only their name, pronouns, etc, but also a text description of what their avatar looks like, visible by all other attendees. They are then dropped into a chat room with a virtual “registration desk”, from which they can navigate to other rooms in the virtual conference space we had built.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/2.png&quot;&gt;&lt;img src=&quot;/images/roguelike-design/2.png&quot; alt=&quot;Map of the space&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;“Rooms” in this space are more like rooms in a MUD or online game than in Discord or Slack. Each room has a text description of what it contains, with hyperlinks to navigate to adjacent rooms, as well as fun novel things attendees could interact with.&lt;/p&gt;
+
+&lt;p&gt;We tried to strike a balance between being a “normal” event venue and being playful: there were locations like a quiet lounge and an exhibition hall where we were showing a curation of games, but there was also a dance floor with a DJ set your avatar could dance to, the bar was serving polymorph potions instead of alcohol, and the foyer happened to be haunted.&lt;/p&gt;
+
+&lt;p&gt;As a particularly important example, the “theater” contained our talk livestream embedded right in the page. So when talks were starting, attendees would all move to the theater just like they would at an in-person conference.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/3.jpeg&quot;&gt;&lt;img src=&quot;/images/roguelike-design/3.jpeg&quot; alt=&quot;Streaming talks in the theater&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Each virtual room was also its own chat room. Like in other online virtual worlds, you can only take part in conversations in the room you’re physically in. If you want to talk to other people, you have to move to another room.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/4.jpeg&quot;&gt;&lt;img src=&quot;/images/roguelike-design/4.jpeg&quot; alt=&quot;Swag table&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+&lt;p&gt;On top of the theater broadcasting our live talk videos, most individual rooms had their own exciting special activities going on. The kitchen had a vending machine that would produce randomly-generated food items you could pick up and carry around with you, while the dance floor had embedded chiptune DJ sets you could make your character dance to. Fun easter eggs and things to explore or pick up or interact with filled every room of the space.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/5.png&quot;&gt;&lt;img src=&quot;/images/roguelike-design/5.png&quot; alt=&quot;Octopode&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;h3 id=&quot;entirely-text-based&quot;&gt;Entirely text-based?!&lt;/h3&gt;
+
+&lt;p&gt;The fact that the space was text-based was largely done for logistical, rather than aesthetic, reasons.&lt;/p&gt;
+
+&lt;p&gt;The hardest problem we were solving was figuring out what sort of tone and what level of game-like interactions would help foster the social dynamics we were aiming for. Using text meant we could rapidly iterate on content and systems, rather than getting caught up in the additional complexity of building a 2D or 3D rendering system or having higher asset production costs.&lt;/p&gt;
+
+&lt;p&gt;Even using ASCII graphics (a la classic roguelikes) would have added in a lot of complex design problems to solve that we were able to sidestep with text descriptions.&lt;/p&gt;
+
+&lt;p&gt;That said, it wouldn’t surprise me if being text-based would still still be the correct design choice even given more design resources. Text descriptions can be a lot more evocative than representational graphics, and having something look a bit less like a traditional videogame helps make the space feel appropriate for a professional conference.&lt;/p&gt;
+
+&lt;p&gt;Overall, the response was overwhelmingly positive. Many, many attendees remarked on how Roguelike Celebration felt the most like physically “attending” an event to them since quarantine started.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-did-we-get-here&quot;&gt;How did we get here?&lt;/h2&gt;
+
+&lt;p&gt;My chief design goal was to create a social space where people could have small group conversations: say, a conversation with 2-10 people where maybe you know some of the people, but it’s just as likely you won’t know anyone.&lt;/p&gt;
+
+&lt;p&gt;Given that overarching goal, I quickly settled on a few key design tentpoles:&lt;/p&gt;
+
+&lt;h3 id=&quot;a-novel-space-is-inherently-valuable&quot;&gt;A novel space is inherently valuable&lt;/h3&gt;
+
+&lt;p&gt;In games, we talk about the idea of the “magic circle”, a boundary that clearly delineates the space where a game or play takes place as distinct from the normal world. Activities within the magic circle being distinct from normal reality gives people freedom to express themselves more freely and to, well, play (within reason and established safety limits, of course).&lt;/p&gt;
+
+&lt;p&gt;A similar thing happens with in-person conferences. The event venue (especially if in a destination location!) serves as a freeing liminal space that helps attendees be present and engaged. Whether you’re at a conference to learn from the talks, to meet new people, or frankly to just enjoy a free employer-paid vacation, the act of being in a different physical place does a lot to get you in a mindset where you’re ready to embrace new experiences.&lt;/p&gt;
+
+&lt;p&gt;This is difficult for online events in the time of quarantine! If you’re like me, you’re largely spending 40 hours a week sitting at home, using Slack and Zoom or some other similar text and videoconferencing software. Asking people to spend their weekends at their same computers attending a Zoom conference with a Discord or Slack doesn’t accomplish that goal!&lt;/p&gt;
+
+&lt;p&gt;We realized that, even if our custom social space was otherwise a complete and utter failure, the mere act of having it be a new and novel space would still be valuable.&lt;/p&gt;
+
+&lt;h3 id=&quot;allow-small-group-conversations-at-a-technical-level&quot;&gt;Allow small-group conversations at a technical level&lt;/h3&gt;
+&lt;p&gt;Having a conference Discord or Slack means having a few hundred people in the same dozen text channels. This setup affords two different modes of interaction: people can talk in those large public channels with a few hundred participants, or they can slide into other people’s DMs for 1:1 chats.&lt;/p&gt;
+
+&lt;p&gt;Neither of these are particularly great for enabling intimate group conversations with strangers! In particular, we talked to a large number of potential attendees who expressed extreme discomfort and anxiety about trying to have any sort of conversation in those large public hundred-person chat channels.&lt;/p&gt;
+
+&lt;p&gt;Conversely, VR social spaces such as AltspaceVR or Mozilla Hubs do a great job of enabling the sort of fluid small-group conversations you get naturally in-person. Physical presence, spatial audio, and body language cues from head-tracking and hand controllers mean that you can naturally split off from a group conversation to start a smaller conversation, and then effortlessly rejoin the larger conversation whenever you want, similar to how you would in a physical setting.&lt;/p&gt;
+
+&lt;p&gt;But I’ve regrettably found VR social spaces to be completely inaccessible to people who aren’t VR enthusiasts, even when using software like AltspaceVR or Hubs that technically support non-VR desktop and mobile devices.&lt;/p&gt;
+
+&lt;p&gt;We knew we needed to find a technical model for chat that, while not in VR, was closer to what VR offers than to Slack.&lt;/p&gt;
+
+&lt;p&gt;Borrowing the spatial chat model from MUDs gave us the property we wanted where you could be in a room with a small group of people having an intimate conversation!&lt;/p&gt;
+
+&lt;h3 id=&quot;playful-design-adds-spontaneity&quot;&gt;Playful design adds spontaneity&lt;/h3&gt;
+&lt;p&gt;Even if we create a space where people &lt;em&gt;can&lt;/em&gt; talk to each other in small groups, that doesn’t mean they will. Striking up a cold conversation with a stranger is hard and scary!&lt;/p&gt;
+
+&lt;p&gt;At in-person events, there are a number of easy hooks that make it socially acceptable to initiate small-talk. You might strike up a conversation with the person sitting next to you in-between talks about the talk you’ve just seen. You might comment on a sticker on someone’s laptop, or the logo on their t-shirt. You can walk up a sponsor booth and know that someone sitting there will be thrilled to chat about their company.&lt;/p&gt;
+
+&lt;p&gt;We don’t have any of those affordances by default in online spaces!&lt;/p&gt;
+
+&lt;p&gt;My hypothesis for Roguelike Celebration was that we could fill that void by integrating game mechanics and playful elements borrowed from online games.&lt;/p&gt;
+
+&lt;p&gt;In particular, I was inspired by &lt;a href=&quot;https://lostgarden.home.blog&quot;&gt;Dan Cook&lt;/a&gt;’s work at Spry Fox around how to design MMOs to encourage formation of meaningful friendships. His design work and writing is primarily concerned with helping people form deep friendships over the course of months or years, rather than us trying to get people to be mildly friendly over two days, but a lot of the core concepts he talks about in his &lt;a href=&quot;https://www.youtube.com/watch?v=voz6S7ryWC0&quot;&gt;GDC talks&lt;/a&gt; were still directly applicable.&lt;/p&gt;
+
+&lt;p&gt;A particular piece of social science he explores is the idea that friendships are formed through &lt;strong&gt;repeated spontaneous interactions over time.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This model reinforces some design decisions I’ve already explained: if you want spontaneous interactions, that seemingly requires a more spatial chat model than a giant Discord server where everybody is always in the same chat rooms at the same time.&lt;/p&gt;
+
+&lt;p&gt;From there, adding game-like and playful activities to the space can encourage these moments of spontaneous interaction to happen more frequently.&lt;/p&gt;
+
+&lt;p&gt;To ground this in a concrete example, the space had a bar area where attendees could drink a polymorph potion (designed/implemented by &lt;a href=&quot;https://twitter.com/ampepers&quot;&gt;Alexei&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/kawaidragoness&quot;&gt;Kawa&lt;/a&gt;) that would add a random emoji to the front of their name. Let’s look at all of the ways this simple playful element provided social value to attendees:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People who needed a break from conversation could wander off to the bar and drink a few more polymorph potions as a sort of fidget activity&lt;/li&gt;
+  &lt;li&gt;Because this was an exciting special thing that was only available in the bar, this encouraged people to move in and out of the bar regularly, letting the bar serve as a sort of conversational nexus where you could bump into someone you knew (or didn’t know but had seen in other rooms)&lt;/li&gt;
+  &lt;li&gt;Seeing other attendees with cool emojis encouraged people to explore the space to find other secrets like that, helping attendees circulate to different rooms and increasing the chance of spontaneous interactions&lt;/li&gt;
+  &lt;li&gt;When someone couldn’t figure out how to add an emoji to their name, they’d ask people who already had emoji, giving people an excuse to be helpful and get to know each other in the process&lt;/li&gt;
+  &lt;li&gt;Being able to have some control over your emoji — you could drink as many potions as you wanted with no ill effect, so you could keep chugging until you got an emoji you particularly liked — served as a form of player expression. This is both extremely satisfying as an attendee and serves as a great conversation opener for other attendees.&lt;/li&gt;
+  &lt;li&gt;Running into someone with the same emoji as you was a particularly potent way to start a conversation and instantly feel affinity towards a stranger.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most of our playful elements like this were fairly simple due to time constraints. I’d love to explore more complex and involved systems for future events, but you can see here how even the simplest game-like interactions can massively impact the sociability of the space.&lt;/p&gt;
+
+&lt;h2 id=&quot;video-chat-is-valuable-in-moderation&quot;&gt;Video chat is valuable in moderation&lt;/h2&gt;
+&lt;p&gt;Video chat is far more effective than audio chat at helping convey emotional nuance, and audio chat is equally more effective than text chat. This is important if our goal is to foster new friendships and interesting connections!&lt;/p&gt;
+
+&lt;p&gt;But at this point in quarantine, we’re all well aware of Zoom Fatigue. It’s clear that running an entire conference on video or audio chat is a great way to burn everyone out.&lt;/p&gt;
+
+&lt;p&gt;As we spoke with potential attendees, we realized there are broadly two types of online communicators: those who are happier communicating online in text, and those who are happier using videochat to the extent that they have the emotional energy. Finding a way to make both groups of people feel comfortable and socially stimulated felt like a valuable goal.&lt;/p&gt;
+
+&lt;p&gt;This led us to aim for an event where communication over text chat was the default, but there were many opportunities for attendees to consensually opt-in to escalate into audio or video chat. Being primarily based in text chat lets attendees save up their emotional energy for focused higher-quality moments of video conversation, and grounding those moments in opt-in activities means that each individual attendee can self-moderate how much video chat they can handle.&lt;/p&gt;
+
+&lt;p&gt;Our plan for video chat in the space was twofold: we planned to schedule discrete blocks of time for video chat-based networking sessions, but also offer lower-key videoconferencing in every room that people in that room could join at any time.&lt;/p&gt;
+
+&lt;p&gt;For the former, we held unconferencing sessions where attendees could propose and upvote discussion topics, which were then assigned to specific rooms. We also intended to schedule breakout room-style networking sessions (where you would be randomly moved into a videochat with 3-5 random people for 10 minutes), but couldn’t find room in our final conference schedule. These are the two structures I’ve seen work particularly well for structured video chat to avoid the anarchy and fatigue of unstructured 30-person Zoom calls.&lt;/p&gt;
+
+&lt;h2 id=&quot;putting-it-all-together&quot;&gt;Putting it all together&lt;/h2&gt;
+
+&lt;p&gt;Combining all of these design ideas, we ended up with a space that, by all accounts, was fairly successful at achieving its goals.&lt;/p&gt;
+
+&lt;p&gt;As mentioned, I was blown away by how many of the remarks about the space talked about a sense of physical presence that mirrors the way people talk about VR — this felt to people like they were physically “attending” our conference in ways they hadn’t felt before with virtual events.&lt;/p&gt;
+
+&lt;p&gt;One moment that sticks with me was when an attendee set up shop at a specific table in the kitchen and did tarot readings for anyone who brought her an offering (of any object taken from elsewhere in the space). To me, this level of an attendee buying into the fantasy and aesthetic of our space, and contributing their own playfulness to the mix, is a ringing endorsement for our game-like and playful approach.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/roguelike-design/6.png&quot;&gt;&lt;img src=&quot;/images/roguelike-design/6.png&quot; alt=&quot;Tweet advertising tarot readings&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;One pain point we did run into was just not having enough ways to test what we were doing. We were able to run a “preview event” that served as a test of the space (both from a design and from a technical load-test standpoint), and that proved essential in shaping the design of the space for its final iteration. But for the most part, it’s incredibly difficult to playtest or validate your designs ahead of time when doing so requires dozens to hundreds of people.&lt;/p&gt;
+
+&lt;p&gt;There are a ton of things I’m eager to change for our next iteration, as well as new hypotheses I have for how we can be more effective at encouraging conversations. But it’s also still unbelievable to me that we accomplished as much as we did with about three months of development time (mostly me, plus contributions from a handful of amazing conference organizers and volunteers) and only that one public playtest session.&lt;/p&gt;
+
+&lt;h2 id=&quot;call-for-collaboration&quot;&gt;Call for Collaboration&lt;/h2&gt;
+&lt;p&gt;This social space was essentially an experiment intended to test my hypothesis that borrowing elements from online games — physicality, playful interactions, etc — would create a space where people could have the sorts of small person-to-person interactions I’ve been missing from online events.&lt;/p&gt;
+
+&lt;p&gt;I think it was about as successful at that as I could reasonably hope, but it was also built for an audience perfectly suited to what I built. As a conference of mostly game designers, attendees were broadly familiar with the sorts of interface paradigms and game mechanics they were being presented with, and they’re already used to the idea that a professional conference can be playful and silly and fun.&lt;/p&gt;
+
+&lt;p&gt;I think all the work I’m doing is interesting and broadly applicable to other communities, but figuring out how to make it accessible to wider audiences is a complicated problem!&lt;/p&gt;
+
+&lt;p&gt;All of the code for our social space is &lt;a href=&quot;https://github.com/lazerwalker/azure-mud&quot;&gt;open-source&lt;/a&gt;, and anyone could technically build their own space based on my work without my input. But this design space is so nascent and so experimental that I think it would be hard to use this codebase without more context around the social design decisions we made. Which is to say, I suspect the most successful second deployment of this tech would be one that I continue to be involved in.&lt;/p&gt;
+
+&lt;p&gt;I’m excited to work with conference organizers to figure out what that would mean! If you have an event that you think could work well for something like this, shoot me an &lt;a href=&quot;mailto:socialspace@lazerwalker.com&quot;&gt;email&lt;/a&gt; or &lt;a href=&quot;https://twitter.com/lazerwalker&quot;&gt;Twitter DM&lt;/a&gt; and let’s chat about how the work I’m doing can benefit your community!&lt;/p&gt;
+
+&lt;h2 id=&quot;this-isnt-just-about-this-space&quot;&gt;This isn’t just about this space&lt;/h2&gt;
+
+&lt;p&gt;Maybe you don’t run synchronous online events. Maybe you do, but you think a text-based tool like this isn’t right for your community. More than talking about great the specific thing I built is, I want to hammer home the idea that designers of online games and virtual worlds have been thinking about and solving these social design problems for literal decades.&lt;/p&gt;
+
+&lt;p&gt;The most effective way to make online events more engaging is going to be looking towards game design and virtual world design to learn what makes those spaces tick.&lt;/p&gt;
+
+&lt;p&gt;This doesn’t (necessarily) mean making actual games. Our space more resembles Discord or Slack from a UI/UX perspective than a historical MUD.&lt;/p&gt;
+
+&lt;p&gt;It also doesn’t mean building more of the same online event platforms we already have, but throwing in some 2D pixel art or traditional ‘gamification’ markers (leaderboards, badges, etc) or other surface-level signifiers.&lt;/p&gt;
+
+&lt;p&gt;What we actually need to take from game design is the understanding of how to use play and playful design to create environments whose architecture encourages and rewards positive social interactions through psychologically satisfying systems. This isn’t by any means easy, but I hope the work I’ve done can show that it’s doable!&lt;/p&gt;</content><author><name></name></author><summary type="html">This is part of a series of posts about Roguelike Celebration 2020! If you like this, you may also like my post about the technical architecture of our social space, our streaming AV setup, or the open source codebase for the social space.</summary></entry><entry><title type="html">Running A Virtual Conference: Roguelike Celebration’s AV Setup</title><link href="http://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html" rel="alternate" type="text/html" title="Running A Virtual Conference: Roguelike Celebration’s AV Setup" /><published>2020-10-13T12:10:00+00:00</published><updated>2020-10-13T12:10:00+00:00</updated><id>http://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/10/13/roguelike-celebration-av-setup.html">&lt;p&gt;The &lt;a href=&quot;https://roguelike.club&quot;&gt;Roguelike Celebration&lt;/a&gt; conference has been running for five years, but two weeks ago marks our first foray into an online-only event!&lt;/p&gt;
+
+&lt;p&gt;The most notable thing about this iteration of the event was the &lt;a href=&quot;https://twitter.com/TuckyAalto/status/1312424558767480833&quot;&gt;custom MMO-like social space&lt;/a&gt; that hosted the event. I’m planning to write plenty about that both from a design and technical standpoint, but today I wanted to talk about something a bit more universally applicable to any online event: the nuts-and-bolts of how we ran our AV setup.&lt;/p&gt;
+
+&lt;p&gt;We were a two-day single-track conference, with talks streamed to both Twitch and YouTube (more on that later), and the YouTube stream embedded directly within our custom event platform software.&lt;/p&gt;
+
+&lt;p&gt;This is a technical post for people who will directly be handling AV needs for their own virtual events. I walk through both the technologies we used and the structural/philosophical choices that we made when planning the streaming portion of our event.&lt;/p&gt;
+
+&lt;p&gt;To be clear, I was not the person actually operating the stream during the event itself: that honor goes to &lt;a href=&quot;https://twitter.com/kawaiidragoness&quot;&gt;Kawa&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/MuffiTuffi&quot;&gt;Travis&lt;/a&gt; on the AV logistics side of things, and &lt;a href=&quot;https://twitter.com/&quot;&gt;Alexei&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/swartzcr&quot;&gt;Noah&lt;/a&gt; as emcees/hosts. That said, many of these high-level tooling/process decisions were mine, and the experience I’m sharing about our experience comes from both my personal observations and from speaking with the people who were actively running the stream.&lt;/p&gt;
+
+&lt;h1 id=&quot;streamyard&quot;&gt;StreamYard&lt;/h1&gt;
+&lt;p&gt;We used &lt;a href=&quot;https://streamyard.com&quot;&gt;StreamYard&lt;/a&gt; as our streaming studio. We liked the idea of having a solution that wasn’t reliant on the host’s home Internet connection, and that was easier for both the host and for speakers to deal with than messing around with videoconferencing software.&lt;/p&gt;
+
+&lt;p&gt;Having a browser-based tool meant that a conference organizer wasn’t running OBS and a videochat client with support for NDI, and that it was easier for us to swap out which organizer was on-duty for technical setup during the event itself.&lt;/p&gt;
+
+&lt;p&gt;StreamYard was great. It was easy for us to use, easy for speakers to connect to, and it effortlessly let us stream to both Twitch and YouTube simultaneously.&lt;/p&gt;
+
+&lt;p&gt;Throughout our event, we had at least two organizers in StreamYard at all times. We intentionally split out the roles of “emcee” and “technical AV person” into two separate people, largely so that in case of technical issues the emcee could continue to stall and keep the audience occupied (tech permitting!) while the other person fixed the issues. I suspect StreamYard is easy enough to use you could likely get away with only one person, but this worked really well for us.&lt;/p&gt;
+
+&lt;p&gt;We did have a few minor issues with StreamYard:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;While we were able to integrate our own custom overlays, we didn’t have as much control over our display as we would have using something like OBS. It’s possible that some of the things we thought we couldn’t do (e.g. custom fonts or adding arbitrary text labels) are things that StreamYard is capable of doing, but the documentation wasn’t great — we often found ourselves watching YouTube videos from the community when StreamYard’s official documentation wasn’t helpful.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Related to the previous issue: even though we had a human captioner providing live captions, we were unable to embed those directly as closed captions within the stream as we would have been able to with OBS. In our specific case, this was mostly okay: most attendees were watching via our custom social space, where we directly embedded the captions below the stream, and our Twitch and YouTube channels directed people to a website where they could view the captions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Prerecorded video playback was still reliant on a home internet connection. StreamYard doesn’t let you upload video files and directly play them, so playing a pre-recorded video meant the emcee opening up a Chrome tab with the video file and screen-sharing that tab.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For times we played prerecorded videos, the volume was frequently lower than live speakers, and we didn’t have a way to dynamically adjust this during the event. In the future, we’d likely take the time to normalize all prerecorded videos before streaming, but it’s frustrating StreamYard doesn’t appear to have any real-time audio mixing tools.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;StreamYard’s highest paid tier allows you to capture recordings of up to 8 hours long. Our conference had roughly 8 hours of video each day. To avoid unintentionally cutting off our recordings if our schedule went long, we split each day up into two separate StreamYard ‘studio’ recording instances. Switching over added some minor logistics hassle, and also caused some issues where the YouTube embed widget we were using wasn’t capable of automatically switching from the morning to the afternoon video feeds, meaning attendees would occasionally need to refresh their browsers to switch over.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;StreamYard is a bit finicky when it comes to playing audio over screen-sharing, particularly on MacOS. This wasn’t an issue for our specific speaker pool, and is most likely a technical limitation for any browser-based technology, but is worth noting if you’re running a particularly multimedia-heavy event.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are other browser-based streaming services such as  &lt;a href=&quot;https://restream.io&quot;&gt;Restream.io&lt;/a&gt; and &lt;a href=&quot;https://stageten.tv&quot;&gt;Stage Ten&lt;/a&gt;, but we didn’t really spend time looking into them. I’d used StageYard before as a speaker, it was easy to use and affordable, we went with it.&lt;/p&gt;
+
+&lt;p&gt;It’s possible one of these alternative services would have given us all of the features and ease-of-use did that StreamYard did, but without some of the other hassles we encountered. I’m not sure. I don’t want to speak for my other organizers, but the next time I host an online event, I’ll likely investigate to see if that’s the case. &lt;/p&gt;
+
+&lt;p&gt;That said, I could also see myself just as easily using StreamYard again, and would heartily recommend it except for those minor caveats.&lt;/p&gt;
+
+&lt;h1 id=&quot;streaming-twitch-vs-youtube&quot;&gt;Streaming: Twitch vs YouTube&lt;/h1&gt;
+&lt;p&gt;We’re a conference about games and game development. Streaming to Twitch makes sense to us, since that’s where our audience is.&lt;/p&gt;
+
+&lt;p&gt;However, Twitch doesn’t offer dynamic bitrate re-encoding of your streams unless you’re a Twitch Partner. This means that viewers on bad Internet connections can’t choose to load your stream at a low bitrate so they can actually watch it. This is exceedingly bad for accessibility!&lt;/p&gt;
+
+&lt;p&gt;YouTube does offer this! Our compromise was to stream to both Twitch and YouTube. Our custom social space embedded the YouTube stream, so everyone within the space was watching on YouTube. Even given that, our stream view counts were roughly equal across Twitch and YouTube.&lt;/p&gt;
+
+&lt;p&gt;One other thing to note is that we actively wanted to disable chat on both our YouTube and Twitch streams. Our approach was to have all text chat take place in our custom social space, where attendance was limited to people who had chosen to acquire a ticket (whether free or paid) and had agreed to our code of conduct, and where we had active moderation efforts.&lt;/p&gt;
+
+&lt;p&gt;YouTube easily lets you disable live chat on streams. Twitch does not.&lt;/p&gt;
+
+&lt;p&gt;On Twitch, we were able to set chat settings so that the only people who could what were people who had followed our account for more than 3 months. They could only post one message every five minutes, and it could only be emoji. This was functionally fine in practice, but it was frustrating Twitch wouldn’t let us just completely turn chat off, and meant we did have to keep an eye on it.&lt;/p&gt;
+
+&lt;p&gt;Which is to say: if you don’t have a solid reason to stream to Twitch (e.g. you’re a games conference), stream to YouTube instead of Twitch.&lt;/p&gt;
+
+&lt;h1 id=&quot;speaker-av-tests&quot;&gt;Speaker AV Tests&lt;/h1&gt;
+&lt;p&gt;This may be obvious, but it’s worth calling out: we scheduled 5-10 minutes for each speaker to pop into the StreamYard a week or so before the event to test out their AV setup and get used to the environment.&lt;/p&gt;
+
+&lt;p&gt;In our case, this was helpful to confirm that each speaker’s audio + video situation was sufficient (we had a very small budget to buy speaker equipment when necessary). At a previous online event I spoke at, these AV tests going poorly are what led to the organizers switching from an OBS-based setup to StreamYard.&lt;/p&gt;
+
+&lt;p&gt;StreamYard made this particularly easy. We could give all speakers a link to join the StreamYard instance ahead of time. Since anyone who joins the stream session is put into a ‘green room’ by default (where they can chat but aren’t on-stream) that also made it easy to manage back-to-back AV tests if we were running late.&lt;/p&gt;
+
+&lt;p&gt;Speaker AV tests are fairly easy to schedule and make happen, but are essential to making sure things go smoothly during the event itself!&lt;/p&gt;
+
+&lt;h1 id=&quot;prerecording&quot;&gt;Prerecording&lt;/h1&gt;
+&lt;p&gt;We asked — but did not require — all speakers to send us recorded videos ahead of time, to use as a backup in case of technical failure. Most speakers did, which I’m extremely grateful for. I’m also grateful we didn’t need to unexpectedly fall back to a backup.&lt;/p&gt;
+
+&lt;p&gt;We also made it clear to speakers that, while our default assumption was that speakers would present live, choosing to air a prerecorded video was perfectly fine.&lt;/p&gt;
+
+&lt;p&gt;From what I’ve seen as a speaker and conference organizer, experienced public speakers tend to be split pretty evenly about whether they’d prefer to perform live or provide a recorded talk. Some thrive on the adrenaline of knowing there’s a live audience, while others appreciate being able to take the time to record a perfect take or edit after the fact. We wanted both of these groups to do what would make them most comfortable and result in the best possible talks.&lt;/p&gt;
+
+&lt;p&gt;At the same time, an aspect of Roguelike Celebration that I really appreciate is that many of our accepted talks tend to come from first-time public speakers. There are certainly exceptions, but in general I’ve found that many inexperienced speakers give better performances live than pre-recorded. This isn’t a knock against anyone in that situation; maintaining high energy levels when you know you’re not speaking to anyone is a skill that often needs to be consciously learned.&lt;/p&gt;
+
+&lt;p&gt;Framing live talks as the default of two equally valid options let us nudge our new speakers in the direction that best set them up for success, while still allowing everyone to make their own personal choice as to what would let them give their best performance.&lt;/p&gt;
+
+&lt;p&gt;I think this strategy worked out well for us. Worth noting that, even for speakers who opted to use a prerecorded video, we asked (but did not require) that they show up live after their talk for moderated live Q&amp;amp;A.&lt;/p&gt;
+
+&lt;h1 id=&quot;dont-require-speakers-to-be-on-camera&quot;&gt;Don’t Require Speakers to be On-Camera&lt;/h1&gt;
+&lt;p&gt;We had a few speakers who did not want to show their faces. At least one speaker use a SnapChat Camera filter, and another speaker performed as a VTuber with a puppeteered 2D avatar.&lt;/p&gt;
+
+&lt;p&gt;These required more intensive AV setups, but the onus to get that working was generally on the speakers rather than us. Our job was primarily to be supportive: our goal as organizers is to enable speakers to give the best talks they can, and making sure they’re comfortable is an important part of that.&lt;/p&gt;
+
+&lt;p&gt;If a speaker is uncomfortable showing their face, I would probably nudge them towards a solution that conveys some sense of body language over disabling their video feed entirely — even the SnapChat Camera solution did a great job of conveying emotion in a way that just audio wouldn’t have -— but again, speaker comfort needs to come first.&lt;/p&gt;
+
+&lt;p&gt;From a technical standpoint, it’s worth noting that StreamYard didn’t have any issue with streaming video from virtual camera sources (e.g. SnapChat Camera or an OBS scene exposed as a camera).&lt;/p&gt;
+
+&lt;h1 id=&quot;and-that-was-the-video-portion-of-our-conference&quot;&gt;And that was the video portion of our conference!&lt;/h1&gt;
+
+&lt;p&gt;All in all, the livestreaming portion of our event went remarkably smoothly. At times, we were even &lt;em&gt;ahead&lt;/em&gt; of schedule, which I think speaks to how effortless our setup was.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this might be useful to you if you’re planning an online event and need to figure out how to handle the technical streaming aspect of your talks!&lt;/p&gt;</content><author><name></name></author><summary type="html">The Roguelike Celebration conference has been running for five years, but two weeks ago marks our first foray into an online-only event!</summary></entry><entry><title type="html">Your Online Event Should Have Live Captions</title><link href="http://blog.lazerwalker.com/2020/07/20/captions.html" rel="alternate" type="text/html" title="Your Online Event Should Have Live Captions" /><published>2020-07-20T16:00:00+00:00</published><updated>2020-07-20T16:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/07/20/captions</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/07/20/captions.html">&lt;p&gt;What if I told you there was a way to make your online conference or meetup more accessible to everyone, in a way that also improves the value of your video content in the long term, and is totally within your conference budget if you’re willing to fight for it?&lt;/p&gt;
+
+&lt;p&gt;An (in-person) game design conference I run provided live captions — by an actual human, typing incredibly quickly on a special stenotype keyboard in the same room as us — for the first time last fall. In our post-conference attendee survey, it was by far the most-commented-on change in our conference; everyone was universally grateful for their presence.&lt;/p&gt;
+
+&lt;p&gt;I now consider it a precondition of helping to organize any sort of meetup, event, or conference that we provide live captions.&lt;/p&gt;
+
+&lt;p&gt;As a result, I’ve now had a lot of conversations with other conference organizers who don’t understand why this is important, or are scared it’s going to be too complicated or expensive, or just generally don’t know where to get started.&lt;/p&gt;
+
+&lt;p&gt;My goal with this article is to answer all of the common questions I’m used to getting! Hopefully you’ll leave this realizing not just what live captions are and why your next event should have them, but also how to provide them without much effort.&lt;/p&gt;
+
+&lt;p&gt;Everything I’m saying also applies to in-person events, but I’m focusing specifically on the technical requirements of online events since, well, that’s what we’re all dealing with for the foreseeable future. I also think it’s generally easier to provide captions for online events; you have even less of an excuse not to!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;An important note:&lt;/strong&gt; I am not personally deaf or hard of hearing, nor do I consider myself part of the Deaf community. All of the advice I’m giving here is based on a combination of my personal experience as an event organizer (and having had to explain this stuff many times to other event organizers) and various conversations on Twitter with Deaf people. If you have additional questions, or have concerns about your specific event, I highly recommend finding a paid consultant to help you.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-do-i-need-live-captions-most-of-my-attendees-can-hear-just-fine&quot;&gt;Why do I need live captions? Most of my attendees can hear just fine!&lt;/h2&gt;
+
+&lt;p&gt;First of all: providing accommodations for those who are deaf or hard-of-hearing is itself reason enough to provide captions. Accessibility matters. If you don’t currently have many Deaf people in your community, have you considered that a likely factor is you’re not providing an accessible space for them?&lt;/p&gt;
+
+&lt;p&gt;That being said, captions benefit everyone, not just those who strictly need them in order to understand your speakers. Non-native speakers, people with neurodivergences such as ADHD that can lead to limited attention spans, even people who just get lost for a second and want to be able to catch up on the last sentence or two that were said: all benefit from live captions. Whenever I provide an event with captions, they are overwhelmingly popular with people who have full hearing capacity.&lt;/p&gt;
+
+&lt;p&gt;This is known as the &lt;a href=&quot;https://medium.com/@lazerwalker/your-online-event-should-have-live-captions-87f332a35745&quot;&gt;Curb-Cut Effect&lt;/a&gt;: accessibility tools such as sidewalk curb cut-outs or live captions may be primarily intended to benefit a specific vulnerable group, but frequently end up being beneficial to all.&lt;/p&gt;
+
+&lt;p&gt;Additionally, if you plan on posting video or audio of your event online after the fact, having a transcript can greatly increase its value to the community. Being able to search through the content of a technical talk, or be able to read something at your own pace rather than have to watch it, can be incredibly valuable for everyone. Live captions are &lt;em&gt;not&lt;/em&gt; the same thing as providing transcripts for uploaded recorded videos, but we’ll talk about that a bit later.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-videochatpresentationstreaming-software-offers-built-in-automatic-captioning-for-free-can-i-just-use-that&quot;&gt;My videochat/presentation/streaming software offers built-in automatic captioning for free! Can I just use that?&lt;/h2&gt;
+
+&lt;p&gt;The current state of the art of automatic captioning is… not good. People in Deaf and HoH communities often refer to these as “craptions”, and with good reason.&lt;/p&gt;
+
+&lt;p&gt;If you don’t have any other choice, it’s better to have robo-captions than not. But please know that, as of 2020, they are in no way a viable replacement for live human captions.&lt;/p&gt;
+
+&lt;p&gt;If you &lt;em&gt;must&lt;/em&gt; have robo-captions: if you’re streaming from OBS, there is a &lt;a href=&quot;https://obsproject.com/forum/resources/closed-captioning-via-google-speech-recognition.833/&quot;&gt;captioning plugin&lt;/a&gt; that can properly send closed captions to Twitch. Otherwise, &lt;a href=&quot;https://webcaptioner.com&quot;&gt;Web Captioner&lt;/a&gt; is another popular option.&lt;/p&gt;
+
+&lt;p&gt;But again, know that by providing only automatic captions, you are &lt;em&gt;not&lt;/em&gt; providing a truly accessible experience. Add them rather than having no captions if you have no other options, but &lt;em&gt;please&lt;/em&gt; consider this a last resort.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-the-difference-between-closed-captions-and-open-captions&quot;&gt;What is the difference between “closed captions” and “open captions”?&lt;/h2&gt;
+
+&lt;p&gt;Closed captions are captions that the viewer/listener can toggle on or off themselves, on their own device. Your TV’s closed captioning is a great example of this, as are the automatically-generated captions on YouTube.&lt;/p&gt;
+
+&lt;p&gt;Open captions are always visible for everyone. In context of online video, this means that the video content itself will contain text captions as part of the video stream.&lt;/p&gt;
+
+&lt;p&gt;For online video, closed captions are preferable since it offers more choice. That said, some online video platforms can make working with proper closed captions trickier, and you shouldn’t feel bad if you need to fall back on open captions.&lt;/p&gt;
+
+&lt;p&gt;If you can’t provide open captions through the streaming platform you are using, but you are receiving captions from your captioner in a publicly accessible plaintext form (e.g. a &lt;a href=&quot;https://streamtext.net&quot;&gt;StreamText&lt;/a&gt; website), I recommend directly giving your viewers that URL. Even if you still provide open captions in the video itself, providing the option to view a plaintext version of the captions can provide additional visual accessibility options for those who need it.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-about-sign-language&quot;&gt;What about sign language?&lt;/h2&gt;
+
+&lt;p&gt;Live captions and live sign language interpretation serve similar purposes. Many Deaf people prefer sign language to captions. For many, English is quite literally &lt;a href=&quot;https://learningenglish.voanews.com/a/a-new-reason-for-why-the-deaf-may-have-trouble-reading-119728279/115194.html&quot;&gt;a second language&lt;/a&gt;, making reading English text more difficult than reading sign language. Seeing somebody signing can also much more effectively convey tone and nuance than written English captions.&lt;/p&gt;
+
+&lt;p&gt;However, providing live sign language interpretation has downsides. Languages like American Sign Language and British Sign Language are far more different from each other than American English vs British English, while International Sign Language is more widely understood but is far less expressive, making even which sign language to use a tricky question that relies on knowing your specific audience. You also lose the benefits to non-deaf people that captions provide, as signing is naturally primarily useful to people who understand the specific sign language you are using.&lt;/p&gt;
+
+&lt;p&gt;In an ideal world, a fully-accessible stream would provide both captions and whatever sign language interpretation makes sense for the audience. I’ve attended large tech conferences that offered both live captioning and live ASL interpretation as options. But if you can only provide one, my current understanding — as somebody who is neither deaf / hard-of-hearing nor speaks any sign language — is that, depending on your specific audience, focusing on captions is likely the best way to provide the most accessibility for the most people.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-i-work-with-a-live-captioner&quot;&gt;How do I work with a live captioner?&lt;/h2&gt;
+
+&lt;p&gt;In general, working with a captioner is straight forward. The setup is slightly more complicated for an in-person event compared to an online event, but for an online event you largely just need to make sure that you have a low-latency audio connection to your captioner (i.e. a Skype call or similar, instead of a public Twitch stream with 10-15 seconds of latency) and they’ll take care of the rest.&lt;/p&gt;
+
+&lt;p&gt;There may be some technical plumbing required depending on where you are streaming. As an example, Twitch’s closed-captioning API doesn’t currently easily support embedding closed captions coming from many common web-based captioning tools. I typically receive a public website from my captioner, which I embed in my stream using an OBS web view.&lt;/p&gt;
+
+&lt;p&gt;Before your event, you’ll also ideally want to assemble a list of specific technical jargon your speakers might use. This is optional, but will generally help your captioner provide more accurate captions.&lt;/p&gt;
+
+&lt;h2 id=&quot;arent-captions-expensive&quot;&gt;Aren’t captions expensive?&lt;/h2&gt;
+
+&lt;p&gt;In my experience, providing live captions for community events and conferences is within the range of typical budgets! There are a lot of variables here that will affect cost, but in my experience, providing live captions for a 2-3 hour meetup typically costs a few hundred dollars, while a 2-day single-track conference usually runs closer to a few thousand dollars. Not cheap by any means, but well within the budget of many events that plan for it.&lt;/p&gt;
+
+&lt;p&gt;Crucially, finding a dedicated captioning sponsor can be relatively easy compared to other conference expenses. If you run a tech event, tech companies are generally looking for ways to signal that they care about diversity and inclusion. Having their name attached to providing live captions is a very effective way to accomplish that, and you can take advantage of that while planning out your budget and fund-raising strategy.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-i-even-find-a-captioner&quot;&gt;How do I even find a captioner?&lt;/h2&gt;
+
+&lt;p&gt;It depends a lot on what your event is! I personally work frequently with &lt;a href=&quot;https://whitecoatcaptioning.com&quot;&gt;White Coat Captioning&lt;/a&gt;, who provide captions to a lot of tech conferences and science-focused academic events. I can highly recommend them. If they’re not a good fit for your event or your community, ask the people in your community for recommendations!&lt;/p&gt;
+
+&lt;h2 id=&quot;i-can-upload-these-after-the-fact-as-video-transcripts-right&quot;&gt;I can upload these after-the-fact as video transcripts, right?&lt;/h2&gt;
+
+&lt;p&gt;After your event, your captioner will likely provide you with a raw transcript. If you just upload that straight to, say, YouTube, that will already be much higher-quality than the robo-captions you’ll get from YouTube or another service. But they’ll still be pretty rough, in ways that are forgivable when you’re watching a live talk in real-time but can be frustrating if you’re watching a video after the fact. Assuming you’re interested in providing higher-quality transcripts, you’ll need to clean up those transcripts before uploading them to YouTube or another video hosting service.&lt;/p&gt;
+
+&lt;p&gt;Manually cleaning up the transcripts is a &lt;em&gt;lot&lt;/em&gt; of work. I’ve personally seen many meetup volunteers excitedly sign up to clean up transcripts, only to burn out halfway through. This is real, time-consuming labor. As you’re budgeting for captions at your event, you may want to consider including funds to pay someone to clean up the transcripts, or flat-out commission a new transcription based on your recordings.&lt;/p&gt;
+
+&lt;p&gt;No matter what platform you’re uploading to, you conceptually need to provide not just a transcript but timestamp data that matches up sentences to when they should show up on-screen. While it’s possible to generate a timestamped subtitle file yourself by hand, the easiest way to do this is to upload your video to YouTube, paste your transcript into the text box, and let Google generate the timestamped .srt file for you. Even if you’re planning to host your video elsewhere, this is a case where (unlike for the raw captions themselves) machine learning &lt;em&gt;can&lt;/em&gt; make your life easier.&lt;/p&gt;
+
+&lt;h2 id=&quot;and-thats-it&quot;&gt;And that’s… it!&lt;/h2&gt;
+
+&lt;p&gt;At the end of the day, making your event more accessible by providing captions is relatively easy. 90% of the work is recognizing this is worth providing and finding the budget for it.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this (longer than I intended!) article has both helped convince you that live human captions are valuable, and helped demystify the process of hiring and working with a live captioner!&lt;/p&gt;</content><author><name></name></author><summary type="html">What if I told you there was a way to make your online conference or meetup more accessible to everyone, in a way that also improves the value of your video content in the long term, and is totally within your conference budget if you’re willing to fight for it?</summary></entry><entry><title type="html">Building a better online hallway track</title><link href="http://blog.lazerwalker.com/2020/07/09/virtual-worlds.html" rel="alternate" type="text/html" title="Building a better online hallway track" /><published>2020-07-09T10:00:00+00:00</published><updated>2020-07-09T10:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/07/09/virtual-worlds</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/07/09/virtual-worlds.html">&lt;p&gt;As the effects of COVID-19 have been going on for months, we’ve grown accustomed to new forms of socializing. “Tech conferences” now mean Twitch and YouTube streams, casual hangouts with friends mean mass Zoom calls.&lt;/p&gt;
+
+&lt;p&gt;I don’t know about you, but I find all of this &lt;em&gt;exhausting&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;I go to tech conferences primarily to have good conversations with people, but that’s difficult in Twitch chat or even a dedicated Discord or Slack. Casual community meetups that used to be a short presentation followed by a few hours of unstructured socializing are now nothing but rigid slide decks. Communities that previously felt like joyful spaces where I could connect with old friends and meet new ones now feel like nothing more than yet another indistinct icon in my Slack or Discord app sidebar. “Attending a conference” means sitting in the same physical environment I use for work, and using the exact same pieces of software I spend my work days in.&lt;/p&gt;
+
+&lt;p&gt;There has to be something better!&lt;/p&gt;
+
+&lt;h2 id=&quot;a-solved-problem-in-vr&quot;&gt;A solved problem in VR?&lt;/h2&gt;
+
+&lt;p&gt;There are a lot of social virtual reality spaces that do a really effective job of this! I attended Microsoft’s Mixed Reality Dev Days conference in &lt;a href=&quot;https://altvr.com&quot;&gt;AltSpace&lt;/a&gt;, and I’ve run smaller meetups in &lt;a href=&quot;https://hubs.mozilla.com&quot;&gt;Mozilla Hubs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;These spaces do a lot of things really well!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nonverbal comunication&lt;/strong&gt;. The performative nature of videochat makes it way more emotionally exhausting than a phone call or an in-person conversation, but dropping down to just audio chat loses a lot of the nuance of nonverbal communication.&lt;/p&gt;
+
+&lt;p&gt;Even though VR doesn’t have a widely-available solution for conveying emotion via facial expression, most VR experiences communicate players’ head and hand positions, which go a long way towards expressing emotion and intent without making you feel like you’re “on camera” like when everybody’s looking at your webcam feed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Natural conversation flow&lt;/strong&gt;. When you’re at a party or meetup in real life, conversation circles are fluid. A group of four people might naturally split off into two separate conversations, then effortlessly rejoin again a few minutes later, and they won’t even consciously notice this is happening.&lt;/p&gt;
+
+&lt;p&gt;That isn’t possible on a 30-person Zoom call, and you end up with large stilted group conversations that wouldn’t happen in-person.&lt;/p&gt;
+
+&lt;p&gt;A lot of videochat programs (Zoom included) have ‘breakout room’ functionality. A moderator splitting people off into randomized small groups for a fixed period of chat time can be an effective way to foster meaningful and interesting conversation, but the rigid formality of being told when to break out and when to rejoin the larger group lacks the spontaneity and fluidity of real-world conversations.&lt;/p&gt;
+
+&lt;p&gt;VR social spaces fix this! The combination of feeling embodiment in a virtual space and positional spatial audio means that a lot of VR meetups I’ve went to have managed to recreate the conversational dynamics of in-person meetups. This is phenomenal!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A sense of play&lt;/strong&gt;. Even if you have the ability to walk up to somebody and start a conversation with them, that’s a nerve-wracking thing to do! Some of my closest friends I’ve met at conferences are ones I met through having some forced reason to interact with them: waiting in the bathroom line in front of them at a party, sitting next to them at a conference talk, visiting the same sponsor booth at the same time as them.&lt;/p&gt;
+
+&lt;p&gt;Inhabiting a 3D space in VR helps provide some of this, but it still lacks a lot of the forcing functions that exist IRL. You don’t need to wait in a bathroom line, for example!&lt;/p&gt;
+
+&lt;p&gt;A lot of VR social spaces solve this through providing opportunities to play. Beautifully-designed 3D environments encourage players to explore, giving them the chance to run into other people as they wander the space. Commenting on somebody’s cool custom avatar can serve the same icebreaker as commenting on a sticker on their laptop. Interactive objects can give people the literal chance to play with each other, and strike up a conversation based on that.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-vr-isnt-perfect&quot;&gt;…but VR isn’t perfect&lt;/h2&gt;
+
+&lt;p&gt;Everything I’m describing sounds great, but has a huge problem. Accessing any of these spaces presupposes you have an interest in VR, an expensive VR headset, and likely a top-tier gaming PC.&lt;/p&gt;
+
+&lt;p&gt;A lot of VR social spaces are accessible to people without VR headsets, but that’s still tricky. Without head- and hand-tracking, you lose a lot of the communication nuance that makes these spaces work. PC-based apps still have relatively high hardware requirements, and the spaces that work on smartphones (such as &lt;a href=&quot;https://recroom&quot;&gt;Rec Room&lt;/a&gt;) tend to be designed for small casual friend hangouts rather than the sorts of larger events where you’re trying to network or make new friends.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, this stuff is &lt;em&gt;completely incomprehensible&lt;/em&gt; to people who aren’t used to VR or playing 3D games. VR meetups are &lt;em&gt;great&lt;/em&gt; if your audience is VR developers. For anyone else, the basic cognitive overhead to even understand how to navigate a 3D space is a huge barrier to entry.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-whats-the-solution&quot;&gt;So what’s the solution?&lt;/h2&gt;
+
+&lt;p&gt;All of these problems are solvable. The conferences and meetups I’ve attended in VR have felt great, with the caveat of the exclusivity and inapproachability of VR. The question is how to build new tools that take all of the design principles that VR virtual world designers have internalized and applying them to more accessible forms where you’re not necessarily already speaking the language of being in a literal fully-realized 3D virtual world.&lt;/p&gt;
+
+&lt;p&gt;I’ve tried a lot of new tools that have sprung up recently attempting to provide this sort of social space. It’s frustrating when so many of them are clearly attempting to augment existing chat tools with additional functionality. Fostering the sort of spontaneous social interactions that come naturally in real-life spaces is an incredibly difficult problem when most attempts to force spontaneity inevitably feel, well, forced.&lt;/p&gt;
+
+&lt;p&gt;So how do you create spontaneity in a way that feels natural? I think you need to create something that fundamentally feels like its own unique space that players/attendees have agency over. Something where the act of existing in the space itself, and trying to express yourself, naturally leads to creative and playful and frivolous behavior, which in turn creates room for the spontaneity we so desperately desire to exist.&lt;/p&gt;
+
+&lt;p&gt;I’ll hopefully have more to share soon about the prototypes I’ve been working on, and in the coming weeks I’ll also be publishing a series of articles about open-source tools I’ve been building to make prototyping and experimenting these sorts of experiences easier.&lt;/p&gt;
+
+&lt;p&gt;But to frame this one last way: if you asked me if I would rather attend a group video chat with some dear friends, or have us all join a &lt;a href=&quot;https://onezero.medium.com/party-in-a-shared-google-doc-d576c565706e&quot;&gt;shared spreadsheet&lt;/a&gt; with no way to communicate but typing into cells, I’d pick the spreadsheet every time.&lt;/p&gt;</content><author><name></name></author><summary type="html">As the effects of COVID-19 have been going on for months, we’ve grown accustomed to new forms of socializing. “Tech conferences” now mean Twitch and YouTube streams, casual hangouts with friends mean mass Zoom calls.</summary></entry><entry><title type="html">What is Spatial Audio, Why Does it Matter, and What’s Apple’s Plan?</title><link href="http://blog.lazerwalker.com/2020/06/30/spatial-audio.html" rel="alternate" type="text/html" title="What is Spatial Audio, Why Does it Matter, and What’s Apple’s Plan?" /><published>2020-06-30T12:00:00+00:00</published><updated>2020-06-30T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/06/30/spatial-audio</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/06/30/spatial-audio.html">&lt;p&gt;At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that’s probably the least interesting application of spatial audio.&lt;/p&gt;
+
+&lt;p&gt;As someone who’s been working in the field for a long time — my research at the MIT Media Lab in 2015 and 2016 focused on location-based storytelling in public spaces using spatial audio — I wanted to try to give some context around why this is interesting and what it might enable.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-spatialpositional-audio&quot;&gt;What is spatial/positional audio?&lt;/h2&gt;
+
+&lt;p&gt;Spatial or positional audio (these terms are typically used interchangeably) lets you position sounds anywhere in 3D space. Instead of just thinking about sound engineering at the level of “is this to the listener’s left, right, or neither?” as you would with normal stereo sound, you can place specific sounds at specific 3D locations around the listener: say, a sound that’s in front of you, a little bit to the left, and a meter or two above head/ear height.&lt;/p&gt;
+
+&lt;p&gt;If that sounds a lot like surround sound, you’re not wrong, but the underlying technology is different. Surround sound systems play audio out of speakers that are placed in different physical locations. To play a sound that sounds like it’s behind you and to the right, you use a speaker that is literally behind you and to the right.&lt;/p&gt;
+
+&lt;p&gt;The sort of spatial audio we’re talking about is (usually, but not always) concerned with producing sound that is situated precisely in 3D space despite coming out of a pair of normal headphones.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-spatial-audio-work&quot;&gt;How does spatial audio work?&lt;/h2&gt;
+
+&lt;p&gt;Let’s talk about how humans normally hear sounds in the real world.&lt;/p&gt;
+
+&lt;p&gt;If a loud noise happens directly to your left, those sound waves will reach both your left and right ears. But while they have a pretty direct route into your left ear, your right ear will receive them after they’ve passed through and been shaped by your skull, your brain, and pretty much everything else in there.&lt;/p&gt;
+
+&lt;p&gt;Humans — specifically, our brains, inner ears, and outer ears working together — are really good at processing the difference in these sound waves and transforming those raw signals into your conscious mind saying “ah yeah, that sound is coming from over there”.&lt;/p&gt;
+
+&lt;p&gt;To produce spatial audio that lets you hear things in precise 3D locations through a set of headphones, the audio coming out of each headphone ear needs to essentially recreate the sound attenuation that happens naturally so you can to trick your low-level auditory systems into thinking the sound is coming from someplace else.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-do-you-produce-spatial-audio-using-analog-methods&quot;&gt;How does do you produce spatial audio using analog methods?&lt;/h2&gt;
+
+&lt;p&gt;The traditional way of producing binaural audio recordings involves taking two microphones and sticking them in the ‘ears’ of a mannequin head that’s been designed to roughly match the density of a human head. Done right, this gives you a stereo audio recording that truly does capture the 3D soundscape as it was recorded.&lt;/p&gt;
+
+&lt;p&gt;The audio walks by sound artist Janet Cardiff are a great example of these traditional analog methods. If you want to get a sense of how effective this technique can be, grab a pair of headphones and listen to a few minutes of her NYC audio walk &lt;a href=&quot;https://soundcloud.com/incredibleworksofart/sets/janet-cardiff&quot;&gt;Her Long-Black Hair&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-digital-techniques-for-spatial-audio&quot;&gt;Using digital techniques for spatial audio&lt;/h2&gt;
+
+&lt;p&gt;Manually setting up two microphones and a test dummy is a lot of work. Modern audio production techniques typically involve math instead. Specifically, they use a set of models known as Head-Related Transfer Functions (HRTF) that describe the transformation that occurs when a “pure” sound is attenuated in such a way so as to mimic what a specific ear would hear.&lt;/p&gt;
+
+&lt;p&gt;Although specific HRTFs theoretically vary from person to person (all of our bodies are different!), in practice researchers have generated a few different algorithms that will work well for most situations. If you’re using HRTF as a programmer or sound engineer, in most cases you’ll just see “HRTF” as an option you can enable and that’s really the extent to which you need to think about it.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-you-adapt-to-the-listener&quot;&gt;How do you adapt to the listener?&lt;/h2&gt;
+
+&lt;p&gt;Whether you’re working with analog binaural recordings or digital tools that can apply HRTF, the results are usually stereo audio files that sound impressively like they’re positioned in real space.&lt;/p&gt;
+
+&lt;p&gt;But they’re still static recordings. Let’s say that a sound is directly behind you. If you turn 90 degrees to your left, you’d expect that sound is now directy to your left. But because the audio recording was made so that sound is “behind” you, it will turn along with you, breaking the illusion.&lt;/p&gt;
+
+&lt;p&gt;This is where being able to create spatial audio in software is valuable. If you have some way of tracking the position of the listener’s head, you can dynamically adjust your sound generation in real-time to keep a sound source fixed in the listener’s concept of real-world space.&lt;/p&gt;
+
+&lt;p&gt;Right now, the main commercial application of something like this is VR and AR headsets. Since they already have high-quality head tracking data for graphics rendering, using that same data for positional audio is a no-brainer.&lt;/p&gt;
+
+&lt;h1 id=&quot;where-airpods-pro-come-in&quot;&gt;Where AirPods Pro come in&lt;/h1&gt;
+
+&lt;p&gt;Given all of that, hopefully you can see how adding spatial audio features to AirPods Pro might work.&lt;/p&gt;
+
+&lt;p&gt;Apple already offers an API for producing spatial audio with HRTF, both integrated into ARKit for AR experiences and in the more general-purpose AVFoundation library. This has actually been part of iOS since 2014!&lt;/p&gt;
+
+&lt;p&gt;With iOS 14, Apple is adding a set of new APIs to use the motion sensors already in AirPods Pro to provide head-tracking, letting developers build positional audio experiences that are aware of how the listener is moving their head.&lt;/p&gt;
+
+&lt;p&gt;This isn’t a completely new concept — until recently, Bose maintained a similar platform for head-tracked spatial audio using certain Bose headphone models and a third-party smartphone SDK — but being supported at a first-party system level, with Apple’s incredibly popular headphones, will almost certainly help this see wider use than Bose’s SDK.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-audio-version-of-arkit&quot;&gt;The audio version of ARKit&lt;/h2&gt;
+
+&lt;p&gt;You could technically build visual AR apps without using an AR framework like ARKit or ARCore. It’s not a lot of work to show a live camera feed in a mobile app, and then overlay a 3D model on top of it. But unless you’re doing a lot of manual computer vision work, you’re not going to have the world awareness to keep that object’s position fixed in real space as the user moves the phone around.&lt;/p&gt;
+
+&lt;p&gt;Head tracking for spatial audio is similar. Prior to this announcement, you could easily make experiences for iOS that play positional 3D audio soundscapes through users’ headphones. But without head tracking, they lack an awareness of and connection to the physical world, and it’s not possible to make the sounds feel like they’re fixed in a concrete real-world position. This new API solves that.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-does-this-look-like-from-a-technical-standpoint&quot;&gt;What does this look like from a technical standpoint?&lt;/h2&gt;
+
+&lt;p&gt;As of the writing of this piece, Apple’s APIs aren’t ready for public consumption. There’s a new &lt;a href=&quot;https://developer.apple.com/documentation/coremotion/cmheadphonemotionmanager&quot;&gt;headphone motion API&lt;/a&gt;, and a new as-yet-unused &lt;a href=&quot;https://developer.apple.com/documentation/audiounit/audio_unit_properties/spatialization_algorithms&quot;&gt;configuration option for different spatialization algorithms&lt;/a&gt; that seems unconnected to the existing AVFoundation APIs.&lt;/p&gt;
+
+&lt;p&gt;The latter suggests to me that Apple may release a higher-level system that, say, automatically adds head-tracked spatial audio to any apps already playing audio through ARKit. I suspect they will heavily encourage developers to use ARKit when appropriate, as augmenting headphone motion data with camera-based world tracking will likely provide better tracking results.&lt;/p&gt;
+
+&lt;p&gt;That said, once new AirPods Pro firmware has been released that support sending motion data, the headphone motion manager will be enough for interested developers to dive in and start building spatial audio experiences.&lt;/p&gt;
+
+&lt;p&gt;Four years ago, I built some &lt;a href=&quot;https://github.com/lazerwalker/ios-3d-audio-test&quot;&gt;quick experiments&lt;/a&gt; using the iPhone’s built-in accelerometer and gyroscope to control a spatial audio scene generated using Apple’s existing AVFoundation spatial audio APIs. The code to wire up the two was straight-forward back then, and a similar approach should work just as well when it’s using motion data coming from the headphones instead of from the phone itself.&lt;/p&gt;
+
+&lt;h1 id=&quot;why-does-this-matter&quot;&gt;Why does this matter?&lt;/h1&gt;
+
+&lt;p&gt;This is all well and good. But what does head-tracked spatial audio actually enable? Providing a more immersive experience for films or 3D games, as Apple suggested, is a natural use case, but far from the most interesting one.&lt;/p&gt;
+
+&lt;p&gt;What’s difficult about answering this question is that there isn’t really yet a well-established field of design for building audio-only real-world experiences that take advantage of positional audio. Existing audio-only platforms like voice assistants don’t really have a concept of grounding an audio experience in the physical world; even the people building rich gaming experiences for those platforms don’t have the clearest answer of how spatiality might change things.&lt;/p&gt;
+
+&lt;p&gt;Based on my experience working with spatial audio, there are at least a few broad classes of potential applications that really excite me. This is far from an exhaustive list, but here’s a taste of the sorts of experiences we might see as spatial audio becomes more of a thing:&lt;/p&gt;
+
+&lt;h2 id=&quot;wayfinding&quot;&gt;Wayfinding&lt;/h2&gt;
+
+&lt;p&gt;One of the first usecases people tend to think of for spatial audio are helping people navigate the world. Microsoft has already released an app called &lt;a href=&quot;https://www.microsoft.com/en-us/research/product/soundscape/&quot;&gt;Soundscape&lt;/a&gt; that uses binaural audio to help people who are blind or have low vision to navigate the world.&lt;/p&gt;
+
+&lt;p&gt;It’s easy to imagine turn-by-turn navigation apps adding in support for spatial audio cues, and interaction patterns such as “follow this sound that keeps moving in the direction you should walk” becoming commonplace.&lt;/p&gt;
+
+&lt;p&gt;As Apple improves their indoor location technology, this could also easily become a big part of making indoor wayfinding viable before they ship AR glasses, since the ARKit model of “hold your phone out in front of you while you walk through a space” is both socially and physically awkward.&lt;/p&gt;
+
+&lt;h2 id=&quot;improving-existing-audio-content&quot;&gt;Improving existing audio content&lt;/h2&gt;
+
+&lt;p&gt;If you speak to anyone who’s worked on a social platform for VR, they will be quick to point out how much of a difference spatial audio makes in fostering natural voice conversations. When human voices are mapped to distinct physical locations, it’s like a switch is flipped in the brain that makes it easier to differentiate similar-sounding voices, even if you’re on a platform that doesn’t have great lip-syncing or other visual ways to indicate who’s speaking.&lt;/p&gt;
+
+&lt;p&gt;It wouldn’t surprise me to see applications like group voice chat apps or even podcast apps embrace spatial audio as a way to make conversation feel more natural and easier to make sense of at a subconscious level.&lt;/p&gt;
+
+&lt;h2 id=&quot;real-world-gaming-and-playful-experiences&quot;&gt;Real-world gaming and playful experiences&lt;/h2&gt;
+
+&lt;p&gt;One of the projects that resulted from my MIT research into spatial audio was a &lt;a href=&quot;https://www.youtube.com/watch?v=swQ338aOGm0&quot;&gt;site-specific generative poetry walk&lt;/a&gt; built for a park in San Francisco. Being built for consumer iPhones in 2016 meant it doesn’t use head tracking for its positional audio, but key to the piece are the binaural audio soundscapes that subtly fade in depending on where in the park you are.&lt;/p&gt;
+
+&lt;p&gt;If you’re in the main grassy field in the park, you may hear kids laughing and playing off in the distance, and you won’t really be sure whether they exist in the real world or just in the audio; the cacophany of birds chirping as you enter the fenced-off community garden create a sense of magic and connection to nature in a visually stunning space.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://soundcloud.com/incredibleworksofart/sets/janet-cardiff&quot;&gt;Janet Cardiff audio walk&lt;/a&gt; I mentioned earlier does similar magic tricks with (also non-head-tracked) positional audio. You’ll hear a couple arguing behind you, or police sirens going off on the street outside the park, and not be sure whether it’s reality or fiction.&lt;/p&gt;
+
+&lt;p&gt;Cardiff applies a ton of incredibly subtle psychological tricks to prevent you from turning your head and breaking the illusion of the static baked-in binaural audio. This means her work is generally in a league of its own, as this sort of work is so difficult to replicate without her sheer experience and talent.&lt;/p&gt;
+
+&lt;p&gt;Having readily-available consumer head-tracked audio means making these sorts of experiences will be so much more accessible to creators of all types, not just ones with extensive experience in traditional binaural audio production.&lt;/p&gt;
+
+&lt;p&gt;To be clear, I think the future of games and playful experiences focused on spatial AR audio isn’t in extending games like Pokémon Go to be more “immersive”, but in taking design cues from live-action role-playing and immersive theatre design communities. My design goal for my poetry walk was to create something that encourages players to appreciate the mundane beauty of a public space in their neighborhood, blurring reality with fiction and make-believe to elevate reality into something that feels magical.&lt;/p&gt;
+
+&lt;p&gt;Positional audio is so much more powerful — and so much cheaper to produce — than current-day 3D visual AR at causing that sort of emotional reaction in players. Apple helping to make head-tracked positional audio mainstream could bring on a waterfall of beautiful hyperlocal audio experiences.&lt;/p&gt;
+
+&lt;h1 id=&quot;so-whats-the-takeaway&quot;&gt;So what’s the takeaway?&lt;/h1&gt;
+
+&lt;p&gt;I feel like I’m standing over here, wildly waving my arms at everyone to pay attention to my favorite pet technology that’s finally on the verge of becoming mainstream. But it’s true!&lt;/p&gt;
+
+&lt;p&gt;I think spatial audio in general is a much more powerful technology than a lot of people give it credit for, but good head-tracking available in consumer hardware is the piece that’s been missing for it to find more widespread appeal. By piggy-backing off of existing popular headphones, Apple is well-positioned to make spatial audio tech explode in a way that it hasn’t before.&lt;/p&gt;
+
+&lt;p&gt;I’m so excited to see what people make if this, and can’t wait to dive in more as Apple updates the AirPods Pro firmware and makes beta API access available. Let me know if you’re working on something cool or have cool ideas for ways to use spatial audio tech!&lt;/p&gt;</content><author><name></name></author><summary type="html">At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that’s probably the least interesting application of spatial audio.</summary></entry><entry><title type="html">How to easily test your WebVR and WebXR projects locally on your Oculus Quest</title><link href="http://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html" rel="alternate" type="text/html" title="How to easily test your WebVR and WebXR projects locally on your Oculus Quest" /><published>2020-05-15T12:00:00+00:00</published><updated>2020-05-15T12:00:00+00:00</updated><id>http://blog.lazerwalker.com/2020/05/15/oculus-quest-testing</id><content type="html" xml:base="http://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html">&lt;p&gt;Lately, I’ve been spending a lot of time prototyping VR games using &lt;a href=&quot;https://babylonjs.com/&quot;&gt;Babylon.js&lt;/a&gt;. I love how technologies like Babylon and the WebXR API let me build VR experiences with the quick iteration time of modern web dev, rather than the slower compilation loop of something like Unity.&lt;/p&gt;
+
+&lt;p&gt;That said, until recently there was one part of my development work flow that annoyed the heck out of me!&lt;/p&gt;
+
+&lt;p&gt;I do most of my testing on an Oculus Quest, and development on a Mac. Both the WebVR and WebXR APIs require that you access them from a webpage being served over HTTPS, rather than non-secure HTTP, with most browsers adding an exception for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Because I’m on a Mac, I can’t set up my Oculus Quest via Quest Link to act like a desktop headset connected to my computer. There also isn’t really a way to set up a local desktop computer to properly serve files over SSL / HTTPS.&lt;/p&gt;
+
+&lt;p&gt;This leads to a hard question: how the heck do you actually test your game locally on an Oculus Quest?&lt;/p&gt;
+
+&lt;p&gt;A lot of the time, this isn’t an issue. I can test in a 2D browser on my dev machine. If I need motion controllers, I can push my working code to a remote server to load from the Quest, or I can use something like &lt;a href=&quot;https://ngrok.io/&quot;&gt;Ngrok&lt;/a&gt; to get an HTTPS URL that redirects to my local machine.&lt;/p&gt;
+
+&lt;p&gt;But all of these feel like hacks, and make it slower for me to test what I’m working on. Which sucks when one of the big appeals of WebXR is how fast your iteration loop can be!&lt;/p&gt;
+
+&lt;p&gt;It turns out it’s pretty straight forward to get a more functioning workflow. I’m going to walk you through setting up your Quest for development as an Android device, and then configure Android port forwarding so that you can access a web server hosted on your computer as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost&lt;/code&gt; from your Quest, letting it properly enter WebVR or WebXR mode.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-your-quest-for-development&quot;&gt;Setting up your Quest for development&lt;/h2&gt;
+&lt;p&gt;Although we’re interested in using an Oculus Quest to build web-based content, rather than building natively using something like Unity, you still need to set it up for development as if that’s what you’re doing.&lt;/p&gt;
+
+&lt;p&gt;Follow the instructions on the Oculus support site to &lt;a href=&quot;https://developer.oculus.com/documentation/native/android/mobile-device-setup/&quot;&gt;set up a Quest for development&lt;/a&gt;. You’ll need to create a development organization to add your Oculus account to, and then enable Developer Mode in your Quest’s settings or in the Oculus app on your phone.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-the-android-sdk-platform-tools-on-your-computer&quot;&gt;Install the Android SDK Platform Tools on your computer&lt;/h2&gt;
+&lt;p&gt;At this point, your Oculus Quest is able to enter development mode, which means most Android software development tools can talk to it.
+We specifically want to use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; (Android Debug Bridge) CLI tool , which gives us the ability to interact with the Quest in a bunch of helpful ways.&lt;/p&gt;
+
+&lt;p&gt;You can get &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; by downloading and installing the &lt;a href=&quot;https://developer.android.com/studio/releases/platform-tools&quot;&gt;Android SDK Platform Tools&lt;/a&gt;. If you’re on a Mac and use Homebrew, you can also install it by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew cask install android-platform-tools&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Either way, hopefully after installing the Platform Tools you should be able to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; at a command line and see a whole bunch of documentation.&lt;/p&gt;
+
+&lt;h1 id=&quot;connect-your-oculus-quest-to-your-computer&quot;&gt;Connect your Oculus Quest to your computer&lt;/h1&gt;
+&lt;p&gt;You can use any USB-C cable, including the charging cable that comes with the Quest.&lt;/p&gt;
+
+&lt;p&gt;You’ll need to put the Quest on and accept a prompt to allow the computer to connect with it. I highly recommend checking the checkbox that skips this prompt in the future.&lt;/p&gt;
+
+&lt;p&gt;Once that’s done, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb devices&lt;/code&gt; from the command prompt. You should see your Quest as the only device.&lt;/p&gt;
+
+&lt;p&gt;If multiple Android devices show up in that list (e.g. you have other Android devices plugged in with developer mode on), take note of the device ID that appears in the first column. When you run the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; command in the next step, add in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s DeviceId&lt;/code&gt; as a flag to the command to specify you’re targetting the Quest.&lt;/p&gt;
+
+&lt;h2 id=&quot;enable-port-forwarding&quot;&gt;Enable port forwarding&lt;/h2&gt;
+&lt;p&gt;Conceptually, what we want is simple. Any time you browse to a given local port on your Quest (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:1234&lt;/code&gt;), we want to forward that to a port on your computer. Fortunately, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; has built-in support to do this sort of port forwarding!&lt;/p&gt;
+
+&lt;p&gt;I’m assuming you already have a local web server on your computer that’s serving your WebVR or WebXR project. Note what port that is running on. As an example, my project setup tends to run a server on port 3000, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt;, what we’re doing is called “reverse port forwarding”. Regular port forwarding means we would be forwarding a port from our computer to a port on the Quest. But we’re trying to do the opposite — route from one port on your Quest’s localhost back to one on your computer — so that’s considered “reverse” forwarding.&lt;/p&gt;
+
+&lt;p&gt;If you know what port you need to forward, you just need to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse tcp:PORT tcp:PORT&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; will take care of the rest. For my server running on port 3000, for example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse tcp:3000 tcp:3000&lt;/code&gt; connects things properly so that going to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; in the Oculus Browser (or Firefox Reality) properly routes to the web server running on my computer, and should allow for entering VR mode.&lt;/p&gt;
+
+&lt;p&gt;You can safely close your command prompt and forget about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; for the rest of your test session, although you’ll need to rerun &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; the next time you disconnect and connect your Quest.&lt;/p&gt;
+
+&lt;h2 id=&quot;go-make-cool-things&quot;&gt;Go make cool things!&lt;/h2&gt;
+&lt;p&gt;And that’s all there is to it!&lt;/p&gt;
+
+&lt;p&gt;It’s theoretically possible to set this up to work wirelessly, but in practice I wasn’t able to get it to work. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; can successfully connect to my Quest over WiFi, but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; doesn’t work. There have historically been issues with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; and WiFi connections; it seems like they may have been solved in recent versions of Android, but (at the time of writing) Facebook’s fork of Android may not have pulled in those fixes yet. Let me know if you manage to get WiFi working!&lt;/p&gt;
+
+&lt;p&gt;In any case, you should now be able to debug your web VR projects on-device without needing a desktop HMD or deploying your code to a server! I hope that wasn’t too painful to set up, and I hope this little trick can help improve your daily development workflow as much as it did for me.&lt;/p&gt;</content><author><name></name></author><summary type="html">Lately, I’ve been spending a lot of time prototyping VR games using Babylon.js. I love how technologies like Babylon and the WebXR API let me build VR experiences with the quick iteration time of modern web dev, rather than the slower compilation loop of something like Unity.</summary></entry></feed>

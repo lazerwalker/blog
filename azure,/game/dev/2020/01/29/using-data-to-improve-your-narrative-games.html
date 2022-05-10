@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    Using Data and Analytics to Improve Your Narrative Games
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/azure,/game/dev/2020/01/29/using-data-to-improve-your-narrative-games.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/8d716da1b8da4cd43b304b48d88f58e24b24aa29e1c82cfb24115c8a41e5690a.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Using Data and Analytics to Improve Your Narrative Games</h1>
+    <p class="post-meta">Jan 29, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>When I speak with indie game developers making narrative games, a lot of people perk up when I mention analytics. Gathering data about user behavior can feel like a weird dark art: it often sounds like something you should be doing, but you don’t quite know what to track or how to make sense of that data, and you probably also wonder about whether or not it’s actually ethical to capture that sort of data.</p>
+
+<p>This article is about how I use analytics in my <a href="https://twinery.org">Twine</a> games! I’ll talk about how analytics are “traditionally” used in large free-to-play games, as well as the ways in which that approach does or does not apply to people making small experimental narratives.</p>
+
+<p>I’ll walk through a few examples of how I’ve concretely found gathering analytics data useful in my work, as well as give some links to the free tools I use to do that data-gathering in Twine (largely the <a href="https://lazerwalker.com/playfab-twine">PlayFab-Twine</a> tool I maintain).</p>
+
+<p>Although my experience here — and the tools I mention — are largely grounded in Twine, this should be applicable to those making choice-based interactive fiction games in most any environment.</p>
+
+<h2 id="how-free-to-play-games-use-analytics">How free-to-play games use analytics</h2>
+
+<p>Free-to-play games are by far the most regimented users of analytics data. To be clear, I don’t want to endorse the way F2P uses data, and I think it’s largely not relevant to people making free or premium interactive fiction games.</p>
+
+<p>But it’s still useful to get a sense for how they function before we talk about which specific elements to crib and which to leave be.</p>
+
+<p>This is also a mile-high view; it goes without saying that I’m not trying to speak to how EVERY free-to-play game uses analytics. This is a sort of abstracted overview based on my personal experiences in free-to-play over the years.</p>
+
+<h3 id="guiding-metrics">Guiding Metrics</h3>
+
+<p>For the most part, free-to-play games are laser-focused on a funnel:</p>
+
+<ol>
+  <li>
+    <p>You get new users into your game. In 2020, you’re probably paying money to acquire them through channels like video ads.</p>
+  </li>
+  <li>
+    <p>Some number of these players will keep playing your game.</p>
+  </li>
+  <li>
+    <p>Of the people who keep playing your game, some of them will become paying players.</p>
+  </li>
+  <li>
+    <p>Once people are paying you, you want them to pay you as much money as you can get from them.</p>
+  </li>
+</ol>
+
+<p>The goal of metrics is mostly to quantify each of these steps, so you can then run measured experiments to make small improvements to each of those steps.</p>
+
+<p>If you can make the average retention longer, or increase the amount of money your average player pays, that can have huge returns in your profits.</p>
+
+<p>For the most part, there are a few metrics that are universally tracked:</p>
+
+<p><strong>Retention</strong> is measured in terms of what percentage of players return a certain number of days after installing.</p>
+
+<p>Day 1 — or D1 — retention is how many players come back the day after they install, D7 is how many people return 7 days after installing, so on and so forth. You’ll typically track D0, D1, D7, and D30 retention.</p>
+
+<p>Retention numbers beyond day 30 are often ignored. I’d argue that’s likely a mistake, but that’s a discussion for another day!</p>
+
+<p><strong>Revenue</strong> is exactly what it sounds like. You might track things like the average revenue per daily active user (ARPDAU), average revenue per paying user (ARPPU), or what percentage of your players give you any money.</p>
+
+<p>Although you’ll focus on those metrics as the most important things to track, you’ll typically also use them as jumping-off points for finding other things to keep an eye on. A product owner on a free-to-play game will typically add lots of tracking into their game, with an eye towards answering specific questions:</p>
+
+<ul>
+  <li><strong>When launching new features</strong>: are people engaging with this the way it was anticipated? If you visualize a feature of a game as a funnel, where are people dropping off of that funnel?</li>
+  <li><strong>Health checks</strong>: games will often have a specific number that’s indicative of overall game health. When I worked on Words With Friends, we looked at the total number of turns played by all players each day. If that number was unexpectedly low, that was a sign that there was something wrong, either with our servers or with a new design</li>
+  <li><strong>Deciding what new features to prioritize</strong>: new feature work will often be oriented around raising a specific metric, usually one of the key revenue or retention metrics</li>
+</ul>
+
+<h3 id="this-sounds-gross-why-does-this-apply-to-me">This sounds gross. Why does this apply to me?</h3>
+
+<p>As a conceptual framework, this sort of numbers-driven approach to game design is intended to maximize how much time and money a player is spending on your game, typically using psychological tricks and addiction patterns taken from gambling. That’s not great.</p>
+
+<p>The good news is, even a I’ve just spent time describing this whole approach to analytics, it probably doesn’t apply to you!</p>
+
+<p>F2P narrative games certainly exist, but I’m writing this article for people who don’t work in that space. If you’re working on a game that’s a bounded narrative experience — whether free or “premium” — you’re (hopefully!) not focused on the sort of questions around optimizing money and engagement time from players that F2P designers are, you’re much more focused on conveying some aspect of the human experience or evoking some sort of emotion in players.</p>
+
+<p>In that situation, a strict application of F2P analytics techniques is actively going to make you a worse designer! But I do think it’s possible to use similar techniques and tools to get a better sense of how players are interacting with your game, in ways that are qualitatively different from what you’ll get from e.g. in-person playtesting. Having that information can help inform design decisions in ways that can result in a better experience for your players, in particular in the moments when your expectations turn out to not match up with reality.</p>
+
+<p>It’s also absolutely possible to gather that data without capturing personally-identifiable data on any given individual player, which helps me personally feel a lot less squeamish about this sort of data collection.</p>
+
+<h3 id="metrics-arent-about-individual-players">Metrics aren’t about individual players</h3>
+
+<p>An important point with metrics data is they’re mainly useful in aggregate. If you’re interested in charting out the journey a single player takes, just looking at numbers isn’t going to tell you what that player is thinking or experiencing. Tools like in-person playtesting or quantitative surveys are going to be far more effective at that personal individual scale.</p>
+
+<h3 id="so-what-are-metrics-useful-for">So what <em>are</em> metrics useful for?</h3>
+
+<p>I recently shipped a <a href="https://microsoft.com/mysterymansion">small Twine game for work</a> that’s essentially a short escape room game: you’re in a spooky old house, and need to solve a bunch of puzzles.</p>
+
+<p>Using my <a href="https://lazerwalker.com/playfab-twine">PlayFab-Twine</a> tool (more on that later!), we were able to gather data on whenever a player visited a different Twine node in our game, with the ability to write complex queries around that dataset.</p>
+
+<p>We broadly found analytics to be incredibly useful for answering a whole bunch of different design problems.</p>
+
+<h4 id="who-are-our-players">Who are our players?</h4>
+
+<p>Data about how many people played our game, how often repeat players came back, where players were coming from (geographic region / OS and browser version / etc), and how long people on average spent with the game was super useful to get a sense for who was playing our game.</p>
+
+<h4 id="is-our-game-broken">Is our game broken?</h4>
+
+<p>Many interactive fiction tools have some sort of mechanism for validating that every passage is theoretically visible, basically by brute-forcing every possible path in the game.</p>
+
+<p>For us, analytics was able to serve a similar goal: once the game was out in the hands of a large number of users, we were able to look at visit numbers for every Twine passage relative to the total user count. If any passage had 0 visits, or an exceedingly low number of visits, that was a strong sign there was likely some sort of engineering error that prevented players from reaching that content.</p>
+
+<p>This isn’t a replacement for traditional manual QA, but can still serve as helpful extra validation your game works as expected!</p>
+
+<h4 id="where-are-players-the-most-unhappy">Where are players the most unhappy?</h4>
+
+<p>With our game’s initial release, we were disappointed with how few players were playing the game all the way to the end.</p>
+
+<p>Our game is a puzzle game whose structure is generally fairly open, but we have a few strict chokepoints where players must solve a specific puzzle to progress. This made finding the problem fairly easy: taking each of these chokepoints, we graphed out how many people viewed the Twine passage where they needed to essentially input the answer to the puzzle as opposed to how many people viewed the passage immediately following the puzzle.</p>
+
+<p>This made it clear which exact puzzle in our game was too difficult. Adding some more aggressive hinting earlier in the game quickly fixed things, which we were able to verify both by looking at passage view counts for the “puzzle solved” passage as well as our metrics for overall game completion.</p>
+
+<p>Using similar techniques, we were also able to look at the more nonlinear and multilinear parts of our game: when given freedom to wander wherever they wanted, what paths did players take? We were able to look both at overall view counts for individual passages (e.g. did more people go into the dining room than the study?) as well as ordering of the two (e.g. for people who went both upstairs and downstairs, which area did they explore first?).</p>
+
+<p>Our game didn’t have a particularly complex puzzle graph, so we didn’t need to really make changes to the flow of our game in order to make it work, but having that sense of where players’ eyes were naturally drawn would have given us a clearer sense of how to rearrange the game space’s architecture if those had become problems.</p>
+
+<h4 id="but-what-if-youre-not-making-a-puzzle-game">But what if you’re not making a puzzle game?</h4>
+
+<p>Your game might not as clearly break down into explicit discrete chokepoints, but this same general approach can tell you a lot about player data.</p>
+
+<p>Often you’ll design a choice with two options, expecting that roughly 50% of players will select each option. Tracking those passage views can help confirm whether player behavior meets your expectations.</p>
+
+<p>If they’re not, that then gives you the opportunity to either revisit the choice you’re presenting players to try to get it closer to what you were imagining, or to lean into it and redesign other aspects of the game based on what that tells you about what your players are actually interested in.</p>
+
+<p>If you’re making an episodic game, you could also see how tracking this data can help influence future decisions. You don’t want to make creative decisions completely at the mercy of your players, sure, but knowing that your players prefer a certain character or a certain type of gameplay might be useful data to have as you continue to write and design. And while asking players directly what they like is also a useful technique, it’s equally useful to look at what players do rather than what they tell you.</p>
+
+<h4 id="how-can-we-convey-choices-to-players">How can we convey choices to players?</h4>
+
+<p>We didn’t end up shipping anything like this in the final game itself, but we were really interested in being able to show Telltale style metrics to users within the game itself. After completing the game, we imagined players might be able to see “for this major choice, X% of players made the same choice as you”.</p>
+
+<p>Once you have aggregated data about how players interact with your game, you can imagine other interesting ways to surface this to players. It’s not the right fit for every game, sure, but using your data to directly empower players can also help you allay your own concerns that you’re using these metrics techniques for good rather than evil.</p>
+
+<h3 id="be-data-informed-not-data-driven">Be data-informed, not data-driven</h3>
+
+<p>All of these tools are incredibly powerful, but it’s worth reiterating that you shouldn’t solely rely on metrics. Even in live F2P games, people talk a lot about having the wisdom to know when to disregard what the data is telling you.</p>
+
+<p>Whatever your design goals are, you shouldn’t look at metrics as numbers to obsessively optimize, but a very specific tool to use to augment your decision-making process. When you have a question about how players are interacting with your game, looking at data and constructing a specific query can be one way to get one specific perspective of what’s going on.</p>
+
+<p>Which is to say: analytics are great! Use them! But looking at metrics can itself become an unhealthy Skinner Box-esque system that triggers compulsive behavior in you as a designer.</p>
+
+<h3 id="so-how-can-i-do-this-in-my-game">So how can I do this in my game?</h3>
+
+<p>Maybe you’re reading all of this and saying “wow, that sounds great! I want to apply these techniques to my own game!”</p>
+
+<p>How to get started depends a lot on what you’re making, what tools you’re using, and how technical you are.</p>
+
+<p>I’m personally partial to <a href="https://docs.microsoft.com/en-us/gaming/playfab/#pivot=documentation&amp;panel=playfab&amp;WT.mc_id=blog-playfabtwine-emwalker">PlayFab</a>. It’s a hosted web service that basically aims to power your game’s backend. It’s intended to be used in rather large F2P games, where it can do things like manage your game’s entire economy and social systems, but I really like using it for small-scale projects just for things like user authentication, leaderboards, cloud saves, and analytics. Every personal project I’ve worked on has fit within its free tier (even my game <a href="https://flappyroyale.io">Flappy Royale</a>, which had nearly 200,000 DAU at its peak)</p>
+
+<p>For analytics in particular, I appreciate that it’s focused specifically on the needs of game designers, rather than people building business-focused web applications.</p>
+
+<p>Being owned by Microsoft is also a plus from a privacy standpoint: most popular large analytics services are owned by ad providers, which gives them a perverse incentive to sell your users’ data. There are a ton of smaller startup analytics tools that are great as well, but they’re historically likely to be acquired by those same large ad companies. Using a tool owned by a large stable company like Microsoft that isn’t in the advertising business seems like the best of all worlds.</p>
+
+<p>If you’re a coder, PlayFab is easy to get started with. Whether you’re writing in Unity, Unreal, JavaScript on the web, or anything else, it’s usually only a few lines of code to authenticate with PlayFab and start sending real-time analytics data. Check out their <a href="https://docs.microsoft.com/en-us/gaming/playfab/personas/developer?WT.mc_id=blog-playfabtwine-emwalker">getting started guide</a>.</p>
+
+<p>If you’re using Twine, I maintain a tool called <a href="https://lazerwalker.com/playfab-twine">PlayFab-Twine</a> designed to make it as easy as possible to add analytics to your game via PlayFab without writing any custom code.</p>
+
+<p>With only 5-6 lines of JavaScript copy/pasted into your Twine project, and a few minutes’ worth of configuration, you’ll be able to use PlayFab’s web UI to answer the same sorts of questions I did for the Mystery Mansion project.</p>
+
+<h3 id="go-forth-and-measure-things">Go forth and measure things!</h3>
+
+<p>Hopefully this has been a useful intro to the world of how analytics can (and can’t) help your narrative game! I’m excited for you to start gathering and making decisions influenced by (but not too heavily!) actual real-world data from your players!</p>
+
+<p>Please do drop me a note on <a href="https://twitter.com/lazerwalker">Twitter</a> if you do something cool with what I’ve talked about!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

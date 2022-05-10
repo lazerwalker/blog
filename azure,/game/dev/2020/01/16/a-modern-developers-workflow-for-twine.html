@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>
+    A Modern Developer's Workflow for Twine
+  </title>
+  <meta name="description" content="Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+" />
+
+  <link
+    href="/atom.xml"
+    rel="alternate"
+    title="Em Lazer-Walker"
+    type="application/atom+xml"
+  />
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link
+    rel="canonical"
+    href="http://blog.lazerwalker.com/azure,/game/dev/2020/01/16/a-modern-developers-workflow-for-twine.html"
+  />
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STKNZZJ7SW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-STKNZZJ7SW');
+  </script>
+
+  /opengraph/239131da1a2671aa295593c24634f883e144bf930d40742bb9eeeac8c0f2c4f9.png
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Emilia Lazer-Walker</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A Modern Developer's Workflow for Twine</h1>
+    <p class="post-meta">Jan 16, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>I love <a href="https://twinery.org">Twine</a>! Whether you’re trying to prototype a larger work or make something on your own, it’s such a powerful and easy-to-use tool to make hypertext-based narrative games.</p>
+
+<p>That said, a common complaint I’ve heard from most people I’ve talked to who use it seriously is how readily its workflows fall apart at scale.</p>
+
+<p>A visual graph editor is a fantastic approach for small projects, but gets unmanageable quickly on larger projects. Additionally, the way the Twine 2 editor handles files means using using tools like version control can be difficult, and merging changes from multiple collaborators can be nearly impossible.</p>
+
+<p>But there’s a solution! I’m going to spend the next few minutes walking you through my Twine development workflow. There are three important parts of it I want to talk about:</p>
+
+<ol>
+  <li><strong>Plain text files</strong>. I use <a href="https://code.visualstudio.com/?WT.mc_id=personalblog-blog-emwalker">VS Code</a> to write my games, rather than using the visual Twine editor.</li>
+  <li><strong>Modern version control</strong>, storing my games in git on GitHub.</li>
+  <li><strong>Automatic publishing</strong>. Every time I push a new version of my game to GitHub, it’s instantly playable via <a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://pages.github.com">GitHub Pages</a>.</li>
+</ol>
+
+<p>Let’s step through the tools I use, and how you can get set up with a similar toolchain!</p>
+
+<h2 id="writing-in-a-text-editor">Writing in a Text Editor</h2>
+
+<p>Why is it valuable to be able to write Twine games as text files instead of as nodes in a visual graph?</p>
+
+<p><strong>It scales better.</strong> When your game grows to be tens of thousands of words, navigating Twine’s node-based visual editor can be a pain. Having your entire game be in a single text file, that you can manipulate and browse however you’d like, is far easier for even medium-sized projects. And that’s even before considering that being able to split your script up into multiple files, which can greatly reduce the cognitive load for larger projects.</p>
+
+<p><strong>It allows for reuse.</strong> Have some macros or other bits of scripting you’d like to reuse between passages, or across multiple game projects? Being able to copy/paste text in an IDE is a lot easier than managing it in the visual editor.</p>
+
+<p><strong>It gives you access to better writing tools</strong>. I’m more comfortable writing in the same text editor I use for other programming and writing tasks than I am in Twine’s text boxes. It also means I can use the tools they provide to make my life easier!</p>
+
+<p>VS Code has extensions to add syntax highlighting for both Harlowe and Sugarcube. More than that, access to its entire IDE ecosystem means I can pull in tools to help with creative prose writing. This means basic things like spell check and an omnipresent word counter, but it can also mean more powerful tools to do things like <a href="https://alexjs.com">warn me if I’m using subtly sexist/racist/ableist language</a> or even <a href="https://www.robinsloan.com/notes/writing-with-the-machine/">spark my creativity by collaborating with an AI</a>!</p>
+
+<p><strong>It enables more robust versioning and collaboration</strong>. More on this later, but writing my game in a text file means it’s stored in a human-readable text file, which is what enables all of the other great tools and techniques I’ll be talking about next.</p>
+
+<p>This all sounds great! To get all of these benefits, we can use a special programming language called Twee!</p>
+
+<h3 id="what-is-twee">What is Twee?</h3>
+
+<p>In the olden days of Twine 1, there were two officially-supported ways to make games: using the Twine visual editor, or by writing code in a scripting language called twee that could be compiled by an official CLI tool, also called <code class="language-plaintext highlighter-rouge">twee</code>.</p>
+
+<p>(A fun historical sidenote: even though the Twine’s visual editor is the more popular tool, the twee CLI predates it by 3 years!)</p>
+
+<p>Twee code is conceptually the same as a Twine graph, with different blocks of text in a file referring to different passages.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:: Start
+This is the first passage in a Twine game!
+
+[[This is a link|Next Passage]]
+
+
+:: Next Passage
+The player just clicked a link to get here!
+
+</code></pre></div></div>
+
+<p>When Twine 2 came out, support for the twee language was officially killed, and the only officially supported path was to use the Twine 2 visual editor and its greatly-expanded support for story formats.</p>
+
+<h2 id="how-do-you-use-twee-with-twine-2">How do you use Twee with Twine 2?</h2>
+
+<p>When Twine 2 wasn’t accompanied by a “Twee 2”, the community stepped up, and a number of third-party twee CLI tools emerged. The twee language needed to adapt, though, since Twine 2 handles story formats in a vastly different way from Twine 1.</p>
+
+<p>What follows is a bit of a technical explanation of the development of modern Twee tools. I think it’s interesting, but if you want to skip over it, the main practical takeaway is that I use the <a href="https://www.motoslave.net/tweego">Tweego</a> CLI tool to write a newer version of Twee that’s called <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md">Twee 3</a>.</p>
+
+<h3 id="twine-2-story-formats-a-technical-explanation">Twine 2 Story Formats: A Technical Explanation</h3>
+
+<p>To understand why we can’t just use the old <code class="language-plaintext highlighter-rouge">twee</code> tool with Twine 2, we need to understand how Twine 2 story formats work.</p>
+
+<p>Internally, Twine 2 stores your work as an XML document. When you click the “publish” button in the Twine 2 editor, that XML document is passed to the selected “story format”, which is essentially an HTML template. A story format will typically embed JS within that template to parse and modify the Twine story data as appropriate to display it as a playable game.</p>
+
+<p>This is why/how different story formats present vastly different authoring syntax: as far as Twine the engine is concerned, a passage’s text is just an arbitrary text blob (except insofar as it parses links to draw lines in the visual graph editor), and it’s then up to the story format to decide how to parse a passage to provide narrative functionality.</p>
+
+<p>If you’re curious to see a “minimum viable story format”, I maintain a story format called <a href="https://github.com/lazerwalker/twison">Twison</a> that converts Twine story data XML into JSON, with a few bits of computation and data-munging meant to make the JSON easier to consume if you’re integrating it into your own game engine.</p>
+
+<p>This all means a story format is essential to actually going from a script to a playable game! It isn’t enough for a hypothetical CLI tool to just take your twee code and bundle it up into the same XML format that Twine 2 uses internally, it also needs to then pass that XML to a story format and generate an HTML file from that interaction.</p>
+
+<h3 id="so-is-there-or-isnt-there-a-twee-2">So… is there or isn’t there a Twee 2?</h3>
+
+<p>The last few years have been a tumultuous time for people who would want to write Twee. After quite some time of different people building out different competing Twine 2-compatible twee compilers, there is now a <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md">formal language specification</a> for Twee 3, maintained by the Interactive Fiction Technology Foundation (IFTF).</p>
+
+<p>It’s designed to be a superset of the original <code class="language-plaintext highlighter-rouge">twee</code> language (retroactively known as Twee 1), and to be fairly easy to convert between twee code and the internal format used by the Twine 2 visual editor.</p>
+
+<p>If you’re interested in the history and politics of how we got here, <a href="https://videlais.com/2019/06/08/an-oral-history-of-twee/">this oral history</a> is a great overview.</p>
+
+<p>There are multiple functioning Twee 3 compilers, but I personally use <a href="https://www.motoslave.net/tweego">Tweego</a>. I’m sure others are great as well, but Tweego works well, is actively maintained, and is easy to get support for in the <a href="https://discordapp.com/invite/n5dJvPp">official Twine Discord</a>.</p>
+
+<h2 id="how-to-use-tweego">How to use Tweego</h2>
+
+<p>If you’re comfortable using CLI tools, Tweego is quite easy to use. After downloading the correct binary from the <a href="https://www.motoslave.net/tweego/">website</a>, you can call it directly to simply compile a <code class="language-plaintext highlighter-rouge">.twee</code> file into a compiled <code class="language-plaintext highlighter-rouge">.html</code> file you can play in a browser:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ /path/to/tweego -o example.html example.twee
+</code></pre></div></div>
+
+<p>Here’s the sample code from earlier updated to Twee 3 and with some metadata:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::StoryData
+{
+    "ifid": "F2277A49-95C9-4B14-AE66-62526089F861",
+    "format": "Harlowe",
+    "format-version": "3.1.0",
+    "start": "Start"
+}
+
+:: Start
+This is the first passage in a Twine game!
+
+[[This is a link|Next Passage]]
+
+
+:: Next Passage
+The player just clicked a link to get here!
+
+</code></pre></div></div>
+
+<p>That <code class="language-plaintext highlighter-rouge">ifid</code> is a random unique identifier for a game. If you try to compile a Twee file without including that, tweego will automatically generate one for you.</p>
+
+<p>Similarly, tweego has a ton of other options and flags you can pass in, that you can see by running <code class="language-plaintext highlighter-rouge">tweego --help</code>. For the options that do things like specify a story format, I’d highly recommend just specifying that in a metadata block like I have above.</p>
+
+<p>Also worth calling out is the <code class="language-plaintext highlighter-rouge">--watch</code> option. If you run <code class="language-plaintext highlighter-rouge">tweego -o example.html example.twee --watch</code>, it will start up a server that watches for file changes and then recompiles. If you have a text editor open in one window and a web browser open in another one pointed to your compiled output, this is a great way to quickly test changes!</p>
+
+<h3 id="but-i-want-to-use-the-visual-editor">But I want to use the visual editor!</h3>
+
+<p>If you have a reason to use the Twine 2 visual editor for something, you can also use it with Tweego. You can take the .html file output by Tweego and import it directly into Twine 2. When you’re done, you can convert back from a .html file produced by Twine 2 into Twee by using the <code class="language-plaintext highlighter-rouge">-d</code> flag (e.g. <code class="language-plaintext highlighter-rouge">tweego -o example.twee example.html -d</code>).</p>
+
+<p>As an aside: the Twee language includes import functionality that lets you spread your game across multiple files and then join them at compilation time. That can be a really powerful technique for managing larger games, or reusing macros across projects, but that sort of workflow can make jumping back and forth with the visual editor trickier. See the <a href="https://www.motoslave.net/tweego/docs/">tweego docs</a> for more info.</p>
+
+<h2 id="version-control">Version Control</h2>
+
+<p>As mentioned, one of the coolest parts about writing Twine games in plain text files is how much easier they are to version.</p>
+
+<p>If you’ve ever tried to revisit previous versions of a Twine game you’ve made, or tried to collaborate with other writers, you know how difficult this can be when you’re operating purely on <code class="language-plaintext highlighter-rouge">.html</code> files! Whether you’re using git or just storing <code class="language-plaintext highlighter-rouge">.html</code> files on a server somewhere, having to import and export files that aren’t particularly human readable is a major pain.</p>
+
+<p>In the past, I’ve often given up on trying to fix merge conflicts with other writers, and just manually copy-pasted changes into the Twine editor by hand. That’s frustrating, and avoidable by storing everything in Twee files instead!</p>
+
+<p>I’m not going to walk through how I use git and GitHub, but I will say one important thing that I do is not store my compiled .html files in git at all. Rather, I’m going to set up a build process so that GitHub is responsible for automatically compiling my <code class="language-plaintext highlighter-rouge">.twee</code> files into <code class="language-plaintext highlighter-rouge">.html</code> files. This means we can keep the git repository clean and readable!</p>
+
+<h2 id="automatically-building-on-github">Automatically building on GitHub</h2>
+
+<p>The concepts of CI and CD (continuous integration and continuous delivery, respectively) are very popular in non-game software development. The high-level idea is that it shouldn’t require a lot of manual work to deploy a new version of your software.</p>
+
+<p>As soon as you push up new code to your version control server, it should be responsible for making sure things aren’t broken and then compiling it, deploying it, or whatever else might need to be done to get your code into the hands of users.</p>
+
+<p>This might seem foreign, or perhaps overkill, if you’re just used to the flow of writing a game, getting an HTML file, and uploading that to something like https://philome.la or https://itch.io.</p>
+
+<p>However, <a href="">GitHub Actions</a> are a lightweight free service we can use to easily set up a deployment pipeline! In the previous section, I mentioned I don’t store the compiled HTML files in my git repos for Twine/Twee games. Instead, GitHub Actions handles everything.</p>
+
+<p>Every time I push a new version of a Twine game to GitHub, a GitHub Action runs that uses Tweego to compile my game, and then publishes it to <a href="">GitHub Pages</a>. The end result is I don’t need to think about how to publish my game, or worry if I’ve forgotten to deploy the latest version or not: whatever version of my Twee code I can read on GitHub, that’s the version players are playing!</p>
+
+<p>Getting this set up with your own Twine/Twee project is easy. Let’s walk through it!</p>
+
+<h3 id="add-the-story-format-to-git">Add the story format to git</h3>
+
+<p>When your Twee specifies that you’re using a story format like Harlowe or Sugarcube, Tweego can find the correct story format because the version of Tweego you’ve downloaded from the Tweego website includes a half-dozen standard ones. The way we’ll be installing Tweego on GitHub Actions won’t have access to those.</p>
+
+<p>Within your git directory, create a folder called <code class="language-plaintext highlighter-rouge">storyformats</code>. Go into wherever you’ve downloaded Tweego, and move the appropriate story format(s) from its <code class="language-plaintext highlighter-rouge">storyformats</code> directory into the one you’ve just created. Commit and push that to git.</p>
+
+<p>This is also generally a good thing for maintaining your game in the future! If you come back to this in five years, it’s possible this specific version of the story format you’re using might not still be available, and tracking it down might be hard; including the exact story format bundle within your git repo will help ensure (although not guarantee) your ability to edit and compile your game.</p>
+
+<h3 id="generating-a-github-personal-access-token-for-github-pages">Generating a GitHub Personal Access token (for GitHub Pages)</h3>
+
+<p>I typically use <a href="https://pages.github.com">GitHub Pages</a> to host my games. It’s a free hosting service for static sites such as Twine games that’s integrated right into GitHub. It’s totally free, and can scale to support any amount of traffic. I think it’s absolutely the best and easiest way to host small websites like Twine games that don’t require any sort of backend server services.</p>
+
+<p>If you don’t want to use GH Pages to host your game, you can safely skip this section.</p>
+
+<p>In order for GitHub Actions to deploy your game to GitHub Pages, it needs permissions to commit code to your git repo (under the hood: GitHub Pages will be configured to host any files that exist in a special <code class="language-plaintext highlighter-rouge">gh-pages</code> git branch, and GitHub Actions will be responsible for making a new commit containing your HTML file onto that branch).</p>
+
+<p>Go to https://github.com/settings/tokens, and click the button to generate a new token. Name it whatever you want, and give it full “Repo” permissions.</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/4g4t443g0nalsr7zlgsn.png" alt="Personal Access Token" /></p>
+
+<p>On the next screen, you’ll see the token itself (it’ll be a long string of random letters and numbers). Save that!</p>
+
+<p>Go to the repository settings for the GitHub repo that you’ll be running GitHub Actions on. Under the “Secrets” tab, add a new secret named “GH_PAT” whose value is the token you just generated.</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/zhy5awog2vcun0qbgxt4.png" alt="Repo Secrets" /></p>
+
+<h3 id="getting-started-with-github-actions">Getting Started with GitHub Actions</h3>
+
+<p>To set up a GitHub Action, all you need to do is add a new file into your git repo.</p>
+
+<p>GitHub Actions are based on “workflows”, which are configuration files. If you add a file called <code class="language-plaintext highlighter-rouge">.github/workflows/build.yml</code> (or any <code class="language-plaintext highlighter-rouge">.yml</code> file inside that directory), it will read that config and try to use it.</p>
+
+<p>That file should look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Go 1.13
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.13.x
+
+      - name: build game
+        run: |
+          go get github.com/tmedwards/tweego
+          export PATH=$PATH:$(go env GOPATH)/bin
+          tweego YOUR_TWEE_FILE.twee -o dist/index.html
+
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: $
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist
+</code></pre></div></div>
+
+<p>Be sure to swap out <code class="language-plaintext highlighter-rouge">YOUR_TWEE_FILE.twee</code> for the actual filename, and change any other tweego settings you might need to. If you’re not sure what you’re doing, you probably want to leave the output file as <code class="language-plaintext highlighter-rouge">dist/index.html</code>.</p>
+
+<p>If you make a new commit and push it to your game’s master branch on GitHub, after a few minutes it should be live on the web! By default, it should be available at <code class="language-plaintext highlighter-rouge">https://[your-github-username].github.com/[repo-name]</code>, although it’s also possible to configure GitHub Pages to work with a <a href="https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site">custom domain name</a>.</p>
+
+<p>The GitHub Action can take a few minutes to compile and deploy, so be patient! You can also click through to the “Actions” tab in your repository and see the build as it progresses.</p>
+
+<p>For those who are interested, let’s walk through what this config file is doing:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: Build
+</code></pre></div></div>
+
+<p>This just names the workflow. It can be anything you want; it’ll show up in the Actions UI.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>on:
+  push:
+    branches:
+      - master
+</code></pre></div></div>
+
+<p>This indicates the series of steps that follow will execute whenever someone pushes code to the master branch.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+</code></pre></div></div>
+
+<p>Now we’ve started to define the task itself. Specifically, it runs on Linux, although that doesn’t really matter to us.</p>
+
+<p>Conceptually, a workflow is made up of a number of steps. A step can either be some code we manually write, or it can be a preset collection of actions provided by the community.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- uses: actions/checkout@v1
+</code></pre></div></div>
+
+<p>This checks out the latest version of our code</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: Use Go 1.13
+  uses: actions/setup-go@v1
+  with:
+    go-version: 1.13.x
+</code></pre></div></div>
+
+<p>Tweego is written in the programming language Go. We’ll be compiling Tweego’s code from scratch, which means we need a Go compiler. This gives us a working environment for Go code, and lets us specify which version of Go we want.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: build game
+    run: |
+      go get github.com/tmedwards/tweego
+      export PATH=$PATH:$(go env GOPATH)/bin
+      tweego YOUR_TWEE_FILE.twee -o dist/index.html
+</code></pre></div></div>
+
+<p>This is a custom script! The first <code class="language-plaintext highlighter-rouge">go get</code> line downloads and compiles the Tweego tool itself. The next line does some fiddly environment setup you don’t particularly need to worry about (modifying our PATH so we can just call the <code class="language-plaintext highlighter-rouge">tweego</code> binary without specifying a full filepath). Finally, we run tweego itself.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: Deploy
+  uses: peaceiris/actions-gh-pages@v2
+  env:
+    PERSONAL_TOKEN: $
+    PUBLISH_BRANCH: gh-pages
+    PUBLISH_DIR: ./dist
+</code></pre></div></div>
+
+<p>At this point, we have an HTML file in a directory called <code class="language-plaintext highlighter-rouge">dist</code>. This is a <a href="https://github.com/peaceiris">third-party action</a> created by another GitHub user that deploys code straight to GitHub Pages. This config gives it our personal access token (so it has permissions to commit/deploy), and specifies that we want to take all of the files in the <code class="language-plaintext highlighter-rouge">dist</code> directory and publish them to the <code class="language-plaintext highlighter-rouge">gh-pages branch</code>.</p>
+
+<h2 id="and-thats-it">…and that’s it!</h2>
+
+<p>And with all of that, we should be good to go!</p>
+
+<p>As someone used to working with more programer-focused tools, I’ve found this workflow to make it WAY easier and more pleasant to work on games with Twine. Hopefully it’s helpful to you too!</p>
+
+<p>If this is interesting to you, you might also be interested in <a href="https://lazerwalker.com/playfab-twine">PlayFab-Twine</a>, my tool to easily and automatically add free analytics to your Twine games. The <a href="https://github.com/lazerwalker/playfab-twine">GitHub repo</a> for that site is also a great example of a Twine project developed using this workflow!</p>
+
+<p>Drop me a note if you’re using any of this stuff, I’d love to hear from you!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Emilia Lazer-Walker</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Emilia Lazer-Walker</li>
+          <li><a href="mailto:blog@lazerwalker.com">blog@lazerwalker.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/lazerwalker">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/lazerwalker">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">lazerwalker</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
