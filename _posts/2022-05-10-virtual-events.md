@@ -13,14 +13,14 @@ Maybe your planning team disagrees on what an acceptable level of COVID safety i
 
 Even if you could run an event in-person, you're worried about losing the accessibility of a fully-remote event for attendees who are immunocompromised, or who live in far-off places and can't reasonably travel.
 
-Whatever reason, you need an online event. But you're also justifiably worried, because online events tend to suck. And now that people in a lot of the world are seeing their friends  in-person and spending time in places that aren't their homes, the prospect of spending a day or a weekend or a week plastered to a Twitch stream seems even more unpleasant than it did in 2020. 
+Whatever reason, you need an online event. But you're also justifiably worried, because online events tend to suck. And now that people in a lot of the world are seeing their friends in-person and spending time in places that aren't their homes, the prospect of spending a day or a weekend or a week plastered to a Twitch stream seems even more unpleasant than it did in 2020. 
 
 How the heck do you actually throw a virtual event worth attending?
 
 ## I don't have the answers
 Unfortunately, this isn't a "how-to" guide. If I could give you a concrete checklist for how to throw an online event that didn't suck, I would!
 
-It's also hard to give concrete suggestions since it's so dependent on your conference's audience, and how "experimental" a space is appropriate for you. I've attended exciting, creative, community-driven in-person conferences hoested in found spaces that needed major modifications to work as event venues (I love to tell the story of the [Berlin games festival](https://amaze-berlin.de) where the two talk tracks where "in the karate dojo" and "on-stage at the combination nightclub and pool"). I've also attended plenty of corporate conferences in hotel ballrooms or city-owned convention centers. 
+It's also hard to give concrete suggestions since it's so dependent on your conference's audience, and how "experimental" a space is appropriate for you. I've attended exciting, creative, community-driven in-person conferences hosted in found spaces that needed major modifications to work as event venues (I love to tell the story of the [Berlin games festival](https://amaze-berlin.de) where the two talk tracks where "in the karate dojo" and "on-stage at the combination nightclub and pool"). I've also attended plenty of corporate conferences in hotel ballrooms or city-owned convention centers. 
 
 The former has a lot of leeway to get experimental with online events, while the latter is going to have a harder time convincing attendees to try something different. Knowing your audience is key. A lot of the advice in this article is more focused on people who _do_ have room to explore, but even if you're restricted to using a relatively-buttoned-up turnkey enterprise event platform, there are still usually ways you can nudge the social design of your space one way or another.
 
