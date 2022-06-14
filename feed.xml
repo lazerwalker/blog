@@ -1,5 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.lazerwalker.com/" rel="alternate" type="text/html" /><updated>2022-05-11T15:36:25+00:00</updated><id>https://blog.lazerwalker.com/feed.xml</id><title type="html">Emilia Lazer-Walker</title><subtitle>Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
-</subtitle><entry><title type="html">So you want to run a virtual event</title><link href="https://blog.lazerwalker.com/2022/05/10/virtual-events.html" rel="alternate" type="text/html" title="So you want to run a virtual event" /><published>2022-05-10T11:00:00+00:00</published><updated>2022-05-10T11:00:00+00:00</updated><id>https://blog.lazerwalker.com/2022/05/10/virtual-events</id><content type="html" xml:base="https://blog.lazerwalker.com/2022/05/10/virtual-events.html">&lt;p&gt;If you’re an event organizer right now, you’re in a tough spot. You’re desperate to get back to running an in-person event, but you know it isn’t quite safe yet.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.lazerwalker.com/" rel="alternate" type="text/html" /><updated>2022-06-14T17:42:51+00:00</updated><id>https://blog.lazerwalker.com/feed.xml</id><title type="html">Emilia Lazer-Walker</title><subtitle>Emilia is a Toronto-based game designer, conceptual artist, and software engineer.
+</subtitle><entry><title type="html">Adding a license to your open source art project</title><link href="https://blog.lazerwalker.com/2022/06/14/oss-licensing-for-art.html" rel="alternate" type="text/html" title="Adding a license to your open source art project" /><published>2022-06-14T14:00:00+00:00</published><updated>2022-06-14T14:00:00+00:00</updated><id>https://blog.lazerwalker.com/2022/06/14/oss-licensing-for-art</id><content type="html" xml:base="https://blog.lazerwalker.com/2022/06/14/oss-licensing-for-art.html">&lt;p&gt;As someone who spends a lot of time straddling the world of “professional” corporate open-source software and digital artists making weird new tech, I encounter something regularly that makes me sad.&lt;/p&gt;
+
+&lt;p&gt;Someone will release a cool art project they’ve made, or a creative tool, or some other awesome bit of creativity! They’re excited to put it out in the open so that others can use what they’ve made and learn from their process! That’s great! However, they didn’t include an open-source license. That’s not so great!&lt;/p&gt;
+
+&lt;h2 id=&quot;why-do-you-need-a-license&quot;&gt;Why do you need a license?&lt;/h2&gt;
+
+&lt;p&gt;By default, if you put source code (or art assets) up on the Internet, that does not mean that anyone is allowed to use it. You still own the copyright to that code, and anyone using your code is committing copyright infringement. In order to for someone to legally be able to use your IP, you need to explicitly grant them the right to do so. In practice, if you publish your project’s source code and assets online without a license, you’re probably unlikely to sue someone who uses those assets, but on paper that’s illegal infringement.&lt;/p&gt;
+
+&lt;p&gt;Regardless of whether your goal is restricting the use of your source code to specific uses or just telling people “hey, do whatever you want with this”, being straight-forward about your intentions is valuable. Telling someone explicitly what you do or don’t want them to do with what you’ve made, instead of needing them to assume what rights they don’t have, is going to lead to people feeling more comfortable looking at and potentially using your work!&lt;/p&gt;
+
+&lt;p&gt;Additionally, if your project accepts contributions from the community, if you get any contributions that don’t include a license, you technically don’t have the right to use those changes! A model of “this is the way my code is licensed, and anyone contributing is agreeing to the same terms” is a valuable way to protect yourself.&lt;/p&gt;
+
+&lt;p&gt;The solution to all of these ambiguities is to add a license: a bit of legalese to this git repo that explains the legal IP rights that anyone visiting this repo has to the code and assets stored in it.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-license-should-i-choose&quot;&gt;What license should I choose?&lt;/h2&gt;
+
+&lt;p&gt;There’s sadly no one “correct” answer for what license you should use. Even though this is relatively cut-and-dry for e.g. open-source infrastructure projects built by tech startups, it gets fuzzier for art projects like this, and there is a lot of wiggle room depending on your goals.&lt;/p&gt;
+
+&lt;p&gt;I’ve got a few different recommendations below, but first it’s worth separating out that we’re talking about two different things here. On the one hand, a license explicitly grants legal IP use rights to anyone who comes across this repo, and makes it legal for them to do certain things with your IP. On the other hand, you are presumably trying to communicate intent about how you as a creator want people to be able to use your work.&lt;/p&gt;
+
+&lt;p&gt;In an ideal world, these two things are one and the same! In practice, OSS licenses are rather blunt tools, and it’s useful to separate out “what am I communicating about my intent?” from “what rights am I legally granting?”.&lt;/p&gt;
+
+&lt;p&gt;That said, here are three(ish) good options to consider, with the caveat that I am not a lawyer and this is not legal advice.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-oss-license-and-a-creative-commons-license&quot;&gt;An OSS license and a Creative Commons license&lt;/h2&gt;
+&lt;p&gt;A tricky thing is that “open source licenses” are written with code in mind, and it’s a bit ambiguous how they apply to non-code things like art assets. A good rule of thumb is that if a piece of IP can be versioned the same way one would use source code, an open source license might be a good fit for it – this means that things like hardware design files from software like KiCad can probably be safely protected under an OSS license, but 2D images or music might benefit from other licensing options.&lt;/p&gt;
+
+&lt;p&gt;Outside of a few special cases (e.g. the &lt;a href=&quot;https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;amp;id=ofl&quot;&gt;SIL Open Font License&lt;/a&gt; for fonts), the gold standard for licensing binary assets is &lt;a href=&quot;https://creativecommons.org/&quot;&gt;Creative Commons&lt;/a&gt;, who maintain a large number of licenses allowing for different types of use.&lt;/p&gt;
+
+&lt;p&gt;The inverse applies as well: because licenses like Creative Commons focused on artistic works don’t care about the difference between binary distribution and source distribution, this makes them relatively unsuitable to use for covering code (even Creative Commons themselves &lt;a href=&quot;https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software&quot;&gt;don’t recommend it&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;A common technique is to use multiple licenses within the same open source repository: all code is under one OSS license, and all non-code assets are under a Creative Commons license. This is a great option to remove ambiguity for projects that include both code and not-code.&lt;/p&gt;
+
+&lt;h3 id=&quot;choosing-a-code-license-mit-license-vs-gpl&quot;&gt;Choosing a Code License: MIT License vs GPL&lt;/h3&gt;
+&lt;p&gt;There are a large number of open-source licenses you can use to license your source code. I want to focus on two today, the MIT License and the GPL License. Both are &lt;em&gt;extremely&lt;/em&gt; popular, arguably moreso than any other open-source licenses (they’re the two licenses GitHub points people towards with their &lt;a href=&quot;https://choosealicense.com&quot;&gt;Chose a License&lt;/a&gt; site). There are many popular licenses similar to the MIT license, but comparing MIT and GPL is useful since they’re examples of two very different philosophies.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The MIT License&lt;/strong&gt; basically says “you can do whatever the heck you want with my code, as long as you give me credit”.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The GPL&lt;/strong&gt; basically says “you can do whatever you want with my code, as long as any changes you make to my open-source code are themselves made open-source and licensed under the GPL”.&lt;/p&gt;
+
+&lt;p&gt;The MIT license grants “freedom” in the sense that anyone can use your code to build a proprietary commercial product. The GPL grants “freedom” in the sense that, even though it restricts what people can do with your code, it does so in a way that leads to more open-source software and thus net more “freedom” for end users. This concept of freedom the GPL represents is often referred to as “copyleft” (as opposed to “copyright”)&lt;/p&gt;
+
+&lt;p&gt;Most open-source software maintained by large tech companies is MIT or a similarly-philosophically-aligned license (Apache and BSD are two others you see a lot), because the economic model behind that sort of OSS is generally “a bunch of tech companies all contribute to this thing in order to benefit from it in their closed-source commercial products”. These corporations would not consider being forced to open source all of their commercial products that happen to depend on GPL’d libraries to be a reasonable outcome, so this sort of corporate OSS tends to default to more “liberal” licenses that allow closed-source use.&lt;/p&gt;
+
+&lt;p&gt;There’s no clear correct answer. For-profit corporations find financial benefit in making licenses like MIT more common, but that doesn’t mean that’s the right choice for you.&lt;/p&gt;
+
+&lt;p&gt;It’s also awkward and worth noting that the GPL’s author and main evangelist for decades is an alleged sex pest who (among many other things) resigned from his position at MIT after public comments defending Jeffrey Epstein. Regardless of how you feel about the ideas and ideals underlying the GPL and the Free Software Foundation, there’s a lot of cultural and political baggage there. I don’t think that’s a reason to avoid the GPL, but it’s worth being aware of.&lt;/p&gt;
+
+&lt;p&gt;It’s also worth noting here that there are weird politics around the term “open source”. In order for a license to be considered “open source” by the Open Source Initiative, there are a number of criteria the license must meet. One of those criteria is that it must allow equal use to everyone. You won’t see an “open source” license that restricts commercial use, because that by definition makes it not capital-O Open Source. I personally think this is bad!&lt;/p&gt;
+
+&lt;h3 id=&quot;various-creative-commons-licenses&quot;&gt;Various Creative Commons Licenses&lt;/h3&gt;
+&lt;p&gt;As mentioned, Creative Commons is a non-profit that maintains a half-dozen different licenses intended to be used for creative works, rather than source code.&lt;/p&gt;
+
+&lt;p&gt;There are a half-dozen different Creative Commons licenses you can choose. They span more or less the same ideological spectrum of MIT vs GPL, but with a bit more fine-grained choice around what restrictions are placed on what people can do with your work.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;Creative Commons License Chooser&lt;/a&gt; is a good way to look at your options and how these differ. All CC licenses require attribution (except for CC0, but I’ll talk about that later). You have a choice of whether or not you allow commercial use of your work, as well as a choice of whether adaptations of your work are allowed to be shared, not allowed to be shared, or require any derivative works to also be licensed under the same terms as your work (similar to the GPL).&lt;/p&gt;
+
+&lt;p&gt;While restricting commercial use in derivative works may sound extremely appealing, Creative Commons themselves are philosophically opposed to it, in favor instead of what they call “&lt;a href=&quot;https://creativecommons.org/share-your-work/public-domain/freeworks&quot;&gt;free cultural works&lt;/a&gt;”. Their viewpoint is basically “eh, we don’t want to allow this, but it’s better that works be CC Non-Commercial than to not have any CC license”. In particular, a concern I would have is how loosely “commercial use” is defined, and making sure that you’re actually disallowing the use cases you think you are.&lt;/p&gt;
+
+&lt;p&gt;To me, in a lot of situations where I’d be tempted to add a non-commercial clause, I’d instead consider adding a share-alike clause. If what you want is for people to be able to freely remix your work, letting people release commercial products based on it but requiring them to also license those works under Creative Commons feels like a good compromise – it’s philosophically similar to the GPL, but without a lot of the legal or cultural baggage.&lt;/p&gt;
+
+&lt;h3 id=&quot;do-you-lean-on-the-side-of-leniency-or-strictness&quot;&gt;Do you lean on the side of leniency or strictness?&lt;/h3&gt;
+&lt;p&gt;Deciding whether to use a MIT-like license or a copyleft license (or whether or not your CC license should have a sharealike clause) is a tough decision.&lt;/p&gt;
+
+&lt;p&gt;In my own work, I personally usually explicitly want to encourage others to make their improvements to my work public, but often find that &lt;em&gt;requiring&lt;/em&gt; that unintentionally limits some uses you’d like to enable. As a common example, if you would like people to be able to read your code as a reference, the GPL will allow that, but it technically forbids someone from copying a three-line snippet of code and using that in their own project, without making their entire project open-source under the terms of the GPL as well. That may be what you personally want, but in many cases I personally find that to be a bit excessive.&lt;/p&gt;
+
+&lt;p&gt;This is perhaps less likely to happen with a CC share-alike license (just because it’s less likely someone would pull out and use a tiny fraction of an art asset), but your license virality being too overbearing is still a concern in either case.&lt;/p&gt;
+
+&lt;p&gt;Of course, people may still informally use your code in that way anyway, and you may be okay with that (read: not pursue legal action for violation of the terms of the GPL or CC). But choosing a more stringent legal position than you intend to perhaps enforce is a conscious choice you’re making in that situation.&lt;/p&gt;
+
+&lt;h3 id=&quot;putting-it-all-together&quot;&gt;Putting it all together&lt;/h3&gt;
+&lt;p&gt;It’s worth emphasizing again the distinction between legal IP restrictions and communicating your intent.&lt;/p&gt;
+
+&lt;p&gt;I personally lean towards being more lenient in what I allow legally (read: default to using an MIT-style license and a CC license without non-commercial or sharealike clauses), and informally expressing in the project documentation what I do or don’t want people to do.&lt;/p&gt;
+
+&lt;p&gt;I find explicitly writing “hey, I know you’re allowed to do whatever you want with this, but PLEASE don’t do X, Y, or Z” is a nice middle-ground of something that isn’t strictly legally enforceable, but communicates to reasonable human beings what I want.&lt;/p&gt;
+
+&lt;p&gt;It’s also possible that your personal ideological leanings would rather err on the side of unintentionally restricting valid use cases rather than unintentionally enabling use cases you don’t want to allow. That’s okay too!&lt;/p&gt;
+
+&lt;p&gt;So, uh, what does this all mean? If I was choosing a license for this repo, and wanted to go the “OSS + CC” route, I’d probably pick MIT, either CC BY or CC BY-SA (“only attribution required” or “attribution and share-alike”), and put a paragraph in the README explaining my intent. But any of the other things mentioned here are reasonable options!&lt;/p&gt;
+
+&lt;h2 id=&quot;2-the-anti-capitalist-software-license&quot;&gt;2. &lt;a href=&quot;https://anticapitalist.software/&quot;&gt;The Anti-Capitalist Software License&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This is a unique license in that it adds restrictions on who can use your software. You can do whatever you want with the code, as long as you’re an individual, a non-profit, an education institution, or a worker-owned co-op, with a carve-out banning military and law enforcement use.&lt;/p&gt;
+
+&lt;p&gt;I’m inclined to view this license through the lens of performance art. While this license probably most directly aligns with how I personally would want a lot of my projects to be used, I’ve read a number of arguments claiming it almost certainly would not hold up to litigation, and would basically equate to including no license at all (with the repeated caveat that I am not a lawyer, and I additionally suspect many/most of the people posing those arguments are also not lawyers). It’s possible this is unjustified fear, uncertainty and doubt; the current tech industry culture extremely stigmatizes any software licenses like this that do not conform to the “proper” definition of “open source”.&lt;/p&gt;
+
+&lt;p&gt;Along those lines, this WILL incidentally act as a deterrent to many larger tech companies using your work, as management will look at a non-standard license like this and say “the time and effort saved by using this code is worth less than the billable hours for the legal team to vet this license”. This is possibly a positive for you.&lt;/p&gt;
+
+&lt;p&gt;This license is on the extreme end of tradeoffs: it is an incredibly strong socio-political statement about how you wish your code to be used, but realistically is likely to leave you in the same legal IP situation as if you had not included a license at all. Using this license does have the positive benefit of normalizing licenses like this, which could eventually lead to future iterations of the idea that are more proven to be legally-enforceable.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-creative-commons-0&quot;&gt;3. &lt;a href=&quot;https://creativecommons.org/share-your-work/public-domain/cc0/&quot;&gt;Creative Commons 0&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A final option is to place your work in the public domain: you relinquish all rights to them, and anybody can use your IP for whatever purposes they want. This is “chaos mode” – it’s definitely the simplest of all these options, and the most easily-understood by people who don’t want to have to become armchair IP lawyers. But it’s also the least restrictive, for better and for worse. It’s specifically worth calling out that people are not required to provide credit or attribution.&lt;/p&gt;
+
+&lt;p&gt;If your intent is to put your project in the “public domain”, you should still specifically apply the CC0 license. Many countries do not have a legal mechanism (or only have limited ways) by which a living IP holder can dedicate their work to the public domain. CC0 is explicitly written to work around this, and allows authors to explicitly waive all possible copyright protection and IP rights they have, to the extent possible in their jurisdiction.&lt;/p&gt;
+
+&lt;h1 id=&quot;okay-so-how-do-i-actually-add-a-license-to-my-project&quot;&gt;Okay, so how do I actually add a license to my project?&lt;/h1&gt;
+&lt;p&gt;So you’ve fretted and fussed and finally picked a license or set of licenses that you think are right for your project. What do you do now?&lt;/p&gt;
+
+&lt;p&gt;If you just have a single license, this is simple.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For a code license&lt;/strong&gt;: in your project’s repository (I’m assuming you’re distributing this project via a git repo, but this could also just be in the folder root if you’re e.g. distributing a zip file), include a file called README (or README.md, or similar) containing a copy of your license.&lt;/p&gt;
+
+&lt;p&gt;A bonus improvement is to include the license as a header comment in every single code file. This makes it somewhat less likely that your code will get (unintentionally or intentionally) taken out-of-context and have the licensing info removed from it. This is best practices for larger corporate OSS, but if you don’t have good technical infrastructure to do that automatically on your small art project I wouldn’t worry too much about it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For a creative commons license&lt;/strong&gt;: In whatever public documentation your project has (a README, a marketing website, etc), note the CC license prominently. The Creative Commons has great image buttons you can use.&lt;/p&gt;
+
+&lt;p&gt;If you have a mixed license, it gets slightly hairier. Combining those two approaches — a LICENSE file and noting the CC license — is broadly right, although you want to be explicit about which files get which license applied to them. This is simpler if your assets are divided up such that you can cleanly say “this specific set of folders are CC licensed, and the rest are using this other code license”. There really isn’t a legal standard here for “you MUST indicate things this way or nothing matters”, your goal is primarily making your licensing intent clear and unambiguous.&lt;/p&gt;
+
+&lt;h2 id=&quot;and-thats-it&quot;&gt;…and that’s it?&lt;/h2&gt;
+&lt;p&gt;If you have clear documentation in your repository about how which files are licensed which ways, that’s all there is to it! Your project now has a license, and people can feel more comfortable using your work safely, knowing that they’re respecting your wishes and intentions!&lt;/p&gt;
+
+&lt;p&gt;This of course isn’t a silver bullet. If someone willingly infringes on you, your options are still either to take them to court (potentially expensive and time-consuming!) or just let it be. But having an explicit license minimizes the chance you’ll get into that sad situation, and also potentially makes it easier even if you do get into that sad degenerate state.&lt;/p&gt;</content><author><name></name></author><summary type="html">As someone who spends a lot of time straddling the world of “professional” corporate open-source software and digital artists making weird new tech, I encounter something regularly that makes me sad.</summary></entry><entry><title type="html">So you want to run a virtual event</title><link href="https://blog.lazerwalker.com/2022/05/10/virtual-events.html" rel="alternate" type="text/html" title="So you want to run a virtual event" /><published>2022-05-10T11:00:00+00:00</published><updated>2022-05-10T11:00:00+00:00</updated><id>https://blog.lazerwalker.com/2022/05/10/virtual-events</id><content type="html" xml:base="https://blog.lazerwalker.com/2022/05/10/virtual-events.html">&lt;p&gt;If you’re an event organizer right now, you’re in a tough spot. You’re desperate to get back to running an in-person event, but you know it isn’t quite safe yet.&lt;/p&gt;
 
 &lt;p&gt;Maybe you’ve seen in-person events in your community lead to large-scale COVID outbreaks or even deaths, and that terrifies you.&lt;/p&gt;
 
@@ -987,58 +1098,4 @@
 
 &lt;p&gt;I think spatial audio in general is a much more powerful technology than a lot of people give it credit for, but good head-tracking available in consumer hardware is the piece that’s been missing for it to find more widespread appeal. By piggy-backing off of existing popular headphones, Apple is well-positioned to make spatial audio tech explode in a way that it hasn’t before.&lt;/p&gt;
 
-&lt;p&gt;I’m so excited to see what people make if this, and can’t wait to dive in more as Apple updates the AirPods Pro firmware and makes beta API access available. Let me know if you’re working on something cool or have cool ideas for ways to use spatial audio tech!&lt;/p&gt;</content><author><name></name></author><summary type="html">At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that’s probably the least interesting application of spatial audio.</summary></entry><entry><title type="html">How to easily test your WebVR and WebXR projects locally on your Oculus Quest</title><link href="https://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html" rel="alternate" type="text/html" title="How to easily test your WebVR and WebXR projects locally on your Oculus Quest" /><published>2020-05-15T12:00:00+00:00</published><updated>2020-05-15T12:00:00+00:00</updated><id>https://blog.lazerwalker.com/2020/05/15/oculus-quest-testing</id><content type="html" xml:base="https://blog.lazerwalker.com/2020/05/15/oculus-quest-testing.html">&lt;p&gt;Lately, I’ve been spending a lot of time prototyping VR games using &lt;a href=&quot;https://babylonjs.com/&quot;&gt;Babylon.js&lt;/a&gt;. I love how technologies like Babylon and the WebXR API let me build VR experiences with the quick iteration time of modern web dev, rather than the slower compilation loop of something like Unity.&lt;/p&gt;
-
-&lt;p&gt;That said, until recently there was one part of my development work flow that annoyed the heck out of me!&lt;/p&gt;
-
-&lt;p&gt;I do most of my testing on an Oculus Quest, and development on a Mac. Both the WebVR and WebXR APIs require that you access them from a webpage being served over HTTPS, rather than non-secure HTTP, with most browsers adding an exception for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Because I’m on a Mac, I can’t set up my Oculus Quest via Quest Link to act like a desktop headset connected to my computer. There also isn’t really a way to set up a local desktop computer to properly serve files over SSL / HTTPS.&lt;/p&gt;
-
-&lt;p&gt;This leads to a hard question: how the heck do you actually test your game locally on an Oculus Quest?&lt;/p&gt;
-
-&lt;p&gt;A lot of the time, this isn’t an issue. I can test in a 2D browser on my dev machine. If I need motion controllers, I can push my working code to a remote server to load from the Quest, or I can use something like &lt;a href=&quot;https://ngrok.io/&quot;&gt;Ngrok&lt;/a&gt; to get an HTTPS URL that redirects to my local machine.&lt;/p&gt;
-
-&lt;p&gt;But all of these feel like hacks, and make it slower for me to test what I’m working on. Which sucks when one of the big appeals of WebXR is how fast your iteration loop can be!&lt;/p&gt;
-
-&lt;p&gt;It turns out it’s pretty straight forward to get a more functioning workflow. I’m going to walk you through setting up your Quest for development as an Android device, and then configure Android port forwarding so that you can access a web server hosted on your computer as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost&lt;/code&gt; from your Quest, letting it properly enter WebVR or WebXR mode.&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-your-quest-for-development&quot;&gt;Setting up your Quest for development&lt;/h2&gt;
-&lt;p&gt;Although we’re interested in using an Oculus Quest to build web-based content, rather than building natively using something like Unity, you still need to set it up for development as if that’s what you’re doing.&lt;/p&gt;
-
-&lt;p&gt;Follow the instructions on the Oculus support site to &lt;a href=&quot;https://developer.oculus.com/documentation/native/android/mobile-device-setup/&quot;&gt;set up a Quest for development&lt;/a&gt;. You’ll need to create a development organization to add your Oculus account to, and then enable Developer Mode in your Quest’s settings or in the Oculus app on your phone.&lt;/p&gt;
-
-&lt;h2 id=&quot;install-the-android-sdk-platform-tools-on-your-computer&quot;&gt;Install the Android SDK Platform Tools on your computer&lt;/h2&gt;
-&lt;p&gt;At this point, your Oculus Quest is able to enter development mode, which means most Android software development tools can talk to it.
-We specifically want to use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; (Android Debug Bridge) CLI tool , which gives us the ability to interact with the Quest in a bunch of helpful ways.&lt;/p&gt;
-
-&lt;p&gt;You can get &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; by downloading and installing the &lt;a href=&quot;https://developer.android.com/studio/releases/platform-tools&quot;&gt;Android SDK Platform Tools&lt;/a&gt;. If you’re on a Mac and use Homebrew, you can also install it by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew cask install android-platform-tools&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Either way, hopefully after installing the Platform Tools you should be able to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; at a command line and see a whole bunch of documentation.&lt;/p&gt;
-
-&lt;h1 id=&quot;connect-your-oculus-quest-to-your-computer&quot;&gt;Connect your Oculus Quest to your computer&lt;/h1&gt;
-&lt;p&gt;You can use any USB-C cable, including the charging cable that comes with the Quest.&lt;/p&gt;
-
-&lt;p&gt;You’ll need to put the Quest on and accept a prompt to allow the computer to connect with it. I highly recommend checking the checkbox that skips this prompt in the future.&lt;/p&gt;
-
-&lt;p&gt;Once that’s done, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb devices&lt;/code&gt; from the command prompt. You should see your Quest as the only device.&lt;/p&gt;
-
-&lt;p&gt;If multiple Android devices show up in that list (e.g. you have other Android devices plugged in with developer mode on), take note of the device ID that appears in the first column. When you run the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; command in the next step, add in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s DeviceId&lt;/code&gt; as a flag to the command to specify you’re targetting the Quest.&lt;/p&gt;
-
-&lt;h2 id=&quot;enable-port-forwarding&quot;&gt;Enable port forwarding&lt;/h2&gt;
-&lt;p&gt;Conceptually, what we want is simple. Any time you browse to a given local port on your Quest (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:1234&lt;/code&gt;), we want to forward that to a port on your computer. Fortunately, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; has built-in support to do this sort of port forwarding!&lt;/p&gt;
-
-&lt;p&gt;I’m assuming you already have a local web server on your computer that’s serving your WebVR or WebXR project. Note what port that is running on. As an example, my project setup tends to run a server on port 3000, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt;, what we’re doing is called “reverse port forwarding”. Regular port forwarding means we would be forwarding a port from our computer to a port on the Quest. But we’re trying to do the opposite — route from one port on your Quest’s localhost back to one on your computer — so that’s considered “reverse” forwarding.&lt;/p&gt;
-
-&lt;p&gt;If you know what port you need to forward, you just need to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse tcp:PORT tcp:PORT&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; will take care of the rest. For my server running on port 3000, for example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse tcp:3000 tcp:3000&lt;/code&gt; connects things properly so that going to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; in the Oculus Browser (or Firefox Reality) properly routes to the web server running on my computer, and should allow for entering VR mode.&lt;/p&gt;
-
-&lt;p&gt;You can safely close your command prompt and forget about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; for the rest of your test session, although you’ll need to rerun &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; the next time you disconnect and connect your Quest.&lt;/p&gt;
-
-&lt;h2 id=&quot;go-make-cool-things&quot;&gt;Go make cool things!&lt;/h2&gt;
-&lt;p&gt;And that’s all there is to it!&lt;/p&gt;
-
-&lt;p&gt;It’s theoretically possible to set this up to work wirelessly, but in practice I wasn’t able to get it to work. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb&lt;/code&gt; can successfully connect to my Quest over WiFi, but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; doesn’t work. There have historically been issues with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb reverse&lt;/code&gt; and WiFi connections; it seems like they may have been solved in recent versions of Android, but (at the time of writing) Facebook’s fork of Android may not have pulled in those fixes yet. Let me know if you manage to get WiFi working!&lt;/p&gt;
-
-&lt;p&gt;In any case, you should now be able to debug your web VR projects on-device without needing a desktop HMD or deploying your code to a server! I hope that wasn’t too painful to set up, and I hope this little trick can help improve your daily development workflow as much as it did for me.&lt;/p&gt;</content><author><name></name></author><summary type="html">Lately, I’ve been spending a lot of time prototyping VR games using Babylon.js. I love how technologies like Babylon and the WebXR API let me build VR experiences with the quick iteration time of modern web dev, rather than the slower compilation loop of something like Unity.</summary></entry></feed>
+&lt;p&gt;I’m so excited to see what people make if this, and can’t wait to dive in more as Apple updates the AirPods Pro firmware and makes beta API access available. Let me know if you’re working on something cool or have cool ideas for ways to use spatial audio tech!&lt;/p&gt;</content><author><name></name></author><summary type="html">At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that’s probably the least interesting application of spatial audio.</summary></entry></feed>
