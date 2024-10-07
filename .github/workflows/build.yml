@@ -21,8 +21,8 @@ jobs:
 
       - name: Set up and build
         run: |
-          gem install bundler
-          bundle install
+          gem install bundler -v 2.4.22
+          bundle _2.4.22_ install
           npm install
           bundle exec jekyll build
 
