@@ -11,11 +11,12 @@ I recently spent a few days revitalizing my Steam Deck, replacing a broken scree
     <a href="/images/steam-deck.jpeg"><img src="/images/steam-deck.jpeg" alt="A Steam Deck with a translucent purple-and-blue shell and metallic green buttons" style='max-height: 400px'></a>
 </center>
 
-This was an extremely fiddly mod, even as someone extremely experienced in working with electronics and reshells, so I wanted to write up a few notes on things that weren't well covered by the guides I used. 
+This was an extremely fiddly mod, even as someone very experienced in working with electronics and reshells, so I wanted to write up a few notes on things that weren't well covered by the guides I used. 
 
 This won't supplant any of the disassembly/installation guides out there (I primarily jumped between iFixit's [screen replacement guide](https://www.ifixit.com/Guide/Steam+Deck+Screen+Replacement/148986) and ExtremeRate's [official shell replacement video](https://www.youtube.com/watch?v=0tBE10fSYBc), and I've heard people recommend JSAUX's instructional video as well), but is more or less a list of "things I had to figure out for myself and wish I'd known going in".
 
-In my case, I was simultaneously installing a new iFixit screen, an ExtremeRate shell, an ExtremeRate set of buttons, and an ExtremeRate clicky button mod. Each of these kits theoretically includes all the tools needed for its respective installation, but...
+In my case, I was simultaneously installing a new iFixit [screen](https://www.ifixit.com/products/steam-deck-512gb-screen), an ExtremeRate [shell](https://amzn.to/4dCIvif), an ExtremeRate [set of buttons](https://amzn.to/3YcB9gD), and an ExtremeRate [clicky button mod](https://amzn.to/3NfjX44). Each of these kits theoretically includes all the tools needed for its respective installation, but...
+
 #### Don't use ExtremeRate's tools
 ExtremeRate gives you a bunch of tools: spudgers, a metal guitar pick, a suctIon cup. They all suck. In my case, I had extremely high-quality tools provided with my iFixit screen kit, as well as plenty of other screwdrivers, tweezers, and iFixit spudgers/picks/etc lying around. If you're not in that situation, and don't already have a good spudger, pry tool, set of tweezers, suction cup, and a few guitar picks, I'd consider picking up a repair kit from iFixit. Definitely do not touch ExtremeRate's metal guitar pick, using a metal tool is very likely to damage your device.
 
@@ -28,7 +29,7 @@ ExtremeRate's instructions are very clear that you should carefully remove the m
 
 I didn't notice this until after I had already adhered the new display in place. Rather than buy new adhesive and go through the trouble and risk of damaging my new shell and screen, I simply do not have a working internal mic or ambient light sensor.
 	
-### The trackpad covers are surprisingly annoying
+#### The trackpad covers are surprisingly annoying
 If you're replacing the buttons, a thing I was not expecting was how difficult replacing the trackpad covers would be. ExtremeRate's instructions casually tell you to pry apart the plastic front-facing cover from the PCB housed inside it, failing to mention it's held in place with adhesive. The tool they provide (and use in their video) is also both too thick and too soft to make any headway.
 
 I used my hair dryer to heat up the adhesive, and then mostly made headway using iFixit guitar picks (my kit came with several, which was nice as this dulled many corners of them). 
@@ -61,5 +62,6 @@ Unfortunately, if you are re-shelling your device or replacing the trackpad cove
 - Similarly, instructions tend to have you remove the sticker attaching the fan to the heatsink so you can remove the heatsink before the fan. This is also unnecessary, just remove them both at the same time as a single unit.
 - My iFixit screen replacement came with a tube of thermal paste. iFixit's instructions tell you that there are several methods to apply thermal paste, and which you should use depends on both the CPU and type of paste, but give no Steam Deck-specific advice. I followed [iFixit's generic thermal paste guide video](https://www.youtube.com/watch?v=TE1kdlmJcNs), and the gloved finger spread technique worked fine here.
 - The community notes on the iFixit guide are insistent that you shouldn't remove the haptics cables from their JST plugs on the left and right daughter boards, as many  claim to have ripped the connector clean off the board. I have not had this problem at all, and leaving the haptics cables in place makes it extremely frustrating to work with the left and right daughter boards stuck in your way. I used the pointy end of a black iFixit spudger tool to gently pry up on the JST connector from below. When reattaching the cables, I just gently press them into place from above with my finger, being mindful of the orientation.
+- You can install a 512gb LCD screen (with anti-glare coating) in a non-512gb Steam Deck without coating. You cannot install an OLED into an LCD deck. There is an aftermarket [upgrade display](https://www.deckhd.com) for LCD models, but I don't personally think the performance and battery tradeoff is worth the increased resolution and improved color space.
 
 Hope this is helpful!
