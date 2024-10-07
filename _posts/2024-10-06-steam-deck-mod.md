@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Miscellaneous notes on Steam Deck reshells, mods, and screen replacements"
-date: 2024-10-07 19:00
+date: 2024-10-06 19:00
 comments: true
 ---
 
