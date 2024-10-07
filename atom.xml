@@ -6,9 +6,79 @@
 </description>
     <link>https://blog.lazerwalker.com/</link>
     <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 Oct 2024 02:18:23 +0000</pubDate>
-    <lastBuildDate>Mon, 07 Oct 2024 02:18:23 +0000</lastBuildDate>
+    <pubDate>Mon, 07 Oct 2024 02:21:32 +0000</pubDate>
+    <lastBuildDate>Mon, 07 Oct 2024 02:21:32 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Miscellaneous notes on Steam Deck reshells, mods, and screen replacements</title>
+        <description>&lt;p&gt;I recently spent a few days revitalizing my Steam Deck, replacing a broken screen alongside dropping in a new shell, new complementary buttons, and a clicky button mod.&lt;/p&gt;
+
+&lt;center style=&quot;margin: 2em&quot;&gt;
+    &lt;a href=&quot;/images/steam-deck.jpeg&quot;&gt;&lt;img src=&quot;/images/steam-deck.jpeg&quot; alt=&quot;A Steam Deck with a translucent purple-and-blue shell and metallic green buttons&quot; style=&quot;max-height: 400px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;This was an extremely fiddly mod, even as someone extremely experienced in working with electronics and reshells, so I wanted to write up a few notes on things that weren’t well covered by the guides I used.&lt;/p&gt;
+
+&lt;p&gt;This won’t supplant any of the disassembly/installation guides out there (I primarily jumped between iFixit’s &lt;a href=&quot;https://www.ifixit.com/Guide/Steam+Deck+Screen+Replacement/148986&quot;&gt;screen replacement guide&lt;/a&gt; and ExtremeRate’s &lt;a href=&quot;https://www.youtube.com/watch?v=0tBE10fSYBc&quot;&gt;official shell replacement video&lt;/a&gt;, and I’ve heard people recommend JSAUX’s instructional video as well), but is more or less a list of “things I had to figure out for myself and wish I’d known going in”.&lt;/p&gt;
+
+&lt;p&gt;In my case, I was simultaneously installing a new iFixit screen, an ExtremeRate shell, an ExtremeRate set of buttons, and an ExtremeRate clicky button mod. Each of these kits theoretically includes all the tools needed for its respective installation, but…&lt;/p&gt;
+&lt;h4 id=&quot;dont-use-extremerates-tools&quot;&gt;Don’t use ExtremeRate’s tools&lt;/h4&gt;
+&lt;p&gt;ExtremeRate gives you a bunch of tools: spudgers, a metal guitar pick, a suctIon cup. They all suck. In my case, I had extremely high-quality tools provided with my iFixit screen kit, as well as plenty of other screwdrivers, tweezers, and iFixit spudgers/picks/etc lying around. If you’re not in that situation, and don’t already have a good spudger, pry tool, set of tweezers, suction cup, and a few guitar picks, I’d consider picking up a repair kit from iFixit. Definitely do not touch ExtremeRate’s metal guitar pick, using a metal tool is very likely to damage your device.&lt;/p&gt;
+
+&lt;h4 id=&quot;ifixits-iopener-breaks-easily&quot;&gt;iFixit’s iOpener breaks easily&lt;/h4&gt;
+&lt;p&gt;My iFixit kit included a tool called the &lt;a href=&quot;https://www.ifixit.com/products/iopener&quot;&gt;iOpener&lt;/a&gt; that’s essentially a heat pack you heat up in the microwave and can directly apply to e.g. the screen to loosen up the adhesive. I followed the instructions exactly for how long to heat it up, and it promptly burst, leaving me with a mess in my microwave and no heating tool.&lt;/p&gt;
+
+&lt;p&gt;If you have and use an iOpener, play it safe and heat it up for short periods at a time. If you don’t have one or ruin yours like me, I ended up using a hair dryer and it was fine other than needing to be a bit more careful.&lt;/p&gt;
+&lt;h4 id=&quot;the-mic--ambient-light-sensor-needs-to-poke-through-the-display-cage&quot;&gt;The mic / ambient light sensor needs to poke through the display cage&lt;/h4&gt;
+&lt;p&gt;ExtremeRate’s instructions are very clear that you should carefully remove the mic/ambient sensor cable from your old shell, and place it in the new shell before attaching the display. They fail to mention that, while the cable should live inside the metal display cage, the ribbon cable needs to poke through the top of the cage to the back of the shell or you won’t be able to attach it to the audio PCB.&lt;/p&gt;
+
+&lt;p&gt;I didn’t notice this until after I had already adhered the new display in place. Rather than buy new adhesive and go through the trouble and risk of damaging my new shell and screen, I simply do not have a working internal mic or ambient light sensor.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-trackpad-covers-are-surprisingly-annoying&quot;&gt;The trackpad covers are surprisingly annoying&lt;/h3&gt;
+&lt;p&gt;If you’re replacing the buttons, a thing I was not expecting was how difficult replacing the trackpad covers would be. ExtremeRate’s instructions casually tell you to pry apart the plastic front-facing cover from the PCB housed inside it, failing to mention it’s held in place with adhesive. The tool they provide (and use in their video) is also both too thick and too soft to make any headway.&lt;/p&gt;
+
+&lt;p&gt;I used my hair dryer to heat up the adhesive, and then mostly made headway using iFixit guitar picks (my kit came with several, which was nice as this dulled many corners of them).&lt;/p&gt;
+
+&lt;p&gt;Also worth noting: after replacing the cover, they instruct you to apply new adhesive. This adhesive is opaque, which defeats the purpose if you’re using translucent trackpad covers. I was not using transparent covers, so I added the adhesive, but I’m told that you can simply omit the adhesive with no negative effects.&lt;/p&gt;
+
+&lt;p&gt;If you’re replacing the buttons, be prepared for the trackpad cover to suck, and honestly consider sticking with stock trackpad covers.&lt;/p&gt;
+
+&lt;h4 id=&quot;be-prepared-to-fine-tune-the-trackpad-screws-even-if-you-dont-replace-them&quot;&gt;Be prepared to fine-tune the trackpad screws, even if you don’t replace them&lt;/h4&gt;
+&lt;p&gt;Even if you don’t replace your trackpad covers, doing a shell swap requires removing the trackpads, which will require you to pay close attention to their screw tightness.&lt;/p&gt;
+
+&lt;p&gt;Each Steam Deck trackpad is made up of two pieces: a combined unit consisting of the trackpad cover, a PCB, and a set of springs that is collectively responsible for detecting touches and providing haptic feedback, and a PCB that goes behind the trackpad unit and is used to detect proper clicks.&lt;/p&gt;
+
+&lt;p&gt;Both of these parts are calibrated in the factory and are fixed in place precisely so that everything feels right. This calibration happens through hardware, rather than software.&lt;/p&gt;
+
+&lt;p&gt;Broadly speaking, the tightness of the screws for the trackpad itself (i.e. the screws directly connected to the springs) determines how tactile the trackpad is, and how viscerally you feel movement as you track your fingers across the trackpad, with looser screws giving you more motion.&lt;/p&gt;
+
+&lt;p&gt;The tightness of the screws for the secondary board affects the range of force registered by the hardware, which in turn affects what is recognized as a ‘click’ action (as distinct from a ‘tap’). In the Steam Input controller config for a given game, you can control the force threshold for a given click. This means there’s a little more wiggle room here, since you can more or less change calibration in software.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, if you are re-shelling your device or replacing the trackpad covers, you will need to tune the tightness of the screws until it feels “right”. It’s particularly annoying since you can’t really get a feel for it without fully reassembling your Steam Deck for testing.&lt;/p&gt;
+
+&lt;h4 id=&quot;more-odds-and-ends&quot;&gt;More odds and ends&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Removing the screen sucks. Both guides are decent here, I have no advice, just know it sucks and prepare for that.&lt;/li&gt;
+  &lt;li&gt;The iFixit guide has you apply the screen adhesive pads to the screen, and then place it down into the shell. This is silly, as the adhesive is designed to specifically align with the shell’s metal bits, and trying to eyeball placement on the screen is extremely difficult. Put the adhesive on the metal bracket and then place the screen down onto it.&lt;/li&gt;
+  &lt;li&gt;The Steam Deck has many screws. The ExtremeRate kits come with new screws, but they are lower quality than the OEM ones. I would recommend being meticulous in your labeling and storing the original screws as you disassemble, so you can reuse them in a new shell. Note you will still regardless need ExtremeRate screws to attach the rear L4/L5/R4/R5 buttons.&lt;/li&gt;
+  &lt;li&gt;The OEM screws technically have two different Philips screw head sizes. Most guides tell you to have two screwdrivers on hand. In practice, I was able to successfully use a single Philips screwdriver without stripping any screws. It was a cheap no-name screwdriver I had lying around from Game Boy repair kits, so I sadly can’t provide details about its size&lt;/li&gt;
+  &lt;li&gt;If using an ExtremeRate button kit, the d-pad has one side that is notched / shorter than the other three sides. ExtremeRate’s video tutorial does not cover this, but the short side of the d-pad should be the left arrow, meaning when placing the d-pad from the back side of the Deck, it should be placed in the outermost/right position.&lt;/li&gt;
+  &lt;li&gt;I attached my replacement screen, and then after complete reassembly was frustrated to find it didn’t work. I was able to use my old display to determine the display cable was the culprit, and was able to swap it out without much fuss, but if doing this repair again I would rest the new display in its spot without using adhesive, complete the reassembly, test everything, and only then actually adhere it into place as a final step.&lt;/li&gt;
+  &lt;li&gt;Many instructions have you apply heat to the audio ribbon cable sitting on top of the battery to remove it. This is unnecessary; as long as you unhook the ribbon cable from the back of the motherboard (after unscrewing the motherboard and removing the heatsink/fan and the WiFi and speaker cables, you can carefully flip it over and remove the audio ribbon cable from the backside), you can leave the audio cable adhered in place.&lt;/li&gt;
+  &lt;li&gt;Similarly, instructions tend to have you remove the sticker attaching the fan to the heatsink so you can remove the heatsink before the fan. This is also unnecessary, just remove them both at the same time as a single unit.&lt;/li&gt;
+  &lt;li&gt;My iFixit screen replacement came with a tube of thermal paste. iFixit’s instructions tell you that there are several methods to apply thermal paste, and which you should use depends on both the CPU and type of paste, but give no Steam Deck-specific advice. I followed &lt;a href=&quot;https://www.youtube.com/watch?v=TE1kdlmJcNs&quot;&gt;iFixit’s generic thermal paste guide video&lt;/a&gt;, and the gloved finger spread technique worked fine here.&lt;/li&gt;
+  &lt;li&gt;The community notes on the iFixit guide are insistent that you shouldn’t remove the haptics cables from their JST plugs on the left and right daughter boards, as many  claim to have ripped the connector clean off the board. I have not had this problem at all, and leaving the haptics cables in place makes it extremely frustrating to work with the left and right daughter boards stuck in your way. I used the pointy end of a black iFixit spudger tool to gently pry up on the JST connector from below. When reattaching the cables, I just gently press them into place from above with my finger, being mindful of the orientation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hope this is helpful!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 06 Oct 2024 19:00:00 +0000</pubDate>
+        <link>https://blog.lazerwalker.com/2024/10/06/steam-deck-mod.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2024/10/06/steam-deck-mod.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Adding a license to your open source art project</title>
@@ -1095,131 +1165,6 @@
         <pubDate>Thu, 09 Jul 2020 10:00:00 +0000</pubDate>
         <link>https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</link>
         <guid isPermaLink="true">https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>What is Spatial Audio, Why Does it Matter, and What's Apple's Plan?</title>
-        <description>&lt;p&gt;At WWDC 2020, Apple announced that iOS apps will soon be able to use motion data coming from your AirPods Pro to enable head-tracked spatial audio. They talked about this largely in context of playing movies with multi-channel surround sound, but that’s probably the least interesting application of spatial audio.&lt;/p&gt;
-
-&lt;p&gt;As someone who’s been working in the field for a long time — my research at the MIT Media Lab in 2015 and 2016 focused on location-based storytelling in public spaces using spatial audio — I wanted to try to give some context around why this is interesting and what it might enable.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-spatialpositional-audio&quot;&gt;What is spatial/positional audio?&lt;/h2&gt;
-
-&lt;p&gt;Spatial or positional audio (these terms are typically used interchangeably) lets you position sounds anywhere in 3D space. Instead of just thinking about sound engineering at the level of “is this to the listener’s left, right, or neither?” as you would with normal stereo sound, you can place specific sounds at specific 3D locations around the listener: say, a sound that’s in front of you, a little bit to the left, and a meter or two above head/ear height.&lt;/p&gt;
-
-&lt;p&gt;If that sounds a lot like surround sound, you’re not wrong, but the underlying technology is different. Surround sound systems play audio out of speakers that are placed in different physical locations. To play a sound that sounds like it’s behind you and to the right, you use a speaker that is literally behind you and to the right.&lt;/p&gt;
-
-&lt;p&gt;The sort of spatial audio we’re talking about is (usually, but not always) concerned with producing sound that is situated precisely in 3D space despite coming out of a pair of normal headphones.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-spatial-audio-work&quot;&gt;How does spatial audio work?&lt;/h2&gt;
-
-&lt;p&gt;Let’s talk about how humans normally hear sounds in the real world.&lt;/p&gt;
-
-&lt;p&gt;If a loud noise happens directly to your left, those sound waves will reach both your left and right ears. But while they have a pretty direct route into your left ear, your right ear will receive them after they’ve passed through and been shaped by your skull, your brain, and pretty much everything else in there.&lt;/p&gt;
-
-&lt;p&gt;Humans — specifically, our brains, inner ears, and outer ears working together — are really good at processing the difference in these sound waves and transforming those raw signals into your conscious mind saying “ah yeah, that sound is coming from over there”.&lt;/p&gt;
-
-&lt;p&gt;To produce spatial audio that lets you hear things in precise 3D locations through a set of headphones, the audio coming out of each headphone ear needs to essentially recreate the sound attenuation that happens naturally so you can to trick your low-level auditory systems into thinking the sound is coming from someplace else.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-do-you-produce-spatial-audio-using-analog-methods&quot;&gt;How does do you produce spatial audio using analog methods?&lt;/h2&gt;
-
-&lt;p&gt;The traditional way of producing binaural audio recordings involves taking two microphones and sticking them in the ‘ears’ of a mannequin head that’s been designed to roughly match the density of a human head. Done right, this gives you a stereo audio recording that truly does capture the 3D soundscape as it was recorded.&lt;/p&gt;
-
-&lt;p&gt;The audio walks by sound artist Janet Cardiff are a great example of these traditional analog methods. If you want to get a sense of how effective this technique can be, grab a pair of headphones and listen to a few minutes of her NYC audio walk &lt;a href=&quot;https://soundcloud.com/incredibleworksofart/sets/janet-cardiff&quot;&gt;Her Long-Black Hair&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-digital-techniques-for-spatial-audio&quot;&gt;Using digital techniques for spatial audio&lt;/h2&gt;
-
-&lt;p&gt;Manually setting up two microphones and a test dummy is a lot of work. Modern audio production techniques typically involve math instead. Specifically, they use a set of models known as Head-Related Transfer Functions (HRTF) that describe the transformation that occurs when a “pure” sound is attenuated in such a way so as to mimic what a specific ear would hear.&lt;/p&gt;
-
-&lt;p&gt;Although specific HRTFs theoretically vary from person to person (all of our bodies are different!), in practice researchers have generated a few different algorithms that will work well for most situations. If you’re using HRTF as a programmer or sound engineer, in most cases you’ll just see “HRTF” as an option you can enable and that’s really the extent to which you need to think about it.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-do-you-adapt-to-the-listener&quot;&gt;How do you adapt to the listener?&lt;/h2&gt;
-
-&lt;p&gt;Whether you’re working with analog binaural recordings or digital tools that can apply HRTF, the results are usually stereo audio files that sound impressively like they’re positioned in real space.&lt;/p&gt;
-
-&lt;p&gt;But they’re still static recordings. Let’s say that a sound is directly behind you. If you turn 90 degrees to your left, you’d expect that sound is now directy to your left. But because the audio recording was made so that sound is “behind” you, it will turn along with you, breaking the illusion.&lt;/p&gt;
-
-&lt;p&gt;This is where being able to create spatial audio in software is valuable. If you have some way of tracking the position of the listener’s head, you can dynamically adjust your sound generation in real-time to keep a sound source fixed in the listener’s concept of real-world space.&lt;/p&gt;
-
-&lt;p&gt;Right now, the main commercial application of something like this is VR and AR headsets. Since they already have high-quality head tracking data for graphics rendering, using that same data for positional audio is a no-brainer.&lt;/p&gt;
-
-&lt;h1 id=&quot;where-airpods-pro-come-in&quot;&gt;Where AirPods Pro come in&lt;/h1&gt;
-
-&lt;p&gt;Given all of that, hopefully you can see how adding spatial audio features to AirPods Pro might work.&lt;/p&gt;
-
-&lt;p&gt;Apple already offers an API for producing spatial audio with HRTF, both integrated into ARKit for AR experiences and in the more general-purpose AVFoundation library. This has actually been part of iOS since 2014!&lt;/p&gt;
-
-&lt;p&gt;With iOS 14, Apple is adding a set of new APIs to use the motion sensors already in AirPods Pro to provide head-tracking, letting developers build positional audio experiences that are aware of how the listener is moving their head.&lt;/p&gt;
-
-&lt;p&gt;This isn’t a completely new concept — until recently, Bose maintained a similar platform for head-tracked spatial audio using certain Bose headphone models and a third-party smartphone SDK — but being supported at a first-party system level, with Apple’s incredibly popular headphones, will almost certainly help this see wider use than Bose’s SDK.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-audio-version-of-arkit&quot;&gt;The audio version of ARKit&lt;/h2&gt;
-
-&lt;p&gt;You could technically build visual AR apps without using an AR framework like ARKit or ARCore. It’s not a lot of work to show a live camera feed in a mobile app, and then overlay a 3D model on top of it. But unless you’re doing a lot of manual computer vision work, you’re not going to have the world awareness to keep that object’s position fixed in real space as the user moves the phone around.&lt;/p&gt;
-
-&lt;p&gt;Head tracking for spatial audio is similar. Prior to this announcement, you could easily make experiences for iOS that play positional 3D audio soundscapes through users’ headphones. But without head tracking, they lack an awareness of and connection to the physical world, and it’s not possible to make the sounds feel like they’re fixed in a concrete real-world position. This new API solves that.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-does-this-look-like-from-a-technical-standpoint&quot;&gt;What does this look like from a technical standpoint?&lt;/h2&gt;
-
-&lt;p&gt;As of the writing of this piece, Apple’s APIs aren’t ready for public consumption. There’s a new &lt;a href=&quot;https://developer.apple.com/documentation/coremotion/cmheadphonemotionmanager&quot;&gt;headphone motion API&lt;/a&gt;, and a new as-yet-unused &lt;a href=&quot;https://developer.apple.com/documentation/audiounit/audio_unit_properties/spatialization_algorithms&quot;&gt;configuration option for different spatialization algorithms&lt;/a&gt; that seems unconnected to the existing AVFoundation APIs.&lt;/p&gt;
-
-&lt;p&gt;The latter suggests to me that Apple may release a higher-level system that, say, automatically adds head-tracked spatial audio to any apps already playing audio through ARKit. I suspect they will heavily encourage developers to use ARKit when appropriate, as augmenting headphone motion data with camera-based world tracking will likely provide better tracking results.&lt;/p&gt;
-
-&lt;p&gt;That said, once new AirPods Pro firmware has been released that support sending motion data, the headphone motion manager will be enough for interested developers to dive in and start building spatial audio experiences.&lt;/p&gt;
-
-&lt;p&gt;Four years ago, I built some &lt;a href=&quot;https://github.com/lazerwalker/ios-3d-audio-test&quot;&gt;quick experiments&lt;/a&gt; using the iPhone’s built-in accelerometer and gyroscope to control a spatial audio scene generated using Apple’s existing AVFoundation spatial audio APIs. The code to wire up the two was straight-forward back then, and a similar approach should work just as well when it’s using motion data coming from the headphones instead of from the phone itself.&lt;/p&gt;
-
-&lt;h1 id=&quot;why-does-this-matter&quot;&gt;Why does this matter?&lt;/h1&gt;
-
-&lt;p&gt;This is all well and good. But what does head-tracked spatial audio actually enable? Providing a more immersive experience for films or 3D games, as Apple suggested, is a natural use case, but far from the most interesting one.&lt;/p&gt;
-
-&lt;p&gt;What’s difficult about answering this question is that there isn’t really yet a well-established field of design for building audio-only real-world experiences that take advantage of positional audio. Existing audio-only platforms like voice assistants don’t really have a concept of grounding an audio experience in the physical world; even the people building rich gaming experiences for those platforms don’t have the clearest answer of how spatiality might change things.&lt;/p&gt;
-
-&lt;p&gt;Based on my experience working with spatial audio, there are at least a few broad classes of potential applications that really excite me. This is far from an exhaustive list, but here’s a taste of the sorts of experiences we might see as spatial audio becomes more of a thing:&lt;/p&gt;
-
-&lt;h2 id=&quot;wayfinding&quot;&gt;Wayfinding&lt;/h2&gt;
-
-&lt;p&gt;One of the first usecases people tend to think of for spatial audio are helping people navigate the world. Microsoft has already released an app called &lt;a href=&quot;https://www.microsoft.com/en-us/research/product/soundscape/&quot;&gt;Soundscape&lt;/a&gt; that uses binaural audio to help people who are blind or have low vision to navigate the world.&lt;/p&gt;
-
-&lt;p&gt;It’s easy to imagine turn-by-turn navigation apps adding in support for spatial audio cues, and interaction patterns such as “follow this sound that keeps moving in the direction you should walk” becoming commonplace.&lt;/p&gt;
-
-&lt;p&gt;As Apple improves their indoor location technology, this could also easily become a big part of making indoor wayfinding viable before they ship AR glasses, since the ARKit model of “hold your phone out in front of you while you walk through a space” is both socially and physically awkward.&lt;/p&gt;
-
-&lt;h2 id=&quot;improving-existing-audio-content&quot;&gt;Improving existing audio content&lt;/h2&gt;
-
-&lt;p&gt;If you speak to anyone who’s worked on a social platform for VR, they will be quick to point out how much of a difference spatial audio makes in fostering natural voice conversations. When human voices are mapped to distinct physical locations, it’s like a switch is flipped in the brain that makes it easier to differentiate similar-sounding voices, even if you’re on a platform that doesn’t have great lip-syncing or other visual ways to indicate who’s speaking.&lt;/p&gt;
-
-&lt;p&gt;It wouldn’t surprise me to see applications like group voice chat apps or even podcast apps embrace spatial audio as a way to make conversation feel more natural and easier to make sense of at a subconscious level.&lt;/p&gt;
-
-&lt;h2 id=&quot;real-world-gaming-and-playful-experiences&quot;&gt;Real-world gaming and playful experiences&lt;/h2&gt;
-
-&lt;p&gt;One of the projects that resulted from my MIT research into spatial audio was a &lt;a href=&quot;https://www.youtube.com/watch?v=swQ338aOGm0&quot;&gt;site-specific generative poetry walk&lt;/a&gt; built for a park in San Francisco. Being built for consumer iPhones in 2016 meant it doesn’t use head tracking for its positional audio, but key to the piece are the binaural audio soundscapes that subtly fade in depending on where in the park you are.&lt;/p&gt;
-
-&lt;p&gt;If you’re in the main grassy field in the park, you may hear kids laughing and playing off in the distance, and you won’t really be sure whether they exist in the real world or just in the audio; the cacophany of birds chirping as you enter the fenced-off community garden create a sense of magic and connection to nature in a visually stunning space.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://soundcloud.com/incredibleworksofart/sets/janet-cardiff&quot;&gt;Janet Cardiff audio walk&lt;/a&gt; I mentioned earlier does similar magic tricks with (also non-head-tracked) positional audio. You’ll hear a couple arguing behind you, or police sirens going off on the street outside the park, and not be sure whether it’s reality or fiction.&lt;/p&gt;
-
-&lt;p&gt;Cardiff applies a ton of incredibly subtle psychological tricks to prevent you from turning your head and breaking the illusion of the static baked-in binaural audio. This means her work is generally in a league of its own, as this sort of work is so difficult to replicate without her sheer experience and talent.&lt;/p&gt;
-
-&lt;p&gt;Having readily-available consumer head-tracked audio means making these sorts of experiences will be so much more accessible to creators of all types, not just ones with extensive experience in traditional binaural audio production.&lt;/p&gt;
-
-&lt;p&gt;To be clear, I think the future of games and playful experiences focused on spatial AR audio isn’t in extending games like Pokémon Go to be more “immersive”, but in taking design cues from live-action role-playing and immersive theatre design communities. My design goal for my poetry walk was to create something that encourages players to appreciate the mundane beauty of a public space in their neighborhood, blurring reality with fiction and make-believe to elevate reality into something that feels magical.&lt;/p&gt;
-
-&lt;p&gt;Positional audio is so much more powerful — and so much cheaper to produce — than current-day 3D visual AR at causing that sort of emotional reaction in players. Apple helping to make head-tracked positional audio mainstream could bring on a waterfall of beautiful hyperlocal audio experiences.&lt;/p&gt;
-
-&lt;h1 id=&quot;so-whats-the-takeaway&quot;&gt;So what’s the takeaway?&lt;/h1&gt;
-
-&lt;p&gt;I feel like I’m standing over here, wildly waving my arms at everyone to pay attention to my favorite pet technology that’s finally on the verge of becoming mainstream. But it’s true!&lt;/p&gt;
-
-&lt;p&gt;I think spatial audio in general is a much more powerful technology than a lot of people give it credit for, but good head-tracking available in consumer hardware is the piece that’s been missing for it to find more widespread appeal. By piggy-backing off of existing popular headphones, Apple is well-positioned to make spatial audio tech explode in a way that it hasn’t before.&lt;/p&gt;
-
-&lt;p&gt;I’m so excited to see what people make if this, and can’t wait to dive in more as Apple updates the AirPods Pro firmware and makes beta API access available. Let me know if you’re working on something cool or have cool ideas for ways to use spatial audio tech!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 30 Jun 2020 12:00:00 +0000</pubDate>
-        <link>https://blog.lazerwalker.com/2020/06/30/spatial-audio.html</link>
-        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/06/30/spatial-audio.html</guid>
         
         
       </item>
