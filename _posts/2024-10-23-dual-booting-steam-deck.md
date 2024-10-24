@@ -87,14 +87,14 @@ After installation is complete, rebooting your Steam Deck will always reboot you
 ### Setting up Windows
 At this point, you should have a more or less functional Windows install. There's a whole bunch of drivers and tools to install to make your experience better:
 
-- The official Steam Deck drivers will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers): https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8
-- The aforementioned WiFi driver: https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix
-- Steam Deck Tools provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck's controller as a generic Xbox 360 controller to non-Steam games: https://github.com/ayufan/steam-deck-tools. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer
-- You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it's convenient to do them now while you're already here. Go to https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot, and execute the two commands that need to be performed in an elevated Windows command prompt (a `bcdedit.exe` command and a `reg add` command). Don't do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.
+- The official Steam Deck drivers will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers): <https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8>
+- The aforementioned WiFi driver: <https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix>
+- Steam Deck Tools provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck's controller as a generic Xbox 360 controller to non-Steam games: <https://github.com/ayufan/steam-deck-tools>. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer
+- You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it's convenient to do them now while you're already here. Go to <https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot>, and execute the two commands that need to be performed in an elevated Windows command prompt (a `bcdedit.exe` command and a `reg add` command). Don't do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.
 
 There are a few other classes of tools and tweaks I haven't experimented with yet:
-* This guide to installing Windows has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix): https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html
-* This Reddit thread also has other tweaks: https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&utm_source=share
+* This guide to installing Windows has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix): <https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html>
+* This Reddit thread also has other tweaks: <https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&utm_source=share>
 * In general, it may be worth looking up guides for debloating Windows 11
 
 ### Fixing The GRUB Partition Table
@@ -126,9 +126,9 @@ To fix this, I followed [this video](https://www.youtube.com/watch?v=eUDbLkHDeGY
 ### Installing Clover
 At this point, your Steam Deck is capable of booting into SteamOS, but will boot into Windows by default, and you can only boot into SteamOS via the rather annoying process of revealing the system boot manager.
 
-[Clover](https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot) is a nice friendly boot manager GUI that looks like the sort of interface you're probably used to if you've dual-booted before. There's a competing boot manager that provides a similar experience, but I was told by a friend that Clover is slightly nicer, so I just picked it and didn't think too hard.
+Clover is a nice friendly boot manager GUI that looks like the sort of interface you're probably used to if you've dual-booted before. There's a competing boot manager that provides a similar experience, but I was told by a friend that Clover is slightly nicer, so I just picked it and didn't think too hard.
 
-The instructions for this setup script are good. If you followed along with this blog post, you have already run the instructions that take place in Windows. This script did not in fact pop up a GUI setup menu for me, and did not give me the opportunity to set the default OS to Windows, but this was fine since I wanted SteamOS to be the default anyway.
+The instructions for [this automated setup script](https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot)) are good. If you followed along with this blog post, you have already run the instructions that take place in Windows. This script did not in fact pop up a GUI setup menu for me, and did not give me the opportunity to set the default OS to Windows, but this was fine since I wanted SteamOS to be the default anyway.
 
 ## And that's it!
 At this point you should have a fully-functioning dual-boot setup. Have fun!
