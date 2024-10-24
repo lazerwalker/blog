@@ -6,8 +6,8 @@
 </description>
     <link>https://blog.lazerwalker.com/</link>
     <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 24 Oct 2024 04:03:23 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2024 04:03:23 +0000</lastBuildDate>
+    <pubDate>Thu, 24 Oct 2024 04:06:20 +0000</pubDate>
+    <lastBuildDate>Thu, 24 Oct 2024 04:06:20 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
@@ -21,7 +21,7 @@
 &lt;p&gt;You can also install Windows onto a microSD card or an external hard drive, but the former is slow and the latter sounds rather unportable for a handheld.&lt;/p&gt;
 
 &lt;h2 id=&quot;do-you-actually-want-windows&quot;&gt;Do you actually want Windows?&lt;/h2&gt;
-&lt;p&gt;So, let me be blunt: Windows kinda sucks on the Steam Deck. The OS itself works shockingly well: touch support is great, and it’s easy to get the controller working both inside and outside of Steam. But every single game I’ve tried playing on both SteamOS and Windows, the SteamOS/Proton version was meaningfully more performant.&lt;/p&gt;
+&lt;p&gt;Let me be blunt: Windows kinda sucks on the Steam Deck. The OS itself works shockingly well: touch support is great, and it’s easy to get the controller working both inside and outside of Steam. But every single game I’ve tried playing on both SteamOS and Windows, the SteamOS/Proton version was meaningfully more performant.&lt;/p&gt;
 
 &lt;p&gt;I am happy I have Windows installed, but it solely exists to run games I can’t run in SteamOS (such as Destiny 2) and Game Pass games. That isn’t to say you shouldn’t install Windows, but temper your expectations accordingly, and perhaps weigh that as you decide what your partitioning strategy should be for your precious disk space.&lt;/p&gt;
 
@@ -95,16 +95,16 @@
 &lt;p&gt;At this point, you should have a more or less functional Windows install. There’s a whole bunch of drivers and tools to install to make your experience better:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The official Steam Deck drivers will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers): &lt;a href=&quot;https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8&quot;&gt;https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The aforementioned WiFi driver: &lt;a href=&quot;https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix&quot;&gt;https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Steam Deck Tools provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck’s controller as a generic Xbox 360 controller to non-Steam games: &lt;a href=&quot;https://github.com/ayufan/steam-deck-tools&quot;&gt;https://github.com/ayufan/steam-deck-tools&lt;/a&gt;. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer&lt;/li&gt;
-  &lt;li&gt;You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it’s convenient to do them now while you’re already here. Go to &lt;a href=&quot;https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot&quot;&gt;https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot&lt;/a&gt;, and execute the two commands that need to be performed in an elevated Windows command prompt (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bcdedit.exe&lt;/code&gt; command and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reg add&lt;/code&gt; command). Don’t do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.&lt;/li&gt;
+  &lt;li&gt;The official &lt;a href=&quot;https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8&quot;&gt;Steam Deck drivers&lt;/a&gt; will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers)&lt;/li&gt;
+  &lt;li&gt;The aforementioned &lt;a href=&quot;https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix&amp;gt;&quot;&gt;improved WiFi driver&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ayufan/steam-deck-tools&quot;&gt;Steam Deck Tools&lt;/a&gt; provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck’s controller as a generic Xbox 360 controller to non-Steam games. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer&lt;/li&gt;
+  &lt;li&gt;You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it’s convenient to do them now while you’re already here. Go to &lt;a href=&quot;https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot&quot;&gt;this automated setup script&lt;/a&gt;, and execute the two commands that need to be performed in an elevated Windows command prompt (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bcdedit.exe&lt;/code&gt; command and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reg add&lt;/code&gt; command). Don’t do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There are a few other classes of tools and tweaks I haven’t experimented with yet:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;This guide to installing Windows has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix): &lt;a href=&quot;https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html&quot;&gt;https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This Reddit thread also has other tweaks: &lt;a href=&quot;https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&amp;amp;utm_source=share&quot;&gt;https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&amp;amp;utm_source=share&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html&quot;&gt;Bald Sea Lion’s guide&lt;/a&gt; has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix):&lt;/li&gt;
+  &lt;li&gt;This &lt;a href=&quot;https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&amp;amp;utm_source=share&quot;&gt;Reddit thread&lt;/a&gt; also has other tweaks&lt;/li&gt;
   &lt;li&gt;In general, it may be worth looking up guides for debloating Windows 11&lt;/li&gt;
 &lt;/ul&gt;
 
