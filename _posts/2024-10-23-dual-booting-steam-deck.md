@@ -122,6 +122,7 @@ To fix this, I followed [this video](https://www.youtube.com/watch?v=eUDbLkHDeGY
 10. If you turn off your Steam Deck and attempt to boot into either your SteamOS partition or the steamcl.efi file, it should work!
 
 (These instructions mimics the linked video . Do you actually need to call `lsblk` at all, or run `fdisk -l` before the interactive `fdisk` session? Probably not, but it can't hurt to triple-check your partition table.)
+
 ### Installing Clover
 At this point, your Steam Deck is capable of booting into SteamOS, but will boot into Windows by default, and you can only boot into SteamOS via the rather annoying process of revealing the system boot manager.
 
