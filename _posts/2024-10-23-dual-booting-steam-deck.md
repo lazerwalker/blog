@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes on Dual-Booting Windows on Steam Deck
+title: "Notes on Dual-Booting Windows on Steam Deck"
 date: 2024-10-23 19:00
 comments: true
 ---
