@@ -6,9 +6,151 @@
 </description>
     <link>https://blog.lazerwalker.com/</link>
     <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 Oct 2024 05:39:48 +0000</pubDate>
-    <lastBuildDate>Mon, 07 Oct 2024 05:39:48 +0000</lastBuildDate>
+    <pubDate>Thu, 24 Oct 2024 03:42:46 +0000</pubDate>
+    <lastBuildDate>Thu, 24 Oct 2024 03:42:46 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;After completing &lt;a href=&quot;https://blog.lazerwalker.com/2024/10/06/steam-deck-mod.html&quot;&gt;hardware modding my Steam Deck&lt;/a&gt;, I decided to move onto the next task on my to-do list of making my Steam Deck the ultimate gaming handheld PC: dual-booting Windows.&lt;/p&gt;
+
+&lt;p&gt;I would describe the process as “straight forward, but poorly documented”, so this walkthrough of what I did may hopefully transform it into merely straight forward.&lt;/p&gt;
+
+&lt;p&gt;To be explicit, I replaced my stock 512gb SSD with a 1tb SSD (any M.2 2230 NVME disk should be compatible), and set it up so that I have both SteamOS and Window running side-by-side as separate partitions, with a boot selector on power-on.&lt;/p&gt;
+
+&lt;p&gt;You can also install Windows onto a microSD card or an external hard drive, but the former is slow and the latter sounds rather unportable for a handheld.&lt;/p&gt;
+
+&lt;h2 id=&quot;do-you-actually-want-windows&quot;&gt;Do you actually want Windows?&lt;/h2&gt;
+&lt;p&gt;So, let me be blunt: Windows kinda sucks on the Steam Deck. The OS itself works shockingly well: touch support is great, and it’s easy to get the controller working both inside and outside of Steam. But every single game I’ve tried playing on both SteamOS and Windows, the SteamOS/Proton version was meaningfully more performant.&lt;/p&gt;
+
+&lt;p&gt;I am happy I have Windows installed, but it solely exists to run games I can’t run in SteamOS (such as Destiny 2) and Game Pass games. That isn’t to say you shouldn’t install Windows, but temper your expectations accordingly, and perhaps weigh that as you decide what your partitioning strategy should be for your precious disk space.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-few-notes-and-warnings&quot;&gt;A few notes and warnings&lt;/h2&gt;
+&lt;p&gt;I’ll walk you through everything I did step-by-step, but a few general notes beforehand.&lt;/p&gt;
+
+&lt;h4 id=&quot;ymmv-if-you-have-a-steam-deck-oled&quot;&gt;YMMV if you have a Steam Deck OLED&lt;/h4&gt;
+&lt;p&gt;Everything I’m writing about is from my experience with an LED Steam Deck. The Steam Deck OLED is subtly different. I think it’s likely that this process will be exactly the same (except for downloading different Windows drivers from Steam, they have a different page for OLED drivers), but I cannot confirm that.&lt;/p&gt;
+
+&lt;h3 id=&quot;display-rotation&quot;&gt;Display rotation&lt;/h3&gt;
+&lt;p&gt;The Steam Deck display’s native orientation is in portrait mode, with the bottom of the display on the side of the face buttons. Most boot disks we’ll be using will recognize this and eventually rotate the display back to its “proper” orientation, but don’t be surprised if you have to spend some time holding your Steam Deck in portrait mode.&lt;/p&gt;
+
+&lt;p&gt;Most notably, the Windows installer will be entirely in portrait mode, and once you have a functioning Windows install you’ll manually need to go to display settings and rotate your display.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-select-your-boot-disk&quot;&gt;How to select your boot disk&lt;/h3&gt;
+&lt;p&gt;You will often need to boot from removeable media (e.g. a USB thumbdrive or microSD card). To select the boot disk on your Steam Deck, you have two options:&lt;/p&gt;
+
+&lt;p&gt;If you hold down the volume down key, press the power button, and then release the volume down button when the boot splash screen appears, you will be prompted with a screen that lets you select the boot disk (or network boot, if you have an ethernet connection via USB-C dock).&lt;/p&gt;
+
+&lt;p&gt;If you hold down the volume up key instead of volume down, but otherwise perform the same sequence, you will be placed into a more full-featured boot manager that lets you select a boot device, boot from file, or a few other options.&lt;/p&gt;
+
+&lt;p&gt;Throughout this post, it’s understood you know how to do this. Either method is fine for booting from an external USB drive or microSD, and there is exactly one instance where you may optionally choose to boot from a file instead (which requires the vol up option).&lt;/p&gt;
+
+&lt;h3 id=&quot;have-a-keyboard-handy&quot;&gt;Have a keyboard handy&lt;/h3&gt;
+&lt;p&gt;You will frequently be entering long console command strings. I recommend having an external keyboard plugged in for this whole process to make things easier, especially since in some situations (e.g. the Windows 11 installer) on-screen keyboard support may be shakier than you’d like. I didn’t find a mouse was strictly necessary, as you will usually have touchscreen (and sometimes trackpad) support.&lt;/p&gt;
+
+&lt;h3 id=&quot;windows-10-vs-11&quot;&gt;Windows 10 vs 11&lt;/h3&gt;
+&lt;p&gt;You can choose to install Windows 10 instead of 11, but Windows 11 has much more robust touch screen support.&lt;/p&gt;
+
+&lt;p&gt;Some people say Windows 11 on the Steam Deck doesn’t play nicely with some anticheat software. I can successfully run Destiny 2 in my Windows partition (which uses Battleye, and doesn’t run in SteamOS due to it explicitly blocking Proton Battleye workarounds), but I have not tried more severe anticheat such as Riot Vanguard. The “SteamDeckTools” utility notes that some of its features may trigger anticheat, but that functionality is clearly labeled and not enabled by default.&lt;/p&gt;
+&lt;h3 id=&quot;the-steam-deck-recovery-image&quot;&gt;The Steam Deck Recovery Image&lt;/h3&gt;
+&lt;p&gt;Several steps in this process reference the Steam Deck Recovery Image, a bootable live restore disk you can &lt;a href=&quot;https://help.steampowered.com/en/faqs/view/1b71-edf2-eb6d-2bb3&quot;&gt;download from Valve&lt;/a&gt; and flash with your preferred USB flashing tool (Valve’s download page has recommendations for every OS; I used the recommended Balena Etcher on macOS).&lt;/p&gt;
+
+&lt;p&gt;As a major warning: this recovery image is weirdly fiddly. I tried flashing it to several different USB thumb drives, and none of them worked (failing with various cryptic and unhelpful errors during the boot process). I have had 100% success flashing this to a microSD card and booting from that, so that would be my strong recommendation. Any other bootable images you will need to use for this process (the Windows installer, optionally GParted or CloneZilla) should work fine off of any old USB thumb drive or microSD, they won’t be as weirdly picky.&lt;/p&gt;
+
+&lt;p&gt;Additionally: in my experience, any drive flashed with the recovery image seemed to fail to become a valid boot disk once it has successfully been used to boot the Steam Deck once. I’m not sure the cause of this, but be prepared to potentially flash the image several times.&lt;/p&gt;
+
+&lt;h3 id=&quot;shared-partitions-and-microsd-cards&quot;&gt;Shared Partitions and MicroSD Cards&lt;/h3&gt;
+&lt;p&gt;I initially set up my SSD to have two small partitions for SteamOS and Windows, and one large shared NTFS games partition. This ended up not working – while the NTFS drive would automount in SteamOS, Steam would silently fail to let me add its steamapps folder as a new storage location for my library.&lt;/p&gt;
+
+&lt;p&gt;I’m not sure of the source of my issues, but I’ve since heard from other folks that sharing a single library directory between Proton and Windows can cause issues and conflicts. In my case, since I concluded my use of Windows is going to be more limited anyway, I settled on a small Windows partition large enough to fit my anticipated Windows game usage and a larger SteamOS partition.&lt;/p&gt;
+
+&lt;p&gt;I’m told you may have more luck sharing partitions or microSD cards across OSes if you format them as btrfs, although Game Pass games on Windows will not install to a btrfs volume. I have not tested this myself yet.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-install-process&quot;&gt;The install process&lt;/h2&gt;
+&lt;h3 id=&quot;preparing-a-new-ssd&quot;&gt;Preparing a new SSD&lt;/h3&gt;
+&lt;p&gt;I’m not going to give instructions about the physical act of installing a new hard drive, it’s fairly straight-forward and there are guides out there (I’d check &lt;a href=&quot;https://ifixit.com&quot;&gt;iFixit&lt;/a&gt;). If you’re using your stock hard drive, you can obviously skip this, although if you find yourself unable to shrink your home partition as much as you’d like you may benefit from wiping it to a fresh install via the recovery disk.&lt;/p&gt;
+
+&lt;p&gt;The most straight-forward way to initialize a new hard drive is to install your new SSD, flash the official Steam Deck boot recovery disk onto a microSD card, and use it to reimage your new SSD. Unless you have a concrete reason to clone your existing drive, I’d start this way. The most straight-forward path is probably just to install the new SSD and then run that.&lt;/p&gt;
+
+&lt;p&gt;If you want to copy your existing SSD, I’d recommend grabbing an external M2 SSD enclosure (make sure to grab one that supports 2230, the small and slightly less-common form factor Steam Deck SSDs use), write the live-USB version of &lt;a href=&quot;https://clonezilla.org/clonezilla-live.php&quot;&gt;CloneZilla&lt;/a&gt; onto a USB drive or microSD, and use that for an easy way to make a 1:1 copy.&lt;/p&gt;
+
+&lt;p&gt;When I used CloneZilla, my resulting clone ended up having some odd issues (the microSD card would auto-mount in SteamOS, but Steam wouldn’t recognize its installed Steam library until I went to Desktop mode and manually re-added the drive to my Steam library every single boot), and I ended up wiping it clean and starting over as the simplest debug option. I wouldn’t necessarily recommend cloning your old disk, unless you have a very specific reason to not just start fresh.&lt;/p&gt;
+
+&lt;h3 id=&quot;partitioning&quot;&gt;Partitioning&lt;/h3&gt;
+&lt;p&gt;To install Windows, you need to have a partition set up on your SSD for Windows. Some people have found success using the KDE Partition Manager within SteamOS’s desktop mode, but I was limited in how much I could shrink my active /home partition this way.&lt;/p&gt;
+
+&lt;p&gt;Instead, boot into the Steam Deck Recovery Disk and use the partition manager that way (System -&amp;gt; KDE Partition Manager).&lt;/p&gt;
+
+&lt;p&gt;If you can’t get a copy of the Steam Deck recovery boot image working (this was my situation!), you can also use a GParted live USB install, and that live disk should be less sensitive to the device you’re using than the Steam Deck Recovery Disk. At the time of writing, the most current release (1.6.0-10) would not boot on a Steam Deck, but (discovered thanks to a Reddit comment) the older &lt;a href=&quot;https://sourceforge.net/projects/gparted/files/gparted-live-testing/1.6.0-3/&quot;&gt;1.6.0-3 release&lt;/a&gt; does boot on a Deck. That said, you will benefit from having a working recovery boot image later in this process, so I’d probably honestly just get it working for this step.&lt;/p&gt;
+
+&lt;p&gt;A vanilla Win11 install takes about 32gb once completed, although I’m told you probably want closer to 64gb as a minimum to account for OS updates, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-windows&quot;&gt;Installing Windows&lt;/h3&gt;
+&lt;p&gt;There’s nothing particularly Steam Deck-specific about this step. Grab an &lt;a href=&quot;https://www.microsoft.com/en-us/software-download/windows11/&quot;&gt;official x86 Windows ISO&lt;/a&gt;,  flash it onto a USB drive (on a Mac, I recommend &lt;a href=&quot;https://github.com/TechUnRestricted/windiskwriter&quot;&gt;WinDiskWriter&lt;/a&gt; with the default settings, as Balena Etcher won’t work), boot to that drive, and run the installer. Expect the installer to be rotated 90 degrees, and an external keyboard may be helpful.&lt;/p&gt;
+
+&lt;p&gt;When selecting a partition, even if you used GParted or KDE Partition Manager to create an NTFS or other Windows-friendly partition, you’ll need to delete that partition in the installer and let Windows recreate it.&lt;/p&gt;
+
+&lt;p&gt;After installation is complete, rebooting your Steam Deck will always reboot you into Windows. We’ll fix that after we’re done setting up Windows.&lt;/p&gt;
+&lt;h3 id=&quot;setting-up-windows&quot;&gt;Setting up Windows&lt;/h3&gt;
+&lt;p&gt;At this point, you should have a more or less functional Windows install. There’s a whole bunch of drivers and tools to install to make your experience better:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The official Steam Deck drivers will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers): https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8&lt;/li&gt;
+  &lt;li&gt;The aforementioned WiFi driver: https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix&lt;/li&gt;
+  &lt;li&gt;Steam Deck Tools provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck’s controller as a generic Xbox 360 controller to non-Steam games: https://github.com/ayufan/steam-deck-tools. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer&lt;/li&gt;
+  &lt;li&gt;You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it’s convenient to do them now while you’re already here. Go to https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot, and execute the two commands that need to be performed in an elevated Windows command prompt (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bcdedit.exe&lt;/code&gt; command and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reg add&lt;/code&gt; command). Don’t do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are a few other classes of tools and tweaks I haven’t experimented with yet:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;This guide to installing Windows has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix): https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html&lt;/li&gt;
+  &lt;li&gt;This Reddit thread also has other tweaks: https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&amp;amp;utm_source=share&lt;/li&gt;
+  &lt;li&gt;In general, it may be worth looking up guides for debloating Windows 11&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fixing-the-grub-partition-table&quot;&gt;Fixing The GRUB Partition Table&lt;/h3&gt;
+&lt;p&gt;In theory, you can boot into SteamOS at any time by launching the boot menu and selecting the correct partition.&lt;/p&gt;
+
+&lt;p&gt;In practice, assuming you have installed the 24H2 built of Windows 11 (the version released in the second half of 2024), the Windows installation nuked your disk’s grub partition table, which will prevent you from booting into SteamOS.&lt;/p&gt;
+
+&lt;p&gt;While we will install Clover shortly (a boot manager that lets you easily select whether you want Windows or SteamOS on boot), you need to start by fixing your SteamOS installation and making it bootable again.&lt;/p&gt;
+
+&lt;p&gt;To confirm this is the issue you’re happening, load the boot menu, and try to boot from your SteamOS partition. Instead of loading SteamOS, you should be presented with a GRUB terminal in portrait orientation&lt;/p&gt;
+
+&lt;p&gt;You can also determine this by loading the full boot manager (vol up on boot instead of vol down), selecting ‘boot from file’, and loading &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ESP (the first option) -&amp;gt; efi -&amp;gt; steamos -&amp;gt; steamcl.efi&lt;/code&gt;. The result should be the same.&lt;/p&gt;
+
+&lt;p&gt;Conceptually, Windows has corrupted your disk’s partition mapping for grub, but there is a backup partition table that will still be valid, so you need to restore the backup.&lt;/p&gt;
+
+&lt;p&gt;To fix this, I followed &lt;a href=&quot;https://www.youtube.com/watch?v=eUDbLkHDeGY&amp;amp;t=214s&quot;&gt;this video&lt;/a&gt;, but for your sake here’s  written instructions loosely transcribed from the video:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Confirm you’re experiencing the expected issue&lt;/li&gt;
+  &lt;li&gt;Boot into the trusty Steam Deck Recovery Key, and open a console (System -&amp;gt; Konsole)&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt;, and note that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvme0n1&lt;/code&gt; (your internal SSD) has no partitions listed&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo fdisk -l /dev/nve0n1&lt;/code&gt;. It should inform you in red text “The primary GPT table is corrupt, but the backup appears OK… so that will be used”.&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo fdisk /dev/nvme0n1&lt;/code&gt;. You will see the same error, and be given an interactive prompt&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; to print the partition table. You should now see a list of proper partitions on your disk&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt; to write the partition table and quit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fdisk&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt; again. You should see several partitions for your internal SSD now.&lt;/li&gt;
+  &lt;li&gt;If you turn off your Steam Deck and attempt to boot into either your SteamOS partition or the steamcl.efi file, it should work!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;(These instructions mimics the linked video . Do you actually need to call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt; at all, or run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fdisk -l&lt;/code&gt; before the interactive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fdisk&lt;/code&gt; session? Probably not, but it can’t hurt to triple-check your partition table.)&lt;/p&gt;
+&lt;h3 id=&quot;installing-clover&quot;&gt;Installing Clover&lt;/h3&gt;
+&lt;p&gt;At this point, your Steam Deck is capable of booting into SteamOS, but will boot into Windows by default, and you can only boot into SteamOS via the rather annoying process of revealing the system boot manager.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot&quot;&gt;Clover&lt;/a&gt; is a nice friendly boot manager GUI that looks like the sort of interface you’re probably used to if you’ve dual-booted before. There’s a competing boot manager that provides a similar experience, but I was told by a friend that Clover is slightly nicer, so I just picked it and didn’t think too hard.&lt;/p&gt;
+
+&lt;p&gt;The instructions for this setup script are good. If you followed along with this blog post, you have already run the instructions that take place in Windows. This script did not in fact pop up a GUI setup menu for me, and did not give me the opportunity to set the default OS to Windows, but this was fine since I wanted SteamOS to be the default anyway.&lt;/p&gt;
+
+&lt;h2 id=&quot;and-thats-it&quot;&gt;And that’s it!&lt;/h2&gt;
+&lt;p&gt;At this point you should have a fully-functioning dual-boot setup. Have fun!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 24 Oct 2024 03:42:46 +0000</pubDate>
+        <link>https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Miscellaneous notes on Steam Deck reshells, mods, and screen replacements</title>
@@ -1106,67 +1248,6 @@
         <pubDate>Mon, 20 Jul 2020 16:00:00 +0000</pubDate>
         <link>https://blog.lazerwalker.com/2020/07/20/captions.html</link>
         <guid isPermaLink="true">https://blog.lazerwalker.com/2020/07/20/captions.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Building a better online hallway track</title>
-        <description>&lt;p&gt;As the effects of COVID-19 have been going on for months, we’ve grown accustomed to new forms of socializing. “Tech conferences” now mean Twitch and YouTube streams, casual hangouts with friends mean mass Zoom calls.&lt;/p&gt;
-
-&lt;p&gt;I don’t know about you, but I find all of this &lt;em&gt;exhausting&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;I go to tech conferences primarily to have good conversations with people, but that’s difficult in Twitch chat or even a dedicated Discord or Slack. Casual community meetups that used to be a short presentation followed by a few hours of unstructured socializing are now nothing but rigid slide decks. Communities that previously felt like joyful spaces where I could connect with old friends and meet new ones now feel like nothing more than yet another indistinct icon in my Slack or Discord app sidebar. “Attending a conference” means sitting in the same physical environment I use for work, and using the exact same pieces of software I spend my work days in.&lt;/p&gt;
-
-&lt;p&gt;There has to be something better!&lt;/p&gt;
-
-&lt;h2 id=&quot;a-solved-problem-in-vr&quot;&gt;A solved problem in VR?&lt;/h2&gt;
-
-&lt;p&gt;There are a lot of social virtual reality spaces that do a really effective job of this! I attended Microsoft’s Mixed Reality Dev Days conference in &lt;a href=&quot;https://altvr.com&quot;&gt;AltSpace&lt;/a&gt;, and I’ve run smaller meetups in &lt;a href=&quot;https://hubs.mozilla.com&quot;&gt;Mozilla Hubs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;These spaces do a lot of things really well!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nonverbal comunication&lt;/strong&gt;. The performative nature of videochat makes it way more emotionally exhausting than a phone call or an in-person conversation, but dropping down to just audio chat loses a lot of the nuance of nonverbal communication.&lt;/p&gt;
-
-&lt;p&gt;Even though VR doesn’t have a widely-available solution for conveying emotion via facial expression, most VR experiences communicate players’ head and hand positions, which go a long way towards expressing emotion and intent without making you feel like you’re “on camera” like when everybody’s looking at your webcam feed.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Natural conversation flow&lt;/strong&gt;. When you’re at a party or meetup in real life, conversation circles are fluid. A group of four people might naturally split off into two separate conversations, then effortlessly rejoin again a few minutes later, and they won’t even consciously notice this is happening.&lt;/p&gt;
-
-&lt;p&gt;That isn’t possible on a 30-person Zoom call, and you end up with large stilted group conversations that wouldn’t happen in-person.&lt;/p&gt;
-
-&lt;p&gt;A lot of videochat programs (Zoom included) have ‘breakout room’ functionality. A moderator splitting people off into randomized small groups for a fixed period of chat time can be an effective way to foster meaningful and interesting conversation, but the rigid formality of being told when to break out and when to rejoin the larger group lacks the spontaneity and fluidity of real-world conversations.&lt;/p&gt;
-
-&lt;p&gt;VR social spaces fix this! The combination of feeling embodiment in a virtual space and positional spatial audio means that a lot of VR meetups I’ve went to have managed to recreate the conversational dynamics of in-person meetups. This is phenomenal!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;A sense of play&lt;/strong&gt;. Even if you have the ability to walk up to somebody and start a conversation with them, that’s a nerve-wracking thing to do! Some of my closest friends I’ve met at conferences are ones I met through having some forced reason to interact with them: waiting in the bathroom line in front of them at a party, sitting next to them at a conference talk, visiting the same sponsor booth at the same time as them.&lt;/p&gt;
-
-&lt;p&gt;Inhabiting a 3D space in VR helps provide some of this, but it still lacks a lot of the forcing functions that exist IRL. You don’t need to wait in a bathroom line, for example!&lt;/p&gt;
-
-&lt;p&gt;A lot of VR social spaces solve this through providing opportunities to play. Beautifully-designed 3D environments encourage players to explore, giving them the chance to run into other people as they wander the space. Commenting on somebody’s cool custom avatar can serve the same icebreaker as commenting on a sticker on their laptop. Interactive objects can give people the literal chance to play with each other, and strike up a conversation based on that.&lt;/p&gt;
-
-&lt;h2 id=&quot;but-vr-isnt-perfect&quot;&gt;…but VR isn’t perfect&lt;/h2&gt;
-
-&lt;p&gt;Everything I’m describing sounds great, but has a huge problem. Accessing any of these spaces presupposes you have an interest in VR, an expensive VR headset, and likely a top-tier gaming PC.&lt;/p&gt;
-
-&lt;p&gt;A lot of VR social spaces are accessible to people without VR headsets, but that’s still tricky. Without head- and hand-tracking, you lose a lot of the communication nuance that makes these spaces work. PC-based apps still have relatively high hardware requirements, and the spaces that work on smartphones (such as &lt;a href=&quot;https://recroom&quot;&gt;Rec Room&lt;/a&gt;) tend to be designed for small casual friend hangouts rather than the sorts of larger events where you’re trying to network or make new friends.&lt;/p&gt;
-
-&lt;p&gt;Most importantly, this stuff is &lt;em&gt;completely incomprehensible&lt;/em&gt; to people who aren’t used to VR or playing 3D games. VR meetups are &lt;em&gt;great&lt;/em&gt; if your audience is VR developers. For anyone else, the basic cognitive overhead to even understand how to navigate a 3D space is a huge barrier to entry.&lt;/p&gt;
-
-&lt;h2 id=&quot;so-whats-the-solution&quot;&gt;So what’s the solution?&lt;/h2&gt;
-
-&lt;p&gt;All of these problems are solvable. The conferences and meetups I’ve attended in VR have felt great, with the caveat of the exclusivity and inapproachability of VR. The question is how to build new tools that take all of the design principles that VR virtual world designers have internalized and applying them to more accessible forms where you’re not necessarily already speaking the language of being in a literal fully-realized 3D virtual world.&lt;/p&gt;
-
-&lt;p&gt;I’ve tried a lot of new tools that have sprung up recently attempting to provide this sort of social space. It’s frustrating when so many of them are clearly attempting to augment existing chat tools with additional functionality. Fostering the sort of spontaneous social interactions that come naturally in real-life spaces is an incredibly difficult problem when most attempts to force spontaneity inevitably feel, well, forced.&lt;/p&gt;
-
-&lt;p&gt;So how do you create spontaneity in a way that feels natural? I think you need to create something that fundamentally feels like its own unique space that players/attendees have agency over. Something where the act of existing in the space itself, and trying to express yourself, naturally leads to creative and playful and frivolous behavior, which in turn creates room for the spontaneity we so desperately desire to exist.&lt;/p&gt;
-
-&lt;p&gt;I’ll hopefully have more to share soon about the prototypes I’ve been working on, and in the coming weeks I’ll also be publishing a series of articles about open-source tools I’ve been building to make prototyping and experimenting these sorts of experiences easier.&lt;/p&gt;
-
-&lt;p&gt;But to frame this one last way: if you asked me if I would rather attend a group video chat with some dear friends, or have us all join a &lt;a href=&quot;https://onezero.medium.com/party-in-a-shared-google-doc-d576c565706e&quot;&gt;shared spreadsheet&lt;/a&gt; with no way to communicate but typing into cells, I’d pick the spreadsheet every time.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 09 Jul 2020 10:00:00 +0000</pubDate>
-        <link>https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</link>
-        <guid isPermaLink="true">https://blog.lazerwalker.com/2020/07/09/virtual-worlds.html</guid>
         
         
       </item>
