@@ -6,12 +6,12 @@
 </description>
     <link>https://blog.lazerwalker.com/</link>
     <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 24 Oct 2024 03:49:22 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2024 03:49:22 +0000</lastBuildDate>
+    <pubDate>Thu, 24 Oct 2024 03:49:38 +0000</pubDate>
+    <lastBuildDate>Thu, 24 Oct 2024 03:49:38 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
-        <title></title>
+        <title>Notes on Dual-Booting Windows on Steam Deck</title>
         <description>&lt;p&gt;After completing &lt;a href=&quot;https://blog.lazerwalker.com/2024/10/06/steam-deck-mod.html&quot;&gt;hardware modding my Steam Deck&lt;/a&gt;, I decided to move onto the next task on my to-do list of making my Steam Deck the ultimate gaming handheld PC: dual-booting Windows.&lt;/p&gt;
 
 &lt;p&gt;I would describe the process as “straight forward, but poorly documented”, so this walkthrough of what I did may hopefully transform it into merely straight forward.&lt;/p&gt;
@@ -146,9 +146,9 @@
 &lt;h2 id=&quot;and-thats-it&quot;&gt;And that’s it!&lt;/h2&gt;
 &lt;p&gt;At this point you should have a fully-functioning dual-boot setup. Have fun!&lt;/p&gt;
 </description>
-        <pubDate>Thu, 24 Oct 2024 03:49:22 +0000</pubDate>
-        <link>https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</link>
-        <guid isPermaLink="true">https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</guid>
+        <pubDate>Wed, 23 Oct 2024 19:00:00 +0000</pubDate>
+        <link>https://blog.lazerwalker.com/2024/10/23/dual-booting-steam-deck.html</link>
+        <guid isPermaLink="true">https://blog.lazerwalker.com/2024/10/23/dual-booting-steam-deck.html</guid>
         
         
       </item>
