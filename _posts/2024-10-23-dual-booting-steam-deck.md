@@ -14,7 +14,7 @@ To be explicit, I replaced my stock 512gb SSD with a 1tb SSD (any M.2 2230 NVME 
 You can also install Windows onto a microSD card or an external hard drive, but the former is slow and the latter sounds rather unportable for a handheld. 
 
 ## Do you actually want Windows?
-So, let me be blunt: Windows kinda sucks on the Steam Deck. The OS itself works shockingly well: touch support is great, and it's easy to get the controller working both inside and outside of Steam. But every single game I've tried playing on both SteamOS and Windows, the SteamOS/Proton version was meaningfully more performant.
+Let me be blunt: Windows kinda sucks on the Steam Deck. The OS itself works shockingly well: touch support is great, and it's easy to get the controller working both inside and outside of Steam. But every single game I've tried playing on both SteamOS and Windows, the SteamOS/Proton version was meaningfully more performant.
 
 I am happy I have Windows installed, but it solely exists to run games I can't run in SteamOS (such as Destiny 2) and Game Pass games. That isn't to say you shouldn't install Windows, but temper your expectations accordingly, and perhaps weigh that as you decide what your partitioning strategy should be for your precious disk space. 
 
@@ -87,14 +87,14 @@ After installation is complete, rebooting your Steam Deck will always reboot you
 ### Setting up Windows
 At this point, you should have a more or less functional Windows install. There's a whole bunch of drivers and tools to install to make your experience better:
 
-- The official Steam Deck drivers will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers): <https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8>
-- The aforementioned WiFi driver: <https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix>
-- Steam Deck Tools provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck's controller as a generic Xbox 360 controller to non-Steam games: <https://github.com/ayufan/steam-deck-tools>. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer
-- You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it's convenient to do them now while you're already here. Go to <https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot>, and execute the two commands that need to be performed in an elevated Windows command prompt (a `bcdedit.exe` command and a `reg add` command). Don't do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.
+- The official [Steam Deck drivers](https://help.steampowered.com/en/faqs/view/6121-ECCD-D643-BAA8) will provide better performance. Install all of them except for the WiFi drivers (the next step is installing better-performance alternative WiFi drivers)
+- The aforementioned [improved WiFi driver](https://github.com/ryanrudolfoba/SteamDeck-Windows-WiFi-Fix>)
+- [Steam Deck Tools](https://github.com/ayufan/steam-deck-tools) provides a number of tools you may find useful (e.g. fan control), but I primarily use it as the easiest way to expose your Steam Deck's controller as a generic Xbox 360 controller to non-Steam games. Partway through, this installer will also require you to install the Microsoft Visual C++ Runtime. The installer will give you a direct download link; install it, and then re-run the Deck Tools installer
+- You will eventually install Clover, a polished boot manager. There are two Clover config steps that need to be done in Windows, and it's convenient to do them now while you're already here. Go to [this automated setup script](https://github.com/ryanrudolfoba/SteamDeck-Clover-dualboot), and execute the two commands that need to be performed in an elevated Windows command prompt (a `bcdedit.exe` command and a `reg add` command). Don't do any other Clover setup yet, we will need to fix an issue where the latest build of Windows 11 (24H2) has destroyed your SteamOS boot config.
 
 There are a few other classes of tools and tweaks I haven't experimented with yet:
-* This guide to installing Windows has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix): <https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html>
-* This Reddit thread also has other tweaks: <https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&utm_source=share>
+* [Bald Sea Lion's guide](https://baldsealion.com/Steam-Deck-Ultimate-Windows-Guide/Windows-OS-Tweaks.html) has a bunch of tweaks you might consider, but it does seem a bit outdated (e.g. I have yet to have any issues with hibernate/sleep, despite not running their suggested fix):
+* This [Reddit thread](https://www.reddit.com/r/WindowsOnDeck/comments/wn3x05/windows_on_deck_faq_aims_to_be_constantly_updated/?utm_medium=android_app&utm_source=share) also has other tweaks
 * In general, it may be worth looking up guides for debloating Windows 11
 
 ### Fixing The GRUB Partition Table
