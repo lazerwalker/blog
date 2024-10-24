@@ -6,8 +6,8 @@
 </description>
     <link>https://blog.lazerwalker.com/</link>
     <atom:link href="https://blog.lazerwalker.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 24 Oct 2024 03:42:46 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2024 03:42:46 +0000</lastBuildDate>
+    <pubDate>Thu, 24 Oct 2024 03:49:22 +0000</pubDate>
+    <lastBuildDate>Thu, 24 Oct 2024 03:49:22 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
@@ -135,6 +135,7 @@
 &lt;/ol&gt;
 
 &lt;p&gt;(These instructions mimics the linked video . Do you actually need to call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt; at all, or run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fdisk -l&lt;/code&gt; before the interactive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fdisk&lt;/code&gt; session? Probably not, but it can’t hurt to triple-check your partition table.)&lt;/p&gt;
+
 &lt;h3 id=&quot;installing-clover&quot;&gt;Installing Clover&lt;/h3&gt;
 &lt;p&gt;At this point, your Steam Deck is capable of booting into SteamOS, but will boot into Windows by default, and you can only boot into SteamOS via the rather annoying process of revealing the system boot manager.&lt;/p&gt;
 
@@ -145,7 +146,7 @@
 &lt;h2 id=&quot;and-thats-it&quot;&gt;And that’s it!&lt;/h2&gt;
 &lt;p&gt;At this point you should have a fully-functioning dual-boot setup. Have fun!&lt;/p&gt;
 </description>
-        <pubDate>Thu, 24 Oct 2024 03:42:46 +0000</pubDate>
+        <pubDate>Thu, 24 Oct 2024 03:49:22 +0000</pubDate>
         <link>https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</link>
         <guid isPermaLink="true">https://blog.lazerwalker.com/2024/10/24/2024-10-23-dual-booting-steam-deck.html</guid>
         
